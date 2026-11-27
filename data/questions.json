@@ -1662,56 +1662,6 @@
    }
   },
   {
-   "id": "p1-19-vb1",
-   "level": 2,
-   "type": "single",
-   "source": "Razavi-Bench part1-019 · 3/3",
-   "image": "razavi-part1-fig14b.png",
-   "imageAlt": {
-    "zh": "Razavi 第 19 題電路圖",
-    "en": "Circuit for Razavi question 19"
-   },
-   "prompt": {
-    "zh": "因此，確保 M<sub>2</sub> 飽和的條件為？",
-    "en": "So what condition ensures M<sub>2</sub> is saturated?"
-   },
-   "options": [
-    {
-     "id": "c",
-     "text": {
-      "zh": "V<sub>b1</sub> ≤ V<sub>b2</sub> − |V<sub>TH2</sub>| + |V<sub>GS1</sub>|",
-      "en": "V<sub>b1</sub> ≤ V<sub>b2</sub> − |V<sub>TH2</sub>| + |V<sub>GS1</sub>|"
-     }
-    },
-    {
-     "id": "b",
-     "text": {
-      "zh": "V<sub>b1</sub> ≥ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|",
-      "en": "V<sub>b1</sub> ≥ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|"
-     }
-    },
-    {
-     "id": "d",
-     "text": {
-      "zh": "V<sub>b2</sub> 夠高即可，與 V<sub>b1</sub> 無關",
-      "en": "V<sub>b2</sub> high enough; V<sub>b1</sub> does not matter"
-     }
-    },
-    {
-     "id": "a",
-     "text": {
-      "zh": "V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|",
-      "en": "V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|"
-     }
-    }
-   ],
-   "answer": "a",
-   "explanation": {
-    "zh": "兩顆都是 PMOS。M<sub>2</sub> 源極接 V<sub>DD</sub>、閘極 V<sub>b2</sub>、汲極接 X；M<sub>1</sub> 源極接 X、閘極 V<sub>b1</sub>、汲極接輸出。M<sub>2</sub> 飽和需要 V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|，即 V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|。關鍵是 V<sub>X</sub> 主要由 V<sub>b1</sub> 決定，而不是 V<sub>b2</sub>：M<sub>1</sub> 流的是 M<sub>2</sub> 的電流，所以 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，M<sub>2</sub> 的飽和條件就變成對 V<sub>b1</sub> 的條件：V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|。Razavi 對以 V<sub>b2</sub> 控制 V<sub>X</sub> 的 ChatGPT 給 1/4。",
-    "en": "Both devices are PMOS. M<sub>2</sub> has its source at V<sub>DD</sub>, gate at V<sub>b2</sub> and drain at X; M<sub>1</sub> has its source at X, gate at V<sub>b1</sub> and drain at the output. M<sub>2</sub> is saturated if V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|, i.e. V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|. The key point is that V<sub>X</sub> is set mainly by V<sub>b1</sub>, not V<sub>b2</sub>: M<sub>1</sub> carries M<sub>2</sub>'s current, so V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|, and M<sub>2</sub>'s saturation becomes a condition on V<sub>b1</sub>: V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|. Razavi gives 1/4 to ChatGPT, which treats V<sub>b2</sub> as the control of V<sub>X</sub>."
-   }
-  },
-  {
    "id": "p1-20-analyze",
    "level": 2,
    "type": "multi",
