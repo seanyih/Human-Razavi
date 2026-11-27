@@ -291,22 +291,26 @@
     const cfg = S.cfg, recs = S.records, counts = levelCounts();
     const byLevel = cfg.levels.map(l => {
       const rs = recs.filter(r => r.item.q.level === l);
-      const ms = rs.reduce((s, r) => s + r.ms, 0);
-      return { level: l, pool: counts[l], asked: rs.length, correct: rs.reduce((s, r) => s + r.score, 0), avgSec: rs.length ? ms / rs.length / 1000 : null };
+      const timed = rs.filter(r => !r.unanswered);   // questions never shown (Finish now) carry no timing
+      const ms = timed.reduce((s, r) => s + r.ms, 0);
+      return { level: l, pool: counts[l], asked: rs.length, correct: rs.reduce((s, r) => s + r.score, 0), avgSec: timed.length ? ms / timed.length / 1000 : null };
     });
+    const timedAll = recs.filter(r => !r.unanswered);
+    const fallbackSec = timedAll.length ? timedAll.reduce((s, r) => s + r.ms, 0) / timedAll.length / 1000 : 0;
     // Linear scaling: each level's accuracy and avg time are weighted by that level's size in the pool.
     const used = byLevel.filter(b => b.asked > 0 && b.pool > 0);
     const W = used.reduce((s, b) => s + b.pool, 0) || 1;
     const acc = used.length ? 100 * used.reduce((s, b) => s + (b.correct / b.asked) * b.pool, 0) / W : 0;
-    const estSec = used.reduce((s, b) => s + b.avgSec * b.pool, 0);
+    const poolSec = used.reduce((s, b) => s + (b.avgSec != null ? b.avgSec : fallbackSec) * b.pool, 0);
     const actualSec = recs.reduce((s, r) => s + r.ms, 0) / 1000;
     const scaled = byLevel.some(b => b.asked !== b.pool);
+    // Models stay as published (the 50 benchmark items were rephrased into the 70 gradable pool questions,
+    // so the same paper). The user's quick-mode sample is scaled up to the whole pool.
+    const N = W;
+    const estSec = poolSec;
     const twd = estSec / 3600 * cfg.hourlyWageTWD;
     const usd = twd / cfg.twdPerUSD;
-
-    const N = W;   // questions the estimate covers
-    const f = N / (S.models.questionCount || N);
-    const models = S.models.models.filter(m => m.costUSD != null).map(m => Object.assign({}, m, { cost: m.costUSD * f, time: m.timeSec * f }));
+    const models = S.models.models.filter(m => m.costUSD != null).map(m => Object.assign({}, m, { cost: m.costUSD, time: m.timeSec }));
     const lc = x => Math.log(Math.max(x, 1e-6));
     const byAcc = models.slice().sort((a, b) => Math.abs(a.accuracy - acc) - Math.abs(b.accuracy - acc) || Math.abs(lc(a.cost) - lc(usd)) - Math.abs(lc(b.cost) - lc(usd)))[0];
     const byCost = models.slice().sort((a, b) => Math.abs(lc(a.cost) - lc(usd)) - Math.abs(lc(b.cost) - lc(usd)))[0];
@@ -317,9 +321,11 @@
 
   function finish() {
     clearInterval(S.tick);
+    // Finishing early: every question not yet answered counts as wrong.
+    for (; S.i < S.items.length; S.i++) S.records.push({ item: S.items[S.i], resp: null, skipped: true, unanswered: true, score: 0, correct: false, ms: 0 });
     S.result = compute();
+    show('vResult');   // show first: the chart sizes itself from its visible width
     renderResult();
-    show('vResult');
   }
 
   function ratioPhrase(user, model, kind) {
@@ -413,7 +419,7 @@
       <div class="block">
         <h2>${t('res.levels')}</h2>
         <div class="tblwrap"><table class="lv"><thead><tr><th>${t('res.col.level')}</th><th>${t('res.col.pool')}</th><th>${t('res.col.asked')}</th><th>${t('res.col.correct')}</th><th>${t('res.col.acc')}</th><th>${t('res.col.avg')}</th></tr></thead><tbody>${lvRows}</tbody></table></div>
-        <p class="note">${R.scaled ? t('res.noteQuick') : t('res.noteFull')} ${t('res.noteModels', { nm: S.models.questionCount })}</p>
+        <p class="note">${R.scaled ? t('res.noteQuick') : t('res.noteFull')} ${t('res.noteModels', { nm: S.models.questionCount, n: S.pool.length })}</p>
       </div>
 
       <div class="block">
@@ -437,7 +443,7 @@
 
   // Accuracy (y) vs cost (x, log) scatter. Grey dots = models; ink = the two matched models; accent = you.
   function drawChart(box, R) {
-    const W = Math.max(300, Math.round(box.clientWidth - 24) || 960), H = W < 600 ? 300 : 380, m = { l: 44, r: 16, t: 16, b: 40 };
+    const W = Math.max(300, Math.round(box.clientWidth - 24) || 960), H = W < 600 ? 300 : Math.round(Math.min(W * 0.4, 420)), m = { l: 44, r: 16, t: 16, b: 40 };
     const pts = R.models.filter(p => p.cost > 0);
     const xs = pts.map(p => p.cost).concat(R.usd > 0 ? [R.usd] : []);
     let x0 = Math.floor(Math.log10(Math.min(...xs))), x1 = Math.ceil(Math.log10(Math.max(...xs)));
