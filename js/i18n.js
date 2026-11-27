@@ -1,7 +1,9 @@
 /* Bilingual UI strings + helpers.
  * t(key, vars)  -> UI string in current language, {name} placeholders filled from vars
- * L(field)      -> content field from JSON: either a plain string or {"zh": "...", "en": "..."}
+ * L(field)      -> content field from JSON: either a plain string or {"zh": "...", "jj": "...", "en": "..."}
  * setLang(lang) -> switch language everywhere, fires a "langchange" event on window
+ * Languages: zh (中文), jj (晶晶體: Chinese with technical terms in English), en.
+ * jj is optional everywhere and falls back to zh; UI strings have no jj set and always use zh.
  * Static markup: <el data-i18n="key"> (text) or <el data-i18n-html="key"> (HTML).
  */
 const I18N = {
@@ -95,7 +97,7 @@ const I18N = {
     'cm.8': '你電子學 A+，但 Claude 更便宜。', 'cm.9': '你是有背景的當廉價勞工。', 'cm.10': '下一個蒸餾的就是你。',
     'cm.11': '你台大電子所畢業，但 Claude 更便宜。', 'cm.12': '早安，Behzad Razavi。',
     'cm.guess': '亂猜（全選 A）',
-    'share.btn': '分享成績圖片', 'share.title': '分享你的成績', 'share.save': '儲存圖片', 'share.send': '傳給朋友', 'share.close': '關閉',
+    'share.me': '我', 'share.btn': '分享成績圖片', 'share.title': '分享你的成績', 'share.save': '儲存圖片', 'share.send': '傳給朋友', 'share.close': '關閉',
     'share.closest': '我最接近的 AI', 'share.acc': '答對率', 'share.cost': '成本', 'share.tag': '你的電子學成績最接近哪個 AI？', 'share.copied': '已複製連結',
     'res.retake': '再測一次',
     'res.toBench': '看完整模型排行',
@@ -111,7 +113,7 @@ const I18N = {
     'res.sec': '秒',
 
     'err.load': '資料載入失敗：{msg}。請用本機伺服器開啟（例如 python3 -m http.server），不要直接開檔案。',
-    'lang.switch': 'EN',
+    'lang.switch': '晶晶體',
   },
   en: {
     'nav.home': 'Home',
@@ -203,7 +205,7 @@ const I18N = {
     'cm.8': 'You got an A+ in electronics, but Claude is cheaper.', 'cm.9': 'You have connections. Cheap labor, indeed.', 'cm.10': 'You are the next one to be distilled.',
     'cm.11': 'You graduated from NTU EE, but Claude is cheaper.', 'cm.12': 'Good morning, Behzad Razavi.',
     'cm.guess': 'Random guess (always A)',
-    'share.btn': 'Share result image', 'share.title': 'Share your result', 'share.save': 'Save image', 'share.send': 'Send to a friend', 'share.close': 'Close',
+    'share.me': 'Me', 'share.btn': 'Share result image', 'share.title': 'Share your result', 'share.save': 'Save image', 'share.send': 'Send to a friend', 'share.close': 'Close',
     'share.closest': 'My closest AI', 'share.acc': 'Accuracy', 'share.cost': 'Cost', 'share.tag': 'Which AI is your electronics score closest to?', 'share.copied': 'Link copied',
     'res.retake': 'Take it again',
     'res.toBench': 'Full model leaderboard',
@@ -222,14 +224,20 @@ const I18N = {
     'lang.switch': '中文',
   },
 };
+// The toggle button cycles through LANGS; its label names the next language.
+const LANGS = ['zh', 'jj', 'en'];
+const FALLBACK = { zh: ['zh', 'en'], jj: ['jj', 'zh', 'en'], en: ['en', 'zh'] };
+const nextLang = l => LANGS[(LANGS.indexOf(l) + 1) % LANGS.length];
+I18N.jj = { 'lang.switch': 'EN' };
 
 let LANG = (() => {
-  try { const s = localStorage.getItem('hr-lang'); if (s === 'zh' || s === 'en') return s; } catch (e) {}
-  return /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+  try { const s = localStorage.getItem('hr-lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  return /^zh/i.test(navigator.language || '') ? 'jj' : 'en';
 })();
 
 function t(key, vars) {
-  let s = (I18N[LANG] && I18N[LANG][key]) ?? I18N.en[key] ?? key;
+  let s = key;
+  for (const l of FALLBACK[LANG]) if (I18N[l] && key in I18N[l]) { s = I18N[l][key]; break; }
   if (vars) s = s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   return s;
 }
@@ -237,14 +245,15 @@ function t(key, vars) {
 function L(field) {
   if (field == null) return '';
   if (typeof field !== 'object' || Array.isArray(field)) return field;
-  return field[LANG] ?? field.en ?? field.zh ?? Object.values(field)[0] ?? '';
+  for (const l of FALLBACK[LANG]) if (field[l] != null) return field[l];
+  return Object.values(field)[0] ?? '';
 }
 
 let I18N_VARS = {};
 function applyStatic(root = document) {
   root.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n, I18N_VARS); });
   root.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml, I18N_VARS); });
-  document.documentElement.lang = LANG === 'zh' ? 'zh-Hant' : 'en';
+  document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-Hant';
 }
 
 function setLang(lang) {
@@ -257,7 +266,7 @@ function setLang(lang) {
 document.addEventListener('DOMContentLoaded', () => {
   applyStatic();
   document.querySelectorAll('[data-lang-toggle]').forEach(b =>
-    b.addEventListener('click', () => setLang(LANG === 'zh' ? 'en' : 'zh')));
+    b.addEventListener('click', () => setLang(nextLang(LANG))));
 });
 
 async function loadJSON(path) {
