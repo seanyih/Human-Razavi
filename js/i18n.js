@@ -41,7 +41,6 @@ const I18N = {
     'start.full': '完整模式',
     'start.full.d': '全部 {n} 題依題庫順序作答，結果不需換算。',
     'start.go': '開始',
-    'start.rules': '計時從第一題出現開始，切到其他分頁時暫停。作答後無法返回上一題。時間以時薪 NT$ {wage} 換算成本（1 USD ≈ NT$ {rate}）。',
     'start.empty': '題庫是空的。請在 data/questions.json 加入題目。',
 
     'level': '難度',
@@ -143,7 +142,6 @@ const I18N = {
     'start.full': 'Full',
     'start.full.d': 'All {n} questions in pool order; no scaling needed.',
     'start.go': 'Start',
-    'start.rules': 'The clock starts when the first question appears and pauses while the tab is hidden. You cannot go back. Time is priced at NT$ {wage}/hour (1 USD ≈ NT$ {rate}).',
     'start.empty': 'The question pool is empty. Add questions to data/questions.json.',
 
     'level': 'Level',
