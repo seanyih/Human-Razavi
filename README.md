@@ -8,7 +8,7 @@ Static site with no build step and no dependencies.
 index.html          landing page
 test.html           test runner (start → questions → results)
 css/style.css       all styles (light + dark)
-js/i18n.js          UI strings (zh / en) and helpers
+js/i18n.js          UI strings (zh / en), language list and helpers
 js/test.js          sampling, timing, grading, scaling, results
 data/config.json    wage, exchange rate, levels, quick-mode range
 data/questions.json question pool   ← add questions here
@@ -43,7 +43,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 - **IDs and order.** IDs are `razavi-<n>-<k>`: `n` is the original Razavi-Bench task (part1-001…030 → 1–30, part2-001…020 → 31–50), `k` counts the questions derived from it. Questions are listed in original-task order; when a task has a "name this circuit" fill-in, it comes first and the circuit name must not appear in that task's choice options. The number shown (Q1, Q2, …) is generated at run time. Full mode asks every question in the order of this file; quick mode samples randomly within each level, easiest level first. Option order is never shuffled.
 - **Prompts hold only the question.** No source notes or "original question" asides; `source` is the place for that.
-- **Bilingual fields.** Any text field (`prompt`, option `text`, `explanation`, `imageCaption`, `placeholder`, even `image`) may be a plain string or `{ "zh": …, "en": … }`. Language switches at any time without losing progress.
+- **Language fields.** Any text field (`prompt`, option `text`, `explanation`, `imageCaption`, `placeholder`, even `image`) may be a plain string or `{ "zh": …, "jj": …, "en": … }`. Language switches at any time without losing progress; the header button cycles 中文 → 晶晶體 → EN. Chinese-language browsers start in 晶晶體, others in English.
+- **晶晶體 (`jj`).** Same as `zh`, but technical terms stay in English: terminals and devices (source, drain, gate, MOS), regions (saturation, triode), topologies and blocks (common-source stage, source follower, cascode, latch, inverter, comparator, divider, current source/mirror, active load, differential pair, tank, varactor, keeper, TIA, LNA, oscillator, photodiode), and terms like diode-connected, overdrive, body effect, channel-length modulation, intrinsic gain, subthreshold, threshold, small-signal, transconductance, loop gain, pole/zero, Miller, swing, rail-to-rail, regeneration, charge sharing, supply pushing, upconversion, feedforward, common-mode, transimpedance, switched-capacitor, class-C, state variable, topology, master-slave, dynamic/static. Everyday words and quantities stay Chinese: 電壓、電流、頻率、增益、電阻、電容、阻抗、偏壓、回授、高頻/低頻、上升/下降、上拉/下拉、雜訊、時脈、開關、正交、主極點. `jj` is optional: a missing `jj` falls back to `zh`, so add it only where the text differs. UI strings have no `jj` set and use `zh`.
 - **Images.** `"image": "file.png"` resolves to `img/file.png`. No alt text: the figures carry the question. For several figures use `"images": ["a.png", { "src": "b.png", "caption": { "zh": "…", "en": "…" } }]`. Figures are shown on a white panel, so transparent PNGs work in dark mode.
 
 ### Single choice

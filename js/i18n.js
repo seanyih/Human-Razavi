@@ -1,7 +1,9 @@
 /* Bilingual UI strings + helpers.
  * t(key, vars)  -> UI string in current language, {name} placeholders filled from vars
- * L(field)      -> content field from JSON: either a plain string or {"zh": "...", "en": "..."}
+ * L(field)      -> content field from JSON: either a plain string or {"zh": "...", "jj": "...", "en": "..."}
  * setLang(lang) -> switch language everywhere, fires a "langchange" event on window
+ * Languages: zh (中文), jj (晶晶體: Chinese with technical terms in English), en.
+ * jj is optional everywhere and falls back to zh; UI strings have no jj set and always use zh.
  * Static markup: <el data-i18n="key"> (text) or <el data-i18n-html="key"> (HTML).
  */
 const I18N = {
@@ -111,7 +113,7 @@ const I18N = {
     'res.sec': '秒',
 
     'err.load': '資料載入失敗：{msg}。請用本機伺服器開啟（例如 python3 -m http.server），不要直接開檔案。',
-    'lang.switch': 'EN',
+    'lang.switch': '晶晶體',
   },
   en: {
     'nav.home': 'Home',
@@ -222,14 +224,20 @@ const I18N = {
     'lang.switch': '中文',
   },
 };
+// The toggle button cycles through LANGS; its label names the next language.
+const LANGS = ['zh', 'jj', 'en'];
+const FALLBACK = { zh: ['zh', 'en'], jj: ['jj', 'zh', 'en'], en: ['en', 'zh'] };
+const nextLang = l => LANGS[(LANGS.indexOf(l) + 1) % LANGS.length];
+I18N.jj = { 'lang.switch': 'EN' };
 
 let LANG = (() => {
-  try { const s = localStorage.getItem('hr-lang'); if (s === 'zh' || s === 'en') return s; } catch (e) {}
-  return /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+  try { const s = localStorage.getItem('hr-lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  return /^zh/i.test(navigator.language || '') ? 'jj' : 'en';
 })();
 
 function t(key, vars) {
-  let s = (I18N[LANG] && I18N[LANG][key]) ?? I18N.en[key] ?? key;
+  let s = key;
+  for (const l of FALLBACK[LANG]) if (I18N[l] && key in I18N[l]) { s = I18N[l][key]; break; }
   if (vars) s = s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   return s;
 }
@@ -237,14 +245,15 @@ function t(key, vars) {
 function L(field) {
   if (field == null) return '';
   if (typeof field !== 'object' || Array.isArray(field)) return field;
-  return field[LANG] ?? field.en ?? field.zh ?? Object.values(field)[0] ?? '';
+  for (const l of FALLBACK[LANG]) if (field[l] != null) return field[l];
+  return Object.values(field)[0] ?? '';
 }
 
 let I18N_VARS = {};
 function applyStatic(root = document) {
   root.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n, I18N_VARS); });
   root.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml, I18N_VARS); });
-  document.documentElement.lang = LANG === 'zh' ? 'zh-Hant' : 'en';
+  document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-Hant';
 }
 
 function setLang(lang) {
@@ -257,7 +266,7 @@ function setLang(lang) {
 document.addEventListener('DOMContentLoaded', () => {
   applyStatic();
   document.querySelectorAll('[data-lang-toggle]').forEach(b =>
-    b.addEventListener('click', () => setLang(LANG === 'zh' ? 'en' : 'zh')));
+    b.addEventListener('click', () => setLang(nextLang(LANG))));
 });
 
 async function loadJSON(path) {

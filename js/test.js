@@ -20,7 +20,7 @@
   const stripTags = s => String(s).replace(/<[^>]*>/g, '');
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const letter = i => String.fromCharCode(65 + i);
-  const zh = () => LANG === 'zh';
+  const zh = () => LANG !== 'en';  // zh and jj share Chinese formatting
 
   function show(id) {
     S.view = id;
