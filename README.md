@@ -70,10 +70,10 @@ Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Partial cr
 
 ## Modes and scoring
 
-- **Quick:** draws `perLevel` questions from each level (the user picks 5–10; range in `config.quickMode`). Accuracy and average time per question are computed per level, then weighted by the number of questions each level has in the pool. This gives the full-test estimate.
-- **Full:** every question. If the user stops early ("Finish now"), the same per-level scaling is applied to what was answered.
+- **Quick:** draws `perLevel` questions from each level (the user picks 2–15; range in `config.quickMode`). Accuracy and average time per question are computed per level, then weighted by the number of questions each level has in the pool. This gives the full-test estimate.
+- **Full:** every question. If the user stops early ("Finish now"), every unanswered question counts as wrong.
 - **Cost** = estimated full-test time × `hourlyWageTWD` (220), converted to USD with `twdPerUSD`.
-- **Model comparison:** model cost and time are scaled from the benchmark's question count to the pool size. The result page shows:
+- **Model comparison:** the user's time and cost are scaled up to the benchmark's question count; model figures are used as published. The result page shows:
   - the closest model by accuracy, with its cost and time;
   - the closest model by cost (log distance), with its accuracy;
   - an accuracy-vs-cost scatter and the share of models the user beats.
