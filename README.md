@@ -42,7 +42,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 }
 ```
 
-- **No question numbers.** Order is decided at run time and the number shown (Q1, Q2, …) is generated. Within a run, questions are grouped by level (easy first) and shuffled inside each level; set `"order": "random"` in `config.json` to shuffle everything.
+- **No question numbers.** The number shown (Q1, Q2, …) is generated at run time. Full mode asks every question in the order of this file; quick mode samples randomly within each level, easiest level first. Option order is never shuffled.
+- **Prompts hold only the question.** No source notes or "original question" asides; `source` is the place for that.
 - **Bilingual fields.** Any text field (`prompt`, option `text`, `explanation`, `imageAlt`, `imageCaption`, `placeholder`, even `image`) may be a plain string or `{ "zh": …, "en": … }`. Language switches at any time without losing progress.
 - **Images.** `"image": "file.png"` resolves to `img/file.png`. For several figures use `"images": ["a.png", { "src": "b.png", "caption": { "zh": "…", "en": "…" } }]`. Figures are shown on a white panel, so transparent PNGs work in dark mode.
 
@@ -50,13 +51,12 @@ python3 -m http.server 8000   # then open http://localhost:8000
 ```jsonc
 "type": "single",
 "options": [ { "id": "same", "text": { "zh": "不變", "en": "Unchanged" } }, { "id": "double", "text": "…" } ],
-"answer": "double",
-"shuffle": false            // optional: shuffle option order per run
+"answer": "double"
 ```
 Option letters (A, B, C…) are generated; refer to options by `id`.
 
 ### Multiple choice
-Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Partial credit: with n correct options, each correct pick earns 1/n and each wrong pick loses 1/n, with a floor of 0 per question.
+Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Partial credit, 學測 style: each of the n options is judged on its own (picking a correct option or leaving a wrong one unpicked both count as right). All right scores 1; k options misjudged scores (n − 2k)/n, floored at 0. E.g. 5 options, 3 correct: one missed or one extra pick scores 0.6.
 
 ### Fill-in
 ```jsonc

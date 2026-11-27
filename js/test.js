@@ -68,14 +68,16 @@
     return parseFloat(m[1]) * (m[2] ? SI[m[2]] : 1);
   }
   // Returns a score in [0, 1]. Single choice and fill-in are all-or-nothing.
-  // Multi choice: n = number of correct options; each correct pick +1/n, each wrong pick −1/n, floored at 0.
+  // Multi choice: every option is judged on its own (picking a correct one or leaving a wrong one unpicked is right).
+  // With n options and k misjudged, the score is (n − 2k) / n, floored at 0. Nothing picked scores 0.
   function grade(q, resp) {
     if (resp == null) return 0;
     if (q.type === 'multi') {
-      const want = new Set(q.answer || []);
-      if (!want.size) return 0;
-      const hit = resp.filter(x => want.has(x)).length, miss = resp.length - hit;
-      return Math.max(0, (hit - miss) / want.size);
+      if (!resp.length) return 0;
+      const want = new Set(q.answer || []), picked = new Set(resp), opts = (q.options || []).map(o => o.id);
+      if (!opts.length) return 0;
+      const k = opts.filter(id => want.has(id) !== picked.has(id)).length;
+      return Math.max(0, (opts.length - 2 * k) / opts.length);
     }
     return gradeExact(q, resp) ? 1 : 0;
   }
@@ -174,17 +176,12 @@
   // ---------- quiz ----------
   function begin(mode) {
     S.mode = mode;
+    // Full mode: every question in questions.json order. Quick mode: a random sample per level, easiest level first.
     let chosen = [];
-    for (const l of S.cfg.levels) {
-      const lv = shuffle(S.pool.filter(q => q.level === l));
-      chosen = chosen.concat(mode === 'quick' ? lv.slice(0, S.perLevel) : lv);
-    }
-    if (S.cfg.order === 'random') chosen = shuffle(chosen);
-    S.items = chosen.map(q => ({
-      q,
-      optOrder: (q.options || []).map(o => o.id).filter(Boolean),
-    }));
-    S.items.forEach(it => { if (it.q.shuffle) it.optOrder = shuffle(it.optOrder); });
+    if (mode === 'full') chosen = S.pool.slice();
+    else for (const l of S.cfg.levels) chosen = chosen.concat(shuffle(S.pool.filter(q => q.level === l)).slice(0, S.perLevel));
+    // Options always keep their order from the JSON.
+    S.items = chosen.map(q => ({ q, optOrder: (q.options || []).map(o => o.id).filter(Boolean) }));
     S.i = 0; S.records = [];
     startQuestion();
     show('vQuiz');
