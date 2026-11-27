@@ -420,7 +420,6 @@
         <div class="kicker">${t('res.kicker')}</div>
         <h1>${t('res.closest')} <em>${top ? esc(top.name) : '—'}</em></h1>
         <p class="comment c${R.comment}">${t('cm.' + R.comment)}</p>
-        <p>${top ? t('res.closestSub', { you: fmtPct(R.acc), model: fmtPct(top.accuracy) }) : ''}</p>
       </div>
       <div class="stats">
         <div class="stat"><div class="lbl">${t('res.acc')}${R.scaled ? ' · ' + t('res.est') : ''}</div><div class="val">${fmtPct(R.acc)}</div><div class="sub">${t('res.answered', { c: fmtScore(R.correct), n: R.asked })}</div></div>
@@ -543,7 +542,7 @@
     ctx.restore();
   }
   function renderShareCanvas() {
-    const R = S.result, top = R.byAcc, W = 1080, H = 1350, ctx = document.createElement('canvas');
+    const R = S.result, top = R.byAcc, W = 1080, H = 1620, ctx = document.createElement('canvas');
     ctx.width = W; ctx.height = H;
     const c = ctx.getContext('2d'), F = '"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif';
     c.fillStyle = '#f6f5f1'; c.fillRect(0, 0, W, H);
@@ -551,22 +550,22 @@
     c.beginPath(); c.roundRect(48, 48, W - 96, H - 96, 28); c.fill(); c.stroke();
     c.textBaseline = 'alphabetic'; c.textAlign = 'left';
     c.fillStyle = '#7a7d85'; c.font = `600 28px ${F}`; c.fillText(t('share.tag'), 96, 130);
-    c.fillStyle = '#4a4d55'; c.font = `500 36px ${F}`; c.fillText(t('share.closest'), 96, 240);
-    c.fillStyle = '#2b47d6'; c.font = `800 ${top && top.name.length > 18 ? 76 : 96}px ${F}`;
-    const ny = wrapText(c, top ? top.name : '—', 96, 340, W - 192, 110);
-    c.fillStyle = '#17181c'; c.font = `600 38px ${F}`;
-    const my = wrapText(c, t('cm.' + R.comment), 96, ny + 20, W - 192, 54);
+    c.fillStyle = '#4a4d55'; c.font = `500 36px ${F}`; c.fillText(t('share.closest'), 96, 230);
+    c.fillStyle = '#2b47d6'; c.font = `800 ${top && top.name.length > 18 ? 64 : 80}px ${F}`;
+    const ny = wrapText(c, top ? top.name : '—', 96, 315, W - 192, 92);
+    c.fillStyle = '#17181c'; c.font = `600 34px ${F}`;
+    const my = wrapText(c, t('cm.' + R.comment), 96, ny + 10, W - 192, 48);
     // stats
-    const sy = Math.max(my + 40, 560), bw = (W - 192 - 32) / 2;
-    [[t('share.acc'), fmtPct(R.acc), top ? t('res.closestSub', { you: fmtPct(R.acc), model: fmtPct(top.accuracy) }) : ''], [t('share.cost'), 'US' + fmtUSD(R.usd), fmtTWD(R.twd) + ' · NT$ ' + S.cfg.hourlyWageTWD + '/h']].forEach((it, k) => {
+    const sy = my + 30, bw = (W - 192 - 32) / 2;
+    [[t('share.acc'), fmtPct(R.acc), top ? '' : ''], [t('share.cost'), fmtUSD(R.usd), fmtTWD(R.twd)]].forEach((it, k) => {
       const x = 96 + k * (bw + 32);
-      c.fillStyle = '#efede7'; c.beginPath(); c.roundRect(x, sy, bw, 230, 20); c.fill();
-      c.fillStyle = '#7a7d85'; c.font = `600 26px ${F}`; c.fillText(it[0], x + 32, sy + 56);
-      c.fillStyle = '#17181c'; c.font = `800 80px ${F}`; c.fillText(it[1], x + 32, sy + 150);
-      if (k) { c.fillStyle = '#7a7d85'; c.font = `500 24px ${F}`; c.fillText(it[2], x + 32, sy + 200); }
+      c.fillStyle = '#efede7'; c.beginPath(); c.roundRect(x, sy, bw, 200, 20); c.fill();
+      c.fillStyle = '#7a7d85'; c.font = `600 26px ${F}`; c.fillText(it[0], x + 32, sy + 50);
+      c.fillStyle = '#17181c'; c.font = `800 68px ${F}`; c.fillText(it[1], x + 32, sy + 130);
+      if (k) { c.fillStyle = '#7a7d85'; c.font = `500 24px ${F}`; c.fillText(it[2], x + 32, sy + 172); }
     });
     // mini scatter
-    const cx0 = 96, cy0 = sy + 270, cw = W - 192, ch = 310, pl = 56, pb = 40;
+    const cx0 = 96, cy0 = sy + 225, cw = W - 192, ch = 300, pl = 56, pb = 40;
     const pts = R.models.filter(p => p.cost > 0), xs = pts.map(p => p.cost).concat([R.usd]).filter(v => v > 0);
     let x0 = Math.floor(Math.log10(Math.min(...xs))), x1 = Math.ceil(Math.log10(Math.max(...xs))); if (x1 === x0) x1++;
     const X = v => cx0 + pl + (Math.log10(Math.max(v, 10 ** x0)) - x0) / (x1 - x0) * (cw - pl - 10);
@@ -580,11 +579,24 @@
     if (top) dot(X(top.cost), Y(top.accuracy), 9, '#17181c');
     dot(X(R.usd), Y(R.acc), 11, '#2b47d6');
     c.textAlign = 'left'; c.fillStyle = '#2b47d6'; c.font = `700 24px ${F}`;
-    const ux = X(R.usd); c.textAlign = ux > cx0 + cw - 100 ? 'right' : 'left'; c.fillText(t('res.you'), ux + (c.textAlign === 'left' ? 16 : -16), Y(R.acc) - 14);
+    const ux = X(R.usd); c.textAlign = ux > cx0 + cw - 100 ? 'right' : 'left'; c.fillText(t('share.me'), ux + (c.textAlign === 'left' ? 16 : -16), Y(R.acc) - 14);
     // footer
-    c.textAlign = 'left'; c.fillStyle = '#7a7d85'; c.font = `500 22px ${F}`;
-    c.fillText(S.mode === 'full' ? t('start.full') : t('start.quick'), 96, H - 96);
-    drawLogo(c, W - 96, H - 80);
+    // the two matched models
+    const cards = [[t('res.sameLevel'), R.byAcc], [t('res.sameCost'), R.byCost]], cyy = cy0 + ch + 40, cwid = (W - 192 - 32) / 2;
+    cards.forEach(([title, m], k) => {
+      if (!m) return;
+      const x = 96 + k * (cwid + 32);
+      c.textAlign = 'left';
+      c.strokeStyle = '#e2e0d9'; c.lineWidth = 2; c.beginPath(); c.roundRect(x, cyy, cwid, 340, 20); c.stroke();
+      c.fillStyle = '#7a7d85'; c.font = `600 19px ${F}`; c.fillText(title, x + 24, cyy + 46);
+      c.fillStyle = '#17181c'; c.font = `700 ${m.name.length > 16 ? 28 : 34}px ${F}`; c.fillText(m.name, x + 28, cyy + 96);
+      [[t('res.modelAcc'), fmtPct(m.accuracy)], [t('res.modelCost'), fmtUSD(m.cost)], [t('res.modelTime'), '≈ ' + fmtDur(m.time)]].forEach((row, i) => {
+        const yy = cyy + 160 + i * 54;
+        c.fillStyle = '#7a7d85'; c.font = `500 22px ${F}`; c.textAlign = 'left'; c.fillText(row[0], x + 28, yy);
+        c.fillStyle = '#17181c'; c.font = `700 30px ${F}`; c.textAlign = 'right'; c.fillText(row[1], x + cwid - 28, yy);
+      });
+    });
+    drawLogo(c, W - 96, H - 72);
     return ctx;
   }
   function openShare() {
