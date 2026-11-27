@@ -366,8 +366,8 @@
     {
      "id": "sa",
      "text": {
-      "zh": "M<sub>1</sub> 是 PMOS",
-      "en": "M<sub>1</sub> is a PMOS device"
+      "zh": "M<sub>1</sub> 是 PMOS，源極經 R<sub>S</sub> 接 V<sub>DD</sub>",
+      "en": "M<sub>1</sub> is a PMOS with its source tied to V<sub>DD</sub> through R<sub>S</sub>"
      }
     },
     {
@@ -387,22 +387,15 @@
     {
      "id": "sd",
      "text": {
-      "zh": "這是源極隨耦器，增益約為 +1",
-      "en": "It is a source follower with a gain of about +1"
+      "zh": "R<sub>S</sub> 越大，增益的大小越大",
+      "en": "A larger R<sub>S</sub> increases the magnitude of the gain"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "忽略 r<sub>o</sub> 與基體效應，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>D</sub>)",
-      "en": "Neglecting r<sub>o</sub> and body effect, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>D</sub>)"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "增益為非反相",
-      "en": "The gain is non-inverting"
+      "zh": "g<sub>m</sub>R<sub>S</sub> ≫ 1 時，增益趨近 −R<sub>S</sub>/R<sub>D</sub>",
+      "en": "When g<sub>m</sub>R<sub>S</sub> ≫ 1, the gain approaches −R<sub>S</sub>/R<sub>D</sub>"
      }
     }
    ],
@@ -557,42 +550,34 @@
     {
      "id": "sa",
      "text": {
-      "zh": "這是源極隨耦器（輸入在閘極、輸出在源極）",
-      "en": "It is a source follower (input at the gate, output at the source)"
+      "zh": "這是源極隨耦器；忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
+      "en": "It is a source follower; neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)"
      }
     },
     {
      "id": "sb",
      "text": {
-      "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
-      "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)"
+      "zh": "計入基體效應（忽略 r<sub>o</sub>）時，g<sub>m</sub>R<sub>S</sub> → ∞ 增益仍趨近 1",
+      "en": "With body effect (r<sub>o</sub> neglected), the gain still approaches 1 as g<sub>m</sub>R<sub>S</sub> → ∞"
      }
     },
     {
      "id": "sc",
      "text": {
-      "zh": "這是源極退化的共源級，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
-      "en": "It is a degenerated common-source stage, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)"
+      "zh": "輸出取在源極，所以增益恰好等於 1，與 R<sub>S</sub> 無關",
+      "en": "Because the output is at the source, the gain is exactly 1 regardless of R<sub>S</sub>"
      }
     },
     {
      "id": "sd",
      "text": {
-      "zh": "增益大於 1",
-      "en": "The gain exceeds one"
-     }
-    },
-    {
-     "id": "se",
-     "text": {
-      "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ 1/(1 + g<sub>m</sub>R<sub>S</sub>)",
-      "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ 1/(1 + g<sub>m</sub>R<sub>S</sub>)"
+      "zh": "這是源極隨耦器；忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 − g<sub>m</sub>R<sub>S</sub>)",
+      "en": "It is a source follower; neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 − g<sub>m</sub>R<sub>S</sub>)"
      }
     }
    ],
    "answer": [
-    "sa",
-    "sb"
+    "sa"
    ],
    "shuffle": true,
    "explanation": {
@@ -757,51 +742,35 @@
     {
      "id": "sa",
      "text": {
-      "zh": "V<sub>in</sub> 加在 M<sub>1</sub> 的源極",
-      "en": "V<sub>in</sub> drives the source of M<sub>1</sub>"
+      "zh": "這是共閘級：V<sub>in</sub> 加在源極，閘極經 V<sub>DD</sub> 交流接地",
+      "en": "It is a common-gate stage: V<sub>in</sub> drives the source and the gate is AC-grounded through V<sub>DD</sub>"
      }
     },
     {
      "id": "sb",
      "text": {
-      "zh": "M<sub>1</sub> 的閘極交流接地",
-      "en": "The gate of M<sub>1</sub> is at AC ground"
+      "zh": "忽略 r<sub>o</sub>，A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub>，且從 V<sub>in</sub> 看進去 R<sub>in</sub> ≈ 1/g<sub>m</sub>",
+      "en": "Neglecting r<sub>o</sub>, A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub> and R<sub>in</sub> ≈ 1/g<sub>m</sub> looking from V<sub>in</sub>"
      }
     },
     {
      "id": "sc",
      "text": {
-      "zh": "忽略 r<sub>o</sub>，A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub>（非反相）",
-      "en": "Neglecting r<sub>o</sub>, A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub> (non-inverting)"
+      "zh": "閘極接 V<sub>DD</sub>，所以 M<sub>1</sub> 一定在三極管區，無法當放大器",
+      "en": "With its gate at V<sub>DD</sub>, M<sub>1</sub> must be in triode and cannot amplify"
      }
     },
     {
      "id": "sd",
      "text": {
-      "zh": "忽略 r<sub>o</sub>，從 V<sub>in</sub> 看進去的輸入電阻約 1/g<sub>m</sub>",
-      "en": "Neglecting r<sub>o</sub>, the input resistance seen by V<sub>in</sub> is about 1/g<sub>m</sub>"
-     }
-    },
-    {
-     "id": "se",
-     "text": {
-      "zh": "這是共源級，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>",
-      "en": "It is a common-source stage, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "從 V<sub>in</sub> 看進去的輸入電阻約為 R<sub>D</sub>",
-      "en": "The input resistance seen by V<sub>in</sub> is about R<sub>D</sub>"
+      "zh": "增益大小與共源級相同，都是 −g<sub>m</sub>R<sub>D</sub>，差別只在輸入阻抗",
+      "en": "The gain equals a common-source stage's, −g<sub>m</sub>R<sub>D</sub>; only the input impedance differs"
      }
     }
    ],
    "answer": [
     "sa",
-    "sb",
-    "sc",
-    "sd"
+    "sb"
    ],
    "shuffle": true,
    "explanation": {
@@ -916,8 +885,8 @@
     {
      "id": "sa",
      "text": {
-      "zh": "M<sub>1</sub> 的源極直接接地，所以 V<sub>in</sub> 被短路",
-      "en": "The source of M<sub>1</sub> is tied directly to ground, so V<sub>in</sub> is shorted"
+      "zh": "M<sub>1</sub> 的源極節點直接接地，所以 V<sub>in</sub> 被短路",
+      "en": "The source node of M<sub>1</sub> is tied directly to ground, so V<sub>in</sub> is shorted"
      }
     },
     {
@@ -930,22 +899,22 @@
     {
      "id": "sc",
      "text": {
-      "zh": "這是共閘放大器，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>D</sub>",
-      "en": "It is a common-gate amplifier, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>D</sub>"
+      "zh": "增益為 0 的原因是 C<sub>1</sub> 在中頻開路",
+      "en": "The gain is zero because C<sub>1</sub> is an open circuit at midband"
      }
     },
     {
      "id": "sd",
      "text": {
-      "zh": "V<sub>in</sub> 經 C<sub>1</sub> 加在 M<sub>1</sub> 的閘極，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>",
-      "en": "V<sub>in</sub> is applied to the gate of M<sub>1</sub> through C<sub>1</sub>, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>"
+      "zh": "C<sub>1</sub> 夠大時，增益趨近共閘級的 g<sub>m</sub>R<sub>D</sub>",
+      "en": "If C<sub>1</sub> is large enough, the gain approaches the common-gate value g<sub>m</sub>R<sub>D</sub>"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "C<sub>1</sub> 與 R<sub>D</sub> 形成高通濾波，中頻增益為 g<sub>m</sub>R<sub>D</sub>",
-      "en": "C<sub>1</sub> and R<sub>D</sub> form a high-pass filter with a midband gain of g<sub>m</sub>R<sub>D</sub>"
+      "zh": "源極接地後，電路變成以 V<sub>b</sub> 為輸入的共源級，v<sub>out</sub>/v<sub>in</sub> ≈ −g<sub>m</sub>R<sub>D</sub>",
+      "en": "With the source grounded it becomes a common-source stage driven by V<sub>b</sub>, v<sub>out</sub>/v<sub>in</sub> ≈ −g<sub>m</sub>R<sub>D</sub>"
      }
     }
    ],
@@ -1085,8 +1054,8 @@
     {
      "id": "sb",
      "text": {
-      "zh": "R<sub>1</sub>–R<sub>2</sub> 分壓把一部分輸出電壓回授到 M<sub>1</sub> 的閘極",
-      "en": "The R<sub>1</sub>–R<sub>2</sub> divider feeds a fraction of the output back to the gate of M<sub>1</sub>"
+      "zh": "R<sub>1</sub>–R<sub>2</sub> 分壓把一部分輸出電壓送回 M<sub>1</sub> 的閘極",
+      "en": "The R<sub>1</sub>–R<sub>2</sub> divider returns a fraction of the output voltage to the gate of M<sub>1</sub>"
      }
     },
     {
@@ -1099,22 +1068,15 @@
     {
      "id": "sd",
      "text": {
-      "zh": "M<sub>1</sub> 的源極接地，R<sub>1</sub>–R<sub>2</sub> 只是輸出端的負載",
-      "en": "M<sub>1</sub>'s source is grounded and R<sub>1</sub>–R<sub>2</sub> is just a load on the output"
+      "zh": "迴路增益很大時，閉迴路增益約為 R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)",
+      "en": "For a large loop gain, the closed-loop gain approaches R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "這是正回授",
-      "en": "The feedback is positive"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "迴路增益很大時，閉迴路增益約 −R<sub>1</sub>/R<sub>2</sub>（反相）",
-      "en": "For a large loop gain, the closed-loop gain is about −R<sub>1</sub>/R<sub>2</sub> (inverting)"
+      "zh": "迴路增益很大時，閉迴路增益約為 −(1 + R<sub>1</sub>/R<sub>2</sub>)",
+      "en": "For a large loop gain, the closed-loop gain approaches −(1 + R<sub>1</sub>/R<sub>2</sub>)"
      }
     }
    ],
@@ -1147,50 +1109,34 @@
     {
      "id": "sa",
      "text": {
-      "zh": "M<sub>1</sub> 是源極隨耦器",
-      "en": "M<sub>1</sub> is a source follower"
+      "zh": "M<sub>1</sub> 是源極隨耦器、M<sub>2</sub> 是它的電流源負載，增益為正且等於或略小於 1",
+      "en": "M<sub>1</sub> is a source follower with M<sub>2</sub> as its current-source load; the gain is positive and at or slightly below 1"
      }
     },
     {
      "id": "sb",
      "text": {
-      "zh": "M<sub>2</sub> 是 M<sub>1</sub> 的電流源負載",
-      "en": "M<sub>2</sub> is the current-source load of M<sub>1</sub>"
+      "zh": "增益略小於 1 只是因為 r<sub>o</sub> 有限；r<sub>o</sub> 無限大時，即使有基體效應增益也等於 1",
+      "en": "The gain falls below 1 only because of finite r<sub>o</sub>; with infinite r<sub>o</sub> it equals 1 even with body effect"
      }
     },
     {
      "id": "sc",
      "text": {
-      "zh": "小訊號增益為正，等於或略小於 1",
-      "en": "The small-signal gain is positive and at or slightly below one"
+      "zh": "M<sub>2</sub> 是 NMOS 主動負載，與 M<sub>1</sub> 構成共源級，A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
+      "en": "M<sub>2</sub> is an NMOS active load forming a common-source stage with M<sub>1</sub>, A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     },
     {
      "id": "sd",
      "text": {
-      "zh": "這是以 M<sub>2</sub> 為主動負載的共源級，A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
-      "en": "It is a common-source stage with M<sub>2</sub> as an active load, A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
-     }
-    },
-    {
-     "id": "se",
-     "text": {
-      "zh": "這是 M<sub>1</sub> 疊在 M<sub>2</sub> 上的疊接級",
-      "en": "It is a cascode with M<sub>1</sub> stacked on M<sub>2</sub>"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "小訊號增益遠大於 1",
-      "en": "The small-signal gain is much greater than one"
+      "zh": "M<sub>1</sub> 疊在 M<sub>2</sub> 上構成疊接，輸出電阻約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>",
+      "en": "M<sub>1</sub> stacked on M<sub>2</sub> forms a cascode with an output resistance of about g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>"
      }
     }
    ],
    "answer": [
-    "sa",
-    "sb",
-    "sc"
+    "sa"
    ],
    "shuffle": true,
    "explanation": {
@@ -1362,36 +1308,28 @@
     {
      "id": "sb",
      "text": {
-      "zh": "M<sub>1</sub> 是 NMOS 下拉",
-      "en": "M<sub>1</sub> is an NMOS pull-down"
+      "zh": "M<sub>1</sub> 是 NMOS 下拉，M<sub>2</sub> 是 PMOS 上拉",
+      "en": "M<sub>1</sub> is an NMOS pull-down and M<sub>2</sub> a PMOS pull-up"
      }
     },
     {
      "id": "sc",
      "text": {
-      "zh": "M<sub>2</sub> 是 PMOS 上拉",
-      "en": "M<sub>2</sub> is a PMOS pull-up"
+      "zh": "V<sub>in</sub> 為高時，M<sub>2</sub> 導通把 V<sub>out</sub> 拉到 V<sub>DD</sub>",
+      "en": "When V<sub>in</sub> is high, M<sub>2</sub> turns on and pulls V<sub>out</sub> to V<sub>DD</sub>"
      }
     },
     {
      "id": "sd",
      "text": {
-      "zh": "兩顆都是 NMOS，M<sub>2</sub> 是源極隨耦器",
-      "en": "Both are NMOS, and M<sub>2</sub> is a source follower"
-     }
-    },
-    {
-     "id": "se",
-     "text": {
-      "zh": "V<sub>out</sub> 隨 V<sub>in</sub> 上升（非反相）",
-      "en": "V<sub>out</sub> rises with V<sub>in</sub> (non-inverting)"
+      "zh": "M<sub>2</sub> 的源極接在 V<sub>out</sub>，汲極接 V<sub>DD</sub>",
+      "en": "M<sub>2</sub> has its source at V<sub>out</sub> and its drain at V<sub>DD</sub>"
      }
     }
    ],
    "answer": [
     "sa",
-    "sb",
-    "sc"
+    "sb"
    ],
    "shuffle": true,
    "explanation": {
@@ -1535,15 +1473,15 @@
     {
      "id": "se",
      "text": {
-      "zh": "M<sub>1</sub> 是 PMOS，這是 CMOS 反相器",
-      "en": "M<sub>1</sub> is a PMOS and this is a CMOS inverter"
+      "zh": "V<sub>in</sub> 上升時 M<sub>2</sub> 下拉變強，所以 V<sub>out</sub> 下降",
+      "en": "As V<sub>in</sub> rises, M<sub>2</sub> pulls down harder, so V<sub>out</sub> falls"
      }
     },
     {
      "id": "sf",
      "text": {
-      "zh": "這是推挽輸出級，增益約 −(g<sub>m1</sub> + g<sub>m2</sub>)(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
-      "en": "It is a push-pull stage with gain ≈ −(g<sub>m1</sub> + g<sub>m2</sub>)(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
+      "zh": "M<sub>1</sub> 的閘極接在 V<sub>out</sub>",
+      "en": "The gate of M<sub>1</sub> is tied to V<sub>out</sub>"
      }
     }
    ],
@@ -1598,22 +1536,15 @@
     {
      "id": "sd",
      "text": {
-      "zh": "M<sub>2</sub> 是 PMOS 電流源負載，A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
-      "en": "M<sub>2</sub> is a PMOS current-source load, A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
-     }
-    },
-    {
-     "id": "se",
-     "text": {
       "zh": "兩顆都計入通道長度調變時，A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)",
       "en": "Including channel-length modulation in both, A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)"
      }
     },
     {
-     "id": "sf",
+     "id": "se",
      "text": {
-      "zh": "增益為非反相",
-      "en": "The gain is non-inverting"
+      "zh": "以平方律表示，A<sub>v</sub> ≈ −√(μ<sub>p</sub>(W/L)<sub>2</sub> / (μ<sub>n</sub>(W/L)<sub>1</sub>))",
+      "en": "In square-law terms, A<sub>v</sub> ≈ −√(μ<sub>p</sub>(W/L)<sub>2</sub> / (μ<sub>n</sub>(W/L)<sub>1</sub>))"
      }
     }
    ],
@@ -1646,51 +1577,42 @@
     {
      "id": "sa",
      "text": {
-      "zh": "兩顆都是 PMOS",
-      "en": "Both devices are PMOS"
+      "zh": "兩顆都是 PMOS：M<sub>2</sub> 是共源輸入管，M<sub>1</sub> 是接到地的二極體接法負載",
+      "en": "Both are PMOS: M<sub>2</sub> is the common-source input and M<sub>1</sub> a diode-connected load to ground"
      }
     },
     {
      "id": "sb",
-     "text": {
-      "zh": "M<sub>2</sub> 是共源輸入管",
-      "en": "M<sub>2</sub> is the common-source input device"
-     }
-    },
-    {
-     "id": "sc",
-     "text": {
-      "zh": "M<sub>1</sub> 是接到地的二極體接法 PMOS 負載",
-      "en": "M<sub>1</sub> is a diode-connected PMOS load to ground"
-     }
-    },
-    {
-     "id": "sd",
      "text": {
       "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>",
       "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>"
      }
     },
     {
-     "id": "se",
+     "id": "sc",
      "text": {
-      "zh": "M<sub>1</sub> 是閘極接地的 NMOS，永遠關閉",
-      "en": "M<sub>1</sub> is an NMOS with a grounded gate, always off"
+      "zh": "M<sub>1</sub> 的閘極與汲極接地，V<sub>SG</sub> = 0，所以永遠關閉，V<sub>out</sub> 被 M<sub>2</sub> 拉到 V<sub>DD</sub>",
+      "en": "M<sub>1</sub> has gate and drain grounded, so V<sub>SG</sub> = 0, it is always off and M<sub>2</sub> pulls V<sub>out</sub> to V<sub>DD</sub>"
      }
     },
     {
-     "id": "sf",
+     "id": "sd",
      "text": {
-      "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>",
-      "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>"
+      "zh": "M<sub>1</sub> 的源極是接地的那一端",
+      "en": "The source of M<sub>1</sub> is its grounded terminal"
+     }
+    },
+    {
+     "id": "se",
+     "text": {
+      "zh": "V<sub>in</sub> 下降時 V<sub>out</sub> 也下降",
+      "en": "When V<sub>in</sub> falls, V<sub>out</sub> falls too"
      }
     }
    ],
    "answer": [
     "sa",
-    "sb",
-    "sc",
-    "sd"
+    "sb"
    ],
    "shuffle": true,
    "explanation": {
@@ -1971,50 +1893,42 @@
     {
      "id": "sa",
      "text": {
-      "zh": "M<sub>1</sub> 是 NMOS 共源輸入管",
-      "en": "M<sub>1</sub> is the NMOS common-source input device"
+      "zh": "M<sub>1</sub> 是共源輸入管，M<sub>2</sub> 是 NMOS 共閘疊接管",
+      "en": "M<sub>1</sub> is the common-source input and M<sub>2</sub> an NMOS common-gate cascode"
      }
     },
     {
      "id": "sb",
-     "text": {
-      "zh": "M<sub>2</sub> 是 NMOS 共閘疊接管",
-      "en": "M<sub>2</sub> is an NMOS common-gate cascode device"
-     }
-    },
-    {
-     "id": "sc",
      "text": {
       "zh": "I<sub>1</sub> 為理想電流源時，A<sub>v</sub> ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>",
       "en": "With I<sub>1</sub> an ideal current source, A<sub>v</sub> ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>"
      }
     },
     {
+     "id": "sc",
+     "text": {
+      "zh": "I<sub>1</sub> 為理想電流源時，X 點是約 1/g<sub>m2</sub> 的低阻抗節點，擺幅很小",
+      "en": "With I<sub>1</sub> an ideal current source, X is a low-impedance node of about 1/g<sub>m2</sub> with a small swing"
+     }
+    },
+    {
      "id": "sd",
      "text": {
-      "zh": "M<sub>2</sub> 是 PMOS 主動負載，A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
-      "en": "M<sub>2</sub> is a PMOS active load, A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
+      "zh": "I<sub>1</sub> 為理想電流源時，A<sub>v</sub> ≈ −g<sub>m2</sub>(g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>",
+      "en": "With I<sub>1</sub> an ideal current source, A<sub>v</sub> ≈ −g<sub>m2</sub>(g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "I<sub>1</sub> 為理想電流源時，A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>",
-      "en": "With I<sub>1</sub> an ideal current source, A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "增益為非反相",
-      "en": "The gain is non-inverting"
+      "zh": "M<sub>2</sub> 只用來提高輸出擺幅，增益仍是 −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
+      "en": "M<sub>2</sub> only extends the output swing; the gain is still −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     }
    ],
    "answer": [
     "sa",
-    "sb",
-    "sc"
+    "sb"
    ],
    "shuffle": true,
    "explanation": {
@@ -2291,51 +2205,43 @@
     {
      "id": "sa",
      "text": {
-      "zh": "V<sub>in</sub> 加在 M<sub>2</sub> 的源極，M<sub>2</sub> 是共閘 NMOS（閘極由 V<sub>b1</sub> 偏壓）",
-      "en": "V<sub>in</sub> drives the source of M<sub>2</sub>, a common-gate NMOS with its gate biased by V<sub>b1</sub>"
+      "zh": "V<sub>in</sub> 加在 M<sub>2</sub> 源極，M<sub>2</sub> 是共閘 NMOS；M<sub>1</sub> 是由 V<sub>b2</sub> 偏壓的 PMOS 電流源負載",
+      "en": "V<sub>in</sub> drives the source of M<sub>2</sub>, a common-gate NMOS; M<sub>1</sub> is a PMOS current-source load biased by V<sub>b2</sub>"
      }
     },
     {
      "id": "sb",
-     "text": {
-      "zh": "M<sub>1</sub> 是由 V<sub>b2</sub> 偏壓的 PMOS 電流源負載",
-      "en": "M<sub>1</sub> is a PMOS current-source load biased by V<sub>b2</sub>"
-     }
-    },
-    {
-     "id": "sc",
      "text": {
       "zh": "增益為非反相，A<sub>v</sub> ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
       "en": "The gain is non-inverting, A<sub>v</sub> ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     },
     {
+     "id": "sc",
+     "text": {
+      "zh": "輸入電阻低，數量級為 1/g<sub>m2</sub>",
+      "en": "The input resistance is low, on the order of 1/g<sub>m2</sub>"
+     }
+    },
+    {
      "id": "sd",
      "text": {
-      "zh": "輸入電阻低",
-      "en": "The input resistance is low"
+      "zh": "V<sub>in</sub> 上升時 M<sub>2</sub> 的 v<sub>gs</sub> 增加、電流增加，所以 V<sub>out</sub> 下降",
+      "en": "As V<sub>in</sub> rises, M<sub>2</sub>'s v<sub>gs</sub> and current increase, so V<sub>out</sub> falls"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "V<sub>in</sub> 加在 M<sub>2</sub> 的閘極，這是帶主動負載的共源級",
-      "en": "V<sub>in</sub> drives the gate of M<sub>2</sub>; it is a common-source stage with an active load"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "A<sub>v</sub> ≈ −g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
-      "en": "A<sub>v</sub> ≈ −g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
+      "zh": "負載是電流源，所以 R<sub>in</sub> 精確等於 1/(g<sub>m2</sub> + g<sub>mb2</sub>)，與 r<sub>o1</sub> 無關",
+      "en": "Because the load is a current source, R<sub>in</sub> is exactly 1/(g<sub>m2</sub> + g<sub>mb2</sub>), independent of r<sub>o1</sub>"
      }
     }
    ],
    "answer": [
     "sa",
     "sb",
-    "sc",
-    "sd"
+    "sc"
    ],
    "shuffle": true,
    "explanation": {
@@ -2565,22 +2471,22 @@
     {
      "id": "sc",
      "text": {
-      "zh": "這是疊接級，兩顆都在飽和區，R<sub>out</sub> ≈ g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>",
-      "en": "It is a cascode with both devices saturated, R<sub>out</sub> ≈ g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>"
+      "zh": "M<sub>2</sub> 的源極電壓為 V<sub>in</sub> − V<sub>TH</sub>，所以 M<sub>1</sub> 剛好在飽和邊緣",
+      "en": "M<sub>2</sub>'s source sits at V<sub>in</sub> − V<sub>TH</sub>, so M<sub>1</sub> is right at the edge of saturation"
      }
     },
     {
      "id": "sd",
      "text": {
-      "zh": "這是增益提升（gain-boosting）級",
-      "en": "It is a gain-boosting stage"
+      "zh": "兩顆相同時，輸出電阻約 g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>，與疊接相同",
+      "en": "For identical devices the output resistance is about g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>, as in a cascode"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "M<sub>2</sub> 是二極體接法的 NMOS",
-      "en": "M<sub>2</sub> is a diode-connected NMOS"
+      "zh": "這是增益提升（gain-boosting）級，M<sub>1</sub> 提高 M<sub>2</sub> 的有效 g<sub>m</sub>",
+      "en": "It is a gain-boosting stage in which M<sub>1</sub> raises the effective g<sub>m</sub> of M<sub>2</sub>"
      }
     }
    ],
@@ -2619,35 +2525,34 @@
     {
      "id": "sb",
      "text": {
-      "zh": "M<sub>2</sub> 的閘極固定在 V<sub>b</sub>，輸出取在 M<sub>2</sub> 的汲極",
-      "en": "M<sub>2</sub>'s gate is held at V<sub>b</sub>, and the output is taken at M<sub>2</sub>'s drain"
+      "zh": "共源點是虛接地，所以 v<sub>out</sub>/v<sub>in</sub> ≈ g<sub>m2</sub>R<sub>D</sub>",
+      "en": "The shared source is a virtual ground, so v<sub>out</sub>/v<sub>in</sub> ≈ g<sub>m2</sub>R<sub>D</sub>"
      }
     },
     {
      "id": "sc",
+     "text": {
+      "zh": "M<sub>1</sub> 的汲極接 V<sub>DD</sub>，所以 M<sub>1</sub> 不傳遞訊號，只提供偏壓",
+      "en": "M<sub>1</sub>'s drain is at V<sub>DD</sub>, so M<sub>1</sub> carries no signal and only sets the bias"
+     }
+    },
+    {
+     "id": "sd",
      "text": {
       "zh": "這是帶 NMOS 疊接的共源放大器",
       "en": "It is a common-source amplifier with an NMOS cascode"
      }
     },
     {
-     "id": "sd",
-     "text": {
-      "zh": "M<sub>2</sub> 是主動負載／電流鏡電晶體",
-      "en": "M<sub>2</sub> is an active-load / current-mirror transistor"
-     }
-    },
-    {
      "id": "se",
      "text": {
-      "zh": "從 V<sub>in</sub> 到 V<sub>out</sub> 的增益為反相",
-      "en": "The gain from V<sub>in</sub> to V<sub>out</sub> is inverting"
+      "zh": "增益為反相，匹配時約 −g<sub>m</sub>R<sub>D</sub>/2",
+      "en": "The gain is inverting, about −g<sub>m</sub>R<sub>D</sub>/2 for matched devices"
      }
     }
    ],
    "answer": [
-    "sa",
-    "sb"
+    "sa"
    ],
    "shuffle": true,
    "explanation": {
@@ -2796,22 +2701,15 @@
     {
      "id": "sd",
      "text": {
-      "zh": "M<sub>2</sub> 是二極體接法的負載，R<sub>in</sub> ≈ 1/g<sub>m2</sub>",
-      "en": "M<sub>2</sub> is a diode-connected load, R<sub>in</sub> ≈ 1/g<sub>m2</sub>"
+      "zh": "X 上升時 V<sub>out</sub> 上升，M<sub>2</sub> 抽更多電流把 X 拉回",
+      "en": "When X rises, V<sub>out</sub> rises and M<sub>2</sub> sinks more current, pulling X back"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "這是穩定的負回授轉阻放大器",
-      "en": "It is a stable negative-feedback transimpedance amplifier"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "M<sub>1</sub> 是共閘級，輸入在源極",
-      "en": "M<sub>1</sub> is a common-gate stage with its input at the source"
+      "zh": "迴路增益大於 1 時，R<sub>in</sub> ≈ 1/g<sub>m2</sub>，是低輸入阻抗的電流輸入級",
+      "en": "With loop gain above one, R<sub>in</sub> ≈ 1/g<sub>m2</sub>, a low-impedance current input"
      }
     }
    ],
@@ -2865,22 +2763,22 @@
     {
      "id": "sd",
      "text": {
-      "zh": "M<sub>1</sub> 的閘極接在 X",
-      "en": "M<sub>1</sub>'s gate is connected to X"
+      "zh": "I<sub>in</sub> 增加時 V<sub>out</sub> 上升，經 R<sub>F</sub> 送回更多電流",
+      "en": "When I<sub>in</sub> increases, V<sub>out</sub> rises and R<sub>F</sub> returns more current"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "M<sub>2</sub> 是閘極固定在 V<sub>b</sub> 的共源級",
-      "en": "M<sub>2</sub> is a common-source stage with its gate fixed at V<sub>b</sub>"
+      "zh": "M<sub>1</sub> 的汲極 X 也接到 M<sub>1</sub> 的閘極",
+      "en": "M<sub>1</sub>'s drain X is also tied to M<sub>1</sub>'s gate"
      }
     },
     {
      "id": "sf",
      "text": {
-      "zh": "經 R<sub>F</sub> 的回授是正回授",
-      "en": "The feedback through R<sub>F</sub> is positive"
+      "zh": "迴路增益很大時，v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>D2</sub>",
+      "en": "For large loop gain, v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>D2</sub>"
      }
     }
    ],
@@ -3018,50 +2916,42 @@
     {
      "id": "sa",
      "text": {
-      "zh": "M<sub>1</sub> 是 NMOS 共閘輸入管",
-      "en": "M<sub>1</sub> is an NMOS common-gate input device"
+      "zh": "M<sub>1</sub> 是 NMOS 共閘輸入管；M<sub>2</sub> 是 PMOS，閘極由 V<sub>out</sub> 驅動，汲極接回輸入節點",
+      "en": "M<sub>1</sub> is an NMOS common-gate input; M<sub>2</sub> is a PMOS driven by V<sub>out</sub> with its drain fed back to the input node"
      }
     },
     {
      "id": "sb",
-     "text": {
-      "zh": "M<sub>2</sub> 是 PMOS，閘極由 V<sub>out</sub> 驅動，汲極接回輸入節點（回授）",
-      "en": "M<sub>2</sub> is a PMOS driven by V<sub>out</sub>, with its drain fed back to the input node"
-     }
-    },
-    {
-     "id": "sc",
      "text": {
       "zh": "輸入電阻很低，v<sub>out</sub>/i<sub>in</sub> 約為 1/g<sub>m2</sub>",
       "en": "The input resistance is very low and v<sub>out</sub>/i<sub>in</sub> is about 1/g<sub>m2</sub>"
      }
     },
     {
+     "id": "sc",
+     "text": {
+      "zh": "回授不改變輸入電阻，R<sub>in</sub> ≈ 1/g<sub>m1</sub>",
+      "en": "The feedback leaves the input resistance unchanged, R<sub>in</sub> ≈ 1/g<sub>m1</sub>"
+     }
+    },
+    {
      "id": "sd",
      "text": {
-      "zh": "兩顆都是 NMOS，M<sub>2</sub> 的閘極接在輸入",
-      "en": "Both are NMOS, and M<sub>2</sub>'s gate is at the input"
+      "zh": "M<sub>2</sub> 的閘極接輸入節點，與 M<sub>1</sub> 構成電流鏡",
+      "en": "M<sub>2</sub>'s gate is at the input node, forming a current mirror with M<sub>1</sub>"
      }
     },
     {
      "id": "se",
      "text": {
-      "zh": "M<sub>1</sub> 是 PMOS",
-      "en": "M<sub>1</sub> is a PMOS device"
-     }
-    },
-    {
-     "id": "sf",
-     "text": {
-      "zh": "M<sub>2</sub> 形成正回授，電路會閂鎖",
-      "en": "M<sub>2</sub> forms positive feedback and the circuit latches"
+      "zh": "M<sub>1</sub> 汲極看到高阻抗，所以 v<sub>out</sub>/i<sub>in</sub> ≈ r<sub>o1</sub>",
+      "en": "M<sub>1</sub>'s drain sees a high impedance, so v<sub>out</sub>/i<sub>in</sub> ≈ r<sub>o1</sub>"
      }
     }
    ],
    "answer": [
     "sa",
-    "sb",
-    "sc"
+    "sb"
    ],
    "shuffle": true,
    "explanation": {
