@@ -315,8 +315,30 @@
     const byAcc = models.slice().sort((a, b) => Math.abs(a.accuracy - acc) - Math.abs(b.accuracy - acc) || Math.abs(lc(a.cost) - lc(usd)) - Math.abs(lc(b.cost) - lc(usd)))[0];
     const byCost = models.slice().sort((a, b) => Math.abs(lc(a.cost) - lc(usd)) - Math.abs(lc(b.cost) - lc(usd)))[0];
     const beaten = models.filter(m => m.accuracy < acc).length;
-    return { byLevel, acc, estSec, actualSec, scaled, twd, usd, N, models, byAcc, byCost, beaten,
+    const R = { byLevel, acc, estSec, actualSec, scaled, twd, usd, N, models, byAcc, byCost, beaten,
       correct: recs.reduce((s, r) => s + r.score, 0), asked: recs.length };
+    R.comment = pickComment(R);
+    return R;
+  }
+
+  const GUESS = 'just_answer_a';
+  // Picks one joke line. Order matters: first match wins.
+  function pickComment(R) {
+    const a = R.acc, c = R.usd;
+    const lo = R.byLevel.filter(b => b.level <= 2 && b.asked > 0);
+    const loAsked = lo.reduce((s, b) => s + b.asked, 0);
+    const loAcc = loAsked ? 100 * lo.reduce((s, b) => s + b.correct, 0) / loAsked : 100;
+    const guess = R.models.find(m => /just answer a/i.test(m.name));
+    const guessAcc = guess ? guess.accuracy : 21.7;
+    if (a >= 99.95) return 12;
+    if (a < guessAcc) return 1;
+    if (a < 50 && c > 10) return 3;
+    if (loAsked && loAcc < 50) return 2;
+    if (a < 50) return 4;
+    if (a < 70) return c < 20 ? 5 : 6;
+    if (c < 1) return 9;
+    if (a < 90) return c < 30 ? 7 : 8;
+    return c < 30 ? 10 : 11;
   }
 
   function finish() {
@@ -397,6 +419,7 @@
       <div class="res-head">
         <div class="kicker">${t('res.kicker')}</div>
         <h1>${t('res.closest')} <em>${top ? esc(top.name) : '—'}</em></h1>
+        <p class="comment c${R.comment}">${t('cm.' + R.comment)}</p>
         <p>${top ? t('res.closestSub', { you: fmtPct(R.acc), model: fmtPct(top.accuracy) }) : ''}</p>
       </div>
       <div class="stats">
@@ -428,7 +451,8 @@
       </div>
 
       <div class="endrow">
-        <button class="btn" type="button" id="bRetake">${t('res.retake')}</button>
+        <button class="btn" type="button" id="bShare">${t('share.btn')}</button>
+        <button class="btn ghost" type="button" id="bRetake">${t('res.retake')}</button>
         <a class="btn ghost" href="${esc(cfg.benchUrl)}" target="_blank" rel="noopener">${t('res.toBench')}</a>
       </div>`;
 
@@ -438,6 +462,7 @@
     bE.onclick = () => { const all = [...document.querySelectorAll('.rv')]; const to = !all.every(d => d.open); all.forEach(d => { d.open = to; }); sync(); };
     document.querySelectorAll('.rv').forEach(d => d.addEventListener('toggle', sync));
     sync();
+    $('#bShare').onclick = openShare;
     $('#bRetake').onclick = () => { renderStart(); show('vStart'); };
   }
 
@@ -461,7 +486,8 @@
     const hl = new Set([R.byAcc && R.byAcc.key, R.byCost && R.byCost.key]);
     let dots = '', hits = '';
     pts.forEach((p, k) => {
-      dots += `<circle class="dot ${hl.has(p.key) ? 'hl' : ''}" cx="${X(p.cost)}" cy="${Y(p.accuracy)}" r="${hl.has(p.key) ? 5.5 : 4.5}"/>`;
+      const isG = /just answer a/i.test(p.name);
+      dots += `<circle class="dot ${hl.has(p.key) ? 'hl' : ''} ${isG ? 'guess' : ''}" cx="${X(p.cost)}" cy="${Y(p.accuracy)}" r="${hl.has(p.key) || isG ? 5.5 : 4.5}"/>`;
       hits += `<circle class="hit" data-k="${k}" cx="${X(p.cost)}" cy="${Y(p.accuracy)}" r="10"/>`;
     });
     const label = (x, y, text, cls) => {
@@ -471,6 +497,8 @@
     };
     let labels = '';
     [...hl].filter(Boolean).forEach(key => { const p = pts.find(q => q.key === key); if (p) labels += label(X(p.cost), Y(p.accuracy), p.name); });
+    const gp = pts.find(p => /just answer a/i.test(p.name));
+    if (gp && !hl.has(gp.key)) labels += label(X(gp.cost), Y(gp.accuracy), t('cm.guess'), 'guess-l');
     const you = R.usd > 0 ? `<circle class="you" cx="${X(R.usd)}" cy="${Y(R.acc)}" r="7"/>${label(X(R.usd), Y(R.acc), t('res.you'), 'you-l')}
       <circle class="hit" data-k="you" cx="${X(R.usd)}" cy="${Y(R.acc)}" r="12"/>` : '';
     box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(t('res.chart'))}">${g}${dots}${labels}${you}${hits}</svg><div class="tip"></div>`;
@@ -488,6 +516,98 @@
       });
       c.addEventListener('mouseleave', () => tip.classList.remove('on'));
     });
+  }
+
+
+  // ---------- share card (canvas, fully client-side) ----------
+  function wrapText(ctx, text, x, y, maxW, lh) {
+    let line = '', yy = y;
+    for (const ch of Array.from(text)) {
+      if (ctx.measureText(line + ch).width > maxW && line) { ctx.fillText(line, x, yy); line = ch; yy += lh; } else line += ch;
+    }
+    ctx.fillText(line, x, yy);
+    return yy + lh;
+  }
+  function drawLogo(ctx, right, bottom) {
+    // Same mark as the site header: triangle with input/output stubs, plus wordmark.
+    ctx.save();
+    ctx.font = '700 34px "Inter","Noto Sans TC",sans-serif';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#17181c';
+    const tw = ctx.measureText('Human Razavi').width;
+    ctx.fillText('Human Razavi', right, bottom - 24);
+    const s = 48 / 24, ox = right - tw - 16 - 48, oy = bottom - 48;
+    ctx.translate(ox, oy); ctx.scale(s, s);
+    ctx.strokeStyle = '#17181c'; ctx.lineWidth = 1.8; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.stroke(new Path2D('M5 4v16l14-8z')); ctx.stroke(new Path2D('M2 9h3M2 15h3M19 12h3'));
+    ctx.restore();
+  }
+  function renderShareCanvas() {
+    const R = S.result, top = R.byAcc, W = 1080, H = 1350, ctx = document.createElement('canvas');
+    ctx.width = W; ctx.height = H;
+    const c = ctx.getContext('2d'), F = '"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif';
+    c.fillStyle = '#f6f5f1'; c.fillRect(0, 0, W, H);
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#e2e0d9'; c.lineWidth = 2;
+    c.beginPath(); c.roundRect(48, 48, W - 96, H - 96, 28); c.fill(); c.stroke();
+    c.textBaseline = 'alphabetic'; c.textAlign = 'left';
+    c.fillStyle = '#7a7d85'; c.font = `600 28px ${F}`; c.fillText(t('share.tag'), 96, 130);
+    c.fillStyle = '#4a4d55'; c.font = `500 36px ${F}`; c.fillText(t('share.closest'), 96, 240);
+    c.fillStyle = '#2b47d6'; c.font = `800 ${top && top.name.length > 18 ? 76 : 96}px ${F}`;
+    const ny = wrapText(c, top ? top.name : '—', 96, 340, W - 192, 110);
+    c.fillStyle = '#17181c'; c.font = `600 38px ${F}`;
+    const my = wrapText(c, t('cm.' + R.comment), 96, ny + 20, W - 192, 54);
+    // stats
+    const sy = Math.max(my + 40, 560), bw = (W - 192 - 32) / 2;
+    [[t('share.acc'), fmtPct(R.acc), top ? t('res.closestSub', { you: fmtPct(R.acc), model: fmtPct(top.accuracy) }) : ''], [t('share.cost'), 'US' + fmtUSD(R.usd), fmtTWD(R.twd) + ' · NT$ ' + S.cfg.hourlyWageTWD + '/h']].forEach((it, k) => {
+      const x = 96 + k * (bw + 32);
+      c.fillStyle = '#efede7'; c.beginPath(); c.roundRect(x, sy, bw, 230, 20); c.fill();
+      c.fillStyle = '#7a7d85'; c.font = `600 26px ${F}`; c.fillText(it[0], x + 32, sy + 56);
+      c.fillStyle = '#17181c'; c.font = `800 80px ${F}`; c.fillText(it[1], x + 32, sy + 150);
+      if (k) { c.fillStyle = '#7a7d85'; c.font = `500 24px ${F}`; c.fillText(it[2], x + 32, sy + 200); }
+    });
+    // mini scatter
+    const cx0 = 96, cy0 = sy + 270, cw = W - 192, ch = 310, pl = 56, pb = 40;
+    const pts = R.models.filter(p => p.cost > 0), xs = pts.map(p => p.cost).concat([R.usd]).filter(v => v > 0);
+    let x0 = Math.floor(Math.log10(Math.min(...xs))), x1 = Math.ceil(Math.log10(Math.max(...xs))); if (x1 === x0) x1++;
+    const X = v => cx0 + pl + (Math.log10(Math.max(v, 10 ** x0)) - x0) / (x1 - x0) * (cw - pl - 10);
+    const Y = v => cy0 + 10 + (1 - v / 100) * (ch - pb - 10);
+    c.strokeStyle = '#e2e0d9'; c.lineWidth = 1; c.fillStyle = '#7a7d85'; c.font = `500 20px ${F}`; c.textAlign = 'right';
+    for (let v = 0; v <= 100; v += 25) { c.beginPath(); c.moveTo(cx0 + pl, Y(v)); c.lineTo(cx0 + cw, Y(v)); c.stroke(); c.fillText(v + '%', cx0 + pl - 8, Y(v) + 7); }
+    c.textAlign = 'center';
+    for (let e = x0; e <= x1; e++) c.fillText('$' + +(10 ** e).toPrecision(1), X(10 ** e), cy0 + ch - 8);
+    const dot = (x, y, r, col) => { c.fillStyle = col; c.strokeStyle = '#fff'; c.lineWidth = 2; c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); c.stroke(); };
+    pts.forEach(p => dot(X(p.cost), Y(p.accuracy), 6, /just answer a/i.test(p.name) ? '#e08a00' : '#9a9ca3'));
+    if (top) dot(X(top.cost), Y(top.accuracy), 9, '#17181c');
+    dot(X(R.usd), Y(R.acc), 11, '#2b47d6');
+    c.textAlign = 'left'; c.fillStyle = '#2b47d6'; c.font = `700 24px ${F}`;
+    const ux = X(R.usd); c.textAlign = ux > cx0 + cw - 100 ? 'right' : 'left'; c.fillText(t('res.you'), ux + (c.textAlign === 'left' ? 16 : -16), Y(R.acc) - 14);
+    // footer
+    c.textAlign = 'left'; c.fillStyle = '#7a7d85'; c.font = `500 22px ${F}`;
+    c.fillText(S.mode === 'full' ? t('start.full') : t('start.quick'), 96, H - 96);
+    drawLogo(c, W - 96, H - 80);
+    return ctx;
+  }
+  function openShare() {
+    const cv = renderShareCanvas();
+    let ov = $('#shareOv'); if (ov) ov.remove();
+    ov = document.createElement('div'); ov.id = 'shareOv'; ov.className = 'share-ov';
+    ov.innerHTML = `<div class="share-box" role="dialog" aria-modal="true"><h2>${t('share.title')}</h2>
+      <img alt="" id="shareImg"><div class="share-act"><button class="btn" id="shSave" type="button">${t('share.save')}</button>
+      <button class="btn ghost" id="shSend" type="button" hidden>${t('share.send')}</button><button class="btn ghost" id="shClose" type="button">${t('share.close')}</button></div></div>`;
+    document.body.appendChild(ov);
+    const close = () => ov.remove();
+    ov.onclick = e => { if (e.target === ov) close(); };
+    $('#shClose').onclick = close;
+    cv.toBlob(blob => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob), file = new File([blob], 'human-razavi.png', { type: 'image/png' });
+      $('#shareImg').src = url;
+      $('#shSave').onclick = () => { const a = document.createElement('a'); a.href = url; a.download = 'human-razavi.png'; a.click(); };
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        const b = $('#shSend'); b.hidden = false;
+        b.onclick = () => navigator.share({ files: [file], title: 'Human Razavi' }).catch(() => {});
+      }
+    }, 'image/png');
   }
 
   let rz;
