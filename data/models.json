@@ -955,6 +955,19 @@
    "speedBasis": "proxy",
    "speedNote": "proxy: median of measured models",
    "outputTokens": 18763
+  },
+  {
+   "key": "all_a",
+   "name": "Just Answer A",
+   "provider": "human",
+   "accuracy": 21.7,
+   "score": 15.43,
+   "costUSD": 0.171,
+   "timeSec": 90,
+   "tps": 0,
+   "speedBasis": "human",
+   "speedNote": "human tested",
+   "outputTokens": 0
   }
  ]
 }
