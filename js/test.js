@@ -45,11 +45,11 @@
   function imgSrc(src) { return /^(https?:|\/|data:|img\/)/.test(src) ? src : 'img/' + src; }
   function figures(q) {
     const list = [];
-    if (q.image) list.push({ src: q.image, alt: q.imageAlt, caption: q.imageCaption });
+    if (q.image) list.push({ src: q.image, caption: q.imageCaption });
     (q.images || []).forEach(x => list.push(typeof x === 'string' || !x.src ? { src: x } : x));
     if (!list.length) return '';
     return '<div class="figs">' + list.map(f =>
-      `<figure><img src="${esc(imgSrc(L(f.src)))}" alt="${esc(stripTags(L(f.alt) || ''))}" loading="lazy">${f.caption ? `<figcaption>${L(f.caption)}</figcaption>` : ''}</figure>`
+      `<figure><img src="${esc(imgSrc(L(f.src)))}" alt="" loading="lazy">${f.caption ? `<figcaption>${L(f.caption)}</figcaption>` : ''}</figure>`
     ).join('') + '</div>';
   }
 

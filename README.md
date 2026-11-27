@@ -29,23 +29,22 @@ python3 -m http.server 8000   # then open http://localhost:8000
 {
   "questions": [
     {
-      "id": "cs-stage-pole-count",      // optional stable slug; never a question number
+      "id": "razavi-11-1",              // razavi-<original task 1–50>-<index within that task>
       "level": 2,                       // 1–5 (see config.levels)
       "type": "fill",                   // "single" | "multi" | "fill"
-      "source": "Razavi-Bench part1-011",   // optional, shown in the answer review
+      "source": "Razavi-Bench part1-011 · 1/2",   // shown in the answer review
       "prompt": { "zh": "…", "en": "…" },   // HTML allowed (<sub>, <sup>, <b>, …)
       "image": "razavi-part1-fig08.png",    // optional, file in img/
-      "imageAlt": { "zh": "…", "en": "…" },
       "explanation": { "zh": "…", "en": "…" }
     }
   ]
 }
 ```
 
-- **No question numbers.** The number shown (Q1, Q2, …) is generated at run time. Full mode asks every question in the order of this file; quick mode samples randomly within each level, easiest level first. Option order is never shuffled.
+- **IDs and order.** IDs are `razavi-<n>-<k>`: `n` is the original Razavi-Bench task (part1-001…030 → 1–30, part2-001…020 → 31–50), `k` counts the questions derived from it. Questions are listed in original-task order; when a task has a "name this circuit" fill-in, it comes first and the circuit name must not appear in that task's choice options. The number shown (Q1, Q2, …) is generated at run time. Full mode asks every question in the order of this file; quick mode samples randomly within each level, easiest level first. Option order is never shuffled.
 - **Prompts hold only the question.** No source notes or "original question" asides; `source` is the place for that.
-- **Bilingual fields.** Any text field (`prompt`, option `text`, `explanation`, `imageAlt`, `imageCaption`, `placeholder`, even `image`) may be a plain string or `{ "zh": …, "en": … }`. Language switches at any time without losing progress.
-- **Images.** `"image": "file.png"` resolves to `img/file.png`. For several figures use `"images": ["a.png", { "src": "b.png", "caption": { "zh": "…", "en": "…" } }]`. Figures are shown on a white panel, so transparent PNGs work in dark mode.
+- **Bilingual fields.** Any text field (`prompt`, option `text`, `explanation`, `imageCaption`, `placeholder`, even `image`) may be a plain string or `{ "zh": …, "en": … }`. Language switches at any time without losing progress.
+- **Images.** `"image": "file.png"` resolves to `img/file.png`. No alt text: the figures carry the question. For several figures use `"images": ["a.png", { "src": "b.png", "caption": { "zh": "…", "en": "…" } }]`. Figures are shown on a white panel, so transparent PNGs work in dark mode.
 
 ### Single choice
 ```jsonc
