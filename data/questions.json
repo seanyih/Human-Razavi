@@ -63,6 +63,598 @@
         "zh": "C<sub>GD</sub> 與 C<sub>GS</sub>、C<sub>DB</sub> 形成電容迴路，不增加獨立狀態（只多一個零點）；C<sub>SB</sub> 兩端皆為地；汲極到 V<sub>DD</sub>（交流地）的電容與 C<sub>DB</sub> 並聯。只有「電容串電阻」會產生新節點、新增一個極點。",
         "en": "C<sub>GD</sub> closes a capacitor loop with C<sub>GS</sub> and C<sub>DB</sub>, adding no independent state (only a zero). C<sub>SB</sub> sits between two grounds. A drain-to-V<sub>DD</sub> capacitor is in parallel with C<sub>DB</sub> (V<sub>DD</sub> is AC ground). Only the RC branch creates a new node and a new pole."
       }
+    },
+    {
+      "id": "ring-osc-name",
+      "level": 1,
+      "type": "fill",
+      "source": "Razavi-Bench part2-001 (derived)",
+      "image": "razavi-part2-fig05.png",
+      "imageAlt": {"zh": "三級反相器環：每個節點各接一顆對地電容 C<sub>L</sub>", "en": "Three-inverter loop with a capacitor C<sub>L</sub> from each node to ground"},
+      "prompt": {
+        "zh": "圖中的電路叫什麼？",
+        "en": "Name this circuit."
+      },
+      "placeholder": {"zh": "輸入電路名稱", "en": "Enter the circuit name"},
+      "accept": ["ring oscillator", "3-stage ring oscillator", "three-stage ring oscillator", "CMOS ring oscillator", "inverter ring oscillator", "ring osc", "RO", "oscillator", "inverter ring", "環形振盪器", "環型振盪器", "環狀振盪器", "環振", "振盪器", "三級環形振盪器", "环形振荡器", "环振", "振荡器"],
+      "explanation": {
+        "zh": "三個反相器頭尾相接成環（奇數個反轉），是三級環形振盪器（ring oscillator）。",
+        "en": "Three inverters connected head to tail in a loop (an odd number of inversions): a three-stage ring oscillator."
+      }
+    },
+    {
+      "id": "ring-osc-three-caps-large",
+      "level": 2,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-001",
+      "image": "razavi-part2-fig05.png",
+      "imageAlt": {"zh": "三級反相器環：每個節點各接一顆對地電容 C<sub>L</sub>", "en": "Three-inverter loop with a capacitor C<sub>L</sub> from each node to ground"},
+      "prompt": {
+        "zh": "若三顆電容都變得任意大，圖中電路會不會停止振盪？",
+        "en": "Does the circuit in the figure fail to oscillate if the three capacitors become arbitrarily large?"
+      },
+      "options": [
+        { "id": "no-slower",    "text": {"zh": "不會，因為三個節點同等變慢，電路仍振盪、只是頻率降低（約 ∝ 1/C<sub>L</sub>）；振盪條件與 C<sub>L</sub> 無關", "en": "No, because all three nodes slow down equally: it keeps oscillating at a lower frequency (roughly ∝ 1/C<sub>L</sub>); the oscillation condition does not depend on C<sub>L</sub>"} },
+        { "id": "no-same-freq", "text": {"zh": "不會，因為每個節點都是軌對軌充放電，振盪頻率與 C<sub>L</sub> 無關、維持不變", "en": "No, because every node swings rail to rail, so the oscillation frequency does not depend on C<sub>L</sub> and stays the same"} },
+        { "id": "yes-dominant", "text": {"zh": "會，因為大電容形成主極點，使相位交越頻率處的迴路增益小於 1", "en": "Yes, because the large capacitors create a dominant pole that pushes the loop gain below unity at the phase-crossover frequency"} },
+        { "id": "yes-gain",     "text": {"zh": "會，因為維持振盪所需的每級低頻增益隨 C<sub>L</sub> 增大，終究超過反相器的增益", "en": "Yes, because the low-frequency gain each stage needs to sustain oscillation grows with C<sub>L</sub> and eventually exceeds the inverter's gain"} }
+      ],
+      "answer": "no-slower",
+      "explanation": {
+        "zh": "三顆電容同時加大只會使每級延遲變長、頻率約按 1/C<sub>L</sub> 下降。小訊號看，每級為 −A<sub>0</sub>/(1+s/ω<sub>0</sub>)，ω<sub>0</sub> ∝ 1/C<sub>L</sub>；振盪時每級提供 60° 相移（ω = √3·ω<sub>0</sub>），所需每級增益為 2，與 C<sub>L</sub> 無關。只在單一節點加大電容才會形成主極點而停振。",
+        "en": "Scaling all three capacitors only lengthens each stage delay, so the frequency falls roughly as 1/C<sub>L</sub>. In small-signal terms each stage is −A<sub>0</sub>/(1+s/ω<sub>0</sub>) with ω<sub>0</sub> ∝ 1/C<sub>L</sub>; the loop oscillates when each stage gives 60° (ω = √3·ω<sub>0</sub>), which needs a gain of 2 per stage regardless of C<sub>L</sub>. Only loading a single node creates a dominant pole and can stop the oscillation."
+      }
+    },
+    {
+      "id": "ring-osc-three-caps-doubled-pn",
+      "level": 4,
+      "type": "single",
+      "shuffle": false,
+      "source": "Razavi-Bench part2-002",
+      "image": "razavi-part2-fig05.png",
+      "imageAlt": {"zh": "三級反相器環：每個節點各接一顆對地電容 C<sub>L</sub>", "en": "Three-inverter loop with a capacitor C<sub>L</sub> from each node to ground"},
+      "prompt": {
+        "zh": "若圖中三顆電容都加倍，相位雜訊（在相同的頻率偏移 Δf 下）會如何變化？",
+        "en": "What happens to the phase noise (at a given offset frequency Δf) if the three capacitors in the figure are doubled?"
+      },
+      "options": [
+        { "id": "down6", "text": {"zh": "降低約 6 dB（約 1/4）", "en": "Falls by about 6 dB (a factor of 4)"} },
+        { "id": "down3", "text": {"zh": "降低約 3 dB（約 1/2）", "en": "Falls by about 3 dB (a factor of 2)"} },
+        { "id": "same",  "text": {"zh": "不變", "en": "Unchanged"} },
+        { "id": "up3",   "text": {"zh": "增加約 3 dB", "en": "Rises by about 3 dB"} },
+        { "id": "up6",   "text": {"zh": "增加約 6 dB", "en": "Rises by about 6 dB"} }
+      ],
+      "answer": "down6",
+      "explanation": {
+        "zh": "C<sub>L</sub> 加倍使振盪頻率 f<sub>0</sub> 約減半。此環形振盪器由白雜訊造成的相位雜訊正比於 (f<sub>0</sub>/Δf)<sup>2</sup>，其餘因子（元件雜訊電流、偏壓電流、電源電壓）與 C<sub>L</sub> 大致無關，因此在固定 Δf 下降低約 4 倍，即約 6 dB。（若改看固定的相對偏移 Δf/f<sub>0</sub> 則不變。）",
+        "en": "Doubling C<sub>L</sub> roughly halves f<sub>0</sub>. The white-noise phase noise of this ring scales as (f<sub>0</sub>/Δf)<sup>2</sup> times factors (device noise currents, bias current, supply) that hardly depend on C<sub>L</sub>, so at a fixed Δf it falls by about 4×, i.e. about 6 dB. (At a fixed relative offset Δf/f<sub>0</sub> it is unchanged.)"
+      }
+    },
+    {
+      "id": "ring-osc-one-cap-large",
+      "level": 3,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-003",
+      "image": "razavi-part2-fig06.png",
+      "imageAlt": {"zh": "三級反相器環：只有第一級輸出接一顆對地電容 C<sub>L</sub>", "en": "Three-inverter loop with a single capacitor C<sub>L</sub> from the first stage's output to ground"},
+      "prompt": {
+        "zh": "若 C<sub>L</sub> 變得任意大，圖中電路會不會停止振盪？",
+        "en": "Does the circuit in the figure fail to oscillate if C<sub>L</sub> becomes arbitrarily large?"
+      },
+      "options": [
+        { "id": "yes-dominant",  "text": {"zh": "會，因為只在一個節點加大電容會形成主極點，使相位交越頻率處的迴路增益掉到 1 以下，不再滿足 Barkhausen 條件", "en": "Yes, because a large capacitor at only one node creates a dominant pole; the loop gain falls below unity at the phase-crossover frequency, so the Barkhausen condition is no longer met"} },
+        { "id": "yes-short",     "text": {"zh": "會，因為大電容在直流把該節點短路到地，切斷了直流迴路", "en": "Yes, because the large capacitor shorts the node to ground at dc and breaks the dc loop"} },
+        { "id": "no-slower",     "text": {"zh": "不會，與三個節點都加電容時一樣，只是振盪頻率降低", "en": "No, as with a capacitor on all three nodes, it only lowers the oscillation frequency"} },
+        { "id": "no-two-stages", "text": {"zh": "不會，因為其餘兩個未加載的節點仍能自行維持振盪", "en": "No, because the other two unloaded stages can sustain the oscillation by themselves"} }
+      ],
+      "answer": "yes-dominant",
+      "explanation": {
+        "zh": "只在單一節點加大電容會造成不對稱：該節點形成低頻主極點，迴路增益滾降過多；C<sub>L</sub> 夠大時，在相位達 180° 的頻率處迴路增益已小於 1，振盪停止。（時域上也可理解為：被重載的節點太慢，其他節點準靜態地跟隨，有限增益的迴路便停在直流工作點。）",
+        "en": "Loading only one node is asymmetric: it creates a low-frequency dominant pole and excessive gain roll-off around the loop. For large enough C<sub>L</sub> the loop gain at the phase-crossover frequency drops below unity and oscillation stops. (In the time domain: the loaded node is so slow that the other nodes follow quasi-statically and the finite-gain loop settles at a dc point.)"
+      }
+    },
+    {
+      "id": "ring-osc-double-widths-pn",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-004",
+      "image": "razavi-part2-fig07.png",
+      "imageAlt": {"zh": "電晶體層級的三級 CMOS 反相器環，無額外負載電容", "en": "Transistor-level loop of three CMOS inverters with no added load capacitors"},
+      "prompt": {
+        "zh": "若把圖中所有 NMOS 與 PMOS 的寬度都加倍，相位雜訊會如何變化？",
+        "en": "If we double the widths of the NMOS and PMOS devices in the figure, what happens to the phase noise?"
+      },
+      "options": [
+        { "id": "down3-parallel",  "text": {"zh": "降低約 3 dB：等效於兩個相同的環並聯，訊號同相相加，而不相關的雜訊以功率相加", "en": "Falls by about 3 dB: it is equivalent to two identical rings in parallel, whose signals add coherently while their uncorrelated noise adds in power"} },
+        { "id": "down3-lessnoise", "text": {"zh": "降低約 3 dB：較寬的元件產生較小的熱雜訊電流", "en": "Falls by about 3 dB: wider devices produce less thermal noise current"} },
+        { "id": "down6",           "text": {"zh": "降低約 6 dB：節點電容加倍使振盪頻率減半", "en": "Falls by about 6 dB: the node capacitance doubles, which halves the oscillation frequency"} },
+        { "id": "same",            "text": {"zh": "不變：電流與電容同比例加倍，頻率與擺幅都不變", "en": "Unchanged: currents and capacitances double together, so frequency and swing stay the same"} },
+        { "id": "up3",             "text": {"zh": "增加約 3 dB：較寬元件的雜訊電流功率加倍", "en": "Rises by about 3 dB: the noise current power of the wider devices doubles"} }
+      ],
+      "answer": "down3-parallel",
+      "explanation": {
+        "zh": "圖中沒有額外負載電容，節點電容就是元件本身的電容。寬度全加倍時，驅動電流與節點電容同時加倍，振盪頻率大致不變。元件白雜訊電流功率加倍，但訊號電荷/電流的振幅加倍（功率 4 倍），雜訊對訊號比減半，相位雜訊降低約 3 dB，代價是功耗加倍。等效看法：兩個相同的環並聯。（雜訊電流其實隨寬度增加，所以「較寬元件雜訊較小」的理由是錯的；頻率不變，所以不是 6 dB。）",
+        "en": "There are no separate load capacitors, so each node's capacitance is the devices' own. Doubling all widths doubles both the drive currents and the node capacitances, so the frequency stays about the same. The white noise current power doubles, but the signal charge and current double in amplitude (4× in power), so the noise-to-signal ratio halves: about 3 dB lower phase noise, at twice the power. Equivalently, two identical rings in parallel. (The noise current actually grows with width, so \"wider devices are quieter\" is the wrong reason; the frequency does not change, so it is not 6 dB.)"
+      }
+    },
+    {
+      "id": "ring-osc-supply-resistance",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-005",
+      "image": "razavi-part2-fig08.png",
+      "imageAlt": {"zh": "三級反相器環，三個反相器的電源端接在一起，由該節點看入的電阻為 R<sub>X</sub>", "en": "Three-inverter loop whose inverters share one supply node; R<sub>X</sub> is the resistance looking into that node"},
+      "prompt": {
+        "zh": "求從圖中環形振盪器的電源節點看入的小訊號電阻 R<sub>X</sub>。（f<sub>0</sub>：振盪頻率；C<sub>L</sub>：每個內部節點的等效負載電容；g<sub>mn</sub>、g<sub>mp</sub>：每個反相器 NMOS、PMOS 的轉導。）",
+        "en": "Determine the small-signal resistance R<sub>X</sub> seen looking into the supply node of the ring oscillator in the figure. (f<sub>0</sub>: oscillation frequency; C<sub>L</sub>: effective load capacitance at each internal node; g<sub>mn</sub>, g<sub>mp</sub>: transconductances of each inverter's NMOS and PMOS.)"
+      },
+      "options": [
+        { "id": "switched-cap",        "text": {"zh": "R<sub>X</sub> ≈ 1/(3 f<sub>0</sub> C<sub>L</sub>)：每個週期三個節點各從電源抽取約 C<sub>L</sub>V<sub>DD</sub> 的電荷，像三個並聯的切換電容電阻", "en": "R<sub>X</sub> ≈ 1/(3 f<sub>0</sub> C<sub>L</sub>): each period, each of the three nodes draws about C<sub>L</sub>V<sub>DD</sub> from the supply, like three switched-capacitor resistors in parallel"} },
+        { "id": "switched-cap-series", "text": {"zh": "R<sub>X</sub> ≈ 3/(f<sub>0</sub> C<sub>L</sub>)：三個節點各相當於一個 1/(f<sub>0</sub>C<sub>L</sub>) 的切換電容電阻，彼此串聯", "en": "R<sub>X</sub> ≈ 3/(f<sub>0</sub> C<sub>L</sub>): each node acts as a 1/(f<sub>0</sub>C<sub>L</sub>) switched-capacitor resistor, and the three are in series"} },
+        { "id": "static-gm",           "text": {"zh": "R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>)：每個反相器偏在跳變點，等效為兩顆二極體接法元件串聯，三個反相器並聯", "en": "R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>): each inverter sits at its trip point and acts as two diode-connected devices in series; the three inverters are in parallel"} },
+        { "id": "infinite",            "text": {"zh": "R<sub>X</sub> → ∞：每個反相器總有一顆電晶體截止，電源到地沒有直流路徑", "en": "R<sub>X</sub> → ∞: in each inverter one transistor is always off, so there is no dc path from the supply to ground"} }
+      ],
+      "answer": "switched-cap",
+      "explanation": {
+        "zh": "振盪中的環，其電源電流由負載電容的充放電決定，而非靜態的二極體接法電阻。每週期三個節點各抽約 C<sub>L</sub>V<sub>DD</sub> 的電荷：P = 3f<sub>0</sub>C<sub>L</sub>V<sub>DD</sub><sup>2</sup> = V<sub>DD</sub>I<sub>DD</sub>，故（視 f<sub>0</sub> 固定）dI<sub>DD</sub>/dV<sub>DD</sub> = 3f<sub>0</sub>C<sub>L</sub>，R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>)。（若再考慮 f<sub>0</sub> 隨 V<sub>DD</sub> 上升，可修正為約 1/(6f<sub>0</sub>C<sub>L</sub>)。）只分析靜態工作點得到的 g<sub>m</sub> 型答案忽略了振盪，Razavi 給 1 分。",
+        "en": "In an oscillating ring the supply current is set by charging and discharging the load capacitances, not by static diode-connected resistances. Each period the three nodes each draw about C<sub>L</sub>V<sub>DD</sub>: P = 3f<sub>0</sub>C<sub>L</sub>V<sub>DD</sub><sup>2</sup> = V<sub>DD</sub>I<sub>DD</sub>, so with f<sub>0</sub> fixed, dI<sub>DD</sub>/dV<sub>DD</sub> = 3f<sub>0</sub>C<sub>L</sub> and R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>). (Including the rise of f<sub>0</sub> with V<sub>DD</sub> refines it to about 1/(6f<sub>0</sub>C<sub>L</sub>).) The static g<sub>m</sub>-based answer ignores the oscillation; Razavi scores it 1."
+      }
+    },
+    {
+      "id": "ring-osc-supply-resistance-oscillating",
+      "level": 5,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-006",
+      "image": "razavi-part2-fig08.png",
+      "imageAlt": {"zh": "三級反相器環，三個反相器的電源端接在一起，由該節點看入的電阻為 R<sub>X</sub>", "en": "Three-inverter loop whose inverters share one supply node; R<sub>X</sub> is the resistance looking into that node"},
+      "prompt": {
+        "zh": "有人把圖中環形振盪器電源節點看入的小訊號電阻算成 R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>)，理由是每個反相器相當於兩顆二極體接法元件串聯。若電路正在振盪，這個答案會改變嗎？（f<sub>0</sub>：振盪頻率；C<sub>L</sub>：每個節點的負載電容；T<sub>D</sub>：每級延遲；R<sub>eq</sub>：MOS 導通電阻。）",
+        "en": "For the ring oscillator in the figure, somebody computes the small-signal resistance seen looking into the supply node as R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>), because each inverter behaves as two diode-connected devices in series. If the circuit oscillates, does this answer change? (f<sub>0</sub>: oscillation frequency; C<sub>L</sub>: load capacitance per node; T<sub>D</sub>: delay per stage; R<sub>eq</sub>: MOS on-resistance.)"
+      },
+      "options": [
+        { "id": "yes-mech-same-order", "text": {"zh": "會改變機制，但量級差不多：R<sub>X</sub> 改由節點電容充放電決定，R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>) = 2T<sub>D</sub>/C<sub>L</sub>；又 T<sub>D</sub> ≈ R<sub>eq</sub>C<sub>L</sub>，所以 R<sub>X</sub> 仍與導通電阻（約 1/g<sub>m</sub>）同一量級", "en": "Yes, the mechanism changes but not the magnitude much: R<sub>X</sub> is now set by charging the node capacitances, R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>) = 2T<sub>D</sub>/C<sub>L</sub>; since T<sub>D</sub> ≈ R<sub>eq</sub>C<sub>L</sub>, R<sub>X</sub> stays on the order of the on-resistance (about 1/g<sub>m</sub>)"} },
+        { "id": "yes-much-higher-off", "text": {"zh": "會，R<sub>X</sub> 會大很多：電源到地經電晶體的路徑在大部分時間都是截止的", "en": "Yes, R<sub>X</sub> becomes much higher: the path from V<sub>DD</sub> to ground through the transistors is off most of the time"} },
+        { "id": "yes-much-higher-cap", "text": {"zh": "會，R<sub>X</sub> 改為 1/(3f<sub>0</sub>C<sub>L</sub>)，且因 f<sub>0</sub>C<sub>L</sub> 很小，遠大於靜態估計值", "en": "Yes, R<sub>X</sub> becomes 1/(3f<sub>0</sub>C<sub>L</sub>), which is far larger than the static estimate because f<sub>0</sub>C<sub>L</sub> is small"} },
+        { "id": "no-static",           "text": {"zh": "不會，平均而言每個反相器仍偏在跳變點附近，小訊號結果照樣成立", "en": "No, on average each inverter still sits near its trip point, so the small-signal result still holds"} }
+      ],
+      "answer": "yes-mech-same-order",
+      "explanation": {
+        "zh": "振盪時電源電流來自節點電容的充放電：R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>)。三級環 f<sub>0</sub> = 1/(6T<sub>D</sub>)，故 R<sub>X</sub> ≈ 2T<sub>D</sub>/C<sub>L</sub>；而 T<sub>D</sub> 約為 R<sub>eq</sub>C<sub>L</sub>，所以 R<sub>X</sub> 與 R<sub>eq</sub>（約 1/g<sub>m</sub>）同量級，並沒有因為元件部分時間截止而大很多。Razavi 對「大很多，因為路徑大部分時間截止」的答案給 1 分。",
+        "en": "When oscillating, the supply current comes from charging the node capacitances: R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>). For a three-stage ring f<sub>0</sub> = 1/(6T<sub>D</sub>), so R<sub>X</sub> ≈ 2T<sub>D</sub>/C<sub>L</sub>, and with T<sub>D</sub> ≈ R<sub>eq</sub>C<sub>L</sub>, R<sub>X</sub> is on the order of R<sub>eq</sub> (about 1/g<sub>m</sub>): not much higher just because devices are off part of the cycle. Razavi scores 1 the answer \"much higher, because the path is off most of the time\"."
+      }
+    },
+    {
+      "id": "strongarm-name",
+      "level": 3,
+      "type": "fill",
+      "source": "Razavi-Bench part2-007 (derived)",
+      "image": "razavi-part2-fig09.png",
+      "imageAlt": {"zh": "時脈控制比較器：輸入對 M1–M2、尾電晶體 M7、交叉耦合 M3–M6、重置開關 S1–S4，節點 P、Q、X、Y", "en": "Clocked comparator: input pair M1–M2, tail device M7, cross-coupled M3–M6, reset switches S1–S4, nodes P, Q, X, Y"},
+      "prompt": {
+        "zh": "圖中的電路叫什麼？",
+        "en": "Name this circuit."
+      },
+      "placeholder": {"zh": "輸入電路名稱", "en": "Enter the circuit name"},
+      "accept": ["StrongARM comparator", "StrongARM latch", "StrongARM", "Strong ARM", "StrongARM sense amplifier", "comparator", "dynamic comparator", "latched comparator", "clocked comparator", "regenerative comparator", "latch comparator", "sense amplifier", "sense amp", "dynamic latch comparator", "比較器", "動態比較器", "閂鎖比較器", "栓鎖比較器", "時脈比較器", "StrongARM 比較器", "StrongARM 閂鎖器", "比较器", "动态比较器", "锁存比较器", "StrongARM 比较器"],
+      "explanation": {
+        "zh": "時脈控制的輸入對 M1/M2 加尾電晶體 M7、交叉耦合反相器 M3–M6 與重置開關 S1–S4：StrongARM 比較器（StrongARM latch）。",
+        "en": "A clocked input pair M1/M2 with tail device M7, cross-coupled inverters M3–M6 and reset switches S1–S4: the StrongARM comparator (StrongARM latch)."
+      }
+    },
+    {
+      "id": "strongarm-m7-width-initial-gain",
+      "level": 3,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-007",
+      "image": "razavi-part2-fig09.png",
+      "imageAlt": {"zh": "時脈控制比較器：輸入對 M1–M2、尾電晶體 M7、交叉耦合 M3–M6、重置開關 S1–S4，節點 P、Q、X、Y", "en": "Clocked comparator: input pair M1–M2, tail device M7, cross-coupled M3–M6, reset switches S1–S4, nodes P, Q, X, Y"},
+      "prompt": {
+        "zh": "圖中電路的 M7 寬度增加時，初始電壓增益會如何變化？",
+        "en": "In the circuit shown in the figure, what happens to the initial voltage gain as the width of M7 increases?"
+      },
+      "options": [
+        { "id": "down",    "text": {"zh": "下降：M7 變寬使共模電流 I<sub>CM</sub> 增加，而初始增益約為 g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>，g<sub>m1,2</sub> 只隨 √I<sub>CM</sub> 成長", "en": "Decreases: a wider M7 raises the common-mode current I<sub>CM</sub>; the initial gain is about g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>, and g<sub>m1,2</sub> grows only as √I<sub>CM</sub>"} },
+        { "id": "up-gm",   "text": {"zh": "上升：尾電流增加使輸入對的 g<sub>m1,2</sub> 增加", "en": "Increases: the larger tail current raises the input pair's g<sub>m1,2</sub>"} },
+        { "id": "up-fast", "text": {"zh": "上升：P、Q 放電較快，差動電壓建立得較快", "en": "Increases: P and Q discharge faster, so the differential voltage builds up faster"} },
+        { "id": "same",    "text": {"zh": "不變：初始增益只由 P、Q 的電容比決定", "en": "Unchanged: the initial gain is set only by the capacitance ratio at P and Q"} }
+      ],
+      "answer": "down",
+      "explanation": {
+        "zh": "初始電壓增益是 P、Q 在放大（積分）階段、交叉耦合元件導通開始再生之前所累積的增益，約為 A<sub>v</sub> ≈ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>。M7 變寬使 I<sub>CM</sub> 增加，但 g<sub>m1,2</sub> 只與 √I<sub>CM</sub> 成正比，所以增益下降。",
+        "en": "The initial voltage gain is what the input pair builds across P and Q in the amplification (integration) phase, before the cross-coupled devices turn on and regeneration starts: A<sub>v</sub> ≈ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>. A wider M7 raises I<sub>CM</sub>, but g<sub>m1,2</sub> grows only as √I<sub>CM</sub>, so the gain drops."
+      }
+    },
+    {
+      "id": "strongarm-pq-cap-initial-gain",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-008",
+      "image": "razavi-part2-fig09.png",
+      "imageAlt": {"zh": "時脈控制比較器：輸入對 M1–M2、尾電晶體 M7、交叉耦合 M3–M6、重置開關 S1–S4，節點 P、Q、X、Y", "en": "Clocked comparator: input pair M1–M2, tail device M7, cross-coupled M3–M6, reset switches S1–S4, nodes P, Q, X, Y"},
+      "prompt": {
+        "zh": "在圖中，若增加節點 P 與 Q 的電容，初始電壓增益會如何變化？",
+        "en": "In the figure, what happens to the initial voltage gain if we increase the capacitance at nodes P and Q?"
+      },
+      "options": [
+        { "id": "same",      "text": {"zh": "大致不變：放電變慢使放大階段按比例延長，電容在增益中相消；只是比較器變慢", "en": "Stays about the same: the slower discharge lengthens the amplification phase in proportion, so the capacitance cancels; the comparator just gets slower"} },
+        { "id": "up",        "text": {"zh": "上升：電容較大，積分時間較長，累積的差動電壓較大", "en": "Increases: the larger capacitance gives a longer integration time and a larger accumulated differential voltage"} },
+        { "id": "down",      "text": {"zh": "下降：電容較大，同一時間內 P、Q 的差動電壓建立得較慢", "en": "Decreases: with more capacitance, the differential voltage at P and Q builds more slowly in a given time"} },
+        { "id": "down-load", "text": {"zh": "下降：額外電容降低輸入對在 P、Q 的負載阻抗", "en": "Decreases: the extra capacitance lowers the load impedance the input pair sees at P and Q"} }
+      ],
+      "answer": "same",
+      "explanation": {
+        "zh": "放大階段中尾電流對 P、Q 放電，共模電壓下降約 V<sub>THN</sub> 時 M3/M4 導通開始再生。電容 C<sub>P</sub> 變大，這段時間約按 2C<sub>P</sub>V<sub>THN</sub>/I<sub>CM</sub> 延長；差動電壓以 g<sub>m1,2</sub>ΔV<sub>in</sub>t/C<sub>P</sub> 成長，C<sub>P</sub> 相消，增益 ∝ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>，與電容無關。電容只讓比較器變慢。",
+        "en": "During amplification the tail current discharges P and Q; regeneration starts once their common mode has dropped by about V<sub>THN</sub> and M3/M4 turn on. A larger C<sub>P</sub> stretches this phase to about 2C<sub>P</sub>V<sub>THN</sub>/I<sub>CM</sub>, while the differential voltage grows as g<sub>m1,2</sub>ΔV<sub>in</sub>t/C<sub>P</sub>. C<sub>P</sub> cancels: the gain ∝ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>, independent of the capacitance. It only slows the comparator."
+      }
+    },
+    {
+      "id": "strongarm-m5m6-width-speed",
+      "level": 3,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-009",
+      "image": "razavi-part2-fig09.png",
+      "imageAlt": {"zh": "時脈控制比較器：輸入對 M1–M2、尾電晶體 M7、交叉耦合 M3–M6、重置開關 S1–S4，節點 P、Q、X、Y", "en": "Clocked comparator: input pair M1–M2, tail device M7, cross-coupled M3–M6, reset switches S1–S4, nodes P, Q, X, Y"},
+      "prompt": {
+        "zh": "若增加圖中 M5 與 M6 的寬度，速度會改善還是變差？",
+        "en": "If we increase the widths of M5 and M6 in the figure, does the speed improve or degrade?"
+      },
+      "options": [
+        { "id": "improve-initially", "text": {"zh": "一開始改善（直到某個最佳寬度）：交叉耦合 PMOS 的 g<sub>m</sub> 增加使再生更快；其增加的寄生電容起初並非 X、Y 的主要電容", "en": "Improves initially (up to an optimum width): the cross-coupled PMOS devices gain g<sub>m</sub> and regenerate faster; their added parasitic capacitance is not at first the dominant capacitance at X and Y"} },
+        { "id": "degrade-cap",       "text": {"zh": "變差：較寬的 M5/M6 在 X、Y 增加寄生電容，拖慢節點", "en": "Degrades: wider M5/M6 add parasitic capacitance at X and Y, which slows those nodes"} },
+        { "id": "improve-always",    "text": {"zh": "改善，而且越寬越好：再生強度永遠勝過增加的電容", "en": "Improves, and the wider the better: the stronger regeneration always outweighs the added capacitance"} },
+        { "id": "no-effect",         "text": {"zh": "幾乎不變：速度只由尾電晶體 M7 的電流決定", "en": "Hardly changes: the speed is set only by the current of tail device M7"} }
+      ],
+      "answer": "improve-initially",
+      "explanation": {
+        "zh": "M5、M6 是交叉耦合的 PMOS 再生元件。變寬使其轉導與上拉/再生能力增加，再生更快；它們增加的寄生電容起初不是 X、Y 的主要電容，所以速度先改善。當這些寄生電容成為節點電容的重要部分後，效益遞減，甚至變差：存在最佳寬度。",
+        "en": "M5 and M6 are the cross-coupled PMOS regenerative devices. Widening them raises their transconductance and pull-up strength, so regeneration is faster; their added capacitance is not at first the dominant capacitance at X and Y, so speed improves. Once it becomes a significant part of the node capacitance, the benefit fades and can reverse: there is an optimum width."
+      }
+    },
+    {
+      "id": "c2mos-divider-name",
+      "level": 2,
+      "type": "fill",
+      "source": "Razavi-Bench part2-010 (derived)",
+      "image": "razavi-part2-fig10.png",
+      "imageAlt": {"zh": "兩個 C<sup>2</sup>MOS 閂鎖器串接，Inv3 把 Y 反相成 Z 回授到輸入", "en": "Two C<sup>2</sup>MOS latches in cascade; Inv3 inverts Y into Z, which feeds back to the input"},
+      "prompt": {
+        "zh": "圖中的電路叫什麼？",
+        "en": "Name this circuit."
+      },
+      "placeholder": {"zh": "輸入電路名稱", "en": "Enter the circuit name"},
+      "accept": ["divide-by-two", "divide by 2", "divide-by-2 circuit", "divide-by-two circuit", "C2MOS divide-by-two", "C2MOS divider", "C2MOS divide-by-2", "frequency divider", "divider", "clock divider", "÷2", "/2 divider", "div2", "master-slave divider", "toggle flip-flop", "T flip-flop", "TFF", "C2MOS frequency divider", "除頻器", "除二電路", "除二除頻器", "二分頻器", "二分頻電路", "除2電路", "÷2 除頻器", "C2MOS 除頻器", "分頻器", "二分频器", "分频器", "除二分频器"],
+      "explanation": {
+        "zh": "兩個 C<sup>2</sup>MOS（時脈 CMOS）閂鎖器以相反時脈相位串接，再經 Inv3 反相回授：除二電路（C<sup>2</sup>MOS divide-by-two），每個節點以時脈頻率的一半翻轉。",
+        "en": "Two C<sup>2</sup>MOS (clocked CMOS) latches on opposite clock phases in cascade, with Inv3 feeding the inverted output back: a C<sup>2</sup>MOS divide-by-two; every node toggles at half the clock frequency."
+      }
+    },
+    {
+      "id": "c2mos-divider-clocked-width-speed",
+      "level": 3,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-010",
+      "image": "razavi-part2-fig10.png",
+      "imageAlt": {"zh": "兩個 C<sup>2</sup>MOS 閂鎖器串接，Inv3 把 Y 反相成 Z 回授到輸入", "en": "Two C<sup>2</sup>MOS latches in cascade; Inv3 inverts Y into Z, which feeds back to the input"},
+      "prompt": {
+        "zh": "在圖中電路，若增加時脈電晶體的寬度，速度會改善還是變差？",
+        "en": "In the circuit shown in the figure, does the speed improve or degrade if we increase the widths of the clocked transistors?"
+      },
+      "options": [
+        { "id": "improve-initially",  "text": {"zh": "一開始改善（直到某個最佳寬度）：時脈電晶體的導通電阻下降；它們加在 X、Y 的汲極電容起初相對較小，之後才會限制效益", "en": "Improves initially (up to an optimum width): the clocked transistors' on-resistance falls; the drain capacitance they add at X and Y is small at first and only later limits the benefit"} },
+        { "id": "degrade-bottleneck", "text": {"zh": "變差：資料驅動的電晶體才是瓶頸，加寬時脈電晶體只是增加資料路徑上的電容", "en": "Degrades: the data-driven devices are the bottleneck, so widening the clocked transistors only adds capacitance in the data path"} },
+        { "id": "degrade-cap",        "text": {"zh": "變差：時脈電晶體緊鄰輸出，加寬直接增加 X、Y 的負載電容", "en": "Degrades: the clocked transistors sit next to the outputs, so widening them directly adds load capacitance at X and Y"} },
+        { "id": "improve-always",     "text": {"zh": "改善，而且越寬越好：串聯電阻越小越快", "en": "Improves, and the wider the better: less series resistance is always faster"} }
+      ],
+      "answer": "improve-initially",
+      "explanation": {
+        "zh": "每個閂鎖器中，時脈電晶體與資料電晶體串聯於電源與輸出（X 或 Y）之間。加寬時脈電晶體降低其導通電阻，也就降低對 X、Y 充放電的總電阻；其汲極電容起初相對於節點上其他電容很小，所以延遲下降。超過某個寬度後，增加的電容變得顯著，改善趨緩或反轉：存在最佳寬度。Razavi 指出即使資料元件是瓶頸，速度一開始仍會改善（Gemini 答「變差」得 2 分）。",
+        "en": "In each latch a clocked transistor is in series with a data transistor between each supply and the output (X or Y). Widening the clocked transistors lowers their on-resistance and hence the total resistance that charges X and Y; their drain capacitance is at first small compared with the rest at those nodes, so the delay falls. Past some width the added capacitance matters and the gain levels off or reverses: there is an optimum. Razavi notes that even if the data devices are the bottleneck, speed still improves initially (Gemini's \"degrades\" got 2)."
+      }
+    },
+    {
+      "id": "c2mos-divider-quadrature",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-011",
+      "image": "razavi-part2-fig10.png",
+      "imageAlt": {"zh": "兩個 C<sup>2</sup>MOS 閂鎖器串接，Inv3 把 Y 反相成 Z 回授到輸入", "en": "Two C<sup>2</sup>MOS latches in cascade; Inv3 inverts Y into Z, which feeds back to the input"},
+      "prompt": {
+        "zh": "圖中的結構能提供正交（quadrature）輸出嗎？",
+        "en": "Does the structure in the figure provide quadrature outputs?"
+      },
+      "options": [
+        { "id": "nominal-not-exact", "text": {"zh": "名義上可以，但不精確：兩個閂鎖器相隔半個輸入週期切換（在輸出頻率為 90°）；但 Inv3 的延遲使 Z 偏斜，且兩個閂鎖器的負載不相等（X 驅動第二個閂鎖器、Y 驅動 Inv3，Inv3 內有 Miller 效應）", "en": "Nominally yes, but not accurately: the two latches switch half an input period apart (90° at the output frequency), but the delay of Inv3 skews Z, and the two latches see unequal loads (X drives the second latch, Y drives Inv3, whose capacitances see Miller multiplication)"} },
+        { "id": "yes-exact",         "text": {"zh": "可以，而且是精確的：兩個閂鎖器在相反的時脈邊緣切換、相隔半個輸入週期，因此 Y 或 Z 與 X 正好相差 90°", "en": "Yes, exactly: the two latches change state on opposite clock edges, half an input period apart, so Y or Z is exactly 90° from X"} },
+        { "id": "no-180",            "text": {"zh": "不能：X 與 Y 互為反相，相差 180°", "en": "No: X and Y are complementary, 180° apart"} },
+        { "id": "no-divider",        "text": {"zh": "不能：除二電路只產生單相輸出，需另加多相濾波器才能得到正交訊號", "en": "No: a divide-by-two produces a single phase only; quadrature needs a separate polyphase filter"} }
+      ],
+      "answer": "nominal-not-exact",
+      "explanation": {
+        "zh": "這是 C<sup>2</sup>MOS 除二電路：左閂鎖器以 Z 為輸入產生 X，右閂鎖器以 X 為輸入、在相反相位產生 Y，Inv3 把 Y 反相成 Z。兩閂鎖器相隔半個輸入週期切換，在輸出頻率上就是 90°，所以名義上 X、Y（以及 Z）為正交。但 (1) Inv3 的延遲使 Z 偏斜；(2) 兩個閂鎖器的負載難以相等（X 驅動第二閂鎖器的資料電晶體，Y 驅動 Inv3，其閘汲電容有 Miller 放大），延遲不等，使 X、Y 也不是精確 90°。Razavi 對只答「可以」的答案給 2 分。",
+        "en": "This is a C<sup>2</sup>MOS divide-by-two: the left latch takes Z and produces X, the right latch takes X on the opposite phase and produces Y, and Inv3 inverts Y into Z. The latches switch half an input period apart, which is 90° at the output, so X and Y (and Z) are nominally in quadrature. But (1) the delay of Inv3 skews Z, and (2) the two latches see unequal loads (X drives the second latch's data devices, Y drives Inv3, whose gate-drain capacitances see Miller multiplication), so their delays differ and even X and Y are not exactly 90° apart. Razavi scores a plain \"yes\" 2."
+      }
+    },
+    {
+      "id": "divider-clocked-outside-width-speed",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-012",
+      "image": "razavi-part2-fig11.png",
+      "imageAlt": {"zh": "兩個閂鎖器串接並經反相器回授；時脈電晶體位於電源與地兩端、資料電晶體位於中間", "en": "Two latches in cascade with inverter feedback; the clocked transistors sit at the supply and ground ends, the data transistors in the middle"},
+      "prompt": {
+        "zh": "在圖中電路，若增加時脈電晶體的寬度，速度會改善還是變差？",
+        "en": "In the circuit shown in the figure, does the speed improve or degrade if we increase the widths of the clocked transistors?"
+      },
+      "options": [
+        { "id": "improve-considerably",   "text": {"zh": "明顯改善：時脈電晶體位於電源與地兩端、在資料路徑之外，加寬降低串聯電阻，而增加的電容落在內部節點、不在輸出節點；電荷分享會使擺幅變差，但在一定範圍內可接受", "en": "Improves considerably: the clocked devices sit at the supply and ground ends, outside the data path; widening them lowers the series resistance while their capacitance lands on internal nodes, not the outputs; charge sharing degrades the swing, but acceptably up to a point"} },
+        { "id": "degrade-charge-sharing", "text": {"zh": "變差：內部節點與輸出之間的電荷分享會導致災難性的結果，這個拓撲不宜使用", "en": "Degrades: charge sharing between the internal nodes and the outputs leads to catastrophic results, so this topology should be avoided"} },
+        { "id": "degrade-load",           "text": {"zh": "變差：時脈電晶體增加的電容直接加在閂鎖器輸出節點上", "en": "Degrades: the capacitance added by the clocked transistors loads the latch outputs directly"} },
+        { "id": "improve-unlimited",      "text": {"zh": "改善，而且沒有限制：時脈電晶體在電源端，不會發生電荷分享", "en": "Improves without limit: the clocked transistors are at the rails, so no charge sharing occurs"} }
+      ],
+      "answer": "improve-considerably",
+      "explanation": {
+        "zh": "此拓撲中時脈電晶體在每個閂鎖器的電源與地兩端、資料電晶體之外。加寬時脈電晶體降低與資料路徑串聯的電阻，而其電容加在時脈與資料電晶體之間的內部節點上，幾乎不干擾資料路徑，所以速度明顯改善。內部節點與輸出之間確實有電荷分享、使擺幅變差，但在一定範圍內可接受。Razavi 對「變差、電荷分享造成災難」的答案給 1 分。",
+        "en": "Here the clocked transistors sit at the supply and ground ends of each latch, outside the data transistors. Widening them lowers the resistance in series with the data path, while their capacitance appears on the internal nodes between clocked and data devices, barely touching the data path: the speed improves considerably. Charge sharing between those nodes and the outputs does degrade the swing, but acceptably up to a point. Razavi scores \"degrades, charge sharing is catastrophic\" 1."
+      }
+    },
+    {
+      "id": "dynamic-latch-divider-analyze",
+      "level": 2,
+      "type": "multi",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-013",
+      "image": "razavi-part2-fig12.png",
+      "imageAlt": {"zh": "CK 開關、Inv1、CK̄ 開關與兩個反相器構成的迴路；另有一個紅色反相器從 CK 開關之前的節點接到 Inv1 的輸出", "en": "Loop of a CK switch, Inv1, a CK̄ switch and two inverters; a red inverter runs from the node before the CK switch to the output of Inv1"},
+      "prompt": {
+        "zh": "分析圖中的架構。下列敘述哪些正確？（複選）",
+        "en": "Analyze the arrangement in the figure. Which statements are correct? (Select all that apply.)"
+      },
+      "options": [
+        { "id": "div2",    "text": {"zh": "這是除二電路：輸出頻率為輸入時脈頻率的一半", "en": "It is a divide-by-two: the output frequency is half the input clock frequency"} },
+        { "id": "dynamic", "text": {"zh": "它由動態閂鎖器構成：CK 與 CK̄ 開關輪流取樣與保持", "en": "It is built from dynamic latches: the CK and CK̄ switches alternately sample and hold"} },
+        { "id": "leakage", "text": {"zh": "因為是動態的，儲存的電荷與漏電會影響其運作", "en": "Because it is dynamic, stored charge and leakage matter to its operation"} },
+        { "id": "ring",    "text": {"zh": "它是三級環形振盪器，振盪頻率由反相器延遲決定、與時脈無關", "en": "It is a three-stage ring oscillator whose frequency is set by the inverter delays, independent of the clock"} },
+        { "id": "div3",    "text": {"zh": "迴路中有三個反相器，所以是除三電路", "en": "The loop contains three inverters, so it divides by three"} },
+        { "id": "doubler", "text": {"zh": "它是倍頻器：輸出頻率為時脈的兩倍", "en": "It is a frequency doubler: the output is at twice the clock frequency"} }
+      ],
+      "answer": ["div2", "dynamic", "leakage"],
+      "explanation": {
+        "zh": "這是以動態閂鎖器構成的除二電路（動態主從式除頻器）：時脈控制的閂鎖器輪流取樣與保持，輸出每兩個輸入時脈週期完成一個週期，即頻率為一半。因為是動態的，儲存電荷與漏電都很重要。",
+        "en": "It is a divide-by-two built from dynamic latches (a dynamic master-slave divider): the clocked latches alternately sample and hold, so the output completes one cycle every two input clock periods, half the frequency. Being dynamic, stored charge and leakage matter."
+      }
+    },
+    {
+      "id": "dynamic-divider-red-inverter-effect",
+      "level": 5,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-014",
+      "image": "razavi-part2-fig12.png",
+      "imageAlt": {"zh": "CK 開關、Inv1、CK̄ 開關與兩個反相器構成的迴路；另有一個紅色反相器從 CK 開關之前的節點接到 Inv1 的輸出", "en": "Loop of a CK switch, Inv1, a CK̄ switch and two inverters; a red inverter runs from the node before the CK switch to the output of Inv1"},
+      "prompt": {
+        "zh": "圖中的紅色反相器如何影響效能？",
+        "en": "How does the red inverter in the figure affect the performance?"
+      },
+      "options": [
+        { "id": "ff-speed-minfreq-up",   "text": {"zh": "它是繞過 CK 開關與 Inv1 的前饋路徑，預先驅動 Inv1 的輸出，提升除頻器速度；但它沒有時脈控制，在低時脈頻率時會壓過主路徑，使最低可用時脈頻率上升", "en": "It is a feedforward path that bypasses the CK switch and Inv1 and pre-drives Inv1's output, speeding up the divider; but it is unclocked, so at low clock rates it overpowers the main path and raises the minimum usable clock frequency"} },
+        { "id": "ff-speed-minfreq-down", "text": {"zh": "它是繞過 CK 開關與 Inv1 的前饋路徑，提升除頻器速度；同時也讓 Inv1 的輸出在保持期間不會漏電，降低最低可用時脈頻率", "en": "It is a feedforward path that bypasses the CK switch and Inv1, speeding up the divider; it also keeps Inv1's output from leaking away while holding, lowering the minimum usable clock frequency"} },
+        { "id": "keeper",                "text": {"zh": "它是保持器（keeper）：與 Inv1 交叉耦合形成靜態閂鎖器，消除因漏電造成的最低時脈頻率限制", "en": "It is a keeper: it cross-couples with Inv1 to form a static latch, removing the minimum clock frequency imposed by leakage"} },
+        { "id": "ring-broken",           "text": {"zh": "它與後面的反相器形成一個自由振盪的三級環，因此除頻器在任何時脈頻率下都無法正常工作", "en": "It forms a free-running three-stage ring with the following inverters, so the divider cannot work at any clock frequency"} }
+      ],
+      "answer": "ff-speed-minfreq-up",
+      "explanation": {
+        "zh": "紅色反相器的輸入取自 CK 開關之前的節點、輸出接 Inv1 的輸出，所以它繞過 CK 開關與 Inv1，是一條前饋路徑，預先驅動 Inv1 的輸出，提升速度。但它沒有時脈控制：CK̄ 開關導通時，紅色反相器、CK̄ 開關與其後兩個反相器構成三次反相的迴路（可自行翻轉的環），而且它會與 Inv1 保持的值互相拉扯。高時脈頻率下半週期太短，影響不大；低時脈頻率時它壓過主路徑、破壞除頻，因此最低可用時脈頻率上升（而非降低）。",
+        "en": "The red inverter takes its input from the node before the CK switch and drives Inv1's output, so it bypasses the CK switch and Inv1: a feedforward path that pre-drives Inv1's output and speeds up the divider. But it is unclocked: while the CK̄ switch is on, it, the CK̄ switch and the two following inverters form a loop of three inversions (a ring that can toggle by itself), and it fights the value Inv1 holds. At high clock rates the half-period is too short for this to matter; at low clock rates the branch overpowers the main path and corrupts the division, so the minimum usable clock frequency rises, not falls."
+      }
+    },
+    {
+      "id": "dynamic-divider-red-inverter-keeper-claim",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-015",
+      "image": "razavi-part2-fig12.png",
+      "imageAlt": {"zh": "CK 開關、Inv1、CK̄ 開關與兩個反相器構成的迴路；另有一個紅色反相器從 CK 開關之前的節點接到 Inv1 的輸出", "en": "Loop of a CK switch, Inv1, a CK̄ switch and two inverters; a red inverter runs from the node before the CK switch to the output of Inv1"},
+      "prompt": {
+        "zh": "針對圖中電路，有人回答：「紅色反相器是保持器（keeper），與 Inv1 形成交叉耦合閂鎖器，消除了因漏電造成的最低時脈頻率要求。」你同意嗎？紅色反相器實際的作用是什麼？",
+        "en": "In the figure, somebody answers: \"The red inverter acts as a keeper, forming a cross-coupled latch with Inv1. This removes the minimum clock frequency requirement due to leakage.\" Do you agree with this answer? What is the actual role of the red inverter?"
+      },
+      "options": [
+        { "id": "disagree-ff",     "text": {"zh": "不同意：紅色反相器的輸入並未接到 Inv1 的輸出，所以不是交叉耦合、不是保持器；它是前饋分支，繞過 CK 開關與 Inv1，提升高速表現，但在低時脈頻率時會壓過閂鎖行為，使最低可用時脈頻率上升", "en": "Disagree: the red inverter's input is not tied to Inv1's output, so it is not cross-coupled and not a keeper; it is a feedforward branch that bypasses the CK switch and Inv1, helping high-speed operation, but at low clock rates it overpowers the latch and raises the minimum usable clock frequency"} },
+        { "id": "agree",           "text": {"zh": "同意：紅色反相器與 Inv1 形成靜態閂鎖器，保持的資料不再因漏電流失，因此沒有最低時脈頻率", "en": "Agree: the red inverter and Inv1 form a static latch, so the held data no longer leaks away and there is no minimum clock frequency"} },
+        { "id": "disagree-broken", "text": {"zh": "不同意：既然紅色反相器沒有接成保持器迴路，圖應該是畫錯了，此電路無法正常工作", "en": "Disagree: since the red inverter is not connected as a keeper loop, the drawing must be a mistake and the circuit cannot work"} },
+        { "id": "partly",          "text": {"zh": "部分同意：它確實是保持器，但只能降低、無法完全消除最低時脈頻率", "en": "Partly agree: it is indeed a keeper, but it only lowers the minimum clock frequency rather than removing it"} }
+      ],
+      "answer": "disagree-ff",
+      "explanation": {
+        "zh": "紅色反相器的輸入取自 CK 開關之前，並未接到 Inv1 的輸出，因此與 Inv1 不構成交叉耦合，不應視為保持器。它是前饋分支：從較早的節點驅動較晚的節點，繞過部分閂鎖路徑，可改善高速操作；但它沒有時脈控制，低時脈頻率時會壓過預期的動態閂鎖行為，使最低可用時脈頻率上升。",
+        "en": "The red inverter's input comes from before the CK switch, not from Inv1's output, so it is not cross-coupled with Inv1 and is not a keeper. It is a feedforward branch: it drives a later node from an earlier signal, bypassing part of the latch path, which helps at high speed; but being unclocked, at low clock rates it overpowers the intended dynamic-latch behavior and raises the minimum usable clock rate."
+      }
+    },
+    {
+      "id": "inverter-lna-nf-rin50",
+      "level": 5,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-016",
+      "image": "razavi-part2-fig13.png",
+      "imageAlt": {"zh": "CMOS 反相器 M1/M2，輸出經 R<sub>F</sub> 回授到輸入，訊號經 C<sub>1</sub> 輸入，輸入電阻 R<sub>in</sub>", "en": "CMOS inverter M1/M2 with R<sub>F</sub> from output to input, input through C<sub>1</sub>, input resistance R<sub>in</sub>"},
+      "prompt": {
+        "zh": "若 R<sub>in</sub> 必須維持 50 Ω，要如何最佳化圖中電路的雜訊指數 NF？（g<sub>m</sub> = g<sub>m1</sub> + g<sub>m2</sub>；r<sub>o</sub> = r<sub>o1</sub> ∥ r<sub>o2</sub>；R<sub>S</sub> = 50 Ω 為訊號源電阻；γ 為通道熱雜訊係數。）",
+        "en": "How do we optimize the circuit shown in the figure for the NF if R<sub>in</sub> must remain equal to 50 Ω? (g<sub>m</sub> = g<sub>m1</sub> + g<sub>m2</sub>; r<sub>o</sub> = r<sub>o1</sub> ∥ r<sub>o2</sub>; R<sub>S</sub> = 50 Ω is the source resistance; γ is the channel thermal-noise coefficient.)"
+      },
+      "options": [
+        { "id": "raise-gm-and-rf", "text": {"zh": "利用 R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>)：把 g<sub>m</sub> 提高到 1/R<sub>S</sub> 以上（加大寬度與偏壓電流），同時加大 R<sub>F</sub> 以維持 50 Ω；NF 可降到 1 + γ 以下，趨近 1 + γ/(g<sub>m</sub>R<sub>S</sub>)", "en": "Use R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>): raise g<sub>m</sub> above 1/R<sub>S</sub> (width and bias current) and raise R<sub>F</sub> with it to hold 50 Ω; the noise factor can then fall below 1 + γ, toward 1 + γ/(g<sub>m</sub>R<sub>S</sub>)"} },
+        { "id": "gm-pinned",       "text": {"zh": "因為 R<sub>in</sub> ≈ 1/g<sub>m</sub>，匹配把 g<sub>m</sub> 固定在 1/R<sub>S</sub>；只能加大 R<sub>F</sub> 與 r<sub>o</sub>，讓雜訊因子趨近下限 1 + γ", "en": "Since R<sub>in</sub> ≈ 1/g<sub>m</sub>, matching pins g<sub>m</sub> at 1/R<sub>S</sub>; we can only make R<sub>F</sub> and r<sub>o</sub> large so the noise factor approaches its lower bound of 1 + γ"} },
+        { "id": "lower-ro",        "text": {"zh": "刻意降低 r<sub>o</sub>（用較短的通道），使 R<sub>in</sub> ≈ R<sub>F</sub>，再選 R<sub>F</sub> = 50 Ω", "en": "Deliberately lower r<sub>o</sub> (shorter channels) so that R<sub>in</sub> ≈ R<sub>F</sub>, then choose R<sub>F</sub> = 50 Ω"} },
+        { "id": "lower-rf",        "text": {"zh": "保持 g<sub>m</sub> = 1/R<sub>S</sub>，並盡量減小 R<sub>F</sub> 以降低它的熱雜訊", "en": "Keep g<sub>m</sub> = 1/R<sub>S</sub> and make R<sub>F</sub> as small as possible to reduce its thermal noise"} }
+      ],
+      "answer": "raise-gm-and-rf",
+      "explanation": {
+        "zh": "這是電阻回授（並聯回授）反相器 LNA。若假設 R<sub>in</sub> ≈ 1/g<sub>m</sub>，匹配會把 g<sub>m</sub> 鎖在 1/R<sub>S</sub>，NF 最佳只能趨近 1 + γ，這是 Razavi 給 1 分的答案。考慮有限的 r<sub>o</sub>：R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>)，可選 R<sub>F</sub> = R<sub>S</sub>(1 + g<sub>m</sub>r<sub>o</sub>) − r<sub>o</sub> 維持 50 Ω，同時讓 g<sub>m</sub> 超過 1/R<sub>S</sub>；雜訊因子隨 g<sub>m</sub> 增大而降到 1 + γ 以下，g<sub>m</sub>r<sub>o</sub> 大時趨近 1 + γ/(g<sub>m</sub>R<sub>S</sub>)，代價是功耗與輸入電容。刻意降低 r<sub>o</sub> 並沒有幫助。",
+        "en": "This is a resistive-feedback (shunt-feedback) inverter LNA. Assuming R<sub>in</sub> ≈ 1/g<sub>m</sub> pins g<sub>m</sub> at 1/R<sub>S</sub> and the NF can at best approach 1 + γ: the answer Razavi scores 1. With finite r<sub>o</sub>, R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>), so choosing R<sub>F</sub> = R<sub>S</sub>(1 + g<sub>m</sub>r<sub>o</sub>) − r<sub>o</sub> holds 50 Ω while g<sub>m</sub> exceeds 1/R<sub>S</sub>; the noise factor falls below 1 + γ as g<sub>m</sub> grows, toward 1 + γ/(g<sub>m</sub>R<sub>S</sub>) for large g<sub>m</sub>r<sub>o</sub>, at the cost of power and input capacitance. Lowering r<sub>o</sub> on purpose does not help."
+      }
+    },
+    {
+      "id": "tia-name",
+      "level": 2,
+      "type": "fill",
+      "source": "Razavi-Bench part2-017 (derived)",
+      "image": "razavi-part2-fig14.png",
+      "imageAlt": {"zh": "電流輸入 I<sub>in</sub>（並聯 C<sub>in</sub>）驅動 M1（負載 R<sub>D1</sub>），再經 PMOS 差動對 M2/M3 驅動 R<sub>D2</sub>；R<sub>F</sub> 由 V<sub>out</sub> 接回輸入節點 P", "en": "Current input I<sub>in</sub> (with C<sub>in</sub>) drives M1 (load R<sub>D1</sub>), then PMOS pair M2/M3 drives R<sub>D2</sub>; R<sub>F</sub> runs from V<sub>out</sub> back to input node P"},
+      "prompt": {
+        "zh": "圖中的電路叫什麼？",
+        "en": "Name this circuit."
+      },
+      "placeholder": {"zh": "輸入電路名稱", "en": "Enter the circuit name"},
+      "accept": ["transimpedance amplifier", "TIA", "trans-impedance amplifier", "feedback TIA", "shunt-feedback TIA", "resistive-feedback TIA", "transimpedance amp", "transresistance amplifier", "optical receiver front end", "轉阻放大器", "跨阻放大器", "互阻放大器", "轉阻抗放大器", "跨阻抗放大器", "转阻放大器"],
+      "explanation": {
+        "zh": "電流輸入 I<sub>in</sub>（並聯 C<sub>in</sub>，如光二極體）、兩級放大器並以 R<sub>F</sub> 從輸出回授到輸入：轉阻放大器（TIA），把輸入電流轉為輸出電壓。",
+        "en": "A current input I<sub>in</sub> with C<sub>in</sub> (as from a photodiode), a two-stage amplifier and R<sub>F</sub> from the output back to the input: a transimpedance amplifier (TIA), converting input current to output voltage."
+      }
+    },
+    {
+      "id": "tia-input-impedance",
+      "level": 3,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-017",
+      "image": "razavi-part2-fig14.png",
+      "imageAlt": {"zh": "電流輸入 I<sub>in</sub>（並聯 C<sub>in</sub>）驅動 M1（負載 R<sub>D1</sub>），再經 PMOS 差動對 M2/M3 驅動 R<sub>D2</sub>；R<sub>F</sub> 由 V<sub>out</sub> 接回輸入節點 P", "en": "Current input I<sub>in</sub> (with C<sub>in</sub>) drives M1 (load R<sub>D1</sub>), then PMOS pair M2/M3 drives R<sub>D2</sub>; R<sub>F</sub> runs from V<sub>out</sub> back to input node P"},
+      "prompt": {
+        "zh": "求圖中電路的輸入阻抗 R<sub>in</sub>。（A<sub>0</sub>：由 P 到 V<sub>out</sub>、未接 R<sub>F</sub> 負載時的電壓增益大小；忽略通道長度調變。）",
+        "en": "Compute the input impedance R<sub>in</sub> of the circuit in the figure. (A<sub>0</sub>: magnitude of the voltage gain from P to V<sub>out</sub> without R<sub>F</sub> loading; neglect channel-length modulation.)"
+      },
+      "options": [
+        { "id": "exact",       "text": {"zh": "R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>)，A<sub>0</sub> = ½ g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>", "en": "R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>), A<sub>0</sub> = ½ g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>"} },
+        { "id": "no-half",     "text": {"zh": "R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>)，A<sub>0</sub> = g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>", "en": "R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>), A<sub>0</sub> = g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>"} },
+        { "id": "loaded",      "text": {"zh": "R<sub>in</sub> = R<sub>F</sub>/(1 + A<sub>v</sub>)，A<sub>v</sub> = ½ g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>(R<sub>D2</sub> ∥ R<sub>F</sub>)", "en": "R<sub>in</sub> = R<sub>F</sub>/(1 + A<sub>v</sub>), A<sub>v</sub> = ½ g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>(R<sub>D2</sub> ∥ R<sub>F</sub>)"} },
+        { "id": "first-stage", "text": {"zh": "R<sub>in</sub> = R<sub>F</sub>/(1 + g<sub>m1</sub>R<sub>D1</sub>)", "en": "R<sub>in</sub> = R<sub>F</sub>/(1 + g<sub>m1</sub>R<sub>D1</sub>)"} }
+      ],
+      "answer": "exact",
+      "explanation": {
+        "zh": "把 TIA 看成：輸入節點驅動未負載增益為 −A<sub>0</sub>、輸出電阻為 R<sub>D2</sub> 的放大器，R<sub>F</sub> 接在輸入與輸出之間。對 R<sub>F</sub> 套用 Miller 定理（考慮輸出端的 R<sub>D2</sub>）得 R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>)。M1 的增益為 g<sub>m1</sub>R<sub>D1</sub>；M2/M3 差動對只有一側輸出到 R<sub>D2</sub>，增益為 ½g<sub>m2,3</sub>R<sub>D2</sub>，故 A<sub>0</sub> = ½g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>。只寫 R<sub>F</sub>/(1 + A<sub>v</sub>) 並用 R<sub>D2</sub> ∥ R<sub>F</sub> 的負載增益，漏掉了回授路徑輸出端的電阻。",
+        "en": "Model the TIA as an input node driving an amplifier of unloaded gain −A<sub>0</sub> and output resistance R<sub>D2</sub>, with R<sub>F</sub> from input to output. Miller's theorem on R<sub>F</sub>, including R<sub>D2</sub> at the output side, gives R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>). M1 gives g<sub>m1</sub>R<sub>D1</sub>; the M2/M3 pair delivers only one side to R<sub>D2</sub>, ½g<sub>m2,3</sub>R<sub>D2</sub>, so A<sub>0</sub> = ½g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>. Writing R<sub>F</sub>/(1 + A<sub>v</sub>) with a loaded gain using R<sub>D2</sub> ∥ R<sub>F</sub> misses the resistance at the output side of the feedback path."
+      }
+    },
+    {
+      "id": "lc-vco-name",
+      "level": 1,
+      "type": "fill",
+      "source": "Razavi-Bench part2-018 (derived)",
+      "image": "razavi-part2-fig15.png",
+      "imageAlt": {"zh": "LDO 供電的交叉耦合 LC 振盪器：電感 L1、交叉耦合 M1/M2、尾電流 I<sub>VCO</sub>、變容器 M<sub>v1</sub>/M<sub>v2</sub>（V<sub>cont</sub>）與電容陣列 B1/B2", "en": "Cross-coupled LC oscillator supplied by an LDO: inductors L1, cross-coupled M1/M2, tail current I<sub>VCO</sub>, varactors M<sub>v1</sub>/M<sub>v2</sub> (V<sub>cont</sub>) and capacitor banks B1/B2"},
+      "prompt": {
+        "zh": "圖中由 LDO 供電的電路（LDO 以下的部分）叫什麼？",
+        "en": "Name the circuit that the LDO supplies in the figure (everything below the LDO)."
+      },
+      "placeholder": {"zh": "輸入電路名稱", "en": "Enter the circuit name"},
+      "accept": ["LC VCO", "VCO", "voltage-controlled oscillator", "LC voltage-controlled oscillator", "LC oscillator", "cross-coupled LC oscillator", "cross-coupled VCO", "cross-coupled LC VCO", "LC-tank VCO", "LC tank oscillator", "oscillator", "negative-gm oscillator", "LC-VCO", "壓控振盪器", "LC 壓控振盪器", "LC 振盪器", "交叉耦合振盪器", "交叉耦合 LC 振盪器", "振盪器", "電壓控制振盪器", "压控振荡器", "LC 压控振荡器", "LC 振荡器", "振荡器"],
+      "explanation": {
+        "zh": "電感 L1 與變容器（M<sub>v1</sub>、M<sub>v2</sub>，由 V<sub>cont</sub> 調整）及電容陣列構成 LC 槽，交叉耦合對 M1/M2 提供負電阻：LC 壓控振盪器（LC VCO）。",
+        "en": "Inductors L1 with varactors (M<sub>v1</sub>, M<sub>v2</sub>, tuned by V<sub>cont</sub>) and capacitor banks form an LC tank, and the cross-coupled pair M1/M2 supplies negative resistance: an LC voltage-controlled oscillator (LC VCO)."
+      }
+    },
+    {
+      "id": "lc-vco-ldo-noise-phase-noise",
+      "level": 4,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-018",
+      "image": "razavi-part2-fig15.png",
+      "imageAlt": {"zh": "LDO 供電的交叉耦合 LC 振盪器：電感 L1、交叉耦合 M1/M2、尾電流 I<sub>VCO</sub>、變容器 M<sub>v1</sub>/M<sub>v2</sub>（V<sub>cont</sub>）與電容陣列 B1/B2", "en": "Cross-coupled LC oscillator supplied by an LDO: inductors L1, cross-coupled M1/M2, tail current I<sub>VCO</sub>, varactors M<sub>v1</sub>/M<sub>v2</sub> (V<sub>cont</sub>) and capacitor banks B1/B2"},
+      "prompt": {
+        "zh": "若圖中的 LDO 產生頻譜為 S<sub>th</sub> 的熱雜訊，要如何計算 VCO 輸出的相位雜訊？",
+        "en": "If the LDO regulator in the figure generates thermal noise with spectrum S<sub>th</sub>, how do we compute the VCO output phase noise?"
+      },
+      "options": [
+        { "id": "pushing",      "text": {"zh": "經由電源推移（supply pushing）：先求 K<sub>push</sub> = ∂f<sub>osc</sub>/∂V<sub>out</sub>，再做 FM→PM 轉換，L(Δf) ≈ K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)；因為 V<sub>out</sub> 直接加在變容器上，K<sub>push</sub> 與 K<sub>VCO</sub> 密切相關", "en": "Through supply pushing: find K<sub>push</sub> = ∂f<sub>osc</sub>/∂V<sub>out</sub>, then convert FM to PM: L(Δf) ≈ K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>); since V<sub>out</sub> appears directly across the varactors, K<sub>push</sub> is closely related to K<sub>VCO</sub>"} },
+        { "id": "additive",     "text": {"zh": "把 S<sub>th</sub> 視為疊加在輸出擺幅上的加性雜訊：L(Δf) ≈ S<sub>th</sub>/V<sub>amp</sub><sup>2</sup>，與 Δf 無關", "en": "Treat S<sub>th</sub> as additive noise on the output swing: L(Δf) ≈ S<sub>th</sub>/V<sub>amp</sub><sup>2</sup>, independent of Δf"} },
+        { "id": "tail-rejects", "text": {"zh": "LDO 雜訊被尾電流源 I<sub>VCO</sub> 隔離，不會轉成相位雜訊；只需考慮 V<sub>cont</sub> 上的雜訊", "en": "The tail current source I<sub>VCO</sub> isolates the LDO noise, so it does not become phase noise; only noise on V<sub>cont</sub> matters"} },
+        { "id": "amplitude",    "text": {"zh": "LDO 雜訊只調變振盪振幅（AM），由交叉耦合對的限幅消除，對相位雜訊沒有貢獻", "en": "LDO noise only modulates the oscillation amplitude (AM), which the cross-coupled pair's limiting removes, so it adds no phase noise"} }
+      ],
+      "answer": "pushing",
+      "explanation": {
+        "zh": "LDO 的輸出雜訊經由電源推移增益調變 VCO 頻率。先（通常以模擬）求 K<sub>push</sub> = df<sub>osc</sub>/dV<sub>out</sub>，把 S<sub>th</sub> 轉為頻率雜訊，再做 FM→PM 轉換，得到 1/Δf<sup>2</sup> 的相位雜訊：L(Δf) ≈ 10 log[K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)]。此電路中電源擾動直接出現在變容器上，所以 K<sub>push</sub> 與 K<sub>VCO</sub> 密切相關；降低 K<sub>VCO</sub> 也能降低這項轉換。",
+        "en": "The LDO noise modulates the VCO frequency through supply pushing. Find K<sub>push</sub> = df<sub>osc</sub>/dV<sub>out</sub> (usually by simulation), convert S<sub>th</sub> into frequency noise, then FM-to-PM gives a 1/Δf<sup>2</sup> phase noise: L(Δf) ≈ 10 log[K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)]. Here the supply perturbation appears directly on the varactors, so K<sub>push</sub> is closely related to K<sub>VCO</sub>; a lower K<sub>VCO</sub> also reduces this conversion."
+      }
+    },
+    {
+      "id": "lc-osc-tail-cap-phase-noise",
+      "level": 5,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-019",
+      "image": "razavi-part2-fig16.png",
+      "imageAlt": {"zh": "交叉耦合 LC 振盪器，尾電流 I<sub>SS</sub>，尾節點 P 接一顆對地電容 C<sub>T</sub>", "en": "Cross-coupled LC oscillator with tail current I<sub>SS</sub> and a capacitor C<sub>T</sub> from tail node P to ground"},
+      "prompt": {
+        "zh": "如圖，在尾節點加上 C<sub>T</sub>。相位雜訊會如何變化？",
+        "en": "We add C<sub>T</sub> to the tail node, as in the figure. What happens to the phase noise?"
+      },
+      "options": [
+        { "id": "nonmonotonic", "text": {"zh": "非單調：在某個 C<sub>T</sub> 範圍內，交叉耦合對進入類 C 類切換，送入槽路的峰值電流大於 I<sub>SS</sub>，相位雜訊降低；但 C<sub>T</sub> 小時 M1/M2 的閃爍雜訊可能被上轉換，大電流可能把 M1/M2 推入三極管區，C<sub>T</sub> 太大則可能低頻不穩定。C<sub>T</sub> 是需要最佳化的變數", "en": "Non-monotonic: over some range of C<sub>T</sub> the pair switches in a class-C-like mode, delivering peak tank currents larger than I<sub>SS</sub> and lowering the phase noise; but small C<sub>T</sub> can upconvert the flicker noise of M1/M2, the large currents can push M1/M2 into triode, and too large a C<sub>T</sub> can cause low-frequency instability. C<sub>T</sub> is a variable to optimize"} },
+        { "id": "filters",      "text": {"zh": "大致會降低：C<sub>T</sub> 把 I<sub>SS</sub> 在 2ω<sub>0</sub> 的雜訊旁路到地，並抑制尾節點漣波，避免電晶體進入三極管區", "en": "Generally lowers it: C<sub>T</sub> shunts the I<sub>SS</sub> noise at 2ω<sub>0</sub> to ground and suppresses the tail-node ripple that could push the transistors into triode"} },
+        { "id": "degrades-q",   "text": {"zh": "單調變差：C<sub>T</sub> 加到槽路上，降低了槽路 Q 值", "en": "Degrades monotonically: C<sub>T</sub> adds to the tank and lowers its Q"} },
+        { "id": "no-effect",    "text": {"zh": "沒有影響：對差動訊號而言 P 是虛接地，C<sub>T</sub> 不起作用", "en": "No effect: P is a virtual ground for the differential signal, so C<sub>T</sub> does nothing"} }
+      ],
+      "answer": "nonmonotonic",
+      "explanation": {
+        "zh": "加 C<sub>T</sub> 對相位雜訊的影響是非單調的。C<sub>T</sub> 小到中等時，尾節點波形改變，若元件不符合理想平方律，M1、M2 的閃爍雜訊可能上轉換成相位雜訊；在某個範圍內，交叉耦合對進入類 C 類切換，峰值槽路電流大於 I<sub>SS</sub>，可降低相位雜訊，但大電流也可能使 M1/M2 進入三極管區；C<sub>T</sub> 過大則可能出現低頻不穩定。Razavi 對「C<sub>T</sub> 濾除尾雜訊、大致降低相位雜訊」的單調結論給 1 分。",
+        "en": "Adding C<sub>T</sub> has a non-monotonic effect. For small or moderate C<sub>T</sub> the tail waveform changes and the flicker noise of M1 and M2 can be upconverted unless the devices are ideally square-law; over a certain range the pair enters class-C-like switching with peak tank currents larger than I<sub>SS</sub>, which can lower phase noise, though the large currents can push M1/M2 into triode; too large a C<sub>T</sub> can cause low-frequency instability. Razavi scores the monotonic \"C<sub>T</sub> filters tail noise and lowers phase noise\" answer 1."
+      }
+    },
+    {
+      "id": "qvco-name",
+      "level": 3,
+      "type": "fill",
+      "source": "Razavi-Bench part2-020 (derived)",
+      "image": "razavi-part2-fig17.png",
+      "imageAlt": {"zh": "兩個交叉耦合 LC 振盪器（X1/Y1 與 X2/Y2），各以電流 I<sub>1</sub> 的耦合對互相耦合", "en": "Two cross-coupled LC oscillators (X1/Y1 and X2/Y2) coupled to each other through pairs biased by I<sub>1</sub>"},
+      "prompt": {
+        "zh": "圖中的電路叫什麼？",
+        "en": "Name this circuit."
+      },
+      "placeholder": {"zh": "輸入電路名稱", "en": "Enter the circuit name"},
+      "accept": ["quadrature oscillator", "QVCO", "quadrature VCO", "quadrature LC oscillator", "quadrature LC VCO", "coupled oscillator", "coupled oscillators", "coupled LC oscillator", "coupled LC oscillators", "quadrature voltage-controlled oscillator", "QOSC", "I/Q oscillator", "IQ oscillator", "正交振盪器", "正交壓控振盪器", "耦合振盪器", "正交 LC 振盪器", "耦合 LC 振盪器", "正交振荡器", "正交压控振荡器", "耦合振荡器"],
+      "explanation": {
+        "zh": "兩個交叉耦合 LC 振盪器，由 I<sub>1</sub> 偏壓的耦合對互相注入（其中一路交叉反相）：正交振盪器（QVCO，耦合振盪器），兩者輸出相差 90°。",
+        "en": "Two cross-coupled LC oscillators injecting into each other through coupling pairs biased by I<sub>1</sub> (one path crossed): a quadrature oscillator (QVCO, coupled oscillators) whose two outputs are 90° apart."
+      }
+    },
+    {
+      "id": "qvco-oscillation-frequency",
+      "level": 5,
+      "type": "single",
+      "shuffle": true,
+      "source": "Razavi-Bench part2-020",
+      "image": "razavi-part2-fig17.png",
+      "imageAlt": {"zh": "兩個交叉耦合 LC 振盪器（X1/Y1 與 X2/Y2），各以電流 I<sub>1</sub> 的耦合對互相耦合", "en": "Two cross-coupled LC oscillators (X1/Y1 and X2/Y2) coupled to each other through pairs biased by I<sub>1</sub>"},
+      "prompt": {
+        "zh": "估計圖中電路的振盪頻率。（L：槽路電感；C<sub>node</sub>：每個節點的電容；Q：槽路品質因數；R<sub>p</sub>：槽路等效並聯電阻；g<sub>m1</sub>、g<sub>mc</sub>：交叉耦合對與耦合對的轉導。）",
+        "en": "Estimate the oscillation frequency of the circuit in the figure. (L: tank inductance; C<sub>node</sub>: capacitance at each node; Q: tank quality factor; R<sub>p</sub>: tank equivalent parallel resistance; g<sub>m1</sub>, g<sub>mc</sub>: transconductances of the cross-coupled and coupling pairs.)"
+      },
+      "options": [
+        { "id": "alpha-over-2q", "text": {"zh": "ω<sub>osc</sub> ≈ ω<sub>0</sub> ± αω<sub>0</sub>/(2Q)，ω<sub>0</sub> = 1/√(LC<sub>node</sub>)，耦合係數 α ≈ I<sub>1</sub>/I<sub>SS</sub>（小訊號下 α ≈ g<sub>mc</sub>/g<sub>m1</sub>）", "en": "ω<sub>osc</sub> ≈ ω<sub>0</sub> ± αω<sub>0</sub>/(2Q), with ω<sub>0</sub> = 1/√(LC<sub>node</sub>) and coupling factor α ≈ I<sub>1</sub>/I<sub>SS</sub> (α ≈ g<sub>mc</sub>/g<sub>m1</sub> in small-signal terms)"} },
+        { "id": "gmc-over-2c",   "text": {"zh": "ω<sub>osc</sub> ≈ ω<sub>0</sub> ± g<sub>mc</sub>/(2C<sub>node</sub>)，ω<sub>0</sub> = 1/√(LC<sub>node</sub>)", "en": "ω<sub>osc</sub> ≈ ω<sub>0</sub> ± g<sub>mc</sub>/(2C<sub>node</sub>), with ω<sub>0</sub> = 1/√(LC<sub>node</sub>)"} },
+        { "id": "omega0",        "text": {"zh": "ω<sub>osc</sub> = ω<sub>0</sub> = 1/√(LC<sub>node</sub>)：耦合只決定兩個振盪器之間的相位，不改變頻率", "en": "ω<sub>osc</sub> = ω<sub>0</sub> = 1/√(LC<sub>node</sub>): the coupling only sets the phase between the two oscillators, not the frequency"} },
+        { "id": "full-ratio",    "text": {"zh": "ω<sub>osc</sub> ≈ ω<sub>0</sub>(1 ± I<sub>1</sub>/I<sub>SS</sub>)，ω<sub>0</sub> = 1/√(LC<sub>node</sub>)", "en": "ω<sub>osc</sub> ≈ ω<sub>0</sub>(1 ± I<sub>1</sub>/I<sub>SS</sub>), with ω<sub>0</sub> = 1/√(LC<sub>node</sub>)"} }
+      ],
+      "answer": "alpha-over-2q",
+      "explanation": {
+        "zh": "從槽路諧振 ω<sub>0</sub> = 1/√(LC<sub>node</sub>) 出發，耦合使振盪頻率偏離諧振點 Δω = αω<sub>0</sub>/(2Q)。大訊號、幾乎完全切換時 α ≈ I<sub>1</sub>/I<sub>SS</sub>；小訊號估計 α ≈ g<sub>mc</sub>/g<sub>m1</sub>，即 Δω ≈ (g<sub>mc</sub>/g<sub>m1</sub>)/(2C<sub>node</sub>R<sub>p</sub>)。電路可停在 ω<sub>0</sub> 之上或之下兩個正交模態之一。只寫 g<sub>mc</sub>/(2C<sub>node</sub>) 等於假設 g<sub>m1</sub>R<sub>p</sub> = 1（剛好在起振邊緣），Razavi 給 1 分。",
+        "en": "Start from the tank resonance ω<sub>0</sub> = 1/√(LC<sub>node</sub>); the coupling shifts the frequency by Δω = αω<sub>0</sub>/(2Q). With nearly complete switching α ≈ I<sub>1</sub>/I<sub>SS</sub>; in small-signal terms α ≈ g<sub>mc</sub>/g<sub>m1</sub>, i.e. Δω ≈ (g<sub>mc</sub>/g<sub>m1</sub>)/(2C<sub>node</sub>R<sub>p</sub>). The circuit can settle in either quadrature mode, above or below ω<sub>0</sub>. Writing only g<sub>mc</sub>/(2C<sub>node</sub>) assumes g<sub>m1</sub>R<sub>p</sub> = 1 (the edge of oscillation); Razavi scores that 1."
+      }
     }
   ]
 }
