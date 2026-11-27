@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Human Razavi Test</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317181c'/%3E%3Cpath d='M9 8v16l14-8z' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 4v16l14-8z"/><path d="M2 9h3M2 15h3M19 12h3" stroke-linecap="round"/></svg>
+      Human Razavi
+    </a>
+    <nav>
+      <a href="index.html" data-i18n="nav.home" class="hide-sm"></a>
+      <a href="https://razavi-bench.tokenzhang.com/" target="_blank" rel="noopener" data-i18n="nav.bench"></a>
+      <button class="lang" type="button" data-lang-toggle data-i18n="lang.switch"></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap narrow view" id="vLoading"><p class="muted">…</p></div>
+  <div class="wrap narrow view" id="vError" hidden><div class="err" id="errMsg"></div></div>
+  <div class="wrap narrow view" id="vStart" hidden></div>
+  <div class="wrap narrow view" id="vQuiz" hidden></div>
+  <div class="wrap view" id="vResult" hidden></div>
+</main>
+
+<script src="js/i18n.js"></script>
+<script src="js/test.js"></script>
+</body>
+</html>
