@@ -2,6 +2,7 @@
 
 A human version of [Razavi-Bench](https://razavi-bench.tokenzhang.com/): people answer the analog-circuit questions one at a time, and the result page shows which AI model their accuracy, time and cost are closest to.
 
+
 Static site with no build step and no dependencies.
 
 ```
