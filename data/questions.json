@@ -236,7 +236,7 @@
   },
   {
    "id": "razavi-5-2",
-   "level": 2,
+   "level": 1,
    "type": "single",
    "source": "Razavi-Bench part1-005 · 2/2",
    "image": "razavi-part1-fig02.png",
@@ -605,10 +605,10 @@
      }
     },
     {
-     "id": "sb",
+     "id": "rout-series",
      "text": {
-      "zh": "計入基體效應（忽略 r<sub>o</sub>）時，g<sub>m</sub>R<sub>S</sub> → ∞ 增益仍趨近 1",
-      "en": "With body effect (r<sub>o</sub> neglected), the gain still approaches 1 as g<sub>m</sub>R<sub>S</sub> → ∞"
+      "zh": "從輸出看進去的電阻約為 R<sub>S</sub> + 1/g<sub>m</sub>",
+      "en": "The resistance looking into the output is about R<sub>S</sub> + 1/g<sub>m</sub>"
      }
     },
     {
@@ -1288,17 +1288,18 @@
      }
     },
     {
-     "id": "se",
+     "id": "with-ro",
      "text": {
-      "zh": "以平方律表示，A<sub>v</sub> ≈ −√(μ<sub>p</sub>(W/L)<sub>2</sub> / (μ<sub>n</sub>(W/L)<sub>1</sub>))",
-      "en": "In square-law terms, A<sub>v</sub> ≈ −√(μ<sub>p</sub>(W/L)<sub>2</sub> / (μ<sub>n</sub>(W/L)<sub>1</sub>))"
+      "zh": "兩顆都計入通道長度調變時，A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)",
+      "en": "Including channel-length modulation in both, A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     }
    ],
    "answer": [
     "sa",
     "sb",
-    "sc"
+    "sc",
+    "with-ro"
    ],
    "explanation": {
     "zh": "NMOS 共源級加二極體接法的 PMOS 負載：M<sub>1</sub> 為輸入管（閘極 V<sub>in</sub>、源極接地），M<sub>2</sub> 為 PMOS，源極接 V<sub>DD</sub>、閘極與汲極接在 V<sub>out</sub>。輸出在 M<sub>1</sub> 汲極，為反相。忽略通道長度調變時 A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>；兩顆都計入時 A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)。Razavi 對只計入 M<sub>2</sub> 的 r<sub>o</sub>（A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)）的 ChatGPT 給 3/4。",
@@ -1409,7 +1410,7 @@
   },
   {
    "id": "razavi-18-2",
-   "level": 3,
+   "level": 2,
    "type": "single",
    "source": "Razavi-Bench part1-018 · 2/2",
    "image": "razavi-part1-fig14a.png",
@@ -3237,28 +3238,28 @@
      }
     },
     {
-     "id": "min-freq",
+     "id": "alternate",
      "text": {
-      "en": "Leakage sets a minimum clock frequency, below which the stored states decay before they are used",
-      "zh": "漏電會形成最低時脈頻率限制，低於此頻率時儲存的狀態會在使用前衰減"
+      "zh": "CK 與 CK̄ 開關輪流導通，兩個閂鎖器交替取樣與保持",
+      "en": "The CK and CK̄ switches conduct alternately, so the two latches take turns sampling and holding"
      }
     },
     {
-     "id": "max-leak",
+     "id": "every-edge",
      "text": {
-      "en": "Leakage limits the maximum clock frequency, which is why dynamic dividers are slower than static ones",
-      "zh": "漏電限制了最高時脈頻率，所以動態除頻器比靜態除頻器慢"
+      "zh": "輸出在每個時脈邊緣都改變狀態，所以輸出頻率等於時脈頻率",
+      "en": "The output changes state on every clock edge, so its frequency equals the clock frequency"
      }
     }
    ],
    "answer": [
     "div2",
     "hold-charge",
-    "min-freq"
+    "alternate"
    ],
    "explanation": {
-    "zh": "這是以動態閂鎖器構成的除二電路（動態主從式除頻器）：CK 與 CK̄ 開關輪流導通，兩個閂鎖器交替取樣與保持，輸出每兩個時脈週期完成一個週期。保持期間狀態只存在節點電容上，漏電會使它衰減，因此有最低時脈頻率；時脈停止時迴路被開關切斷，不會自行振盪。動態除頻器通常比靜態的快，漏電限制的是最低而非最高頻率。",
-    "en": "It is a divide-by-two built from dynamic latches (a dynamic master-slave divider): the CK and CK̄ switches conduct alternately, so the two latches take turns sampling and holding, and the output completes one cycle every two clock periods. While holding, the state exists only as charge on a node capacitance and leakage erodes it, which sets a minimum clock frequency; with the clock stopped the switches break the loop, so it does not oscillate by itself. Dynamic dividers are usually faster than static ones; leakage limits the minimum, not the maximum, frequency."
+    "zh": "這是以動態閂鎖器構成的除二電路（動態主從式除頻器）：CK 與 CK̄ 開關輪流導通，兩個閂鎖器交替取樣與保持，保持期間狀態只存在節點電容上。輸出每個時脈週期只改變一次狀態，每兩個時脈週期完成一個週期，頻率為時脈的一半。時脈停止時迴路被開關切斷，不會自行振盪。",
+    "en": "It is a divide-by-two built from dynamic latches (a dynamic master-slave divider): the CK and CK̄ switches conduct alternately, so the two latches take turns sampling and holding, and while holding the state exists only as charge on a node capacitance. The output changes state once per clock period and completes one cycle every two clock periods, so its frequency is half the clock frequency. With the clock stopped the switches break the loop, so it does not oscillate by itself."
    }
   },
   {
@@ -3481,57 +3482,13 @@
   },
   {
    "id": "razavi-48-1",
-   "level": 1,
-   "type": "fill",
-   "source": "Razavi-Bench part2-018 · 1/2",
-   "image": "razavi-part2-fig15.png",
-   "prompt": {
-    "zh": "圖中由 LDO 供電的電路（LDO 以下的部分）叫什麼？",
-    "en": "Name the circuit that the LDO supplies in the figure (everything below the LDO)."
-   },
-   "placeholder": {
-    "zh": "輸入電路名稱",
-    "en": "Enter the circuit name"
-   },
-   "accept": [
-    "LC VCO",
-    "VCO",
-    "voltage-controlled oscillator",
-    "LC voltage-controlled oscillator",
-    "LC oscillator",
-    "cross-coupled LC oscillator",
-    "cross-coupled VCO",
-    "cross-coupled LC VCO",
-    "LC-tank VCO",
-    "LC tank oscillator",
-    "oscillator",
-    "negative-gm oscillator",
-    "壓控振盪器",
-    "LC 壓控振盪器",
-    "LC 振盪器",
-    "交叉耦合振盪器",
-    "交叉耦合 LC 振盪器",
-    "振盪器",
-    "電壓控制振盪器",
-    "压控振荡器",
-    "LC 压控振荡器",
-    "LC 振荡器",
-    "振荡器"
-   ],
-   "explanation": {
-    "zh": "電感 L1 與變容器（M<sub>v1</sub>、M<sub>v2</sub>，由 V<sub>cont</sub> 調整）及電容陣列構成 LC 槽，交叉耦合對 M1/M2 提供負電阻：LC 壓控振盪器（LC VCO）。",
-    "en": "Inductors L1 with varactors (M<sub>v1</sub>, M<sub>v2</sub>, tuned by V<sub>cont</sub>) and capacitor banks form an LC tank, and the cross-coupled pair M1/M2 supplies negative resistance: an LC voltage-controlled oscillator (LC VCO)."
-   }
-  },
-  {
-   "id": "razavi-48-2",
    "level": 5,
    "type": "single",
-   "source": "Razavi-Bench part2-018 · 2/2",
+   "source": "Razavi-Bench part2-018",
    "image": "razavi-part2-fig15.png",
    "prompt": {
-    "zh": "若圖中的 LDO 產生頻譜為 S<sub>th</sub> 的熱雜訊，要如何計算 電路輸出的相位雜訊？",
-    "en": "If the LDO regulator in the figure generates thermal noise with spectrum S<sub>th</sub>, how do we compute the output phase noise?"
+    "zh": "若圖中的 LDO 產生頻譜為 S<sub>th</sub> 的熱雜訊，要如何計算 VCO 輸出的相位雜訊？",
+    "en": "If the LDO regulator in the figure generates thermal noise with spectrum S<sub>th</sub>, how do we compute the VCO output phase noise?"
    },
    "options": [
     {
