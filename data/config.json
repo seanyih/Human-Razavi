@@ -2,7 +2,7 @@
   "hourlyWageTWD": 220,
   "twdPerUSD": 32,
   "levels": [1, 2, 3, 4, 5],
-  "quickMode": { "perLevelMin": 2, "perLevelMax": 15, "perLevelDefault": 5 },
+  "quickMode": { "perLevelMin": 2, "perLevelMax": 14, "perLevelDefault": 5 },
   "benchUrl": "https://razavi-bench.tokenzhang.com/",
   "questionsFile": "data/questions.json",
   "modelsFile": "data/models.json"

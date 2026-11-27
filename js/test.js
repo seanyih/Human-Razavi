@@ -304,9 +304,10 @@
     const poolSec = used.reduce((s, b) => s + (b.avgSec != null ? b.avgSec : fallbackSec) * b.pool, 0);
     const actualSec = recs.reduce((s, r) => s + r.ms, 0) / 1000;
     const scaled = byLevel.some(b => b.asked !== b.pool);
-    // Scale the user's result up to the benchmark's paper (models stay as published).
-    const N = S.models.questionCount || W;   // questions the comparison covers
-    const estSec = poolSec * (N / W);
+    // Models stay as published (the 50 benchmark items were rephrased into the 70 gradable pool questions,
+    // so the same paper). The user's quick-mode sample is scaled up to the whole pool.
+    const N = W;
+    const estSec = poolSec;
     const twd = estSec / 3600 * cfg.hourlyWageTWD;
     const usd = twd / cfg.twdPerUSD;
     const models = S.models.models.filter(m => m.costUSD != null).map(m => Object.assign({}, m, { cost: m.costUSD, time: m.timeSec }));
@@ -418,7 +419,7 @@
       <div class="block">
         <h2>${t('res.levels')}</h2>
         <div class="tblwrap"><table class="lv"><thead><tr><th>${t('res.col.level')}</th><th>${t('res.col.pool')}</th><th>${t('res.col.asked')}</th><th>${t('res.col.correct')}</th><th>${t('res.col.acc')}</th><th>${t('res.col.avg')}</th></tr></thead><tbody>${lvRows}</tbody></table></div>
-        <p class="note">${R.scaled ? t('res.noteQuick') : t('res.noteFull')} ${t('res.noteModels', { nm: S.models.questionCount })}</p>
+        <p class="note">${R.scaled ? t('res.noteQuick') : t('res.noteFull')} ${t('res.noteModels', { nm: S.models.questionCount, n: S.pool.length })}</p>
       </div>
 
       <div class="block">
