@@ -56,7 +56,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 Option letters (A, B, C…) are generated; refer to options by `id`.
 
 ### Multiple choice
-Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Only an exact match counts as correct.
+Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Partial credit: with n correct options, each correct pick earns 1/n and each wrong pick loses 1/n, with a floor of 0 per question.
 
 ### Fill-in
 ```jsonc
@@ -78,7 +78,7 @@ Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Only an ex
   - the closest model by cost (log distance), with its accuracy;
   - an accuracy-vs-cost scatter and the share of models the user beats.
   The scatter puts all models on one plot.
-- A question counts as correct only on an exact match. On the model side, `accuracy` uses the matching definition: the share of answers that got full credit (4/4).
+- Single choice and fill-in are all-or-nothing. Multi choice gets partial credit (see above), so accuracy is total points ÷ questions. On the model side, `accuracy` is the share of answers that got full credit (4/4).
 
 ## Model data (`data/models.json`)
 

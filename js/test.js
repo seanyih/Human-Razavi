@@ -39,6 +39,7 @@
   const fmtUSD = v => v == null ? '—' : '$' + (v >= 100 ? Math.round(v).toLocaleString('en-US') : v >= 1 ? v.toFixed(2) : v >= 0.01 ? v.toFixed(3) : v.toPrecision(2));
   const fmtTWD = v => 'NT$ ' + (v >= 100 ? Math.round(v).toLocaleString('en-US') : v.toFixed(1));
   const fmtPct = v => { const r = Math.round(v * 10) / 10; return (Number.isInteger(r) ? r : r.toFixed(1)) + '%'; };
+  const fmtScore = v => String(Math.round(v * 100) / 100);
   const fmtX = r => r >= 100 ? Math.round(r).toLocaleString('en-US') : r >= 10 ? String(Math.round(r)) : r.toFixed(1);
 
   function imgSrc(src) { return /^(https?:|\/|data:|img\/)/.test(src) ? src : 'img/' + src; }
@@ -66,13 +67,20 @@
     if (!m) return null;
     return parseFloat(m[1]) * (m[2] ? SI[m[2]] : 1);
   }
+  // Returns a score in [0, 1]. Single choice and fill-in are all-or-nothing.
+  // Multi choice: n = number of correct options; each correct pick +1/n, each wrong pick −1/n, floored at 0.
   function grade(q, resp) {
-    if (resp == null) return false;
-    if (q.type === 'single') return resp === q.answer;
+    if (resp == null) return 0;
     if (q.type === 'multi') {
       const want = new Set(q.answer || []);
-      return resp.length === want.size && resp.every(x => want.has(x));
+      if (!want.size) return 0;
+      const hit = resp.filter(x => want.has(x)).length, miss = resp.length - hit;
+      return Math.max(0, (hit - miss) / want.size);
     }
+    return gradeExact(q, resp) ? 1 : 0;
+  }
+  function gradeExact(q, resp) {
+    if (q.type === 'single') return resp === q.answer;
     if (q.type === 'fill') {
       if (!String(resp).trim()) return false;
       if (q.numeric && typeof q.numeric.value === 'number') {
@@ -276,7 +284,8 @@
   function submit(skipped) {
     const it = S.items[S.i];
     const resp = skipped ? null : (Array.isArray(S.draft) ? S.draft.slice() : S.draft);
-    S.records.push({ item: it, resp, skipped, correct: !skipped && grade(it.q, resp), ms: qElapsed() });
+    const score = skipped ? 0 : grade(it.q, resp);
+    S.records.push({ item: it, resp, skipped, score, correct: score >= 1, ms: qElapsed() });
     S.i++;
     if (S.i >= S.items.length) finish(); else startQuestion();
   }
@@ -287,7 +296,7 @@
     const byLevel = cfg.levels.map(l => {
       const rs = recs.filter(r => r.item.q.level === l);
       const ms = rs.reduce((s, r) => s + r.ms, 0);
-      return { level: l, pool: counts[l], asked: rs.length, correct: rs.filter(r => r.correct).length, avgSec: rs.length ? ms / rs.length / 1000 : null };
+      return { level: l, pool: counts[l], asked: rs.length, correct: rs.reduce((s, r) => s + r.score, 0), avgSec: rs.length ? ms / rs.length / 1000 : null };
     });
     // Linear scaling: each level's accuracy and avg time are weighted by that level's size in the pool.
     const used = byLevel.filter(b => b.asked > 0 && b.pool > 0);
@@ -307,7 +316,7 @@
     const byCost = models.slice().sort((a, b) => Math.abs(lc(a.cost) - lc(usd)) - Math.abs(lc(b.cost) - lc(usd)))[0];
     const beaten = models.filter(m => m.accuracy < acc).length;
     return { byLevel, acc, estSec, actualSec, scaled, twd, usd, N, models, byAcc, byCost, beaten,
-      correct: recs.filter(r => r.correct).length, asked: recs.length };
+      correct: recs.reduce((s, r) => s + r.score, 0), asked: recs.length };
   }
 
   function finish() {
@@ -360,7 +369,7 @@
     const R = S.result, cfg = S.cfg;
     const open = new Set([...document.querySelectorAll('.rv[open]')].map(d => d.dataset.k));
     const top = R.byAcc;
-    const lvRows = R.byLevel.map(b => `<tr><td>${b.level} · ${t('level.' + b.level)}</td><td>${b.pool}</td><td>${b.asked}</td><td>${b.correct}</td>
+    const lvRows = R.byLevel.map(b => `<tr><td>${b.level} · ${t('level.' + b.level)}</td><td>${b.pool}</td><td>${b.asked}</td><td>${fmtScore(b.correct)}</td>
       <td>${b.asked ? fmtPct(100 * b.correct / b.asked) : '—'}</td><td>${b.avgSec != null ? fmtDur(b.avgSec) : '—'}</td></tr>`).join('');
     const review = S.records.map((r, k) => {
       const q = r.item.q;
@@ -368,12 +377,12 @@
       return `<details class="rv" data-k="${k}" ${open.has(String(k)) ? 'open' : ''}>
         <summary><span class="no">Q${k + 1}</span><span class="sm">${esc(stripTags(L(q.prompt)))}</span>
           <span class="tm">${fmtDur(r.ms / 1000)}</span>
-          <span class="mark ${r.correct ? 'ok' : 'no'}">${r.correct ? '✓ ' + t('res.correct') : '✗ ' + t('res.wrong')}</span></summary>
+          <span class="mark ${r.score >= 1 ? 'ok' : r.score > 0 ? 'part' : 'no'}">${r.score >= 1 ? '✓ ' + t('res.correct') : r.score > 0 ? '◐ ' + t('res.partial', { s: fmtScore(r.score) }) : '✗ ' + t('res.wrong')}</span></summary>
         <div class="body">
           <div class="qtext">${L(q.prompt)}</div>
           ${figures(q)}
           <dl class="ans">
-            <dt>${t('res.yourAns')}</dt><dd class="${r.correct ? 'good' : 'bad'}">${answerText(r.item, r.resp)}</dd>
+            <dt>${t('res.yourAns')}</dt><dd class="${r.score >= 1 ? 'good' : r.score > 0 ? '' : 'bad'}">${answerText(r.item, r.resp)}</dd>
             <dt>${t('res.rightAns')}</dt><dd>${rightText(r.item)}</dd>
             ${also}
             <dt>${t('level')}</dt><dd>${q.level} · ${t('level.' + q.level)} · ${t('type.' + q.type)}${q.source ? ` · <span class="muted">${esc(q.source)}</span>` : ''}</dd>
@@ -389,7 +398,7 @@
         <p>${top ? t('res.closestSub', { you: fmtPct(R.acc), model: fmtPct(top.accuracy) }) : ''}</p>
       </div>
       <div class="stats">
-        <div class="stat"><div class="lbl">${t('res.acc')}${R.scaled ? ' · ' + t('res.est') : ''}</div><div class="val">${fmtPct(R.acc)}</div><div class="sub">${t('res.answered', { c: R.correct, n: R.asked })}</div></div>
+        <div class="stat"><div class="lbl">${t('res.acc')}${R.scaled ? ' · ' + t('res.est') : ''}</div><div class="val">${fmtPct(R.acc)}</div><div class="sub">${t('res.answered', { c: fmtScore(R.correct), n: R.asked })}</div></div>
         <div class="stat"><div class="lbl">${t('res.time')}${R.scaled ? ' · ' + t('res.est') : ''}</div><div class="val">${fmtDur(R.estSec)}</div><div class="sub">${R.scaled ? t('res.actual', { v: fmtDur(R.actualSec) }) : '&nbsp;'}</div></div>
         <div class="stat"><div class="lbl">${t('res.cost')} · NT$ ${cfg.hourlyWageTWD}/h</div><div class="val">${fmtTWD(R.twd)}</div><div class="sub">≈ US${fmtUSD(R.usd)}</div></div>
       </div>
