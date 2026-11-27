@@ -1,10 +1,10 @@
 {
  "source": "Razavi-Bench direct QA (https://razavi-bench.tokenzhang.com/), generated 2026-11-10T18:56:28.723065+00:00",
- "builtAt": "2026-11-27T03:50:48+00:00",
+ "builtAt": "2026-11-27T04:05:40+00:00",
  "questionCount": 50,
  "accuracyDefinition": "percent of answers graded 4/4 (full credit), averaged over rollouts",
  "costDefinition": "USD per single pass over all questions, OpenRouter list prices",
- "timeDefinition": "ESTIMATE: output tokens per pass / 60 tokens per second",
+ "timeDefinition": "ESTIMATE: output tokens per pass / output speed (tok/s) + per-request latency; speed measured by Artificial Analysis where available, else a web figure or a sibling model",
  "timeEstimated": true,
  "models": [
   {
@@ -14,7 +14,10 @@
    "accuracy": 96.0,
    "score": 98.33,
    "costUSD": 9.319,
-   "timeSec": 15357,
+   "timeSec": 18426,
+   "tps": 51.4,
+   "speedBasis": "measured",
+   "speedNote": "AA Gemini 4 Carbon (High), 2026-11-27",
    "outputTokens": 921411
   },
   {
@@ -24,7 +27,10 @@
    "accuracy": 95.33,
    "score": 97.67,
    "costUSD": 22.7555,
-   "timeSec": 18636,
+   "timeSec": 9817,
+   "tps": 117.2,
+   "speedBasis": "measured",
+   "speedNote": "AA Claude Opus 5.5 (Max, Default Fallback), 2026-11-27",
    "outputTokens": 1118187
   },
   {
@@ -34,7 +40,10 @@
    "accuracy": 93.33,
    "score": 95.83,
    "costUSD": 16.9507,
-   "timeSec": 6736,
+   "timeSec": 3998,
+   "tps": 113.1,
+   "speedBasis": "measured",
+   "speedNote": "AA Claude Fable 5.2 (Max, Default Fallback), 2026-11-27",
    "outputTokens": 404178
   },
   {
@@ -44,7 +53,10 @@
    "accuracy": 88.67,
    "score": 94.83,
    "costUSD": 2.7303,
-   "timeSec": 4368,
+   "timeSec": 3803,
+   "tps": 78.6,
+   "speedBasis": "measured",
+   "speedNote": "AA Gemini 4 Argon (High), 2026-11-27",
    "outputTokens": 262063
   },
   {
@@ -54,7 +66,10 @@
    "accuracy": 88.0,
    "score": 94.0,
    "costUSD": 9.328,
-   "timeSec": 5892,
+   "timeSec": 3293,
+   "tps": 117.2,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Claude Opus 5.5 (Max, Default Fallback)",
    "outputTokens": 353550
   },
   {
@@ -64,7 +79,10 @@
    "accuracy": 87.33,
    "score": 93.67,
    "costUSD": 30.8962,
-   "timeSec": 9972,
+   "timeSec": 5715,
+   "tps": 113.1,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Claude Fable 5.2 (Max, Default Fallback)",
    "outputTokens": 598335
   },
   {
@@ -74,7 +92,10 @@
    "accuracy": 84.67,
    "score": 94.67,
    "costUSD": 14.3714,
-   "timeSec": 4665,
+   "timeSec": 6737,
+   "tps": 42.5,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA GPT-6.2 Astra (Max)",
    "outputTokens": 279884
   },
   {
@@ -84,7 +105,10 @@
    "accuracy": 84.0,
    "score": 90.5,
    "costUSD": 26.4423,
-   "timeSec": 8488,
+   "timeSec": 4927,
+   "tps": 113.1,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Claude Fable 5.2 (Max, Default Fallback)",
    "outputTokens": 509275
   },
   {
@@ -94,7 +118,10 @@
    "accuracy": 82.67,
    "score": 92.83,
    "costUSD": 2.7804,
-   "timeSec": 4458,
+   "timeSec": 4567,
+   "tps": 59.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA GPT-6.2 Sol (Max)",
    "outputTokens": 267484
   },
   {
@@ -104,7 +131,10 @@
    "accuracy": 82.0,
    "score": 90.33,
    "costUSD": 1.5906,
-   "timeSec": 21024,
+   "timeSec": 13004,
+   "tps": 98.1,
+   "speedBasis": "measured",
+   "speedNote": "AA Tencent Hy4, 2026-11-27",
    "outputTokens": 1261464
   },
   {
@@ -114,7 +144,10 @@
    "accuracy": 80.0,
    "score": 88.5,
    "costUSD": 0.9085,
-   "timeSec": 3869,
+   "timeSec": 2084,
+   "tps": 117.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: Gemini 3.6 Flash",
    "outputTokens": 232112
   },
   {
@@ -124,7 +157,10 @@
    "accuracy": 80.0,
    "score": 87.83,
    "costUSD": 13.1576,
-   "timeSec": 10681,
+   "timeSec": 8066,
+   "tps": 84.7,
+   "speedBasis": "measured",
+   "speedNote": "AA Muse Wonder (Max), 2026-11-27",
    "outputTokens": 640845
   },
   {
@@ -134,7 +170,10 @@
    "accuracy": 78.67,
    "score": 89.67,
    "costUSD": 11.5309,
-   "timeSec": 9476,
+   "timeSec": 9593,
+   "tps": 59.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA GPT-6.2 Sol (Max)",
    "outputTokens": 568568
   },
   {
@@ -144,7 +183,10 @@
    "accuracy": 78.0,
    "score": 88.67,
    "costUSD": 2.4273,
-   "timeSec": 9630,
+   "timeSec": 5038,
+   "tps": 117.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: Gemini 3.6 Flash",
    "outputTokens": 577797
   },
   {
@@ -154,7 +196,10 @@
    "accuracy": 76.0,
    "score": 86.67,
    "costUSD": 11.5294,
-   "timeSec": 15908,
+   "timeSec": 15230,
+   "tps": 63.2,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA GPT-6.1 Terra (Max)",
    "outputTokens": 954492
   },
   {
@@ -164,7 +209,10 @@
    "accuracy": 74.67,
    "score": 87.83,
    "costUSD": 2.714,
-   "timeSec": 4390,
+   "timeSec": 4499,
+   "tps": 59.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA GPT-6.2 Sol (Max)",
    "outputTokens": 263423
   },
   {
@@ -174,7 +222,10 @@
    "accuracy": 74.0,
    "score": 84.83,
    "costUSD": 5.634,
-   "timeSec": 9070,
+   "timeSec": 14908,
+   "tps": 36.9,
+   "speedBasis": "measured",
+   "speedNote": "AA Kimi K3.1 Pro, 2026-11-27",
    "outputTokens": 544180
   },
   {
@@ -184,7 +235,10 @@
    "accuracy": 74.0,
    "score": 84.0,
    "costUSD": 0.9838,
-   "timeSec": 4203,
+   "timeSec": 2255,
+   "tps": 117.0,
+   "speedBasis": "web",
+   "speedNote": "Gemini 3.6 Flash (modelgrep)",
    "outputTokens": 252164
   },
   {
@@ -194,7 +248,10 @@
    "accuracy": 73.33,
    "score": 85.5,
    "costUSD": 2.647,
-   "timeSec": 4754,
+   "timeSec": 1883,
+   "tps": 160.0,
+   "speedBasis": "web",
+   "speedNote": "Gemini 3.5 Flash (modelgrep)",
    "outputTokens": 285254
   },
   {
@@ -204,7 +261,10 @@
    "accuracy": 72.67,
    "score": 82.67,
    "costUSD": 25.2007,
-   "timeSec": 16474,
+   "timeSec": 8710,
+   "tps": 117.2,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Claude Opus 5.5 (Max, Default Fallback)",
    "outputTokens": 988443
   },
   {
@@ -214,7 +274,10 @@
    "accuracy": 72.0,
    "score": 86.5,
    "costUSD": 12.8429,
-   "timeSec": 6935,
+   "timeSec": 5855,
+   "tps": 72.3,
+   "speedBasis": "web",
+   "speedNote": "GPT-5.5 (High)",
    "outputTokens": 416073
   },
   {
@@ -224,7 +287,10 @@
    "accuracy": 70.67,
    "score": 83.0,
    "costUSD": 10.6728,
-   "timeSec": 11649,
+   "timeSec": 9674,
+   "tps": 73.0,
+   "speedBasis": "web",
+   "speedNote": "GPT-5.4 (Xhigh), 5-day rolling",
    "outputTokens": 698911
   },
   {
@@ -234,7 +300,10 @@
    "accuracy": 70.0,
    "score": 83.67,
    "costUSD": 2.2025,
-   "timeSec": 8273,
+   "timeSec": 2582,
+   "tps": 200.0,
+   "speedBasis": "web",
+   "speedNote": "Muse Spark 1.2 (BenchLeader, via AA)",
    "outputTokens": 496365
   },
   {
@@ -244,7 +313,10 @@
    "accuracy": 70.0,
    "score": 80.17,
    "costUSD": 1.56,
-   "timeSec": 51640,
+   "timeSec": 12346,
+   "tps": 258.2,
+   "speedBasis": "measured",
+   "speedNote": "AA Claude Haiku 5.5 (Max), 2026-11-27",
    "outputTokens": 3098413
   },
   {
@@ -254,7 +326,10 @@
    "accuracy": 69.33,
    "score": 80.5,
    "costUSD": 2.5241,
-   "timeSec": 9480,
+   "timeSec": 2944,
+   "tps": 200.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: Muse Spark 1.2",
    "outputTokens": 568786
   },
   {
@@ -264,7 +339,10 @@
    "accuracy": 68.67,
    "score": 81.33,
    "costUSD": 3.0494,
-   "timeSec": 8172,
+   "timeSec": 4718,
+   "tps": 112.1,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Qwen4 Max",
    "outputTokens": 490341
   },
   {
@@ -274,7 +352,10 @@
    "accuracy": 68.67,
    "score": 79.33,
    "costUSD": 0.8044,
-   "timeSec": 4328,
+   "timeSec": 1398,
+   "tps": 200.0,
+   "speedBasis": "web",
+   "speedNote": "Gemini 3 Flash",
    "outputTokens": 259657
   },
   {
@@ -284,7 +365,10 @@
    "accuracy": 68.0,
    "score": 79.83,
    "costUSD": 0.9132,
-   "timeSec": 29940,
+   "timeSec": 34246,
+   "tps": 52.7,
+   "speedBasis": "measured",
+   "speedNote": "AA GLM-5.3-Flash (Max), 2026-11-27",
    "outputTokens": 1796408
   },
   {
@@ -294,7 +378,10 @@
    "accuracy": 67.33,
    "score": 82.33,
    "costUSD": 6.4227,
-   "timeSec": 7525,
+   "timeSec": 5516,
+   "tps": 90.0,
+   "speedBasis": "measured",
+   "speedNote": "AA GPT-5.3 Codex (Xhigh), 2026-11-27",
    "outputTokens": 451472
   },
   {
@@ -304,7 +391,10 @@
    "accuracy": 67.33,
    "score": 77.67,
    "costUSD": 7.8108,
-   "timeSec": 10572,
+   "timeSec": 6256,
+   "tps": 110.2,
+   "speedBasis": "measured",
+   "speedNote": "AA Gemini 3.1 Pro Preview, 2026-11-27",
    "outputTokens": 634341
   },
   {
@@ -314,7 +404,10 @@
    "accuracy": 66.67,
    "score": 77.33,
    "costUSD": 0.6389,
-   "timeSec": 21288,
+   "timeSec": 7206,
+   "tps": 178.6,
+   "speedBasis": "measured",
+   "speedNote": "AA DeepSeek V4.1 Flash 1017 (Max), 2026-11-27",
    "outputTokens": 1277292
   },
   {
@@ -324,7 +417,10 @@
    "accuracy": 63.33,
    "score": 77.0,
    "costUSD": 1.1205,
-   "timeSec": 15469,
+   "timeSec": 7255,
+   "tps": 129.1,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA GPT-6 Luna (Max)",
    "outputTokens": 928166
   },
   {
@@ -334,7 +430,10 @@
    "accuracy": 63.33,
    "score": 73.5,
    "costUSD": 11.429,
-   "timeSec": 11885,
+   "timeSec": 11242,
+   "tps": 64.0,
+   "speedBasis": "web",
+   "speedNote": "Kimi K3 median 57-66",
    "outputTokens": 713086
   },
   {
@@ -344,7 +443,10 @@
    "accuracy": 62.0,
    "score": 75.83,
    "costUSD": 1.9358,
-   "timeSec": 5011,
+   "timeSec": 4389,
+   "tps": 77.3,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Grok 4.7 (Xhigh)",
    "outputTokens": 300646
   },
   {
@@ -354,7 +456,10 @@
    "accuracy": 61.33,
    "score": 73.67,
    "costUSD": 12.9383,
-   "timeSec": 15274,
+   "timeSec": 11956,
+   "tps": 77.3,
+   "speedBasis": "web",
+   "speedNote": "GPT-5.2 (Xhigh), mean of 83.2 and 71.4 on two AA pages",
    "outputTokens": 916435
   },
   {
@@ -364,7 +469,10 @@
    "accuracy": 60.0,
    "score": 75.5,
    "costUSD": 0.3095,
-   "timeSec": 10188,
+   "timeSec": 4800,
+   "tps": 129.1,
+   "speedBasis": "measured",
+   "speedNote": "AA GPT-6 Luna (Max), 2026-11-27",
    "outputTokens": 611257
   },
   {
@@ -374,7 +482,10 @@
    "accuracy": 60.0,
    "score": 74.5,
    "costUSD": 1.5164,
-   "timeSec": 3858,
+   "timeSec": 3472,
+   "tps": 77.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Grok 4.7 (High)",
    "outputTokens": 231500
   },
   {
@@ -384,7 +495,10 @@
    "accuracy": 57.33,
    "score": 71.83,
    "costUSD": 0.5495,
-   "timeSec": 6872,
+   "timeSec": 7452,
+   "tps": 56.3,
+   "speedBasis": "measured",
+   "speedNote": "AA Qwen3.7 Plus, 2026-11-27",
    "outputTokens": 412305
   },
   {
@@ -394,7 +508,10 @@
    "accuracy": 56.67,
    "score": 71.17,
    "costUSD": 4.2852,
-   "timeSec": 11431,
+   "timeSec": 9372,
+   "tps": 77.3,
+   "speedBasis": "measured",
+   "speedNote": "AA Grok 4.7 (Xhigh), 2026-11-27",
    "outputTokens": 685832
   },
   {
@@ -404,7 +521,10 @@
    "accuracy": 56.0,
    "score": 72.67,
    "costUSD": 0.5412,
-   "timeSec": 14857,
+   "timeSec": 6794,
+   "tps": 132.7,
+   "speedBasis": "measured",
+   "speedNote": "AA MiniMax-M3.1-Flash, 2026-11-27",
    "outputTokens": 891412
   },
   {
@@ -414,7 +534,10 @@
    "accuracy": 56.0,
    "score": 70.33,
    "costUSD": 2.1029,
-   "timeSec": 16271,
+   "timeSec": 11292,
+   "tps": 87.5,
+   "speedBasis": "measured",
+   "speedNote": "AA Mistral Large 4 (High), 2026-11-27",
    "outputTokens": 976288
   },
   {
@@ -424,7 +547,10 @@
    "accuracy": 56.0,
    "score": 69.67,
    "costUSD": 0.6191,
-   "timeSec": 20629,
+   "timeSec": 13853,
+   "tps": 90.0,
+   "speedBasis": "web",
+   "speedNote": "DeepSeek V4.1 Flash, 87-95",
    "outputTokens": 1237744
   },
   {
@@ -434,7 +560,10 @@
    "accuracy": 52.67,
    "score": 69.17,
    "costUSD": 1.1534,
-   "timeSec": 15812,
+   "timeSec": 8434,
+   "tps": 113.6,
+   "speedBasis": "measured",
+   "speedNote": "AA MiniMax-M3, 2026-11-27",
    "outputTokens": 948711
   },
   {
@@ -444,7 +573,10 @@
    "accuracy": 52.0,
    "score": 67.0,
    "costUSD": 1.2099,
-   "timeSec": 10674,
+   "timeSec": 11150,
+   "tps": 58.7,
+   "speedBasis": "measured",
+   "speedNote": "AA Qwen3.8 27B (Xhigh), 2026-11-27",
    "outputTokens": 640444
   },
   {
@@ -454,7 +586,10 @@
    "accuracy": 51.33,
    "score": 66.83,
    "costUSD": 4.4797,
-   "timeSec": 16406,
+   "timeSec": 11037,
+   "tps": 90.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: median of measured models",
    "outputTokens": 984341
   },
   {
@@ -464,7 +599,10 @@
    "accuracy": 50.67,
    "score": 64.17,
    "costUSD": 1.8657,
-   "timeSec": 8600,
+   "timeSec": 10074,
+   "tps": 52.9,
+   "speedBasis": "measured",
+   "speedNote": "AA Kimi K2.7 Code, 2026-11-27",
    "outputTokens": 516000
   },
   {
@@ -474,7 +612,10 @@
    "accuracy": 50.0,
    "score": 62.17,
    "costUSD": 22.5213,
-   "timeSec": 24803,
+   "timeSec": 35533,
+   "tps": 42.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: Claude Sonnet 4.5",
    "outputTokens": 1488183
   },
   {
@@ -484,7 +625,10 @@
    "accuracy": 45.33,
    "score": 58.5,
    "costUSD": 1.3391,
-   "timeSec": 18094,
+   "timeSec": 10578,
+   "tps": 103.6,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Inkling 2 Small",
    "outputTokens": 1085665
   },
   {
@@ -494,7 +638,10 @@
    "accuracy": 44.67,
    "score": 65.0,
    "costUSD": 0.0733,
-   "timeSec": 9131,
+   "timeSec": 6648,
+   "tps": 84.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Qwen3.8-Flash-Next",
    "outputTokens": 547832
   },
   {
@@ -504,7 +651,10 @@
    "accuracy": 40.0,
    "score": 56.83,
    "costUSD": 2.7395,
-   "timeSec": 4538,
+   "timeSec": 2580,
+   "tps": 109.8,
+   "speedBasis": "web",
+   "speedNote": "Gemini 2.5 Pro",
    "outputTokens": 272275
   },
   {
@@ -514,7 +664,10 @@
    "accuracy": 39.33,
    "score": 55.0,
    "costUSD": 4.516,
-   "timeSec": 7453,
+   "timeSec": 5885,
+   "tps": 77.3,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: GPT-5.2",
    "outputTokens": 447209
   },
   {
@@ -524,7 +677,10 @@
    "accuracy": 38.0,
    "score": 53.33,
    "costUSD": 4.4874,
-   "timeSec": 7406,
+   "timeSec": 5849,
+   "tps": 77.3,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: GPT-5.2",
    "outputTokens": 444375
   },
   {
@@ -534,7 +690,10 @@
    "accuracy": 36.67,
    "score": 52.83,
    "costUSD": 6.751,
-   "timeSec": 4284,
+   "timeSec": 4922,
+   "tps": 53.3,
+   "speedBasis": "web",
+   "speedNote": "Opus 4.5 (Reasoning)",
    "outputTokens": 257022
   },
   {
@@ -544,7 +703,10 @@
    "accuracy": 33.33,
    "score": 54.83,
    "costUSD": 0.1675,
-   "timeSec": 2730,
+   "timeSec": 4016,
+   "tps": 43.1,
+   "speedBasis": "measured",
+   "speedNote": "AA MiMo-V2.6-Pro, 2026-11-27",
    "outputTokens": 163794
   },
   {
@@ -554,7 +716,10 @@
    "accuracy": 33.33,
    "score": 48.67,
    "costUSD": 3.7716,
-   "timeSec": 15142,
+   "timeSec": 8976,
+   "tps": 102.2,
+   "speedBasis": "measured",
+   "speedNote": "AA Inkling (Xhigh), 2026-11-27",
    "outputTokens": 908517
   },
   {
@@ -564,7 +729,10 @@
    "accuracy": 32.67,
    "score": 51.5,
    "costUSD": 1.9674,
-   "timeSec": 3943,
+   "timeSec": 2227,
+   "tps": 121.9,
+   "speedBasis": "measured",
+   "speedNote": "AA o3, 2026-11-27",
    "outputTokens": 236556
   },
   {
@@ -574,7 +742,10 @@
    "accuracy": 31.33,
    "score": 51.5,
    "costUSD": 0.0765,
-   "timeSec": 3072,
+   "timeSec": 5197,
+   "tps": 35.8,
+   "speedBasis": "measured",
+   "speedNote": "AA Gemma 4 31B (Reasoning), 2026-11-27",
    "outputTokens": 184303
   },
   {
@@ -584,7 +755,10 @@
    "accuracy": 27.33,
    "score": 43.17,
    "costUSD": 0.234,
-   "timeSec": 14757,
+   "timeSec": 11930,
+   "tps": 75.1,
+   "speedBasis": "measured",
+   "speedNote": "AA Qwen3.5 9B (Reasoning), 2026-11-27",
    "outputTokens": 885401
   },
   {
@@ -594,7 +768,10 @@
    "accuracy": 26.0,
    "score": 46.0,
    "costUSD": 0.0613,
-   "timeSec": 459,
+   "timeSec": 469,
+   "tps": 66.9,
+   "speedBasis": "measured",
+   "speedNote": "AA Llama 4 Maverick, 2026-11-27",
    "outputTokens": 27532
   },
   {
@@ -604,7 +781,10 @@
    "accuracy": 25.33,
    "score": 47.5,
    "costUSD": 5.6338,
-   "timeSec": 81503,
+   "timeSec": 12207,
+   "tps": 403.9,
+   "speedBasis": "web",
+   "speedNote": "Step 3.7 Flash (earlier AA snapshot)",
    "outputTokens": 4890196
   },
   {
@@ -614,7 +794,10 @@
    "accuracy": 24.0,
    "score": 44.17,
    "costUSD": 2.5122,
-   "timeSec": 2563,
+   "timeSec": 3762,
+   "tps": 42.0,
+   "speedBasis": "web",
+   "speedNote": "Sonnet 4.5 (Reasoning)",
    "outputTokens": 153796
   },
   {
@@ -624,7 +807,10 @@
    "accuracy": 24.0,
    "score": 42.5,
    "costUSD": 0.9068,
-   "timeSec": 37713,
+   "timeSec": 7957,
+   "tps": 288.0,
+   "speedBasis": "web",
+   "speedNote": "Gemini 2.5 Flash-Lite (Non-reasoning)",
    "outputTokens": 2262785
   },
   {
@@ -634,7 +820,10 @@
    "accuracy": 18.0,
    "score": 36.5,
    "costUSD": 2.5897,
-   "timeSec": 5481,
+   "timeSec": 2806,
+   "tps": 138.1,
+   "speedBasis": "measured",
+   "speedNote": "AA Mistral Medium 3.5, 2026-11-27",
    "outputTokens": 328853
   },
   {
@@ -644,7 +833,10 @@
    "accuracy": 16.0,
    "score": 36.0,
    "costUSD": 0.1298,
-   "timeSec": 1006,
+   "timeSec": 770,
+   "tps": 90.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: median of measured models",
    "outputTokens": 60334
   },
   {
@@ -654,7 +846,10 @@
    "accuracy": 13.33,
    "score": 37.5,
    "costUSD": 0.4205,
-   "timeSec": 14512,
+   "timeSec": 2546,
+   "tps": 348.1,
+   "speedBasis": "measured",
+   "speedNote": "AA Nemotron 3.5 Super VL, 2026-11-27",
    "outputTokens": 870699
   },
   {
@@ -664,7 +859,10 @@
    "accuracy": 12.0,
    "score": 31.17,
    "costUSD": 1.0077,
-   "timeSec": 3142,
+   "timeSec": 2086,
+   "tps": 94.9,
+   "speedBasis": "web",
+   "speedNote": "Haiku 4.5, AA range 92-97",
    "outputTokens": 188518
   },
   {
@@ -674,7 +872,10 @@
    "accuracy": 11.33,
    "score": 28.0,
    "costUSD": 0.085,
-   "timeSec": 518,
+   "timeSec": 490,
+   "tps": 87.5,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: Mistral Large 4",
    "outputTokens": 31084
   },
   {
@@ -684,7 +885,10 @@
    "accuracy": 8.0,
    "score": 31.67,
    "costUSD": 0.327,
-   "timeSec": 383,
+   "timeSec": 284,
+   "tps": 124.9,
+   "speedBasis": "web",
+   "speedNote": "GPT-4o (Nov '24)",
    "outputTokens": 22969
   },
   {
@@ -694,7 +898,10 @@
    "accuracy": 8.0,
    "score": 21.67,
    "costUSD": 0.1657,
-   "timeSec": 485,
+   "timeSec": 332,
+   "tps": 113.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: AA Nova 2.0 Pro Preview (Non-reasoning)",
    "outputTokens": 29108
   },
   {
@@ -704,7 +911,10 @@
    "accuracy": 5.33,
    "score": 31.17,
    "costUSD": 0.2521,
-   "timeSec": 253,
+   "timeSec": 222,
+   "tps": 124.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: GPT-4o (Nov '24)",
    "outputTokens": 15193
   },
   {
@@ -714,7 +924,10 @@
    "accuracy": 5.33,
    "score": 28.83,
    "costUSD": 0.5489,
-   "timeSec": 375,
+   "timeSec": 280,
+   "tps": 124.9,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: GPT-4o (Nov '24)",
    "outputTokens": 22490
   },
   {
@@ -724,7 +937,10 @@
    "accuracy": 5.33,
    "score": 26.33,
    "costUSD": 0.1029,
-   "timeSec": 445,
+   "timeSec": 396,
+   "tps": 90.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: median of measured models",
    "outputTokens": 26680
   },
   {
@@ -734,7 +950,10 @@
    "accuracy": 4.67,
    "score": 25.67,
    "costUSD": 0.187,
-   "timeSec": 313,
+   "timeSec": 308,
+   "tps": 90.0,
+   "speedBasis": "proxy",
+   "speedNote": "proxy: median of measured models",
    "outputTokens": 18763
   }
  ]

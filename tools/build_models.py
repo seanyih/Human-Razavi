@@ -4,20 +4,24 @@
 Usage:
   curl -sL https://razavi-bench.tokenzhang.com/data/direct_qa/index.json -o index.json
   curl -sL https://razavi-bench.tokenzhang.com/assets/pricing.js        -o pricing.js
-  python3 tools/build_models.py index.json pricing.js > data/models.json
+  python3 tools/build_models.py index.json pricing.js --speeds tools/model_speeds.json > data/models.json
 
 Per model, one benchmark pass (50 questions) is recorded:
   accuracy  - % of answers with full credit (score 4/4), same definition a human gets here
   score     - Razavi-Bench headline score (mean 0-4 score as a %)
   costUSD   - API cost of ONE pass (total over 3 rollouts / 3), OpenRouter list prices
-  timeSec   - ESTIMATED wall time of one pass = output tokens / --tps (bench publishes no timing)
+  timeSec   - ESTIMATED wall time of one pass (bench publishes no timing):
+              output tokens / tok/s  +  questions x per-request latency
+              tok/s and latency per model come from tools/model_speeds.json (see tools/build_speeds.py);
+              models missing there fall back to --tps
 """
 import argparse, json, re, sys
 from datetime import datetime, timezone
 
 ap = argparse.ArgumentParser()
 ap.add_argument("index_json"); ap.add_argument("pricing_js")
-ap.add_argument("--tps", type=float, default=60.0, help="assumed output tokens/sec for time estimate")
+ap.add_argument("--speeds", help="tools/model_speeds.json")
+ap.add_argument("--tps", type=float, default=90.0, help="fallback output tokens/sec")
 a = ap.parse_args()
 
 idx = json.load(open(a.index_json, encoding="utf-8"))
@@ -32,6 +36,7 @@ def lookup(key):
     return None
 
 qn = idx["benchmark"]["question_count"]
+sp = json.load(open(a.speeds, encoding="utf-8")) if a.speeds else {"models": {}, "defaultLatencySec": 2.0}
 out = []
 for m in idx["models"]:
     s = m["summary"]
@@ -44,6 +49,8 @@ for m in idx["models"]:
         cached = tk.get("cached_input_tokens") or 0
         cost = ((tk["input_tokens"] - cached) * p[0] + cached * p[2] + tk["output_tokens"] * p[1]) / 1e6 / rollouts
     out_tok = tk["output_tokens"] / rollouts
+    s_ = sp["models"].get(m["model_key"]) or {"tps": a.tps, "latency": None, "basis": "fallback", "note": f"default {a.tps:g} tok/s"}
+    lat = s_["latency"] if s_["latency"] is not None else sp["defaultLatencySec"]
     out.append({
         "key": m["model_key"],
         "name": m["display_name"],
@@ -51,7 +58,10 @@ for m in idx["models"]:
         "accuracy": round(100 * ov["correct_count"] / ov["response_count"], 2),
         "score": round(ov["score_percent"], 2),
         "costUSD": None if cost is None else round(cost, 4),
-        "timeSec": round(out_tok / a.tps),
+        "timeSec": round(out_tok / s_["tps"] + qn * lat),
+        "tps": s_["tps"],
+        "speedBasis": s_["basis"],
+        "speedNote": s_["note"],
         "outputTokens": round(out_tok),
     })
 out.sort(key=lambda x: -x["accuracy"])
@@ -61,7 +71,7 @@ json.dump({
     "questionCount": qn,
     "accuracyDefinition": "percent of answers graded 4/4 (full credit), averaged over rollouts",
     "costDefinition": "USD per single pass over all questions, OpenRouter list prices",
-    "timeDefinition": f"ESTIMATE: output tokens per pass / {a.tps:g} tokens per second",
+    "timeDefinition": "ESTIMATE: output tokens per pass / output speed (tok/s) + per-request latency; speed measured by Artificial Analysis where available, else a web figure or a sibling model",
     "timeEstimated": True,
     "models": out,
 }, sys.stdout, ensure_ascii=False, indent=1)

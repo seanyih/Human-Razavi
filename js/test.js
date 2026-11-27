@@ -338,6 +338,7 @@
         <dt>${t('res.modelAcc')}</dt><dd><b>${fmtPct(m.accuracy)}</b><span>${accPhrase(R.acc, m.accuracy)}</span></dd>
         <dt>${t('res.modelCost')}</dt><dd><b>${fmtUSD(m.cost)}</b><span>${ratioPhrase(R.usd, m.cost, 'cost')}</span></dd>
         <dt>${t('res.modelTime')}</dt><dd><b>≈ ${fmtDur(m.time)}</b><span>${ratioPhrase(R.estSec, m.time, 'time')}</span></dd>
+        ${m.tps ? `<dt>${t('res.modelSpeed')}</dt><dd><b>${Math.round(m.tps)} tok/s</b><span title="${esc(m.speedNote || '')}">${t('speed.' + (m.speedBasis || 'fallback'))}</span></dd>` : ''}
       </dl></div>`;
   }
 
@@ -407,7 +408,7 @@
       <div class="block">
         <h2>${t('res.levels')}</h2>
         <div class="tblwrap"><table class="lv"><thead><tr><th>${t('res.col.level')}</th><th>${t('res.col.pool')}</th><th>${t('res.col.asked')}</th><th>${t('res.col.correct')}</th><th>${t('res.col.acc')}</th><th>${t('res.col.avg')}</th></tr></thead><tbody>${lvRows}</tbody></table></div>
-        <p class="note">${R.scaled ? t('res.noteQuick') : t('res.noteFull')} ${t('res.noteModels', { nm: S.models.questionCount, td: esc(S.models.timeDefinition || '') })}</p>
+        <p class="note">${R.scaled ? t('res.noteQuick') : t('res.noteFull')} ${t('res.noteModels', { nm: S.models.questionCount })}</p>
       </div>
 
       <div class="block">

@@ -82,17 +82,44 @@ Same as single, but `"type": "multi"` and `"answer": ["cgd", "csb"]`. Only an ex
 
 ## Model data (`data/models.json`)
 
-Generated from Razavi-Bench's public site data:
+Generated from Razavi-Bench's public site data and a per-model speed table:
 
 ```sh
 curl -sL https://razavi-bench.tokenzhang.com/data/direct_qa/index.json -o /tmp/index.json
 curl -sL https://razavi-bench.tokenzhang.com/assets/pricing.js        -o /tmp/pricing.js
-python3 tools/build_models.py /tmp/index.json /tmp/pricing.js > data/models.json
+python3 tools/build_models.py /tmp/index.json /tmp/pricing.js --speeds tools/model_speeds.json > data/models.json
 ```
 
-Each model has `accuracy` (full-credit %), `score` (the bench's headline 0–4 mean as a %), `costUSD` (one pass, OpenRouter list prices) and `timeSec`.
-**Razavi-Bench publishes no timing**, so `timeSec` is an estimate: output tokens ÷ 60 tok/s (change it with `--tps`). The result page labels it as an estimate.
-To supply real timings, edit `timeSec` and `timeDefinition`.
+Each model has:
+- `accuracy`: full-credit rate in %.
+- `score`: the bench's headline 0–4 mean, as a %.
+- `costUSD`: cost of one pass, at OpenRouter list prices.
+- `timeSec`, plus `tps`, `speedBasis` and `speedNote`.
+
+**Time is an estimate.** Razavi-Bench publishes no timing, so:
+
+```
+timeSec = output tokens per pass / tok/s + questions × per-request latency (capped at 10 s, default 2 s)
+```
+
+`tools/model_speeds.json` records tok/s and its basis for every model (snapshot 2026-11-27):
+
+| basis | count | where it comes from |
+|---|---|---|
+| `measured` | 28 | [Artificial Analysis leaderboard](https://artificialanalysis.ai/leaderboards/models): the same model at the closest reasoning-effort variant (e.g. `(Max)` when the bench ran at max) |
+| `web` | 16 | a published figure (mostly AA comparison pages for retired models; a few from modelgrep / Lyceum / BenchLeader), URL in `source` |
+| `proxy` | 29 | no public figure, so the nearest sibling's speed is used (e.g. GPT-6 Sol → GPT-6.2 Sol, Claude Opus 5 → Opus 5.5); `note` names the sibling; 5 models with no sibling use the median measured speed (90 tok/s) |
+
+To refresh the measured tier:
+
+```sh
+curl -sL -A "Mozilla/5.0" https://artificialanalysis.ai/leaderboards/models -o /tmp/aa.html
+python3 tools/parse_aa_leaderboard.py /tmp/aa_speeds.json /tmp/aa.html
+python3 tools/build_speeds.py /tmp/aa_speeds.json /tmp/index.json tools/model_speeds.json
+```
+
+`build_speeds.py` holds the model-name mapping and the web/proxy tables. Edit it when models are added.
+To use real wall-clock timings instead, put them in `timeSec`.
 
 ## Credits
 
