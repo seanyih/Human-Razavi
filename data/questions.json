@@ -1,0 +1,68 @@
+{
+  "questions": [
+    {
+      "id": "mosfet-double-wl-intrinsic-gain",
+      "level": 1,
+      "type": "single",
+      "source": "Razavi-Bench part1-001",
+      "prompt": {
+        "zh": "若把 MOSFET 的通道長度 L 與寬度 W 同時加倍（維持相同的 overdrive 電壓），其本質增益 g<sub>m</sub>r<sub>o</sub> 會如何變化？",
+        "en": "If we double both the length L and width W of a MOSFET (same overdrive voltage), what happens to its intrinsic gain g<sub>m</sub>r<sub>o</sub>?"
+      },
+      "options": [
+        { "id": "same",   "text": { "zh": "不變", "en": "Unchanged" } },
+        { "id": "double", "text": { "zh": "約變為 2 倍", "en": "Roughly doubles" } },
+        { "id": "half",   "text": { "zh": "約變為 1/2", "en": "Roughly halves" } },
+        { "id": "quad",   "text": { "zh": "約變為 4 倍", "en": "Roughly quadruples" } },
+        { "id": "sqrt2",  "text": { "zh": "約變為 √2 倍", "en": "Grows by about √2" } }
+      ],
+      "answer": "double",
+      "explanation": {
+        "zh": "W/L 不變且 V<sub>ov</sub> 固定，所以 I<sub>D</sub> 與 g<sub>m</sub> 大致不變；L 加倍使 λ 約減半，r<sub>o</sub> = 1/(λI<sub>D</sub>) 約加倍，因此 g<sub>m</sub>r<sub>o</sub> 約加倍。",
+        "en": "W/L and V<sub>ov</sub> are unchanged, so I<sub>D</sub> and g<sub>m</sub> stay about the same. Doubling L roughly halves λ, so r<sub>o</sub> = 1/(λI<sub>D</sub>) roughly doubles, and so does g<sub>m</sub>r<sub>o</sub>."
+      }
+    },
+    {
+      "id": "cs-stage-pole-count",
+      "level": 2,
+      "type": "fill",
+      "source": "Razavi-Bench part1-011",
+      "image": "razavi-part1-fig08.png",
+      "imageAlt": { "zh": "共源級：R_S 驅動、R_D 負載，含 C_GS、C_GD、C_DB、C_SB", "en": "Common-source stage driven through R_S with load R_D, with C_GS, C_GD, C_DB and C_SB" },
+      "prompt": {
+        "zh": "圖中電路共有幾個極點（pole）？",
+        "en": "How many poles does the circuit in the figure have?"
+      },
+      "placeholder": { "zh": "輸入數字", "en": "Enter a number" },
+      "accept": ["2", "two", "二", "兩", "兩個", "两", "两个", "2個", "2个"],
+      "numeric": { "value": 2, "tolerance": 0 },
+      "explanation": {
+        "zh": "兩個。C<sub>SB</sub> 兩端都接地，不儲能；C<sub>GS</sub>、C<sub>GD</sub>、C<sub>DB</sub> 經由地形成一個電容迴路，只有兩個電壓彼此獨立，所以只有兩個狀態變數、兩個極點（C<sub>GD</sub> 另外帶來一個零點）。",
+        "en": "Two. C<sub>SB</sub> has both terminals grounded and stores no energy. C<sub>GS</sub>, C<sub>GD</sub> and C<sub>DB</sub> form a capacitor loop through ground, so only two of their voltages are independent: two state variables, two poles (C<sub>GD</sub> also adds a zero)."
+      }
+    },
+    {
+      "id": "cs-stage-caps-no-new-pole",
+      "level": 3,
+      "type": "multi",
+      "source": "Razavi-Bench part1-011 (adapted)",
+      "image": "razavi-part1-fig08.png",
+      "imageAlt": { "zh": "共源級：R_S 驅動、R_D 負載，含 C_GS、C_GD、C_DB、C_SB", "en": "Common-source stage driven through R_S with load R_D, with C_GS, C_GD, C_DB and C_SB" },
+      "prompt": {
+        "zh": "從只有 C<sub>GS</sub> 與 C<sub>DB</sub> 的電路出發（此時有兩個極點）。再分別加入下列哪些電容，<b>不會</b>增加極點數？（複選）",
+        "en": "Start from the circuit with only C<sub>GS</sub> and C<sub>DB</sub> (two poles). Which of the following, added on its own, does <b>not</b> increase the number of poles? (Select all that apply.)"
+      },
+      "options": [
+        { "id": "cgd", "text": { "zh": "C<sub>GD</sub>（閘極到汲極）", "en": "C<sub>GD</sub> (gate to drain)" } },
+        { "id": "csb", "text": { "zh": "C<sub>SB</sub>（源極到地）", "en": "C<sub>SB</sub> (source to ground)" } },
+        { "id": "cdd", "text": { "zh": "一顆從汲極接到 V<sub>DD</sub> 的電容", "en": "A capacitor from the drain to V<sub>DD</sub>" } },
+        { "id": "crd", "text": { "zh": "一顆串聯小電阻後、從汲極接到地的電容", "en": "A capacitor in series with a small resistor, connected from the drain to ground" } }
+      ],
+      "answer": ["cgd", "csb", "cdd"],
+      "explanation": {
+        "zh": "C<sub>GD</sub> 與 C<sub>GS</sub>、C<sub>DB</sub> 形成電容迴路，不增加獨立狀態（只多一個零點）；C<sub>SB</sub> 兩端皆為地；汲極到 V<sub>DD</sub>（交流地）的電容與 C<sub>DB</sub> 並聯。只有「電容串電阻」會產生新節點、新增一個極點。",
+        "en": "C<sub>GD</sub> closes a capacitor loop with C<sub>GS</sub> and C<sub>DB</sub>, adding no independent state (only a zero). C<sub>SB</sub> sits between two grounds. A drain-to-V<sub>DD</sub> capacitor is in parallel with C<sub>DB</sub> (V<sub>DD</sub> is AC ground). Only the RC branch creates a new node and a new pole."
+      }
+    }
+  ]
+}

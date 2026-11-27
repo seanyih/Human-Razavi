@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Human Razavi</title>
+<meta name="description" content="Take the analog-circuit questions from Razavi-Bench and see which AI model you match.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317181c'/%3E%3Cpath d='M9 8v16l14-8z' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 4v16l14-8z"/><path d="M2 9h3M2 15h3M19 12h3" stroke-linecap="round"/></svg>
+      Human Razavi
+    </a>
+    <nav>
+      <a href="test.html" data-i18n="nav.test" class="hide-sm"></a>
+      <a href="https://razavi-bench.tokenzhang.com/" target="_blank" rel="noopener" data-i18n="nav.bench"></a>
+      <button class="lang" type="button" data-lang-toggle data-i18n="lang.switch"></button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="kicker" data-i18n="home.kicker"></div>
+      <h1 data-i18n-html="home.title"></h1>
+      <p class="lede" data-i18n-html="home.lede"></p>
+      <div class="ctas">
+        <a class="btn" href="test.html"><span data-i18n="home.cta"></span><span class="arr">→</span></a>
+        <a class="btn ghost" href="https://razavi-bench.tokenzhang.com/" target="_blank" rel="noopener" data-i18n="home.cta2"></a>
+      </div>
+    </div>
+    <div class="card ladder" id="ladder" hidden>
+      <div class="kicker" data-i18n="home.ladder"></div>
+      <div id="ladderRows"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 data-i18n="home.how"></h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3 data-i18n="home.step1.t"></h3><p data-i18n="home.step1.d"></p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="home.step2.t"></h3><p data-i18n="home.step2.d"></p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="home.step3.t"></h3><p data-i18n="home.step3.d"></p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 data-i18n="home.modes"></h2>
+    <div class="modes">
+      <div class="card" data-i18n="home.mode.quick"></div>
+      <div class="card" data-i18n="home.mode.full"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap" data-i18n-html="home.credit"></div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script>
+(async function () {
+  I18N_VARS = { n: '70+', wage: 220, min: 5, max: 10, bench: 'https://razavi-bench.tokenzhang.com/' };
+  let models = [];
+  try {
+    const [cfg, m] = await Promise.all([loadJSON('data/config.json'), loadJSON('data/models.json')]);
+    models = m.models;
+    I18N_VARS = { n: models.length, wage: cfg.hourlyWageTWD, min: cfg.quickMode.perLevelMin, max: cfg.quickMode.perLevelMax, bench: cfg.benchUrl };
+  } catch (e) { console.warn(e); }
+  applyStatic();
+  if (!models.length) return;
+
+  // A few models spread across the accuracy range, with an empty "you?" slot in the middle.
+  const sorted = models.slice().sort((a, b) => b.accuracy - a.accuracy);
+  const picks = [0, 0.12, 0.3, 0.5, 0.72, 0.9].map(f => sorted[Math.round(f * (sorted.length - 1))]);
+  const rows = picks.map(m => `<div class="lad-row"><span class="lad-name">${m.name}</span><span class="lad-bar"><i style="width:${m.accuracy}%"></i></span><span class="lad-val">${Math.round(m.accuracy)}%</span></div>`);
+  rows.splice(3, 0, `<div class="lad-row you"><span class="lad-name" data-i18n="home.you"></span><span class="lad-bar"></span><span class="lad-val">?</span></div>`);
+  document.getElementById('ladderRows').innerHTML = rows.join('');
+  document.getElementById('ladder').hidden = false;
+  applyStatic();
+})();
+</script>
+</body>
+</html>

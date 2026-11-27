@@ -1,0 +1,741 @@
+{
+ "source": "Razavi-Bench direct QA (https://razavi-bench.tokenzhang.com/), generated 2026-11-10T18:56:28.723065+00:00",
+ "builtAt": "2026-11-27T03:50:48+00:00",
+ "questionCount": 50,
+ "accuracyDefinition": "percent of answers graded 4/4 (full credit), averaged over rollouts",
+ "costDefinition": "USD per single pass over all questions, OpenRouter list prices",
+ "timeDefinition": "ESTIMATE: output tokens per pass / 60 tokens per second",
+ "timeEstimated": true,
+ "models": [
+  {
+   "key": "gemini_4_carbon",
+   "name": "Gemini 4 Carbon",
+   "provider": "google",
+   "accuracy": 96.0,
+   "score": 98.33,
+   "costUSD": 9.319,
+   "timeSec": 15357,
+   "outputTokens": 921411
+  },
+  {
+   "key": "claude_opus_55",
+   "name": "Claude Opus 5.5",
+   "provider": "anthropic",
+   "accuracy": 95.33,
+   "score": 97.67,
+   "costUSD": 22.7555,
+   "timeSec": 18636,
+   "outputTokens": 1118187
+  },
+  {
+   "key": "claude_fable_52",
+   "name": "Claude Fable 5.2",
+   "provider": "anthropic",
+   "accuracy": 93.33,
+   "score": 95.83,
+   "costUSD": 16.9507,
+   "timeSec": 6736,
+   "outputTokens": 404178
+  },
+  {
+   "key": "gemini_4_argon",
+   "name": "Gemini 4 Argon",
+   "provider": "google",
+   "accuracy": 88.67,
+   "score": 94.83,
+   "costUSD": 2.7303,
+   "timeSec": 4368,
+   "outputTokens": 262063
+  },
+  {
+   "key": "claude_opus_5",
+   "name": "Claude Opus 5",
+   "provider": "anthropic",
+   "accuracy": 88.0,
+   "score": 94.0,
+   "costUSD": 9.328,
+   "timeSec": 5892,
+   "outputTokens": 353550
+  },
+  {
+   "key": "claude_fable_51",
+   "name": "Claude Fable 5.1",
+   "provider": "anthropic",
+   "accuracy": 87.33,
+   "score": 93.67,
+   "costUSD": 30.8962,
+   "timeSec": 9972,
+   "outputTokens": 598335
+  },
+  {
+   "key": "gpt_6_astra",
+   "name": "GPT-6 Astra",
+   "provider": "openai",
+   "accuracy": 84.67,
+   "score": 94.67,
+   "costUSD": 14.3714,
+   "timeSec": 4665,
+   "outputTokens": 279884
+  },
+  {
+   "key": "claude_fable_5",
+   "name": "Claude Fable 5",
+   "provider": "anthropic",
+   "accuracy": 84.0,
+   "score": 90.5,
+   "costUSD": 26.4423,
+   "timeSec": 8488,
+   "outputTokens": 509275
+  },
+  {
+   "key": "gpt_6_1_sol",
+   "name": "GPT-6.1 Sol",
+   "provider": "openai",
+   "accuracy": 82.67,
+   "score": 92.83,
+   "costUSD": 2.7804,
+   "timeSec": 4458,
+   "outputTokens": 267484
+  },
+  {
+   "key": "hy4",
+   "name": "Hy4",
+   "provider": "tencent",
+   "accuracy": 82.0,
+   "score": 90.33,
+   "costUSD": 1.5906,
+   "timeSec": 21024,
+   "outputTokens": 1261464
+  },
+  {
+   "key": "gemini_37_flash",
+   "name": "Gemini 3.7 Flash",
+   "provider": "google",
+   "accuracy": 80.0,
+   "score": 88.5,
+   "costUSD": 0.9085,
+   "timeSec": 3869,
+   "outputTokens": 232112
+  },
+  {
+   "key": "muse_wonder_full_10",
+   "name": "Muse Wonder Full 1.0",
+   "provider": "meta",
+   "accuracy": 80.0,
+   "score": 87.83,
+   "costUSD": 13.1576,
+   "timeSec": 10681,
+   "outputTokens": 640845
+  },
+  {
+   "key": "gpt_56",
+   "name": "GPT-5.6 Sol",
+   "provider": "openai",
+   "accuracy": 78.67,
+   "score": 89.67,
+   "costUSD": 11.5309,
+   "timeSec": 9476,
+   "outputTokens": 568568
+  },
+  {
+   "key": "gemini_38_flash",
+   "name": "Gemini 3.8 Flash",
+   "provider": "google",
+   "accuracy": 78.0,
+   "score": 88.67,
+   "costUSD": 2.4273,
+   "timeSec": 9630,
+   "outputTokens": 577797
+  },
+  {
+   "key": "gpt_56_terra",
+   "name": "GPT-5.6 Terra",
+   "provider": "openai",
+   "accuracy": 76.0,
+   "score": 86.67,
+   "costUSD": 11.5294,
+   "timeSec": 15908,
+   "outputTokens": 954492
+  },
+  {
+   "key": "gpt_6_sol",
+   "name": "GPT-6 Sol",
+   "provider": "openai",
+   "accuracy": 74.67,
+   "score": 87.83,
+   "costUSD": 2.714,
+   "timeSec": 4390,
+   "outputTokens": 263423
+  },
+  {
+   "key": "kimi_31_pro",
+   "name": "Kimi 3.1 Pro",
+   "provider": "moonshot",
+   "accuracy": 74.0,
+   "score": 84.83,
+   "costUSD": 5.634,
+   "timeSec": 9070,
+   "outputTokens": 544180
+  },
+  {
+   "key": "gemini_36_flash",
+   "name": "Gemini 3.6 Flash",
+   "provider": "google",
+   "accuracy": 74.0,
+   "score": 84.0,
+   "costUSD": 0.9838,
+   "timeSec": 4203,
+   "outputTokens": 252164
+  },
+  {
+   "key": "gemini_35_flash",
+   "name": "Gemini 3.5 Flash",
+   "provider": "google",
+   "accuracy": 73.33,
+   "score": 85.5,
+   "costUSD": 2.647,
+   "timeSec": 4754,
+   "outputTokens": 285254
+  },
+  {
+   "key": "claude_opus_48",
+   "name": "Claude Opus 4.8",
+   "provider": "anthropic",
+   "accuracy": 72.67,
+   "score": 82.67,
+   "costUSD": 25.2007,
+   "timeSec": 16474,
+   "outputTokens": 988443
+  },
+  {
+   "key": "gpt_55",
+   "name": "GPT-5.5",
+   "provider": "openai",
+   "accuracy": 72.0,
+   "score": 86.5,
+   "costUSD": 12.8429,
+   "timeSec": 6935,
+   "outputTokens": 416073
+  },
+  {
+   "key": "gpt_54_thinking_high",
+   "name": "GPT-5.4",
+   "provider": "openai",
+   "accuracy": 70.67,
+   "score": 83.0,
+   "costUSD": 10.6728,
+   "timeSec": 11649,
+   "outputTokens": 698911
+  },
+  {
+   "key": "muse_spark_12",
+   "name": "Muse Spark 1.2",
+   "provider": "meta",
+   "accuracy": 70.0,
+   "score": 83.67,
+   "costUSD": 2.2025,
+   "timeSec": 8273,
+   "outputTokens": 496365
+  },
+  {
+   "key": "claude_haiku_55",
+   "name": "Claude Haiku 5.5",
+   "provider": "anthropic",
+   "accuracy": 70.0,
+   "score": 80.17,
+   "costUSD": 1.56,
+   "timeSec": 51640,
+   "outputTokens": 3098413
+  },
+  {
+   "key": "muse_spark_13",
+   "name": "Muse Spark 1.3",
+   "provider": "meta",
+   "accuracy": 69.33,
+   "score": 80.5,
+   "costUSD": 2.5241,
+   "timeSec": 9480,
+   "outputTokens": 568786
+  },
+  {
+   "key": "qwen_38_max",
+   "name": "Qwen 3.8 Max",
+   "provider": "alibaba",
+   "accuracy": 68.67,
+   "score": 81.33,
+   "costUSD": 3.0494,
+   "timeSec": 8172,
+   "outputTokens": 490341
+  },
+  {
+   "key": "gemini_3_flash",
+   "name": "Gemini 3 Flash",
+   "provider": "google",
+   "accuracy": 68.67,
+   "score": 79.33,
+   "costUSD": 0.8044,
+   "timeSec": 4328,
+   "outputTokens": 259657
+  },
+  {
+   "key": "glm_5_3_flash_260828_max",
+   "name": "GLM 5.3 Flash",
+   "provider": "zhipu",
+   "accuracy": 68.0,
+   "score": 79.83,
+   "costUSD": 0.9132,
+   "timeSec": 29940,
+   "outputTokens": 1796408
+  },
+  {
+   "key": "gpt_53",
+   "name": "GPT-5.3",
+   "provider": "openai",
+   "accuracy": 67.33,
+   "score": 82.33,
+   "costUSD": 6.4227,
+   "timeSec": 7525,
+   "outputTokens": 451472
+  },
+  {
+   "key": "gemini_31",
+   "name": "Gemini 3.1 Pro",
+   "provider": "google",
+   "accuracy": 67.33,
+   "score": 77.67,
+   "costUSD": 7.8108,
+   "timeSec": 10572,
+   "outputTokens": 634341
+  },
+  {
+   "key": "deepseek_v41_flash_1017",
+   "name": "DeepSeek V4.1 Flash 1017",
+   "provider": "deepseek",
+   "accuracy": 66.67,
+   "score": 77.33,
+   "costUSD": 0.6389,
+   "timeSec": 21288,
+   "outputTokens": 1277292
+  },
+  {
+   "key": "gpt_56_luna",
+   "name": "GPT-5.6 Luna",
+   "provider": "openai",
+   "accuracy": 63.33,
+   "score": 77.0,
+   "costUSD": 1.1205,
+   "timeSec": 15469,
+   "outputTokens": 928166
+  },
+  {
+   "key": "kimi_k3",
+   "name": "Kimi K3",
+   "provider": "moonshot",
+   "accuracy": 63.33,
+   "score": 73.5,
+   "costUSD": 11.429,
+   "timeSec": 11885,
+   "outputTokens": 713086
+  },
+  {
+   "key": "grok_46",
+   "name": "Grok 4.6",
+   "provider": "xai",
+   "accuracy": 62.0,
+   "score": 75.83,
+   "costUSD": 1.9358,
+   "timeSec": 5011,
+   "outputTokens": 300646
+  },
+  {
+   "key": "gpt_52",
+   "name": "GPT-5.2",
+   "provider": "openai",
+   "accuracy": 61.33,
+   "score": 73.67,
+   "costUSD": 12.9383,
+   "timeSec": 15274,
+   "outputTokens": 916435
+  },
+  {
+   "key": "gpt_6_luna",
+   "name": "GPT-6 Luna",
+   "provider": "openai",
+   "accuracy": 60.0,
+   "score": 75.5,
+   "costUSD": 0.3095,
+   "timeSec": 10188,
+   "outputTokens": 611257
+  },
+  {
+   "key": "grok_45",
+   "name": "Grok 4.5",
+   "provider": "xai",
+   "accuracy": 60.0,
+   "score": 74.5,
+   "costUSD": 1.5164,
+   "timeSec": 3858,
+   "outputTokens": 231500
+  },
+  {
+   "key": "qwen_37_plus",
+   "name": "Qwen 3.7 Plus",
+   "provider": "qwen",
+   "accuracy": 57.33,
+   "score": 71.83,
+   "costUSD": 0.5495,
+   "timeSec": 6872,
+   "outputTokens": 412305
+  },
+  {
+   "key": "grok_4_7",
+   "name": "Grok 4.7",
+   "provider": "xai",
+   "accuracy": 56.67,
+   "score": 71.17,
+   "costUSD": 4.2852,
+   "timeSec": 11431,
+   "outputTokens": 685832
+  },
+  {
+   "key": "minimax_m31_flash",
+   "name": "MiniMax M3.1 Flash",
+   "provider": "minimax",
+   "accuracy": 56.0,
+   "score": 72.67,
+   "costUSD": 0.5412,
+   "timeSec": 14857,
+   "outputTokens": 891412
+  },
+  {
+   "key": "mistral_large_4_0",
+   "name": "Mistral Large 4",
+   "provider": "mistral",
+   "accuracy": 56.0,
+   "score": 70.33,
+   "costUSD": 2.1029,
+   "timeSec": 16271,
+   "outputTokens": 976288
+  },
+  {
+   "key": "deepseek_v41_flash",
+   "name": "DeepSeek V4.1 Flash 0910",
+   "provider": "deepseek",
+   "accuracy": 56.0,
+   "score": 69.67,
+   "costUSD": 0.6191,
+   "timeSec": 20629,
+   "outputTokens": 1237744
+  },
+  {
+   "key": "minimax_m3",
+   "name": "MiniMax M3",
+   "provider": "minimax",
+   "accuracy": 52.67,
+   "score": 69.17,
+   "costUSD": 1.1534,
+   "timeSec": 15812,
+   "outputTokens": 948711
+  },
+  {
+   "key": "qwen_38_27b",
+   "name": "Qwen 3.8 27B",
+   "provider": "qwen",
+   "accuracy": 52.0,
+   "score": 67.0,
+   "costUSD": 1.2099,
+   "timeSec": 10674,
+   "outputTokens": 640444
+  },
+  {
+   "key": "gpt_54_mini",
+   "name": "GPT-5.4 Mini",
+   "provider": "openai",
+   "accuracy": 51.33,
+   "score": 66.83,
+   "costUSD": 4.4797,
+   "timeSec": 16406,
+   "outputTokens": 984341
+  },
+  {
+   "key": "kimi_k27",
+   "name": "Kimi K2.7",
+   "provider": "moonshot",
+   "accuracy": 50.67,
+   "score": 64.17,
+   "costUSD": 1.8657,
+   "timeSec": 8600,
+   "outputTokens": 516000
+  },
+  {
+   "key": "claude_sonnet_46",
+   "name": "Claude Sonnet 4.6",
+   "provider": "anthropic",
+   "accuracy": 50.0,
+   "score": 62.17,
+   "costUSD": 22.5213,
+   "timeSec": 24803,
+   "outputTokens": 1488183
+  },
+  {
+   "key": "inkling_small",
+   "name": "Inkling Small",
+   "provider": "thinkingmachines",
+   "accuracy": 45.33,
+   "score": 58.5,
+   "costUSD": 1.3391,
+   "timeSec": 18094,
+   "outputTokens": 1085665
+  },
+  {
+   "key": "qwen_37_flash",
+   "name": "Qwen 3.7 Flash",
+   "provider": "qwen",
+   "accuracy": 44.67,
+   "score": 65.0,
+   "costUSD": 0.0733,
+   "timeSec": 9131,
+   "outputTokens": 547832
+  },
+  {
+   "key": "gemini_25_pro",
+   "name": "Gemini 2.5 Pro",
+   "provider": "google",
+   "accuracy": 40.0,
+   "score": 56.83,
+   "costUSD": 2.7395,
+   "timeSec": 4538,
+   "outputTokens": 272275
+  },
+  {
+   "key": "gpt_51",
+   "name": "GPT-5.1",
+   "provider": "openai",
+   "accuracy": 39.33,
+   "score": 55.0,
+   "costUSD": 4.516,
+   "timeSec": 7453,
+   "outputTokens": 447209
+  },
+  {
+   "key": "gpt_5",
+   "name": "GPT-5",
+   "provider": "openai",
+   "accuracy": 38.0,
+   "score": 53.33,
+   "costUSD": 4.4874,
+   "timeSec": 7406,
+   "outputTokens": 444375
+  },
+  {
+   "key": "claude_opus_45",
+   "name": "Claude Opus 4.5",
+   "provider": "anthropic",
+   "accuracy": 36.67,
+   "score": 52.83,
+   "costUSD": 6.751,
+   "timeSec": 4284,
+   "outputTokens": 257022
+  },
+  {
+   "key": "mimo_2_6_pro",
+   "name": "Mimo 2.6 Pro",
+   "provider": "xiaomi",
+   "accuracy": 33.33,
+   "score": 54.83,
+   "costUSD": 0.1675,
+   "timeSec": 2730,
+   "outputTokens": 163794
+  },
+  {
+   "key": "inkling",
+   "name": "Inkling",
+   "provider": "thinkingmachines",
+   "accuracy": 33.33,
+   "score": 48.67,
+   "costUSD": 3.7716,
+   "timeSec": 15142,
+   "outputTokens": 908517
+  },
+  {
+   "key": "o3",
+   "name": "o3",
+   "provider": "openai",
+   "accuracy": 32.67,
+   "score": 51.5,
+   "costUSD": 1.9674,
+   "timeSec": 3943,
+   "outputTokens": 236556
+  },
+  {
+   "key": "gemma_4_31b_it",
+   "name": "Gemma 4 31B IT",
+   "provider": "google",
+   "accuracy": 31.33,
+   "score": 51.5,
+   "costUSD": 0.0765,
+   "timeSec": 3072,
+   "outputTokens": 184303
+  },
+  {
+   "key": "qwen_35_9b",
+   "name": "Qwen 3.5 9B",
+   "provider": "qwen",
+   "accuracy": 27.33,
+   "score": 43.17,
+   "costUSD": 0.234,
+   "timeSec": 14757,
+   "outputTokens": 885401
+  },
+  {
+   "key": "llama_4_maverick",
+   "name": "Llama 4 Maverick",
+   "provider": "meta",
+   "accuracy": 26.0,
+   "score": 46.0,
+   "costUSD": 0.0613,
+   "timeSec": 459,
+   "outputTokens": 27532
+  },
+  {
+   "key": "step_37_flash",
+   "name": "Step 3.7 Flash",
+   "provider": "stepfun",
+   "accuracy": 25.33,
+   "score": 47.5,
+   "costUSD": 5.6338,
+   "timeSec": 81503,
+   "outputTokens": 4890196
+  },
+  {
+   "key": "claude_sonnet_45",
+   "name": "Claude Sonnet 4.5",
+   "provider": "anthropic",
+   "accuracy": 24.0,
+   "score": 44.17,
+   "costUSD": 2.5122,
+   "timeSec": 2563,
+   "outputTokens": 153796
+  },
+  {
+   "key": "gemini_25_flash_lite",
+   "name": "Gemini 2.5 Flash-Lite",
+   "provider": "google",
+   "accuracy": 24.0,
+   "score": 42.5,
+   "costUSD": 0.9068,
+   "timeSec": 37713,
+   "outputTokens": 2262785
+  },
+  {
+   "key": "mistral_medium_35",
+   "name": "Mistral Medium 3.5",
+   "provider": "mistral",
+   "accuracy": 18.0,
+   "score": 36.5,
+   "costUSD": 2.5897,
+   "timeSec": 5481,
+   "outputTokens": 328853
+  },
+  {
+   "key": "qwen3_vl_235b_a22b_instruct",
+   "name": "Qwen3-VL-235B-A22B Instruct",
+   "provider": "qwen",
+   "accuracy": 16.0,
+   "score": 36.0,
+   "costUSD": 0.1298,
+   "timeSec": 1006,
+   "outputTokens": 60334
+  },
+  {
+   "key": "nemotron_35_super_vl",
+   "name": "Nemotron 3.5 Super VL",
+   "provider": "nvidia",
+   "accuracy": 13.33,
+   "score": 37.5,
+   "costUSD": 0.4205,
+   "timeSec": 14512,
+   "outputTokens": 870699
+  },
+  {
+   "key": "claude_haiku_45",
+   "name": "Claude Haiku 4.5",
+   "provider": "anthropic",
+   "accuracy": 12.0,
+   "score": 31.17,
+   "costUSD": 1.0077,
+   "timeSec": 3142,
+   "outputTokens": 188518
+  },
+  {
+   "key": "mistral_large_2512",
+   "name": "Mistral Large 2512",
+   "provider": "mistral",
+   "accuracy": 11.33,
+   "score": 28.0,
+   "costUSD": 0.085,
+   "timeSec": 518,
+   "outputTokens": 31084
+  },
+  {
+   "key": "gpt_4o_2024_11_20",
+   "name": "GPT-4o (2024-11-20)",
+   "provider": "openai",
+   "accuracy": 8.0,
+   "score": 31.67,
+   "costUSD": 0.327,
+   "timeSec": 383,
+   "outputTokens": 22969
+  },
+  {
+   "key": "nova_pro",
+   "name": "Nova Pro",
+   "provider": "amazon",
+   "accuracy": 8.0,
+   "score": 21.67,
+   "costUSD": 0.1657,
+   "timeSec": 485,
+   "outputTokens": 29108
+  },
+  {
+   "key": "gpt_4o",
+   "name": "GPT-4o (2024-08-06)",
+   "provider": "openai",
+   "accuracy": 5.33,
+   "score": 31.17,
+   "costUSD": 0.2521,
+   "timeSec": 253,
+   "outputTokens": 15193
+  },
+  {
+   "key": "gpt_4o_2024_05_13",
+   "name": "GPT-4o (2024-05-13)",
+   "provider": "openai",
+   "accuracy": 5.33,
+   "score": 28.83,
+   "costUSD": 0.5489,
+   "timeSec": 375,
+   "outputTokens": 22490
+  },
+  {
+   "key": "qwen25_vl_72b_instruct",
+   "name": "Qwen2.5-VL-72B Instruct",
+   "provider": "qwen",
+   "accuracy": 5.33,
+   "score": 26.33,
+   "costUSD": 0.1029,
+   "timeSec": 445,
+   "outputTokens": 26680
+  },
+  {
+   "key": "gpt_4o_mini",
+   "name": "GPT-4o Mini",
+   "provider": "openai",
+   "accuracy": 4.67,
+   "score": 25.67,
+   "costUSD": 0.187,
+   "timeSec": 313,
+   "outputTokens": 18763
+  }
+ ]
+}
