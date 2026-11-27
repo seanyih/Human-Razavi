@@ -7,6 +7,7 @@
    "source": "Razavi-Bench part1-001",
    "prompt": {
     "zh": "若把 MOSFET 的通道長度 L 與寬度 W 同時加倍（維持相同的 overdrive 電壓），其本質增益 g<sub>m</sub>r<sub>o</sub> 會如何變化？",
+    "jj": "若把 MOSFET 的通道長度 L 與寬度 W 同時加倍（維持相同的 overdrive 電壓），其 intrinsic gain g<sub>m</sub>r<sub>o</sub> 會如何變化？",
     "en": "If we double both the length L and width W of a MOSFET (same overdrive voltage), what happens to its intrinsic gain g<sub>m</sub>r<sub>o</sub>?"
    },
    "options": [
@@ -49,6 +50,7 @@
    "answer": "double",
    "explanation": {
     "zh": "本質增益 = g<sub>m</sub>r<sub>o</sub>。W、L 同時加倍且 V<sub>ov</sub> 固定時，W/L 不變，g<sub>m</sub> 與 I<sub>D</sub> 大致不變；r<sub>o</sub> = 1/(λI<sub>D</sub>)，而 λ 隨 L 增加而減小，所以 r<sub>o</sub> 約加倍，本質增益約加倍。",
+    "jj": "intrinsic gain = g<sub>m</sub>r<sub>o</sub>。W、L 同時加倍且 V<sub>ov</sub> 固定時，W/L 不變，g<sub>m</sub> 與 I<sub>D</sub> 大致不變；r<sub>o</sub> = 1/(λI<sub>D</sub>)，而 λ 隨 L 增加而減小，所以 r<sub>o</sub> 約加倍，intrinsic gain 約加倍。",
     "en": "Intrinsic gain = g<sub>m</sub>r<sub>o</sub>. With W and L both doubled at the same overdrive, W/L is unchanged, so g<sub>m</sub> and I<sub>D</sub> stay about the same. r<sub>o</sub> = 1/(λI<sub>D</sub>) and λ falls as L grows, so r<sub>o</sub> roughly doubles and so does the intrinsic gain."
    }
   },
@@ -59,6 +61,7 @@
    "source": "Razavi-Bench part1-002",
    "prompt": {
     "zh": "學生甲說 MOSFET 的轉導 g<sub>m</sub> 隨 overdrive 電壓 V<sub>ov</sub> 增加而上升，學生乙說會下降。對同一顆電晶體而言，誰對？為什麼？",
+    "jj": "學生甲說 MOSFET 的 transconductance g<sub>m</sub> 隨 overdrive 電壓 V<sub>ov</sub> 增加而上升，學生乙說會下降。對同一顆電晶體而言，誰對？為什麼？",
     "en": "Student A says the transconductance g<sub>m</sub> of a MOSFET goes up as the overdrive voltage V<sub>ov</sub> increases; Student B says it goes down. For a given transistor, who is correct, and why?"
    },
    "options": [
@@ -94,6 +97,7 @@
    "answer": "a",
    "explanation": {
     "zh": "對同一顆電晶體（W/L 固定），甲對。長通道飽和區 g<sub>m</sub> = μC<sub>ox</sub>(W/L)V<sub>ov</sub> = 2I<sub>D</sub>/V<sub>ov</sub>。W/L 固定時提高 V<sub>ov</sub>，I<sub>D</sub> 隨 V<sub>ov</sub><sup>2</sup> 上升，g<sub>m</sub> 隨 V<sub>ov</sub> 線性上升；用 2I<sub>D</sub>/V<sub>ov</sub> 推出「下降」是錯的，因為 I<sub>D</sub> 並不固定。乙的說法只在 I<sub>D</sub> 固定、靠縮小 W/L 提高 V<sub>ov</sub> 時成立。",
+    "jj": "對同一顆電晶體（W/L 固定），甲對。長通道 saturation 區 g<sub>m</sub> = μC<sub>ox</sub>(W/L)V<sub>ov</sub> = 2I<sub>D</sub>/V<sub>ov</sub>。W/L 固定時提高 V<sub>ov</sub>，I<sub>D</sub> 隨 V<sub>ov</sub><sup>2</sup> 上升，g<sub>m</sub> 隨 V<sub>ov</sub> 線性上升；用 2I<sub>D</sub>/V<sub>ov</sub> 推出「下降」是錯的，因為 I<sub>D</sub> 並不固定。乙的說法只在 I<sub>D</sub> 固定、靠縮小 W/L 提高 V<sub>ov</sub> 時成立。",
     "en": "For a given transistor (fixed W/L), Student A is correct. For a long-channel device in saturation g<sub>m</sub> = μC<sub>ox</sub>(W/L)V<sub>ov</sub> = 2I<sub>D</sub>/V<sub>ov</sub>. Raising V<sub>ov</sub> at fixed W/L raises I<sub>D</sub> as V<sub>ov</sub><sup>2</sup>, so g<sub>m</sub> rises linearly; reading 2I<sub>D</sub>/V<sub>ov</sub> as \"falls\" is wrong because I<sub>D</sub> does not stay constant. Student B is right only if I<sub>D</sub> is fixed and W/L is reduced to raise V<sub>ov</sub>."
    }
   },
@@ -104,6 +108,7 @@
    "source": "Razavi-Bench part1-003",
    "prompt": {
     "zh": "PMOS 的小訊號模型與 NMOS 相同嗎？",
+    "jj": "PMOS 的 small-signal 模型與 NMOS 相同嗎？",
     "en": "Is the small-signal model of a PMOS device identical to that of an NMOS device?"
    },
    "options": [
@@ -111,6 +116,7 @@
      "id": "yesro",
      "text": {
       "zh": "是，但 PMOS 的 r<sub>o</sub> 必須改接在汲極與 V<sub>DD</sub> 之間",
+      "jj": "是，但 PMOS 的 r<sub>o</sub> 必須改接在 drain 與 V<sub>DD</sub> 之間",
       "en": "Yes, but the PMOS r<sub>o</sub> must be placed between drain and V<sub>DD</sub>"
      }
     },
@@ -118,6 +124,7 @@
      "id": "yes",
      "text": {
       "zh": "是，因為以源極為參考的小訊號變數表示時，兩者形式完全相同",
+      "jj": "是，因為以 source 為參考的 small-signal 變數表示時，兩者形式完全相同",
       "en": "Yes, because with source-referenced small-signal variables the two have the same form"
      }
     },
@@ -125,6 +132,7 @@
      "id": "noflip",
      "text": {
       "zh": "否，因為 PMOS 的受控電流源方向相反，是不同的模型",
+      "jj": "否，因為 PMOS 的受控 current source 方向相反，是不同的模型",
       "en": "No, because the PMOS controlled current source points the other way, making it a different model"
      }
     },
@@ -132,6 +140,7 @@
      "id": "nogmb",
      "text": {
       "zh": "否，因為 PMOS 做在 N-well 中，沒有基體效應 g<sub>mb</sub> 這一項",
+      "jj": "否，因為 PMOS 做在 N-well 中，沒有 body effect g<sub>mb</sub> 這一項",
       "en": "No, because a PMOS sits in an n-well and has no body-effect g<sub>mb</sub> term"
      }
     }
@@ -139,6 +148,7 @@
    "answer": "yes",
    "explanation": {
     "zh": "相同（形式相同）。PMOS 同樣有 g<sub>m</sub>、g<sub>mb</sub>、r<sub>o</sub> 與各端電容；若沿用同樣的絕對電壓方向，受控源方向與正負號相反，但以源極為參考的小訊號變數表示時，模型結構完全相同。Razavi 對 ChatGPT 的「Yes.」給滿分。",
+    "jj": "相同（形式相同）。PMOS 同樣有 g<sub>m</sub>、g<sub>mb</sub>、r<sub>o</sub> 與各端電容；若沿用同樣的絕對電壓方向，受控源方向與正負號相反，但以 source 為參考的 small-signal 變數表示時，模型結構完全相同。Razavi 對 ChatGPT 的「Yes.」給滿分。",
     "en": "Yes, in form. A PMOS has the same g<sub>m</sub>, g<sub>mb</sub>, r<sub>o</sub> and terminal capacitances. With the same absolute voltage directions the controlled-source direction and signs flip, but with source-referenced small-signal variables the model is identical in structure. Razavi gives full marks to ChatGPT's \"Yes.\""
    }
   },
@@ -185,6 +195,7 @@
    "answer": "quad",
    "explanation": {
     "zh": "這是二極體接法的 NMOS：閘極與汲極接 V<sub>X</sub>，源極接地。0 ≤ V<sub>X</sub> ≤ V<sub>TH</sub> 時關閉，I<sub>X</sub> ≈ 0（只有次臨界電流）。V<sub>X</sub> > V<sub>TH</sub> 時 V<sub>DS</sub> = V<sub>GS</sub>，必在飽和區，I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>：零到臨界電壓，之後平方上升。",
+    "jj": "這是 diode-connected 的 NMOS：gate 與 drain 接 V<sub>X</sub>，source 接地。0 ≤ V<sub>X</sub> ≤ V<sub>TH</sub> 時關閉，I<sub>X</sub> ≈ 0（只有 subthreshold 電流）。V<sub>X</sub> > V<sub>TH</sub> 時 V<sub>DS</sub> = V<sub>GS</sub>，必在 saturation 區，I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>：零到 threshold 電壓，之後平方上升。",
     "en": "A diode-connected NMOS: gate and drain at V<sub>X</sub>, source at ground. For 0 ≤ V<sub>X</sub> ≤ V<sub>TH</sub> it is off and I<sub>X</sub> ≈ 0 (subthreshold only). For V<sub>X</sub> > V<sub>TH</sub>, V<sub>DS</sub> = V<sub>GS</sub>, so it is saturated and I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>: zero up to threshold, then quadratic."
    }
   },
@@ -196,6 +207,7 @@
    "image": "razavi-part1-fig02.png",
    "prompt": {
     "zh": "V<sub>X</sub> 超過多少時，M<sub>1</sub> 會離開飽和區進入三極管區？",
+    "jj": "V<sub>X</sub> 超過多少時，M<sub>1</sub> 會離開 saturation 區進入 triode 區？",
     "en": "Above what V<sub>X</sub> does M<sub>1</sub> leave saturation and enter the triode region?"
    },
    "options": [
@@ -231,6 +243,7 @@
    "answer": "a",
    "explanation": {
     "zh": "V<sub>X</sub> 加在閘極、源極接地、汲極固定在 1 V，所以 V<sub>GS</sub> = V<sub>X</sub>、V<sub>DS</sub> = 1 V。V<sub>X</sub> ≤ V<sub>TH</sub> 時關閉；V<sub>TH</sub> < V<sub>X</sub> < V<sub>TH</sub> + 1 V 時滿足 V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>TH</sub>，在飽和區，I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>；V<sub>X</sub> ≥ V<sub>TH</sub> + 1 V 後進入三極管區，I<sub>X</sub> ≈ μ<sub>n</sub>C<sub>ox</sub>(W/L)[(V<sub>X</sub> − V<sub>TH</sub>)(1 V) − ½(1 V)<sup>2</sup>]，對 V<sub>X</sub> 近似線性。",
+    "jj": "V<sub>X</sub> 加在 gate、source 接地、drain 固定在 1 V，所以 V<sub>GS</sub> = V<sub>X</sub>、V<sub>DS</sub> = 1 V。V<sub>X</sub> ≤ V<sub>TH</sub> 時關閉；V<sub>TH</sub> < V<sub>X</sub> < V<sub>TH</sub> + 1 V 時滿足 V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>TH</sub>，在 saturation 區，I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>；V<sub>X</sub> ≥ V<sub>TH</sub> + 1 V 後進入 triode 區，I<sub>X</sub> ≈ μ<sub>n</sub>C<sub>ox</sub>(W/L)[(V<sub>X</sub> − V<sub>TH</sub>)(1 V) − ½(1 V)<sup>2</sup>]，對 V<sub>X</sub> 近似線性。",
     "en": "V<sub>X</sub> drives the gate, the source is grounded and the drain is held at 1 V, so V<sub>GS</sub> = V<sub>X</sub> and V<sub>DS</sub> = 1 V. Off for V<sub>X</sub> ≤ V<sub>TH</sub>. For V<sub>TH</sub> < V<sub>X</sub> < V<sub>TH</sub> + 1 V, V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>TH</sub>, so it is saturated and I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>. For V<sub>X</sub> ≥ V<sub>TH</sub> + 1 V it enters triode and I<sub>X</sub> ≈ μ<sub>n</sub>C<sub>ox</sub>(W/L)[(V<sub>X</sub> − V<sub>TH</sub>)(1 V) − ½(1 V)<sup>2</sup>], roughly linear in V<sub>X</sub>."
    }
   },
@@ -277,6 +290,7 @@
    "answer": "ql",
    "explanation": {
     "zh": "V<sub>X</sub> 加在閘極、源極接地、汲極固定在 1 V，所以 V<sub>GS</sub> = V<sub>X</sub>、V<sub>DS</sub> = 1 V。V<sub>X</sub> ≤ V<sub>TH</sub> 時關閉；V<sub>TH</sub> < V<sub>X</sub> < V<sub>TH</sub> + 1 V 時滿足 V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>TH</sub>，在飽和區，I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>；V<sub>X</sub> ≥ V<sub>TH</sub> + 1 V 後進入三極管區，I<sub>X</sub> ≈ μ<sub>n</sub>C<sub>ox</sub>(W/L)[(V<sub>X</sub> − V<sub>TH</sub>)(1 V) − ½(1 V)<sup>2</sup>]，對 V<sub>X</sub> 近似線性。",
+    "jj": "V<sub>X</sub> 加在 gate、source 接地、drain 固定在 1 V，所以 V<sub>GS</sub> = V<sub>X</sub>、V<sub>DS</sub> = 1 V。V<sub>X</sub> ≤ V<sub>TH</sub> 時關閉；V<sub>TH</sub> < V<sub>X</sub> < V<sub>TH</sub> + 1 V 時滿足 V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>TH</sub>，在 saturation 區，I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>；V<sub>X</sub> ≥ V<sub>TH</sub> + 1 V 後進入 triode 區，I<sub>X</sub> ≈ μ<sub>n</sub>C<sub>ox</sub>(W/L)[(V<sub>X</sub> − V<sub>TH</sub>)(1 V) − ½(1 V)<sup>2</sup>]，對 V<sub>X</sub> 近似線性。",
     "en": "V<sub>X</sub> drives the gate, the source is grounded and the drain is held at 1 V, so V<sub>GS</sub> = V<sub>X</sub> and V<sub>DS</sub> = 1 V. Off for V<sub>X</sub> ≤ V<sub>TH</sub>. For V<sub>TH</sub> < V<sub>X</sub> < V<sub>TH</sub> + 1 V, V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>TH</sub>, so it is saturated and I<sub>X</sub> ≈ ½μ<sub>n</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − V<sub>TH</sub>)<sup>2</sup>. For V<sub>X</sub> ≥ V<sub>TH</sub> + 1 V it enters triode and I<sub>X</sub> ≈ μ<sub>n</sub>C<sub>ox</sub>(W/L)[(V<sub>X</sub> − V<sub>TH</sub>)(1 V) − ½(1 V)<sup>2</sup>], roughly linear in V<sub>X</sub>."
    }
   },
@@ -288,6 +302,7 @@
    "image": "razavi-part1-fig03.png",
    "prompt": {
     "zh": "圖中元件能當電流源嗎？",
+    "jj": "圖中元件能當 current source 嗎？",
     "en": "Can the device shown in the figure act as a current source?"
    },
    "options": [
@@ -302,6 +317,7 @@
      "id": "nolow",
      "text": {
       "zh": "不能，因為它是二極體接法的 PMOS（閘極與汲極接地），阻抗只有約 1/g<sub>m</sub>",
+      "jj": "不能，因為它是 diode-connected 的 PMOS（gate 與 drain 接地），阻抗只有約 1/g<sub>m</sub>",
       "en": "No, because it is a diode-connected PMOS (gate and drain grounded) with an impedance of only about 1/g<sub>m</sub>"
      }
     },
@@ -309,6 +325,7 @@
      "id": "yesn",
      "text": {
       "zh": "能，因為它是二極體接法的 NMOS，導通時一定在飽和區",
+      "jj": "能，因為它是 diode-connected 的 NMOS，導通時一定在 saturation 區",
       "en": "Yes, because it is a diode-connected NMOS, always saturated when it conducts"
      }
     },
@@ -316,6 +333,7 @@
      "id": "yesp",
      "text": {
       "zh": "能，因為 PMOS 閘極接地使 V<sub>GS</sub> 固定，電流也就固定",
+      "jj": "能，因為 PMOS gate 接地使 V<sub>GS</sub> 固定，電流也就固定",
       "en": "Yes, because the PMOS gate is grounded, so V<sub>GS</sub> and hence the current are fixed"
      }
     }
@@ -323,6 +341,7 @@
    "answer": "nolow",
    "explanation": {
     "zh": "不能。M<sub>1</sub> 是 PMOS：源極是 I<sub>X</sub> 流入的上端，閘極與汲極都接地，所以是二極體接法，V<sub>SG</sub> = V<sub>SD</sub> = V<sub>X</sub>。導通時必在飽和區，I<sub>X</sub> ≈ ½μ<sub>p</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − |V<sub>THP</sub>|)<sup>2</sup>，電流由端電壓決定，小訊號電阻只有約 1/g<sub>m</sub>（並聯 r<sub>o</sub>）。電流源必須是高阻抗；這個元件是低阻抗的非線性電阻。Razavi 指出 ChatGPT 的兩個錯誤：沒看出它是低阻抗，以及把它當成 NMOS。",
+    "jj": "不能。M<sub>1</sub> 是 PMOS：source 是 I<sub>X</sub> 流入的上端，gate 與 drain 都接地，所以是 diode-connected，V<sub>SG</sub> = V<sub>SD</sub> = V<sub>X</sub>。導通時必在 saturation 區，I<sub>X</sub> ≈ ½μ<sub>p</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − |V<sub>THP</sub>|)<sup>2</sup>，電流由端電壓決定，small-signal 電阻只有約 1/g<sub>m</sub>（並聯 r<sub>o</sub>）。current source 必須是高阻抗；這個元件是低阻抗的非線性電阻。Razavi 指出 ChatGPT 的兩個錯誤：沒看出它是低阻抗，以及把它當成 NMOS。",
     "en": "No. M<sub>1</sub> is a PMOS whose source is the top terminal, into which I<sub>X</sub> flows, with gate and drain both grounded: a diode-connected PMOS with V<sub>SG</sub> = V<sub>SD</sub> = V<sub>X</sub>. Whenever it conducts it is saturated, I<sub>X</sub> ≈ ½μ<sub>p</sub>C<sub>ox</sub>(W/L)(V<sub>X</sub> − |V<sub>THP</sub>|)<sup>2</sup>, so its current is set by its terminal voltage and its small-signal resistance is only about 1/g<sub>m</sub> (in parallel with r<sub>o</sub>). A current source must present a high impedance; this device is a low-impedance nonlinear resistor. Razavi names ChatGPT's two mistakes: missing the low impedance, and calling the device an NMOS."
    }
   },
@@ -334,6 +353,7 @@
    "image": "razavi-part1-fig04.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -438,6 +458,7 @@
    },
    "explanation": {
     "zh": "這是源極退化的 PMOS 共源級：M<sub>1</sub> 為 PMOS，源極經 R<sub>S</sub> 接 V<sub>DD</sub>、汲極經 R<sub>D</sub> 接地，輸入在閘極、輸出在汲極。忽略 r<sub>o</sub> 與基體效應，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為反相。含基體效應時分母為 1 + (g<sub>m</sub> + g<sub>mb</sub>)R<sub>S</sub>。Razavi 對答出此增益、卻把 M<sub>1</sub> 當成 NMOS 的 ChatGPT 只給 1/4。",
+    "jj": "這是帶 source degeneration 的 PMOS common-source stage：M<sub>1</sub> 為 PMOS，source 經 R<sub>S</sub> 接 V<sub>DD</sub>、drain 經 R<sub>D</sub> 接地，輸入在 gate、輸出在 drain。忽略 r<sub>o</sub> 與 body effect，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為反相。含 body effect 時分母為 1 + (g<sub>m</sub> + g<sub>mb</sub>)R<sub>S</sub>。Razavi 對答出此增益、卻把 M<sub>1</sub> 當成 NMOS 的 ChatGPT 只給 1/4。",
     "en": "A PMOS common-source stage with source degeneration: M<sub>1</sub> is a PMOS with its source to V<sub>DD</sub> through R<sub>S</sub>, its drain to ground through R<sub>D</sub>, input at the gate and output at the drain. Neglecting r<sub>o</sub> and body effect, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>): inverting. With body effect the denominator becomes 1 + (g<sub>m</sub> + g<sub>mb</sub>)R<sub>S</sub>. Razavi gives 1/4 to ChatGPT, which gives this gain but calls M<sub>1</sub> an NMOS."
    }
   },
@@ -456,6 +477,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>1</sub> 是 PMOS，源極經 R<sub>S</sub> 接 V<sub>DD</sub>",
+      "jj": "M<sub>1</sub> 是 PMOS，source 經 R<sub>S</sub> 接 V<sub>DD</sub>",
       "en": "M<sub>1</sub> is a PMOS with its source tied to V<sub>DD</sub> through R<sub>S</sub>"
      }
     },
@@ -470,6 +492,7 @@
      "id": "sc",
      "text": {
       "zh": "忽略 r<sub>o</sub> 與基體效應，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
+      "jj": "忽略 r<sub>o</sub> 與 body effect，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
       "en": "Neglecting r<sub>o</sub> and body effect, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)"
      }
     },
@@ -487,6 +510,7 @@
    ],
    "explanation": {
     "zh": "這是源極退化的 PMOS 共源級：M<sub>1</sub> 為 PMOS，源極經 R<sub>S</sub> 接 V<sub>DD</sub>、汲極經 R<sub>D</sub> 接地，輸入在閘極、輸出在汲極。忽略 r<sub>o</sub> 與基體效應，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為反相。含基體效應時分母為 1 + (g<sub>m</sub> + g<sub>mb</sub>)R<sub>S</sub>。Razavi 對答出此增益、卻把 M<sub>1</sub> 當成 NMOS 的 ChatGPT 只給 1/4。",
+    "jj": "這是帶 source degeneration 的 PMOS common-source stage：M<sub>1</sub> 為 PMOS，source 經 R<sub>S</sub> 接 V<sub>DD</sub>、drain 經 R<sub>D</sub> 接地，輸入在 gate、輸出在 drain。忽略 r<sub>o</sub> 與 body effect，A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為反相。含 body effect 時分母為 1 + (g<sub>m</sub> + g<sub>mb</sub>)R<sub>S</sub>。Razavi 對答出此增益、卻把 M<sub>1</sub> 當成 NMOS 的 ChatGPT 只給 1/4。",
     "en": "A PMOS common-source stage with source degeneration: M<sub>1</sub> is a PMOS with its source to V<sub>DD</sub> through R<sub>S</sub>, its drain to ground through R<sub>D</sub>, input at the gate and output at the drain. Neglecting r<sub>o</sub> and body effect, A<sub>v</sub> ≈ −g<sub>m</sub>R<sub>D</sub>/(1 + g<sub>m</sub>R<sub>S</sub>): inverting. With body effect the denominator becomes 1 + (g<sub>m</sub> + g<sub>mb</sub>)R<sub>S</sub>. Razavi gives 1/4 to ChatGPT, which gives this gain but calls M<sub>1</sub> an NMOS."
    }
   },
@@ -498,6 +522,7 @@
    "image": "razavi-part1-fig05.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -583,6 +608,7 @@
    },
    "explanation": {
     "zh": "這是源極隨耦器：輸入在閘極、輸出在源極、R<sub>S</sub> 為接地的源極負載。忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為正且小於 1。從源極看進去的電阻為 1/g<sub>m</sub>，故 R<sub>out</sub> = R<sub>S</sub> ‖ (1/g<sub>m</sub>)。",
+    "jj": "這是 source follower：輸入在 gate、輸出在 source、R<sub>S</sub> 為接地的 source 負載。忽略 body effect 與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為正且小於 1。從 source 看進去的電阻為 1/g<sub>m</sub>，故 R<sub>out</sub> = R<sub>S</sub> ‖ (1/g<sub>m</sub>)。",
     "en": "A source follower: input at the gate, output at the source, R<sub>S</sub> the source load to ground. Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>): positive and below one. The resistance looking into the source is 1/g<sub>m</sub>, so R<sub>out</sub> = R<sub>S</sub> ‖ (1/g<sub>m</sub>)."
    }
   },
@@ -601,6 +627,7 @@
      "id": "sa",
      "text": {
       "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
+      "jj": "忽略 body effect 與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)",
       "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)"
      }
     },
@@ -615,6 +642,7 @@
      "id": "sd",
      "text": {
       "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 − g<sub>m</sub>R<sub>S</sub>)",
+      "jj": "忽略 body effect 與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 − g<sub>m</sub>R<sub>S</sub>)",
       "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 − g<sub>m</sub>R<sub>S</sub>)"
      }
     },
@@ -622,6 +650,7 @@
      "id": "sc",
      "text": {
       "zh": "輸出取在源極，所以增益恰好等於 1，與 R<sub>S</sub> 無關",
+      "jj": "輸出取在 source，所以增益恰好等於 1，與 R<sub>S</sub> 無關",
       "en": "Because the output is at the source, the gain is exactly 1 regardless of R<sub>S</sub>"
      }
     }
@@ -631,6 +660,7 @@
    ],
    "explanation": {
     "zh": "這是源極隨耦器：輸入在閘極、輸出在源極、R<sub>S</sub> 為接地的源極負載。忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為正且小於 1。從源極看進去的電阻為 1/g<sub>m</sub>，故 R<sub>out</sub> = R<sub>S</sub> ‖ (1/g<sub>m</sub>)。",
+    "jj": "這是 source follower：輸入在 gate、輸出在 source、R<sub>S</sub> 為接地的 source 負載。忽略 body effect 與 r<sub>o</sub>，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>)，為正且小於 1。從 source 看進去的電阻為 1/g<sub>m</sub>，故 R<sub>out</sub> = R<sub>S</sub> ‖ (1/g<sub>m</sub>)。",
     "en": "A source follower: input at the gate, output at the source, R<sub>S</sub> the source load to ground. Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>S</sub>/(1 + g<sub>m</sub>R<sub>S</sub>): positive and below one. The resistance looking into the source is 1/g<sub>m</sub>, so R<sub>out</sub> = R<sub>S</sub> ‖ (1/g<sub>m</sub>)."
    }
   },
@@ -642,6 +672,7 @@
    "image": "razavi-part1-fig06.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -703,6 +734,7 @@
    },
    "explanation": {
     "zh": "V<sub>in</sub> 加在 M<sub>1</sub> 的源極，閘極接 V<sub>DD</sub>（直流偏壓、交流接地），輸出在汲極的 R<sub>D</sub> 上：這是共閘級，不是共源級。忽略 r<sub>o</sub>，從源極看進去 R<sub>in</sub> ≈ 1/g<sub>m</sub>；增益為非反相，A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub>（含 r<sub>o</sub> 為 +g<sub>m</sub>(R<sub>D</sub> ‖ r<sub>o</sub>)）。把 V<sub>in</sub> 當成閘極輸入會得到錯的組態與錯的正負號。",
+    "jj": "V<sub>in</sub> 加在 M<sub>1</sub> 的 source，gate 接 V<sub>DD</sub>（直流偏壓、交流接地），輸出在 drain 的 R<sub>D</sub> 上：這是 common-gate stage，不是 common-source stage。忽略 r<sub>o</sub>，從 source 看進去 R<sub>in</sub> ≈ 1/g<sub>m</sub>；增益為非反相，A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub>（含 r<sub>o</sub> 為 +g<sub>m</sub>(R<sub>D</sub> ‖ r<sub>o</sub>)）。把 V<sub>in</sub> 當成 gate 輸入會得到錯的 topology 與錯的正負號。",
     "en": "V<sub>in</sub> drives the source of M<sub>1</sub>, the gate is tied to V<sub>DD</sub> (a dc bias, AC ground), and the output is at the drain through R<sub>D</sub>: a common-gate stage, not common-source. Neglecting r<sub>o</sub>, R<sub>in</sub> ≈ 1/g<sub>m</sub> looking into the source, and the gain is non-inverting, A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub> (+g<sub>m</sub>(R<sub>D</sub> ‖ r<sub>o</sub>) with r<sub>o</sub>). Treating V<sub>in</sub> as a gate input gives the wrong topology and the wrong sign."
    }
   },
@@ -721,6 +753,7 @@
      "id": "sa",
      "text": {
       "zh": "V<sub>in</sub> 加在源極，閘極經 V<sub>DD</sub> 交流接地",
+      "jj": "V<sub>in</sub> 加在 source，gate 經 V<sub>DD</sub> 交流接地",
       "en": "V<sub>in</sub> drives the source and the gate is AC-grounded through V<sub>DD</sub>"
      }
     },
@@ -735,6 +768,7 @@
      "id": "sd",
      "text": {
       "zh": "增益大小與共源級相同，都是 −g<sub>m</sub>R<sub>D</sub>，差別只在輸入阻抗",
+      "jj": "增益大小與 common-source stage 相同，都是 −g<sub>m</sub>R<sub>D</sub>，差別只在輸入阻抗",
       "en": "The gain equals a common-source stage's, −g<sub>m</sub>R<sub>D</sub>; only the input impedance differs"
      }
     },
@@ -742,6 +776,7 @@
      "id": "sc",
      "text": {
       "zh": "閘極接 V<sub>DD</sub>，所以 M<sub>1</sub> 一定在三極管區，無法當放大器",
+      "jj": "gate 接 V<sub>DD</sub>，所以 M<sub>1</sub> 一定在 triode 區，無法當放大器",
       "en": "With its gate at V<sub>DD</sub>, M<sub>1</sub> must be in triode and cannot amplify"
      }
     }
@@ -752,6 +787,7 @@
    ],
    "explanation": {
     "zh": "V<sub>in</sub> 加在 M<sub>1</sub> 的源極，閘極接 V<sub>DD</sub>（直流偏壓、交流接地），輸出在汲極的 R<sub>D</sub> 上：這是共閘級，不是共源級。忽略 r<sub>o</sub>，從源極看進去 R<sub>in</sub> ≈ 1/g<sub>m</sub>；增益為非反相，A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub>（含 r<sub>o</sub> 為 +g<sub>m</sub>(R<sub>D</sub> ‖ r<sub>o</sub>)）。把 V<sub>in</sub> 當成閘極輸入會得到錯的組態與錯的正負號。",
+    "jj": "V<sub>in</sub> 加在 M<sub>1</sub> 的 source，gate 接 V<sub>DD</sub>（直流偏壓、交流接地），輸出在 drain 的 R<sub>D</sub> 上：這是 common-gate stage，不是 common-source stage。忽略 r<sub>o</sub>，從 source 看進去 R<sub>in</sub> ≈ 1/g<sub>m</sub>；增益為非反相，A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub>（含 r<sub>o</sub> 為 +g<sub>m</sub>(R<sub>D</sub> ‖ r<sub>o</sub>)）。把 V<sub>in</sub> 當成 gate 輸入會得到錯的 topology 與錯的正負號。",
     "en": "V<sub>in</sub> drives the source of M<sub>1</sub>, the gate is tied to V<sub>DD</sub> (a dc bias, AC ground), and the output is at the drain through R<sub>D</sub>: a common-gate stage, not common-source. Neglecting r<sub>o</sub>, R<sub>in</sub> ≈ 1/g<sub>m</sub> looking into the source, and the gain is non-inverting, A<sub>v</sub> ≈ +g<sub>m</sub>R<sub>D</sub> (+g<sub>m</sub>(R<sub>D</sub> ‖ r<sub>o</sub>) with r<sub>o</sub>). Treating V<sub>in</sub> as a gate input gives the wrong topology and the wrong sign."
    }
   },
@@ -770,6 +806,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>1</sub> 的源極節點直接接地，所以 V<sub>in</sub> 被短路",
+      "jj": "M<sub>1</sub> 的 source 節點直接接地，所以 V<sub>in</sub> 被短路",
       "en": "The source node of M<sub>1</sub> is tied directly to ground, so V<sub>in</sub> is shorted"
      }
     },
@@ -777,6 +814,7 @@
      "id": "se",
      "text": {
       "zh": "源極接地後，電路變成以 V<sub>b</sub> 為輸入的共源級，v<sub>out</sub>/v<sub>in</sub> ≈ −g<sub>m</sub>R<sub>D</sub>",
+      "jj": "source 接地後，電路變成以 V<sub>b</sub> 為輸入的 common-source stage，v<sub>out</sub>/v<sub>in</sub> ≈ −g<sub>m</sub>R<sub>D</sub>",
       "en": "With the source grounded it becomes a common-source stage driven by V<sub>b</sub>, v<sub>out</sub>/v<sub>in</sub> ≈ −g<sub>m</sub>R<sub>D</sub>"
      }
     },
@@ -784,6 +822,7 @@
      "id": "sd",
      "text": {
       "zh": "C<sub>1</sub> 夠大時，增益趨近共閘級的 g<sub>m</sub>R<sub>D</sub>",
+      "jj": "C<sub>1</sub> 夠大時，增益趨近 common-gate stage 的 g<sub>m</sub>R<sub>D</sub>",
       "en": "If C<sub>1</sub> is large enough, the gain approaches the common-gate value g<sub>m</sub>R<sub>D</sub>"
      }
     },
@@ -798,6 +837,7 @@
      "id": "sb",
      "text": {
       "zh": "中頻小訊號增益 v<sub>out</sub>/v<sub>in</sub> ≈ 0",
+      "jj": "中頻 small-signal 增益 v<sub>out</sub>/v<sub>in</sub> ≈ 0",
       "en": "The midband small-signal gain v<sub>out</sub>/v<sub>in</sub> ≈ 0"
      }
     }
@@ -808,6 +848,7 @@
    ],
    "explanation": {
     "zh": "V<sub>in</sub> 經 C<sub>1</sub> 耦合到 M<sub>1</sub> 的源極，但這個源極節點同時直接接地。輸入加在一個硬接地的節點上，源極的小訊號電壓為 0，電晶體收不到 V<sub>in</sub> 的訊號，中頻 v<sub>out</sub>/v<sub>in</sub> ≈ 0。照圖來看這不是有效的共閘放大器。Razavi 對 ChatGPT「共閘放大器，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>D</sub>」只給 1/4：組態認對了，但沒注意到源極接地。",
+    "jj": "V<sub>in</sub> 經 C<sub>1</sub> 耦合到 M<sub>1</sub> 的 source，但這個 source 節點同時直接接地。輸入加在一個硬接地的節點上，source 的 small-signal 電壓為 0，電晶體收不到 V<sub>in</sub> 的訊號，中頻 v<sub>out</sub>/v<sub>in</sub> ≈ 0。照圖來看這不是有效的 common-gate 放大器。Razavi 對 ChatGPT「common-gate 放大器，A<sub>v</sub> ≈ g<sub>m</sub>R<sub>D</sub>」只給 1/4：topology 認對了，但沒注意到 source 接地。",
     "en": "V<sub>in</sub> is coupled through C<sub>1</sub> to the source of M<sub>1</sub>, but that source node is shorted directly to ground. The input lands on a hard-grounded node, the small-signal source voltage is zero, and the transistor sees no signal from V<sub>in</sub>: v<sub>out</sub>/v<sub>in</sub> ≈ 0 at midband. As drawn it is not a valid common-gate amplifier. Razavi gives 1/4 to ChatGPT's \"common-gate amplifier, A<sub>v</sub> ≈ g<sub>m</sub>R<sub>D</sub>\": right topology, but it missed the short."
    }
   },
@@ -819,6 +860,7 @@
    "image": "razavi-part1-fig08.png",
    "prompt": {
     "zh": "圖中電路共有幾個極點（pole）？",
+    "jj": "圖中電路共有幾個 pole？",
     "en": "How many poles does the circuit shown in the figure have?"
    },
    "options": [
@@ -854,6 +896,7 @@
    "answer": "2",
    "explanation": {
     "zh": "兩個。M<sub>1</sub> 為經 R<sub>S</sub> 驅動的 NMOS 共源級，負載 R<sub>D</sub>，四個電容：C<sub>GS</sub>（閘極到地）、C<sub>GD</sub>（閘極到汲極）、C<sub>DB</sub>（汲極到地）、C<sub>SB</sub>（源極到地）。源極接地，C<sub>SB</sub> 兩端都在地，不儲能。C<sub>GS</sub>、C<sub>GD</sub>、C<sub>DB</sub> 經由地形成迴路，只有兩個電壓彼此獨立，所以有兩個狀態變數、兩個極點；C<sub>GD</sub> 另外帶來一個零點。Razavi 對 ChatGPT「有兩個獨立的儲能節點」的理由給 3/4：儲能應歸於元件而不是節點。",
+    "jj": "兩個。M<sub>1</sub> 為經 R<sub>S</sub> 驅動的 NMOS common-source stage，負載 R<sub>D</sub>，四個電容：C<sub>GS</sub>（gate 到地）、C<sub>GD</sub>（gate 到 drain）、C<sub>DB</sub>（drain 到地）、C<sub>SB</sub>（source 到地）。source 接地，C<sub>SB</sub> 兩端都在地，不儲能。C<sub>GS</sub>、C<sub>GD</sub>、C<sub>DB</sub> 經由地形成迴路，只有兩個電壓彼此獨立，所以有兩個 state variable、兩個 pole；C<sub>GD</sub> 另外帶來一個 zero。Razavi 對 ChatGPT「有兩個獨立的儲能節點」的理由給 3/4：儲能應歸於元件而不是節點。",
     "en": "Two. M<sub>1</sub> is an NMOS common-source stage driven through R<sub>S</sub> with load R<sub>D</sub> and four capacitors: C<sub>GS</sub> (gate to ground), C<sub>GD</sub> (gate to drain), C<sub>DB</sub> (drain to ground) and C<sub>SB</sub> (source to ground). The source is grounded, so both terminals of C<sub>SB</sub> are at ground and it stores no energy. C<sub>GS</sub>, C<sub>GD</sub> and C<sub>DB</sub> form a loop through ground, so only two of their voltages are independent: two state variables, two poles; C<sub>GD</sub> also adds a zero. Razavi gives 3/4 to ChatGPT's \"two independent energy-storing nodes\": energy storage belongs to devices, not nodes."
    }
   },
@@ -865,6 +908,7 @@
    "image": "razavi-part1-fig08.png",
    "prompt": {
     "zh": "圖中有四個電容，為什麼極點數比電容數少？",
+    "jj": "圖中有四個電容，為什麼 pole 數比電容數少？",
     "en": "The figure has four capacitors. Why are there fewer poles than capacitors?"
    },
    "options": [
@@ -872,6 +916,7 @@
      "id": "miller",
      "text": {
       "zh": "C<sub>GD</sub> 經 Miller 效應併入 C<sub>GS</sub>，C<sub>SB</sub> 與 C<sub>DB</sub> 並聯",
+      "jj": "C<sub>GD</sub> 經 Miller effect 併入 C<sub>GS</sub>，C<sub>SB</sub> 與 C<sub>DB</sub> 並聯",
       "en": "C<sub>GD</sub> is absorbed into C<sub>GS</sub> by the Miller effect, and C<sub>SB</sub> is in parallel with C<sub>DB</sub>"
      }
     },
@@ -879,6 +924,7 @@
      "id": "nodes",
      "text": {
       "zh": "電路只有閘極與汲極兩個節點，每個節點一個極點；電容數量無關",
+      "jj": "電路只有 gate 與 drain 兩個節點，每個節點一個 pole；電容數量無關",
       "en": "There are only two nodes, gate and drain, with one pole each; the number of capacitors does not matter"
      }
     },
@@ -900,6 +946,7 @@
    "answer": "ok",
    "explanation": {
     "zh": "兩個。M<sub>1</sub> 為經 R<sub>S</sub> 驅動的 NMOS 共源級，負載 R<sub>D</sub>，四個電容：C<sub>GS</sub>（閘極到地）、C<sub>GD</sub>（閘極到汲極）、C<sub>DB</sub>（汲極到地）、C<sub>SB</sub>（源極到地）。源極接地，C<sub>SB</sub> 兩端都在地，不儲能。C<sub>GS</sub>、C<sub>GD</sub>、C<sub>DB</sub> 經由地形成迴路，只有兩個電壓彼此獨立，所以有兩個狀態變數、兩個極點；C<sub>GD</sub> 另外帶來一個零點。Razavi 對 ChatGPT「有兩個獨立的儲能節點」的理由給 3/4：儲能應歸於元件而不是節點。",
+    "jj": "兩個。M<sub>1</sub> 為經 R<sub>S</sub> 驅動的 NMOS common-source stage，負載 R<sub>D</sub>，四個電容：C<sub>GS</sub>（gate 到地）、C<sub>GD</sub>（gate 到 drain）、C<sub>DB</sub>（drain 到地）、C<sub>SB</sub>（source 到地）。source 接地，C<sub>SB</sub> 兩端都在地，不儲能。C<sub>GS</sub>、C<sub>GD</sub>、C<sub>DB</sub> 經由地形成迴路，只有兩個電壓彼此獨立，所以有兩個 state variable、兩個 pole；C<sub>GD</sub> 另外帶來一個 zero。Razavi 對 ChatGPT「有兩個獨立的儲能節點」的理由給 3/4：儲能應歸於元件而不是節點。",
     "en": "Two. M<sub>1</sub> is an NMOS common-source stage driven through R<sub>S</sub> with load R<sub>D</sub> and four capacitors: C<sub>GS</sub> (gate to ground), C<sub>GD</sub> (gate to drain), C<sub>DB</sub> (drain to ground) and C<sub>SB</sub> (source to ground). The source is grounded, so both terminals of C<sub>SB</sub> are at ground and it stores no energy. C<sub>GS</sub>, C<sub>GD</sub> and C<sub>DB</sub> form a loop through ground, so only two of their voltages are independent: two state variables, two poles; C<sub>GD</sub> also adds a zero. Razavi gives 3/4 to ChatGPT's \"two independent energy-storing nodes\": energy storage belongs to devices, not nodes."
    }
   },
@@ -925,6 +972,7 @@
      "id": "sa",
      "text": {
       "zh": "V<sub>in</sub> 加在 M<sub>1</sub> 的源極",
+      "jj": "V<sub>in</sub> 加在 M<sub>1</sub> 的 source",
       "en": "V<sub>in</sub> drives the source of M<sub>1</sub>"
      }
     },
@@ -932,6 +980,7 @@
      "id": "sb",
      "text": {
       "zh": "R<sub>1</sub>–R<sub>2</sub> 分壓把一部分輸出電壓送回 M<sub>1</sub> 的閘極",
+      "jj": "R<sub>1</sub>–R<sub>2</sub> 分壓把一部分輸出電壓送回 M<sub>1</sub> 的 gate",
       "en": "The R<sub>1</sub>–R<sub>2</sub> divider returns a fraction of the output voltage to the gate of M<sub>1</sub>"
      }
     },
@@ -939,6 +988,7 @@
      "id": "sd",
      "text": {
       "zh": "迴路增益很大時，閉迴路增益約為 R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)",
+      "jj": "loop gain 很大時，closed-loop 增益約為 R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)",
       "en": "For a large loop gain, the closed-loop gain approaches R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)"
      }
     },
@@ -946,6 +996,7 @@
      "id": "se",
      "text": {
       "zh": "迴路增益很大時，閉迴路增益約為 −(1 + R<sub>1</sub>/R<sub>2</sub>)",
+      "jj": "loop gain 很大時，closed-loop 增益約為 −(1 + R<sub>1</sub>/R<sub>2</sub>)",
       "en": "For a large loop gain, the closed-loop gain approaches −(1 + R<sub>1</sub>/R<sub>2</sub>)"
      }
     }
@@ -957,6 +1008,7 @@
    ],
    "explanation": {
     "zh": "這是回授電壓放大器：V<sub>in</sub> 加在 M<sub>1</sub> 源極，輸出在汲極，R<sub>1</sub>–R<sub>2</sub> 分壓把 v<sub>F</sub> = βv<sub>out</sub>（β = R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)）送回閘極，v<sub>gs</sub> = v<sub>F</sub> − v<sub>in</sub>。令 R<sub>L</sub> = R<sub>D</sub> ‖ (R<sub>1</sub> + R<sub>2</sub>)，忽略通道長度調變與基體效應，閉迴路增益 v<sub>out</sub>/v<sub>in</sub> = g<sub>m</sub>R<sub>L</sub>/(1 + g<sub>m</sub>βR<sub>L</sub>)，迴路增益大時 ≈ 1/β = 1 + R<sub>1</sub>/R<sub>2</sub>。v<sub>out</sub> 上升 → v<sub>F</sub> 上升 → v<sub>gs</sub> 變大 → M<sub>1</sub> 電流增加 → v<sub>out</sub> 下降：負回授，閉迴路增益為非反相。Razavi 對認為 M<sub>1</sub> 源極接地的 ChatGPT 給 3/4。",
+    "jj": "這是回授電壓放大器：V<sub>in</sub> 加在 M<sub>1</sub> source，輸出在 drain，R<sub>1</sub>–R<sub>2</sub> 分壓把 v<sub>F</sub> = βv<sub>out</sub>（β = R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)）送回 gate，v<sub>gs</sub> = v<sub>F</sub> − v<sub>in</sub>。令 R<sub>L</sub> = R<sub>D</sub> ‖ (R<sub>1</sub> + R<sub>2</sub>)，忽略 channel-length modulation 與 body effect，closed-loop 增益 v<sub>out</sub>/v<sub>in</sub> = g<sub>m</sub>R<sub>L</sub>/(1 + g<sub>m</sub>βR<sub>L</sub>)，loop gain 大時 ≈ 1/β = 1 + R<sub>1</sub>/R<sub>2</sub>。v<sub>out</sub> 上升 → v<sub>F</sub> 上升 → v<sub>gs</sub> 變大 → M<sub>1</sub> 電流增加 → v<sub>out</sub> 下降：負回授，closed-loop 增益為非反相。Razavi 對認為 M<sub>1</sub> source 接地的 ChatGPT 給 3/4。",
     "en": "A feedback voltage amplifier: V<sub>in</sub> drives the source of M<sub>1</sub>, the output is at the drain, and the R<sub>1</sub>–R<sub>2</sub> divider returns v<sub>F</sub> = βv<sub>out</sub> (β = R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)) to the gate, so v<sub>gs</sub> = v<sub>F</sub> − v<sub>in</sub>. With R<sub>L</sub> = R<sub>D</sub> ‖ (R<sub>1</sub> + R<sub>2</sub>) and no channel-length modulation or body effect, v<sub>out</sub>/v<sub>in</sub> = g<sub>m</sub>R<sub>L</sub>/(1 + g<sub>m</sub>βR<sub>L</sub>), which approaches 1/β = 1 + R<sub>1</sub>/R<sub>2</sub> for large loop gain. If v<sub>out</sub> rises, v<sub>F</sub> rises, v<sub>gs</sub> grows, M<sub>1</sub> draws more current and v<sub>out</sub> falls: negative feedback, with a non-inverting closed-loop gain. Razavi gives 3/4 to ChatGPT, which thinks the source of M<sub>1</sub> is grounded."
    }
   },
@@ -968,6 +1020,7 @@
    "image": "razavi-part1-fig10.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -1053,6 +1106,7 @@
    },
    "explanation": {
     "zh": "這是源極隨耦器，不是帶主動負載的共源級。M<sub>1</sub> 為 NMOS，汲極接 V<sub>DD</sub>、閘極接 V<sub>in</sub>、源極接 V<sub>out</sub>；M<sub>2</sub> 為由 V<sub>b</sub> 偏壓的 NMOS，是從 V<sub>out</sub> 接地的電流源，設定偏壓電流。令 R = r<sub>o1</sub> ‖ r<sub>o2</sub>，A<sub>v</sub> = g<sub>m1</sub>R/[1 + (g<sub>m1</sub> + g<sub>mb1</sub>)R]，約為 g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>mb1</sub>)，因基體效應略小於 1。R<sub>out</sub> ≈ (1/(g<sub>m1</sub> + g<sub>mb1</sub>)) ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>，很低。Razavi 給把它當成共源級、A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>) 的 ChatGPT 0 分：兩顆 NMOS 無法構成帶主動負載的共源級。",
+    "jj": "這是 source follower，不是帶 active load 的 common-source stage。M<sub>1</sub> 為 NMOS，drain 接 V<sub>DD</sub>、gate 接 V<sub>in</sub>、source 接 V<sub>out</sub>；M<sub>2</sub> 為由 V<sub>b</sub> 偏壓的 NMOS，是從 V<sub>out</sub> 接地的 current source，設定偏壓電流。令 R = r<sub>o1</sub> ‖ r<sub>o2</sub>，A<sub>v</sub> = g<sub>m1</sub>R/[1 + (g<sub>m1</sub> + g<sub>mb1</sub>)R]，約為 g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>mb1</sub>)，因 body effect 略小於 1。R<sub>out</sub> ≈ (1/(g<sub>m1</sub> + g<sub>mb1</sub>)) ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>，很低。Razavi 給把它當成 common-source stage、A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>) 的 ChatGPT 0 分：兩顆 NMOS 無法構成帶 active load 的 common-source stage。",
     "en": "A source follower, not a common-source amplifier with an active load. M<sub>1</sub> is an NMOS with drain at V<sub>DD</sub>, gate at V<sub>in</sub> and source at V<sub>out</sub>; M<sub>2</sub>, an NMOS biased by V<sub>b</sub>, is a current source from V<sub>out</sub> to ground that sets the bias current. With R = r<sub>o1</sub> ‖ r<sub>o2</sub>, A<sub>v</sub> = g<sub>m1</sub>R/[1 + (g<sub>m1</sub> + g<sub>mb1</sub>)R], about g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>mb1</sub>): slightly below one because of body effect. R<sub>out</sub> ≈ (1/(g<sub>m1</sub> + g<sub>mb1</sub>)) ‖ r<sub>o1</sub> ‖ r<sub>o2</sub> is low. Razavi gives 0 to ChatGPT's common-source reading with A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>): two NMOS devices cannot form a common-source stage with an active load."
    }
   },
@@ -1071,6 +1125,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>2</sub> 是 M<sub>1</sub> 的電流源負載，增益為正且等於或略小於 1",
+      "jj": "M<sub>2</sub> 是 M<sub>1</sub> 的 current-source load，增益為正且等於或略小於 1",
       "en": "M<sub>2</sub> is the current-source load of M<sub>1</sub>; the gain is positive and at or slightly below 1"
      }
     },
@@ -1078,6 +1133,7 @@
      "id": "sd",
      "text": {
       "zh": "M<sub>1</sub> 疊在 M<sub>2</sub> 上構成疊接，輸出電阻約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>",
+      "jj": "M<sub>1</sub> 疊在 M<sub>2</sub> 上構成 cascode，輸出電阻約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>",
       "en": "M<sub>1</sub> stacked on M<sub>2</sub> forms a cascode with an output resistance of about g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>"
      }
     },
@@ -1085,6 +1141,7 @@
      "id": "sc",
      "text": {
       "zh": "M<sub>2</sub> 是 NMOS 主動負載，與 M<sub>1</sub> 構成共源級，A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
+      "jj": "M<sub>2</sub> 是 NMOS active load，與 M<sub>1</sub> 構成 common-source stage，A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
       "en": "M<sub>2</sub> is an NMOS active load forming a common-source stage with M<sub>1</sub>, A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     },
@@ -1092,6 +1149,7 @@
      "id": "sb",
      "text": {
       "zh": "增益略小於 1 只是因為 r<sub>o</sub> 有限；r<sub>o</sub> 無限大時，即使有基體效應增益也等於 1",
+      "jj": "增益略小於 1 只是因為 r<sub>o</sub> 有限；r<sub>o</sub> 無限大時，即使有 body effect 增益也等於 1",
       "en": "The gain falls below 1 only because of finite r<sub>o</sub>; with infinite r<sub>o</sub> it equals 1 even with body effect"
      }
     }
@@ -1101,6 +1159,7 @@
    ],
    "explanation": {
     "zh": "這是源極隨耦器，不是帶主動負載的共源級。M<sub>1</sub> 為 NMOS，汲極接 V<sub>DD</sub>、閘極接 V<sub>in</sub>、源極接 V<sub>out</sub>；M<sub>2</sub> 為由 V<sub>b</sub> 偏壓的 NMOS，是從 V<sub>out</sub> 接地的電流源，設定偏壓電流。令 R = r<sub>o1</sub> ‖ r<sub>o2</sub>，A<sub>v</sub> = g<sub>m1</sub>R/[1 + (g<sub>m1</sub> + g<sub>mb1</sub>)R]，約為 g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>mb1</sub>)，因基體效應略小於 1。R<sub>out</sub> ≈ (1/(g<sub>m1</sub> + g<sub>mb1</sub>)) ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>，很低。Razavi 給把它當成共源級、A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>) 的 ChatGPT 0 分：兩顆 NMOS 無法構成帶主動負載的共源級。",
+    "jj": "這是 source follower，不是帶 active load 的 common-source stage。M<sub>1</sub> 為 NMOS，drain 接 V<sub>DD</sub>、gate 接 V<sub>in</sub>、source 接 V<sub>out</sub>；M<sub>2</sub> 為由 V<sub>b</sub> 偏壓的 NMOS，是從 V<sub>out</sub> 接地的 current source，設定偏壓電流。令 R = r<sub>o1</sub> ‖ r<sub>o2</sub>，A<sub>v</sub> = g<sub>m1</sub>R/[1 + (g<sub>m1</sub> + g<sub>mb1</sub>)R]，約為 g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>mb1</sub>)，因 body effect 略小於 1。R<sub>out</sub> ≈ (1/(g<sub>m1</sub> + g<sub>mb1</sub>)) ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>，很低。Razavi 給把它當成 common-source stage、A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>) 的 ChatGPT 0 分：兩顆 NMOS 無法構成帶 active load 的 common-source stage。",
     "en": "A source follower, not a common-source amplifier with an active load. M<sub>1</sub> is an NMOS with drain at V<sub>DD</sub>, gate at V<sub>in</sub> and source at V<sub>out</sub>; M<sub>2</sub>, an NMOS biased by V<sub>b</sub>, is a current source from V<sub>out</sub> to ground that sets the bias current. With R = r<sub>o1</sub> ‖ r<sub>o2</sub>, A<sub>v</sub> = g<sub>m1</sub>R/[1 + (g<sub>m1</sub> + g<sub>mb1</sub>)R], about g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>mb1</sub>): slightly below one because of body effect. R<sub>out</sub> ≈ (1/(g<sub>m1</sub> + g<sub>mb1</sub>)) ‖ r<sub>o1</sub> ‖ r<sub>o2</sub> is low. Razavi gives 0 to ChatGPT's common-source reading with A<sub>v</sub> ≈ −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>): two NMOS devices cannot form a common-source stage with an active load."
    }
   },
@@ -1112,6 +1171,7 @@
    "image": "razavi-part1-fig11a.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -1139,6 +1199,7 @@
    },
    "explanation": {
     "zh": "標準 CMOS 反相器：M<sub>2</sub> 為 PMOS（源極接 V<sub>DD</sub>），M<sub>1</sub> 為 NMOS（源極接地），兩閘極接 V<sub>in</sub>、兩汲極接 V<sub>out</sub>。輸入低時 M<sub>2</sub> 導通把輸出拉到 V<sub>DD</sub>，輸入高時 M<sub>1</sub> 導通把輸出拉到地；兩種邏輯準位下總有一顆關閉，沒有靜態電流。偏在切換點、兩顆都飽和時，是高增益反相放大器，A<sub>v</sub> ≈ −(g<sub>mn</sub> + g<sub>mp</sub>)(r<sub>on</sub> ‖ r<sub>op</sub>)。",
+    "jj": "標準 CMOS inverter：M<sub>2</sub> 為 PMOS（source 接 V<sub>DD</sub>），M<sub>1</sub> 為 NMOS（source 接地），兩 gate 接 V<sub>in</sub>、兩 drain 接 V<sub>out</sub>。輸入低時 M<sub>2</sub> 導通把輸出拉到 V<sub>DD</sub>，輸入高時 M<sub>1</sub> 導通把輸出拉到地；兩種邏輯準位下總有一顆關閉，沒有 static 電流。偏在切換點、兩顆都在 saturation 區時，是高增益反相放大器，A<sub>v</sub> ≈ −(g<sub>mn</sub> + g<sub>mp</sub>)(r<sub>on</sub> ‖ r<sub>op</sub>)。",
     "en": "The standard CMOS inverter: M<sub>2</sub> is a PMOS (source at V<sub>DD</sub>), M<sub>1</sub> an NMOS (source at ground); both gates at V<sub>in</sub>, both drains at V<sub>out</sub>. A low input turns M<sub>2</sub> on and pulls the output to V<sub>DD</sub>; a high input turns M<sub>1</sub> on and pulls it to ground. At either logic level one device is off, so no static current flows. Biased at the switching point with both devices saturated, it is a high-gain inverting amplifier, A<sub>v</sub> ≈ −(g<sub>mn</sub> + g<sub>mp</sub>)(r<sub>on</sub> ‖ r<sub>op</sub>)."
    }
   },
@@ -1157,6 +1218,7 @@
      "id": "sd",
      "text": {
       "zh": "M<sub>2</sub> 的源極接在 V<sub>out</sub>，汲極接 V<sub>DD</sub>",
+      "jj": "M<sub>2</sub> 的 source 接在 V<sub>out</sub>，drain 接 V<sub>DD</sub>",
       "en": "M<sub>2</sub> has its source at V<sub>out</sub> and its drain at V<sub>DD</sub>"
      }
     },
@@ -1180,6 +1242,7 @@
    ],
    "explanation": {
     "zh": "標準 CMOS 反相器：M<sub>2</sub> 為 PMOS（源極接 V<sub>DD</sub>），M<sub>1</sub> 為 NMOS（源極接地），兩閘極接 V<sub>in</sub>、兩汲極接 V<sub>out</sub>。輸入低時 M<sub>2</sub> 導通把輸出拉到 V<sub>DD</sub>，輸入高時 M<sub>1</sub> 導通把輸出拉到地；兩種邏輯準位下總有一顆關閉，沒有靜態電流。偏在切換點、兩顆都飽和時，是高增益反相放大器，A<sub>v</sub> ≈ −(g<sub>mn</sub> + g<sub>mp</sub>)(r<sub>on</sub> ‖ r<sub>op</sub>)。",
+    "jj": "標準 CMOS inverter：M<sub>2</sub> 為 PMOS（source 接 V<sub>DD</sub>），M<sub>1</sub> 為 NMOS（source 接地），兩 gate 接 V<sub>in</sub>、兩 drain 接 V<sub>out</sub>。輸入低時 M<sub>2</sub> 導通把輸出拉到 V<sub>DD</sub>，輸入高時 M<sub>1</sub> 導通把輸出拉到地；兩種邏輯準位下總有一顆關閉，沒有 static 電流。偏在切換點、兩顆都在 saturation 區時，是高增益反相放大器，A<sub>v</sub> ≈ −(g<sub>mn</sub> + g<sub>mp</sub>)(r<sub>on</sub> ‖ r<sub>op</sub>)。",
     "en": "The standard CMOS inverter: M<sub>2</sub> is a PMOS (source at V<sub>DD</sub>), M<sub>1</sub> an NMOS (source at ground); both gates at V<sub>in</sub>, both drains at V<sub>out</sub>. A low input turns M<sub>2</sub> on and pulls the output to V<sub>DD</sub>; a high input turns M<sub>1</sub> on and pulls it to ground. At either logic level one device is off, so no static current flows. Biased at the switching point with both devices saturated, it is a high-gain inverting amplifier, A<sub>v</sub> ≈ −(g<sub>mn</sub> + g<sub>mp</sub>)(r<sub>on</sub> ‖ r<sub>op</sub>)."
    }
   },
@@ -1198,6 +1261,7 @@
      "id": "sf",
      "text": {
       "zh": "M<sub>1</sub> 的閘極接在 V<sub>out</sub>",
+      "jj": "M<sub>1</sub> 的 gate 接在 V<sub>out</sub>",
       "en": "The gate of M<sub>1</sub> is tied to V<sub>out</sub>"
      }
     },
@@ -1219,6 +1283,7 @@
      "id": "sb",
      "text": {
       "zh": "M<sub>1</sub> 以源極隨耦器的方式上拉 V<sub>out</sub>",
+      "jj": "M<sub>1</sub> 以 source follower 的方式上拉 V<sub>out</sub>",
       "en": "M<sub>1</sub> pulls V<sub>out</sub> up as a source follower"
      }
     },
@@ -1233,6 +1298,7 @@
      "id": "sd",
      "text": {
       "zh": "這不是一般的 CMOS 反相器",
+      "jj": "這不是一般的 CMOS inverter",
       "en": "It is not a normal CMOS inverter"
      }
     }
@@ -1245,6 +1311,7 @@
    ],
    "explanation": {
     "zh": "兩顆都是 NMOS，不是互補對。上方 M<sub>1</sub> 汲極接 V<sub>DD</sub>、源極接 V<sub>out</sub>，是源極隨耦器上拉；下方 M<sub>2</sub> 汲極接 V<sub>out</sub>、源極接地，是同樣由 V<sub>in</sub> 驅動的下拉。兩者都導通時 V<sub>out</sub> 停在 V<sub>in</sub> − V<sub>TH</sub> 以下，所以 M<sub>2</sub> 在三極管區、像受閘極控制的電阻。平方律、無基體效應時 V<sub>out</sub> ≈ (V<sub>in</sub> − V<sub>TH</sub>)[1 − √(K<sub>2</sub>/(K<sub>1</sub> + K<sub>2</sub>))]。V<sub>in</sub> 超過 V<sub>TH</sub> 後，輸出以小於 1 的正增益跟隨輸入：這是非反相衰減器，不是反相器。V<sub>in</sub> 低於 V<sub>TH</sub> 時兩顆都關閉，V<sub>out</sub> 沒有被驅動。",
+    "jj": "兩顆都是 NMOS，不是 complementary pair。上方 M<sub>1</sub> drain 接 V<sub>DD</sub>、source 接 V<sub>out</sub>，是 source follower 上拉；下方 M<sub>2</sub> drain 接 V<sub>out</sub>、source 接地，是同樣由 V<sub>in</sub> 驅動的下拉。兩者都導通時 V<sub>out</sub> 停在 V<sub>in</sub> − V<sub>TH</sub> 以下，所以 M<sub>2</sub> 在 triode 區、像受 gate 控制的電阻。平方律、無 body effect 時 V<sub>out</sub> ≈ (V<sub>in</sub> − V<sub>TH</sub>)[1 − √(K<sub>2</sub>/(K<sub>1</sub> + K<sub>2</sub>))]。V<sub>in</sub> 超過 V<sub>TH</sub> 後，輸出以小於 1 的正增益跟隨輸入：這是非反相衰減器，不是 inverter。V<sub>in</sub> 低於 V<sub>TH</sub> 時兩顆都關閉，V<sub>out</sub> 沒有被驅動。",
     "en": "Both devices are NMOS; this is not a complementary pair. The upper M<sub>1</sub>, drain at V<sub>DD</sub> and source at V<sub>out</sub>, is a source-follower pull-up; the lower M<sub>2</sub>, drain at V<sub>out</sub> and source at ground, is a pull-down also driven by V<sub>in</sub>. When both conduct, V<sub>out</sub> settles below V<sub>in</sub> − V<sub>TH</sub>, so M<sub>2</sub> is in triode, acting as a gate-controlled resistor. With square-law devices and no body effect, V<sub>out</sub> ≈ (V<sub>in</sub> − V<sub>TH</sub>)[1 − √(K<sub>2</sub>/(K<sub>1</sub> + K<sub>2</sub>))]. Once V<sub>in</sub> exceeds V<sub>TH</sub> the output follows the input with a positive gain below one: a non-inverting attenuator, not an inverter. Below V<sub>TH</sub> both devices are off and V<sub>out</sub> is not driven."
    }
   },
@@ -1263,6 +1330,7 @@
      "id": "sb",
      "text": {
       "zh": "M<sub>2</sub> 是二極體接法的 PMOS 負載",
+      "jj": "M<sub>2</sub> 是 diode-connected 的 PMOS 負載",
       "en": "M<sub>2</sub> is a diode-connected PMOS load"
      }
     },
@@ -1270,6 +1338,7 @@
      "id": "sc",
      "text": {
       "zh": "忽略兩顆的通道長度調變，A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>",
+      "jj": "忽略兩顆的 channel-length modulation，A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>",
       "en": "Neglecting channel-length modulation in both, A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>"
      }
     },
@@ -1277,6 +1346,7 @@
      "id": "sd",
      "text": {
       "zh": "兩顆都計入通道長度調變時，A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)",
+      "jj": "兩顆都計入 channel-length modulation 時，A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)",
       "en": "Including channel-length modulation in both, A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)"
      }
     },
@@ -1284,6 +1354,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>1</sub> 是 NMOS 共源輸入管",
+      "jj": "M<sub>1</sub> 是 NMOS common-source 輸入管",
       "en": "M<sub>1</sub> is the NMOS common-source input device"
      }
     },
@@ -1291,6 +1362,7 @@
      "id": "with-ro",
      "text": {
       "zh": "兩顆都計入通道長度調變時，A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)",
+      "jj": "兩顆都計入 channel-length modulation 時，A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)",
       "en": "Including channel-length modulation in both, A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     }
@@ -1303,6 +1375,7 @@
    ],
    "explanation": {
     "zh": "NMOS 共源級加二極體接法的 PMOS 負載：M<sub>1</sub> 為輸入管（閘極 V<sub>in</sub>、源極接地），M<sub>2</sub> 為 PMOS，源極接 V<sub>DD</sub>、閘極與汲極接在 V<sub>out</sub>。輸出在 M<sub>1</sub> 汲極，為反相。忽略通道長度調變時 A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>；兩顆都計入時 A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)。Razavi 對只計入 M<sub>2</sub> 的 r<sub>o</sub>（A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)）的 ChatGPT 給 3/4。",
+    "jj": "NMOS common-source stage 加 diode-connected 的 PMOS 負載：M<sub>1</sub> 為輸入管（gate V<sub>in</sub>、source 接地），M<sub>2</sub> 為 PMOS，source 接 V<sub>DD</sub>、gate 與 drain 接在 V<sub>out</sub>。輸出在 M<sub>1</sub> drain，為反相。忽略 channel-length modulation 時 A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>；兩顆都計入時 A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>)。Razavi 對只計入 M<sub>2</sub> 的 r<sub>o</sub>（A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>)）的 ChatGPT 給 3/4。",
     "en": "An NMOS common-source stage with a diode-connected PMOS load: M<sub>1</sub> is the input device (gate at V<sub>in</sub>, source at ground) and M<sub>2</sub> a PMOS with its source at V<sub>DD</sub> and its gate tied to its drain at V<sub>out</sub>. The output is at M<sub>1</sub>'s drain, so the stage inverts. Without channel-length modulation A<sub>v</sub> ≈ −g<sub>m1</sub>/g<sub>m2</sub>; with it for both devices A<sub>v</sub> ≈ −g<sub>m1</sub>(1/g<sub>m2</sub> ‖ r<sub>o1</sub> ‖ r<sub>o2</sub>). Razavi gives 3/4 to ChatGPT, which includes r<sub>o</sub> for M<sub>2</sub> only (A<sub>v</sub> = −g<sub>m1</sub>/(g<sub>m2</sub> + 1/r<sub>o2</sub>))."
    }
   },
@@ -1321,6 +1394,7 @@
      "id": "sb",
      "text": {
       "zh": "忽略基體效應與 r<sub>o</sub>，A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>",
+      "jj": "忽略 body effect 與 r<sub>o</sub>，A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>",
       "en": "Neglecting body effect and r<sub>o</sub>, A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>"
      }
     },
@@ -1328,6 +1402,7 @@
      "id": "sc",
      "text": {
       "zh": "M<sub>1</sub> 的閘極與汲極接地，V<sub>SG</sub> = 0，所以永遠關閉，V<sub>out</sub> 被 M<sub>2</sub> 拉到 V<sub>DD</sub>",
+      "jj": "M<sub>1</sub> 的 gate 與 drain 接地，V<sub>SG</sub> = 0，所以永遠關閉，V<sub>out</sub> 被 M<sub>2</sub> 拉到 V<sub>DD</sub>",
       "en": "M<sub>1</sub> has gate and drain grounded, so V<sub>SG</sub> = 0, it is always off and M<sub>2</sub> pulls V<sub>out</sub> to V<sub>DD</sub>"
      }
     },
@@ -1335,6 +1410,7 @@
      "id": "sd",
      "text": {
       "zh": "M<sub>1</sub> 的源極是接地的那一端",
+      "jj": "M<sub>1</sub> 的 source 是接地的那一端",
       "en": "The source of M<sub>1</sub> is its grounded terminal"
      }
     },
@@ -1349,6 +1425,7 @@
      "id": "sa",
      "text": {
       "zh": "兩顆都是 PMOS：M<sub>2</sub> 是共源輸入管，M<sub>1</sub> 是接到地的二極體接法負載",
+      "jj": "兩顆都是 PMOS：M<sub>2</sub> 是 common-source 輸入管，M<sub>1</sub> 是接到地的 diode-connected 負載",
       "en": "Both are PMOS: M<sub>2</sub> is the common-source input and M<sub>1</sub> a diode-connected load to ground"
      }
     }
@@ -1359,6 +1436,7 @@
    ],
    "explanation": {
     "zh": "兩顆都是 PMOS，不是 PMOS 疊在 NMOS 上。V<sub>in</sub> 加在上方 PMOS M<sub>2</sub> 的閘極，輸出在 M<sub>2</sub> 與下方 PMOS M<sub>1</sub> 的接點。M<sub>1</sub> 的閘極與下端都接地；依 PMOS 源極在高電位的慣例，V<sub>out</sub> 高時它的源極就是輸出節點，閘極與汲極等效接地，所以是接到地的二極體接法 PMOS 負載，而不是閘極接地、關閉的 NMOS。M<sub>2</sub> 提供輸入轉導、M<sub>1</sub> 提供負載轉導，A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>（忽略基體效應與 r<sub>o</sub>）。",
+    "jj": "兩顆都是 PMOS，不是 PMOS 疊在 NMOS 上。V<sub>in</sub> 加在上方 PMOS M<sub>2</sub> 的 gate，輸出在 M<sub>2</sub> 與下方 PMOS M<sub>1</sub> 的接點。M<sub>1</sub> 的 gate 與下端都接地；依 PMOS source 在高電位的慣例，V<sub>out</sub> 高時它的 source 就是輸出節點，gate 與 drain 等效接地，所以是接到地的 diode-connected PMOS 負載，而不是 gate 接地、關閉的 NMOS。M<sub>2</sub> 提供輸入 transconductance、M<sub>1</sub> 提供負載 transconductance，A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub>（忽略 body effect 與 r<sub>o</sub>）。",
     "en": "Both devices are PMOS; this is not a PMOS stacked on an NMOS. V<sub>in</sub> drives the gate of the upper PMOS M<sub>2</sub>, and the output is the node between M<sub>2</sub> and the lower PMOS M<sub>1</sub>. M<sub>1</sub> has its gate and lower terminal grounded; by the PMOS convention its source is the output node when V<sub>out</sub> is high, with gate and drain effectively at ground, so it is a diode-connected PMOS load to ground, not a grounded-gate NMOS that is simply off. M<sub>2</sub> supplies the input transconductance and M<sub>1</sub> the load transconductance: A<sub>v</sub> ≈ −g<sub>m2</sub>/g<sub>m1</sub> (no body effect or r<sub>o</sub>)."
    }
   },
@@ -1370,6 +1448,7 @@
    "image": "razavi-part1-fig14a.png",
    "prompt": {
     "zh": "從 R<sub>out</sub> 這一端看進去，哪一顆是共閘疊接管？",
+    "jj": "從 R<sub>out</sub> 這一端看進去，哪一顆是 common-gate cascode 管？",
     "en": "Seen from the R<sub>out</sub> port, which transistor is the common-gate cascode device?"
    },
    "options": [
@@ -1405,6 +1484,7 @@
    "answer": "m1",
    "explanation": {
     "zh": "PMOS 疊接電流源。兩顆都是 PMOS：M<sub>2</sub> 源極接 V<sub>DD</sub>、閘極 V<sub>b2</sub>、汲極接 X；M<sub>1</sub> 源極接 X、閘極 V<sub>b1</sub>、汲極為量測 R<sub>out</sub> 的輸出端。從輸出看進去，共閘疊接管是 M<sub>1</sub> 而不是 M<sub>2</sub>：M<sub>2</sub> 設定偏壓電流，M<sub>1</sub> 的閘極固定在 V<sub>b1</sub>，使 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，並把 X 與輸出隔開。R<sub>out</sub> = r<sub>o1</sub> + r<sub>o2</sub> + (g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>，在 g<sub>m1</sub>r<sub>o1</sub>、g<sub>m1</sub>r<sub>o2</sub> ≫ 1 時約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>。Razavi 給 ChatGPT 0 分：它把兩顆當成 NMOS，並以 M<sub>2</sub> 為疊接管，得出 r<sub>o1</sub> + r<sub>o2</sub> + g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>。",
+    "jj": "PMOS cascode current source。兩顆都是 PMOS：M<sub>2</sub> source 接 V<sub>DD</sub>、gate V<sub>b2</sub>、drain 接 X；M<sub>1</sub> source 接 X、gate V<sub>b1</sub>、drain 為量測 R<sub>out</sub> 的輸出端。從輸出看進去，common-gate cascode 管是 M<sub>1</sub> 而不是 M<sub>2</sub>：M<sub>2</sub> 設定偏壓電流，M<sub>1</sub> 的 gate 固定在 V<sub>b1</sub>，使 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，並把 X 與輸出隔開。R<sub>out</sub> = r<sub>o1</sub> + r<sub>o2</sub> + (g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>，在 g<sub>m1</sub>r<sub>o1</sub>、g<sub>m1</sub>r<sub>o2</sub> ≫ 1 時約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>。Razavi 給 ChatGPT 0 分：它把兩顆當成 NMOS，並以 M<sub>2</sub> 為 cascode 管，得出 r<sub>o1</sub> + r<sub>o2</sub> + g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>。",
     "en": "A PMOS cascode current source. Both devices are PMOS: M<sub>2</sub> has its source at V<sub>DD</sub>, gate at V<sub>b2</sub> and drain at X; M<sub>1</sub> has its source at X, gate at V<sub>b1</sub> and drain at the output, where R<sub>out</sub> is measured. Seen from the output, M<sub>1</sub>, not M<sub>2</sub>, is the common-gate cascode: M<sub>2</sub> sets the bias current, and M<sub>1</sub>, with its gate held at V<sub>b1</sub>, sets V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>| and shields X from the output. R<sub>out</sub> = r<sub>o1</sub> + r<sub>o2</sub> + (g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>, about g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub> when g<sub>m1</sub>r<sub>o1</sub> and g<sub>m1</sub>r<sub>o2</sub> ≫ 1. Razavi gives 0 to ChatGPT, which takes the devices for NMOS and treats M<sub>2</sub> as the cascode, giving r<sub>o1</sub> + r<sub>o2</sub> + g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>."
    }
   },
@@ -1451,6 +1531,7 @@
    "answer": "a",
    "explanation": {
     "zh": "PMOS 疊接電流源。兩顆都是 PMOS：M<sub>2</sub> 源極接 V<sub>DD</sub>、閘極 V<sub>b2</sub>、汲極接 X；M<sub>1</sub> 源極接 X、閘極 V<sub>b1</sub>、汲極為量測 R<sub>out</sub> 的輸出端。從輸出看進去，共閘疊接管是 M<sub>1</sub> 而不是 M<sub>2</sub>：M<sub>2</sub> 設定偏壓電流，M<sub>1</sub> 的閘極固定在 V<sub>b1</sub>，使 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，並把 X 與輸出隔開。R<sub>out</sub> = r<sub>o1</sub> + r<sub>o2</sub> + (g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>，在 g<sub>m1</sub>r<sub>o1</sub>、g<sub>m1</sub>r<sub>o2</sub> ≫ 1 時約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>。Razavi 給 ChatGPT 0 分：它把兩顆當成 NMOS，並以 M<sub>2</sub> 為疊接管，得出 r<sub>o1</sub> + r<sub>o2</sub> + g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>。",
+    "jj": "PMOS cascode current source。兩顆都是 PMOS：M<sub>2</sub> source 接 V<sub>DD</sub>、gate V<sub>b2</sub>、drain 接 X；M<sub>1</sub> source 接 X、gate V<sub>b1</sub>、drain 為量測 R<sub>out</sub> 的輸出端。從輸出看進去，common-gate cascode 管是 M<sub>1</sub> 而不是 M<sub>2</sub>：M<sub>2</sub> 設定偏壓電流，M<sub>1</sub> 的 gate 固定在 V<sub>b1</sub>，使 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，並把 X 與輸出隔開。R<sub>out</sub> = r<sub>o1</sub> + r<sub>o2</sub> + (g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>，在 g<sub>m1</sub>r<sub>o1</sub>、g<sub>m1</sub>r<sub>o2</sub> ≫ 1 時約 g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub>。Razavi 給 ChatGPT 0 分：它把兩顆當成 NMOS，並以 M<sub>2</sub> 為 cascode 管，得出 r<sub>o1</sub> + r<sub>o2</sub> + g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>。",
     "en": "A PMOS cascode current source. Both devices are PMOS: M<sub>2</sub> has its source at V<sub>DD</sub>, gate at V<sub>b2</sub> and drain at X; M<sub>1</sub> has its source at X, gate at V<sub>b1</sub> and drain at the output, where R<sub>out</sub> is measured. Seen from the output, M<sub>1</sub>, not M<sub>2</sub>, is the common-gate cascode: M<sub>2</sub> sets the bias current, and M<sub>1</sub>, with its gate held at V<sub>b1</sub>, sets V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>| and shields X from the output. R<sub>out</sub> = r<sub>o1</sub> + r<sub>o2</sub> + (g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>, about g<sub>m1</sub>r<sub>o1</sub>r<sub>o2</sub> when g<sub>m1</sub>r<sub>o1</sub> and g<sub>m1</sub>r<sub>o2</sub> ≫ 1. Razavi gives 0 to ChatGPT, which takes the devices for NMOS and treats M<sub>2</sub> as the cascode, giving r<sub>o1</sub> + r<sub>o2</sub> + g<sub>m2</sub>r<sub>o1</sub>r<sub>o2</sub>."
    }
   },
@@ -1462,6 +1543,7 @@
    "image": "razavi-part1-fig14b.png",
    "prompt": {
     "zh": "以 X 點電壓表示，M<sub>2</sub> 在飽和區的條件為？",
+    "jj": "以 X 點電壓表示，M<sub>2</sub> 在 saturation 區的條件為？",
     "en": "In terms of the voltage at X, what is the condition for M<sub>2</sub> to be saturated?"
    },
    "options": [
@@ -1497,6 +1579,7 @@
    "answer": "a",
    "explanation": {
     "zh": "兩顆都是 PMOS。M<sub>2</sub> 源極接 V<sub>DD</sub>、閘極 V<sub>b2</sub>、汲極接 X；M<sub>1</sub> 源極接 X、閘極 V<sub>b1</sub>、汲極接輸出。M<sub>2</sub> 飽和需要 V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|，即 V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|。關鍵是 V<sub>X</sub> 主要由 V<sub>b1</sub> 決定，而不是 V<sub>b2</sub>：M<sub>1</sub> 流的是 M<sub>2</sub> 的電流，所以 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，M<sub>2</sub> 的飽和條件就變成對 V<sub>b1</sub> 的條件：V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|。Razavi 對以 V<sub>b2</sub> 控制 V<sub>X</sub> 的 ChatGPT 給 1/4。",
+    "jj": "兩顆都是 PMOS。M<sub>2</sub> source 接 V<sub>DD</sub>、gate V<sub>b2</sub>、drain 接 X；M<sub>1</sub> source 接 X、gate V<sub>b1</sub>、drain 接輸出。M<sub>2</sub> 在 saturation 區需要 V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|，即 V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|。關鍵是 V<sub>X</sub> 主要由 V<sub>b1</sub> 決定，而不是 V<sub>b2</sub>：M<sub>1</sub> 流的是 M<sub>2</sub> 的電流，所以 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，M<sub>2</sub> 的 saturation 條件就變成對 V<sub>b1</sub> 的條件：V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|。Razavi 對以 V<sub>b2</sub> 控制 V<sub>X</sub> 的 ChatGPT 給 1/4。",
     "en": "Both devices are PMOS. M<sub>2</sub> has its source at V<sub>DD</sub>, gate at V<sub>b2</sub> and drain at X; M<sub>1</sub> has its source at X, gate at V<sub>b1</sub> and drain at the output. M<sub>2</sub> is saturated if V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|, i.e. V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|. The key point is that V<sub>X</sub> is set mainly by V<sub>b1</sub>, not V<sub>b2</sub>: M<sub>1</sub> carries M<sub>2</sub>'s current, so V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|, and M<sub>2</sub>'s saturation becomes a condition on V<sub>b1</sub>: V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|. Razavi gives 1/4 to ChatGPT, which treats V<sub>b2</sub> as the control of V<sub>X</sub>."
    }
   },
@@ -1543,6 +1626,7 @@
    "answer": "a",
    "explanation": {
     "zh": "兩顆都是 PMOS。M<sub>2</sub> 源極接 V<sub>DD</sub>、閘極 V<sub>b2</sub>、汲極接 X；M<sub>1</sub> 源極接 X、閘極 V<sub>b1</sub>、汲極接輸出。M<sub>2</sub> 飽和需要 V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|，即 V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|。關鍵是 V<sub>X</sub> 主要由 V<sub>b1</sub> 決定，而不是 V<sub>b2</sub>：M<sub>1</sub> 流的是 M<sub>2</sub> 的電流，所以 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，M<sub>2</sub> 的飽和條件就變成對 V<sub>b1</sub> 的條件：V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|。Razavi 對以 V<sub>b2</sub> 控制 V<sub>X</sub> 的 ChatGPT 給 1/4。",
+    "jj": "兩顆都是 PMOS。M<sub>2</sub> source 接 V<sub>DD</sub>、gate V<sub>b2</sub>、drain 接 X；M<sub>1</sub> source 接 X、gate V<sub>b1</sub>、drain 接輸出。M<sub>2</sub> 在 saturation 區需要 V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|，即 V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|。關鍵是 V<sub>X</sub> 主要由 V<sub>b1</sub> 決定，而不是 V<sub>b2</sub>：M<sub>1</sub> 流的是 M<sub>2</sub> 的電流，所以 V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|，M<sub>2</sub> 的 saturation 條件就變成對 V<sub>b1</sub> 的條件：V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|。Razavi 對以 V<sub>b2</sub> 控制 V<sub>X</sub> 的 ChatGPT 給 1/4。",
     "en": "Both devices are PMOS. M<sub>2</sub> has its source at V<sub>DD</sub>, gate at V<sub>b2</sub> and drain at X; M<sub>1</sub> has its source at X, gate at V<sub>b1</sub> and drain at the output. M<sub>2</sub> is saturated if V<sub>DD</sub> − V<sub>X</sub> ≥ V<sub>DD</sub> − V<sub>b2</sub> − |V<sub>TH2</sub>|, i.e. V<sub>X</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>|. The key point is that V<sub>X</sub> is set mainly by V<sub>b1</sub>, not V<sub>b2</sub>: M<sub>1</sub> carries M<sub>2</sub>'s current, so V<sub>X</sub> = V<sub>b1</sub> + |V<sub>GS1</sub>|, and M<sub>2</sub>'s saturation becomes a condition on V<sub>b1</sub>: V<sub>b1</sub> ≤ V<sub>b2</sub> + |V<sub>TH2</sub>| − |V<sub>GS1</sub>|. Razavi gives 1/4 to ChatGPT, which treats V<sub>b2</sub> as the control of V<sub>X</sub>."
    }
   },
@@ -1554,6 +1638,7 @@
    "image": "razavi-part1-fig15.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -1639,6 +1724,7 @@
    },
    "explanation": {
     "zh": "NMOS 疊接增益級：M<sub>1</sub> 為共源輸入管，M<sub>2</sub> 為由 V<sub>b1</sub> 偏壓的共閘疊接管，I<sub>1</sub> 為輸出端的電流源負載。M<sub>2</sub> 把 M<sub>1</sub> 的汲極電流傳到輸出，輸出為反相。X 點的擺幅比輸出小 1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub> 倍；只有輸出負載電阻小時 X 才是約 1/g<sub>m2</sub> 的低阻抗節點，理想電流源負載下 X 仍擺動 −g<sub>m1</sub>r<sub>o1</sub>v<sub>in</sub>。理想負載時 A<sub>v</sub> = −g<sub>m1</sub>r<sub>o1</sub>[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>。Razavi 給把 M<sub>2</sub> 當 PMOS 主動負載的 ChatGPT 0 分。",
+    "jj": "NMOS cascode 增益級：M<sub>1</sub> 為 common-source 輸入管，M<sub>2</sub> 為由 V<sub>b1</sub> 偏壓的 common-gate cascode 管，I<sub>1</sub> 為輸出端的 current-source load。M<sub>2</sub> 把 M<sub>1</sub> 的 drain 電流傳到輸出，輸出為反相。X 點的 swing 比輸出小 1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub> 倍；只有輸出負載電阻小時 X 才是約 1/g<sub>m2</sub> 的低阻抗節點，理想 current-source load 下 X 仍擺動 −g<sub>m1</sub>r<sub>o1</sub>v<sub>in</sub>。理想負載時 A<sub>v</sub> = −g<sub>m1</sub>r<sub>o1</sub>[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>。Razavi 給把 M<sub>2</sub> 當 PMOS active load 的 ChatGPT 0 分。",
     "en": "An NMOS cascode gain stage: M<sub>1</sub> is the common-source input, M<sub>2</sub> the common-gate cascode biased by V<sub>b1</sub>, and I<sub>1</sub> the current-source load. M<sub>2</sub> conveys M<sub>1</sub>'s drain current to the output, which is inverted. The swing at X is smaller than at the output by 1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>; X is a low-impedance node (≈ 1/g<sub>m2</sub>) only when the output load resistance is small, and with an ideal current-source load X still swings by −g<sub>m1</sub>r<sub>o1</sub>v<sub>in</sub>. With an ideal load, A<sub>v</sub> = −g<sub>m1</sub>r<sub>o1</sub>[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>. Razavi gives 0 to ChatGPT, which takes M<sub>2</sub> for a PMOS active load."
    }
   },
@@ -1657,6 +1743,7 @@
      "id": "sa",
      "text": {
       "zh": "V<sub>in</sub> 接 M<sub>1</sub> 閘極；M<sub>2</sub> 閘極接直流偏壓，源極接在 M<sub>1</sub> 的汲極 X",
+      "jj": "V<sub>in</sub> 接 M<sub>1</sub> gate；M<sub>2</sub> gate 接直流偏壓，source 接在 M<sub>1</sub> 的 drain X",
       "en": "V<sub>in</sub> drives the gate of M<sub>1</sub>; M<sub>2</sub> has its gate at a DC bias and its source at M<sub>1</sub>'s drain X"
      }
     },
@@ -1664,6 +1751,7 @@
      "id": "sb",
      "text": {
       "zh": "I<sub>1</sub> 為理想電流源時，A<sub>v</sub> ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>",
+      "jj": "I<sub>1</sub> 為理想 current source 時，A<sub>v</sub> ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>",
       "en": "With I<sub>1</sub> an ideal current source, A<sub>v</sub> ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>"
      }
     },
@@ -1671,6 +1759,7 @@
      "id": "sc",
      "text": {
       "zh": "I<sub>1</sub> 為理想電流源時，X 點是約 1/g<sub>m2</sub> 的低阻抗節點，擺幅很小",
+      "jj": "I<sub>1</sub> 為理想 current source 時，X 點是約 1/g<sub>m2</sub> 的低阻抗節點，swing 很小",
       "en": "With I<sub>1</sub> an ideal current source, X is a low-impedance node of about 1/g<sub>m2</sub> with a small swing"
      }
     },
@@ -1678,6 +1767,7 @@
      "id": "se",
      "text": {
       "zh": "M<sub>2</sub> 只用來提高輸出擺幅，增益仍是 −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
+      "jj": "M<sub>2</sub> 只用來提高輸出 swing，增益仍是 −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)",
       "en": "M<sub>2</sub> only extends the output swing; the gain is still −g<sub>m1</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)"
      }
     },
@@ -1685,6 +1775,7 @@
      "id": "sd",
      "text": {
       "zh": "I<sub>1</sub> 為理想電流源時，A<sub>v</sub> ≈ −g<sub>m2</sub>(g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>",
+      "jj": "I<sub>1</sub> 為理想 current source 時，A<sub>v</sub> ≈ −g<sub>m2</sub>(g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>",
       "en": "With I<sub>1</sub> an ideal current source, A<sub>v</sub> ≈ −g<sub>m2</sub>(g<sub>m1</sub> + g<sub>mb1</sub>)r<sub>o1</sub>r<sub>o2</sub>"
      }
     }
@@ -1695,6 +1786,7 @@
    ],
    "explanation": {
     "zh": "NMOS 疊接增益級：M<sub>1</sub> 為共源輸入管，M<sub>2</sub> 為由 V<sub>b1</sub> 偏壓的共閘疊接管，I<sub>1</sub> 為輸出端的電流源負載。M<sub>2</sub> 把 M<sub>1</sub> 的汲極電流傳到輸出，輸出為反相。X 點的擺幅比輸出小 1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub> 倍；只有輸出負載電阻小時 X 才是約 1/g<sub>m2</sub> 的低阻抗節點，理想電流源負載下 X 仍擺動 −g<sub>m1</sub>r<sub>o1</sub>v<sub>in</sub>。理想負載時 A<sub>v</sub> = −g<sub>m1</sub>r<sub>o1</sub>[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>。Razavi 給把 M<sub>2</sub> 當 PMOS 主動負載的 ChatGPT 0 分。",
+    "jj": "NMOS cascode 增益級：M<sub>1</sub> 為 common-source 輸入管，M<sub>2</sub> 為由 V<sub>b1</sub> 偏壓的 common-gate cascode 管，I<sub>1</sub> 為輸出端的 current-source load。M<sub>2</sub> 把 M<sub>1</sub> 的 drain 電流傳到輸出，輸出為反相。X 點的 swing 比輸出小 1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub> 倍；只有輸出負載電阻小時 X 才是約 1/g<sub>m2</sub> 的低阻抗節點，理想 current-source load 下 X 仍擺動 −g<sub>m1</sub>r<sub>o1</sub>v<sub>in</sub>。理想負載時 A<sub>v</sub> = −g<sub>m1</sub>r<sub>o1</sub>[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>。Razavi 給把 M<sub>2</sub> 當 PMOS active load 的 ChatGPT 0 分。",
     "en": "An NMOS cascode gain stage: M<sub>1</sub> is the common-source input, M<sub>2</sub> the common-gate cascode biased by V<sub>b1</sub>, and I<sub>1</sub> the current-source load. M<sub>2</sub> conveys M<sub>1</sub>'s drain current to the output, which is inverted. The swing at X is smaller than at the output by 1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>; X is a low-impedance node (≈ 1/g<sub>m2</sub>) only when the output load resistance is small, and with an ideal current-source load X still swings by −g<sub>m1</sub>r<sub>o1</sub>v<sub>in</sub>. With an ideal load, A<sub>v</sub> = −g<sub>m1</sub>r<sub>o1</sub>[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ −g<sub>m1</sub>(g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o1</sub>r<sub>o2</sub>. Razavi gives 0 to ChatGPT, which takes M<sub>2</sub> for a PMOS active load."
    }
   },
@@ -1706,6 +1798,7 @@
    "image": "razavi-part1-fig16.png",
    "prompt": {
     "zh": "圖中電路是疊接（cascode）結構嗎？",
+    "jj": "圖中電路是 cascode 結構嗎？",
     "en": "Is the circuit shown in the figure a cascode structure?"
    },
    "options": [
@@ -1713,6 +1806,7 @@
      "id": "nosf",
      "text": {
       "zh": "不是，因為 M<sub>1</sub> 是汲極接地的 PMOS 源極隨耦器，不是共源輸入管，沒有 g<sub>m</sub>r<sub>o</sub> 的阻抗提升",
+      "jj": "不是，因為 M<sub>1</sub> 是 drain 接地的 PMOS source follower，不是 common-source 輸入管，沒有 g<sub>m</sub>r<sub>o</sub> 的阻抗提升",
       "en": "No, because M<sub>1</sub> is a PMOS source follower with its drain grounded, not a common-source input, so there is no g<sub>m</sub>r<sub>o</sub> boost"
      }
     },
@@ -1720,6 +1814,7 @@
      "id": "nogate",
      "text": {
       "zh": "不是，因為 M<sub>2</sub> 的閘極沒有接到輸入",
+      "jj": "不是，因為 M<sub>2</sub> 的 gate 沒有接到輸入",
       "en": "No, because the gate of M<sub>2</sub> is not connected to the input"
      }
     },
@@ -1734,6 +1829,7 @@
      "id": "folded",
      "text": {
       "zh": "是，因為 PMOS 輸入加上 NMOS 共閘管就是摺疊式疊接",
+      "jj": "是，因為 PMOS 輸入加上 NMOS common-gate 管就是 folded cascode",
       "en": "Yes, because a PMOS input with an NMOS common-gate device is a folded cascode"
      }
     }
@@ -1741,6 +1837,7 @@
    "answer": "nosf",
    "explanation": {
     "zh": "不是。M<sub>2</sub> 是 NMOS 共閘管，閘極接 V<sub>b1</sub>、汲極接 V<sub>out</sub>、負載 R<sub>D</sub>；但 M<sub>1</sub> 是 PMOS，源極在 X、閘極接 V<sub>in</sub>、汲極接地，是源極隨耦器，而不是驅動共閘疊接管的共源輸入管。從 M<sub>2</sub> 汲極往下看（不含 R<sub>D</sub>），R<sub>out</sub> = (1 + g<sub>m2</sub>r<sub>o2</sub>)/g<sub>m1</sub> + r<sub>o2</sub> ≈ (1 + g<sub>m2</sub>/g<sub>m1</sub>)r<sub>o2</sub>，元件相近時約 2r<sub>o2</sub>，沒有疊接的 g<sub>m</sub>r<sub>o</sub> 提升；含 R<sub>D</sub> 時 V<sub>out</sub> 的電阻約為 R<sub>D</sub>。Razavi 給 ChatGPT「是疊接，r<sub>out</sub> ≈ g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>」0 分。",
+    "jj": "不是。M<sub>2</sub> 是 NMOS common-gate 管，gate 接 V<sub>b1</sub>、drain 接 V<sub>out</sub>、負載 R<sub>D</sub>；但 M<sub>1</sub> 是 PMOS，source 在 X、gate 接 V<sub>in</sub>、drain 接地，是 source follower，而不是驅動 common-gate cascode 管的 common-source 輸入管。從 M<sub>2</sub> drain 往下看（不含 R<sub>D</sub>），R<sub>out</sub> = (1 + g<sub>m2</sub>r<sub>o2</sub>)/g<sub>m1</sub> + r<sub>o2</sub> ≈ (1 + g<sub>m2</sub>/g<sub>m1</sub>)r<sub>o2</sub>，元件相近時約 2r<sub>o2</sub>，沒有 cascode 的 g<sub>m</sub>r<sub>o</sub> 提升；含 R<sub>D</sub> 時 V<sub>out</sub> 的電阻約為 R<sub>D</sub>。Razavi 給 ChatGPT「是 cascode，r<sub>out</sub> ≈ g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>」0 分。",
     "en": "No. M<sub>2</sub> is an NMOS common-gate device with gate at V<sub>b1</sub>, drain at V<sub>out</sub> and load R<sub>D</sub>, but M<sub>1</sub> is a PMOS with its source at X, gate at V<sub>in</sub> and drain at ground: a source follower, not a common-source input feeding a cascode. Looking down into M<sub>2</sub>'s drain (excluding R<sub>D</sub>), R<sub>out</sub> = (1 + g<sub>m2</sub>r<sub>o2</sub>)/g<sub>m1</sub> + r<sub>o2</sub> ≈ (1 + g<sub>m2</sub>/g<sub>m1</sub>)r<sub>o2</sub>, about 2r<sub>o2</sub> for comparable devices: no g<sub>m</sub>r<sub>o</sub> boost. Including R<sub>D</sub>, the resistance at V<sub>out</sub> is about R<sub>D</sub>. Razavi gives 0 to ChatGPT's \"Yes, a cascode, r<sub>out</sub> ≈ g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>\"."
    }
   },
@@ -1751,6 +1848,7 @@
    "source": "Razavi-Bench part1-022 · 1/2",
    "prompt": {
     "zh": "疊接中，M<sub>1</sub> 汲極看到的小訊號阻抗約為？（負載阻抗不太大時）",
+    "jj": "cascode 中，M<sub>1</sub> drain 看到的 small-signal 阻抗約為？（負載阻抗不太大時）",
     "en": "In a cascode, what small-signal impedance does M<sub>1</sub>'s drain see (when the load impedance is not too large)?"
    },
    "options": [
@@ -1786,6 +1884,7 @@
    "answer": "a",
    "explanation": {
     "zh": "疊接中，輸入共源管 M<sub>1</sub> 的汲極接到共閘管 M<sub>2</sub> 的源極，這是相對低阻抗的節點：負載阻抗不太大時約 1/(g<sub>m2</sub> + g<sub>mb2</sub>)。所以 M<sub>1</sub> 汲極的擺幅比輸出小得多；簡單共源級的 C<sub>gd</sub> 則跨接在輸入與全增益的輸出之間。M<sub>1</sub> 閘極到汲極的增益約 −g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>)，尺寸相近時約 −1，所以 C<sub>gd1</sub> 約被乘上 1 + g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>) ≈ 2，而不是 1 加整級增益。Miller 效應是減弱，不是消失；把 M<sub>1</sub> 汲極說成交流接地是誇大。",
+    "jj": "cascode 中，輸入 common-source 管 M<sub>1</sub> 的 drain 接到 common-gate 管 M<sub>2</sub> 的 source，這是相對低阻抗的節點：負載阻抗不太大時約 1/(g<sub>m2</sub> + g<sub>mb2</sub>)。所以 M<sub>1</sub> drain 的 swing 比輸出小得多；簡單 common-source stage 的 C<sub>gd</sub> 則跨接在輸入與全增益的輸出之間。M<sub>1</sub> gate 到 drain 的增益約 −g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>)，尺寸相近時約 −1，所以 C<sub>gd1</sub> 約被乘上 1 + g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>) ≈ 2，而不是 1 加整級增益。Miller effect 是減弱，不是消失；把 M<sub>1</sub> drain 說成交流接地是誇大。",
     "en": "In a cascode the drain of the common-source input M<sub>1</sub> drives the source of the common-gate M<sub>2</sub>, a relatively low-impedance node: about 1/(g<sub>m2</sub> + g<sub>mb2</sub>) when the load impedance is not too large. The swing at M<sub>1</sub>'s drain is therefore much smaller than at the output, whereas in a simple common-source stage C<sub>gd</sub> spans the input and the full-gain output. The gain from M<sub>1</sub>'s gate to its drain is about −g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>), roughly −1 for similar devices, so C<sub>gd1</sub> is multiplied by about 1 + g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>) ≈ 2 instead of one plus the full stage gain. The Miller effect is reduced, not eliminated; calling M<sub>1</sub>'s drain an AC ground overstates it."
    }
   },
@@ -1796,6 +1895,7 @@
    "source": "Razavi-Bench part1-022 · 2/2",
    "prompt": {
     "zh": "因此，跨在 C<sub>gd1</sub> 兩端的增益（M<sub>1</sub> 閘極到汲極）約為？",
+    "jj": "因此，跨在 C<sub>gd1</sub> 兩端的增益（M<sub>1</sub> gate 到 drain）約為？",
     "en": "So what is the gain across C<sub>gd1</sub> (from M<sub>1</sub>'s gate to its drain)?"
    },
    "options": [
@@ -1824,6 +1924,7 @@
      "id": "b",
      "text": {
       "zh": "約 0：M<sub>1</sub> 汲極是交流接地，Miller 效應消失",
+      "jj": "約 0：M<sub>1</sub> drain 是交流接地，Miller effect 消失",
       "en": "About 0: M<sub>1</sub>'s drain is an AC ground and the Miller effect vanishes"
      }
     }
@@ -1831,6 +1932,7 @@
    "answer": "a",
    "explanation": {
     "zh": "疊接中，輸入共源管 M<sub>1</sub> 的汲極接到共閘管 M<sub>2</sub> 的源極，這是相對低阻抗的節點：負載阻抗不太大時約 1/(g<sub>m2</sub> + g<sub>mb2</sub>)。所以 M<sub>1</sub> 汲極的擺幅比輸出小得多；簡單共源級的 C<sub>gd</sub> 則跨接在輸入與全增益的輸出之間。M<sub>1</sub> 閘極到汲極的增益約 −g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>)，尺寸相近時約 −1，所以 C<sub>gd1</sub> 約被乘上 1 + g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>) ≈ 2，而不是 1 加整級增益。Miller 效應是減弱，不是消失；把 M<sub>1</sub> 汲極說成交流接地是誇大。",
+    "jj": "cascode 中，輸入 common-source 管 M<sub>1</sub> 的 drain 接到 common-gate 管 M<sub>2</sub> 的 source，這是相對低阻抗的節點：負載阻抗不太大時約 1/(g<sub>m2</sub> + g<sub>mb2</sub>)。所以 M<sub>1</sub> drain 的 swing 比輸出小得多；簡單 common-source stage 的 C<sub>gd</sub> 則跨接在輸入與全增益的輸出之間。M<sub>1</sub> gate 到 drain 的增益約 −g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>)，尺寸相近時約 −1，所以 C<sub>gd1</sub> 約被乘上 1 + g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>) ≈ 2，而不是 1 加整級增益。Miller effect 是減弱，不是消失；把 M<sub>1</sub> drain 說成交流接地是誇大。",
     "en": "In a cascode the drain of the common-source input M<sub>1</sub> drives the source of the common-gate M<sub>2</sub>, a relatively low-impedance node: about 1/(g<sub>m2</sub> + g<sub>mb2</sub>) when the load impedance is not too large. The swing at M<sub>1</sub>'s drain is therefore much smaller than at the output, whereas in a simple common-source stage C<sub>gd</sub> spans the input and the full-gain output. The gain from M<sub>1</sub>'s gate to its drain is about −g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>), roughly −1 for similar devices, so C<sub>gd1</sub> is multiplied by about 1 + g<sub>m1</sub>/(g<sub>m2</sub> + g<sub>mb2</sub>) ≈ 2 instead of one plus the full stage gain. The Miller effect is reduced, not eliminated; calling M<sub>1</sub>'s drain an AC ground overstates it."
    }
   },
@@ -1842,6 +1944,7 @@
    "image": "razavi-part1-fig17.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -1903,6 +2006,7 @@
    },
    "explanation": {
     "zh": "共閘 NMOS 加 PMOS 電流源負載。V<sub>in</sub> 加在 M<sub>2</sub> 的源極，M<sub>2</sub> 閘極由 V<sub>b1</sub> 偏壓；M<sub>1</sub> 由 V<sub>b2</sub> 偏壓，是接 V<sub>DD</sub> 的 PMOS 電流源負載。輸入在源極，所以不是共源級：源極輸入上升使 v<sub>gs2</sub> 下降、NMOS 電流減少、輸出上升，為非反相。A<sub>v</sub> = [1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>]r<sub>o1</sub>/(r<sub>o1</sub> + r<sub>o2</sub>) ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)。輸入電阻低，但有電流源負載時不只是 1/g<sub>m2</sub>：R<sub>in</sub> = (r<sub>o1</sub> + r<sub>o2</sub>)/[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ (1/g<sub>m2</sub>)(1 + r<sub>o1</sub>/r<sub>o2</sub>)，輸出電阻相近時約 2/g<sub>m2</sub>。Razavi 給把 V<sub>in</sub> 放在 M<sub>2</sub> 閘極的 ChatGPT 0 分。",
+    "jj": "common-gate NMOS 加 PMOS current-source load。V<sub>in</sub> 加在 M<sub>2</sub> 的 source，M<sub>2</sub> gate 由 V<sub>b1</sub> 偏壓；M<sub>1</sub> 由 V<sub>b2</sub> 偏壓，是接 V<sub>DD</sub> 的 PMOS current-source load。輸入在 source，所以不是 common-source stage：source 輸入上升使 v<sub>gs2</sub> 下降、NMOS 電流減少、輸出上升，為非反相。A<sub>v</sub> = [1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>]r<sub>o1</sub>/(r<sub>o1</sub> + r<sub>o2</sub>) ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)。輸入電阻低，但有 current-source load 時不只是 1/g<sub>m2</sub>：R<sub>in</sub> = (r<sub>o1</sub> + r<sub>o2</sub>)/[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ (1/g<sub>m2</sub>)(1 + r<sub>o1</sub>/r<sub>o2</sub>)，輸出電阻相近時約 2/g<sub>m2</sub>。Razavi 給把 V<sub>in</sub> 放在 M<sub>2</sub> gate 的 ChatGPT 0 分。",
     "en": "A common-gate NMOS with a PMOS current-source load. V<sub>in</sub> drives the source of M<sub>2</sub>, whose gate is biased by V<sub>b1</sub>; M<sub>1</sub>, biased by V<sub>b2</sub>, is the PMOS current-source load from V<sub>DD</sub>. With the input at the source this is not a common-source stage: a rising source input lowers v<sub>gs2</sub>, reduces the NMOS current and raises the output, so the gain is non-inverting. A<sub>v</sub> = [1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>]r<sub>o1</sub>/(r<sub>o1</sub> + r<sub>o2</sub>) ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>). The input resistance is low but not simply 1/g<sub>m2</sub> with this load: R<sub>in</sub> = (r<sub>o1</sub> + r<sub>o2</sub>)/[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ (1/g<sub>m2</sub>)(1 + r<sub>o1</sub>/r<sub>o2</sub>), roughly 2/g<sub>m2</sub> for comparable output resistances. Razavi gives 0 to ChatGPT, which puts V<sub>in</sub> at M<sub>2</sub>'s gate."
    }
   },
@@ -1921,6 +2025,7 @@
      "id": "se",
      "text": {
       "zh": "負載是電流源，所以 R<sub>in</sub> 精確等於 1/(g<sub>m2</sub> + g<sub>mb2</sub>)，與 r<sub>o1</sub> 無關",
+      "jj": "負載是 current source，所以 R<sub>in</sub> 精確等於 1/(g<sub>m2</sub> + g<sub>mb2</sub>)，與 r<sub>o1</sub> 無關",
       "en": "Because the load is a current source, R<sub>in</sub> is exactly 1/(g<sub>m2</sub> + g<sub>mb2</sub>), independent of r<sub>o1</sub>"
      }
     },
@@ -1935,6 +2040,7 @@
      "id": "sa",
      "text": {
       "zh": "V<sub>in</sub> 加在 M<sub>2</sub> 源極，M<sub>2</sub> 閘極接直流偏壓；M<sub>1</sub> 是由 V<sub>b2</sub> 偏壓的 PMOS 電流源負載",
+      "jj": "V<sub>in</sub> 加在 M<sub>2</sub> source，M<sub>2</sub> gate 接直流偏壓；M<sub>1</sub> 是由 V<sub>b2</sub> 偏壓的 PMOS current-source load",
       "en": "V<sub>in</sub> drives the source of M<sub>2</sub>, whose gate is at a DC bias; M<sub>1</sub> is a PMOS current-source load biased by V<sub>b2</sub>"
      }
     },
@@ -1960,6 +2066,7 @@
    ],
    "explanation": {
     "zh": "共閘 NMOS 加 PMOS 電流源負載。V<sub>in</sub> 加在 M<sub>2</sub> 的源極，M<sub>2</sub> 閘極由 V<sub>b1</sub> 偏壓；M<sub>1</sub> 由 V<sub>b2</sub> 偏壓，是接 V<sub>DD</sub> 的 PMOS 電流源負載。輸入在源極，所以不是共源級：源極輸入上升使 v<sub>gs2</sub> 下降、NMOS 電流減少、輸出上升，為非反相。A<sub>v</sub> = [1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>]r<sub>o1</sub>/(r<sub>o1</sub> + r<sub>o2</sub>) ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)。輸入電阻低，但有電流源負載時不只是 1/g<sub>m2</sub>：R<sub>in</sub> = (r<sub>o1</sub> + r<sub>o2</sub>)/[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ (1/g<sub>m2</sub>)(1 + r<sub>o1</sub>/r<sub>o2</sub>)，輸出電阻相近時約 2/g<sub>m2</sub>。Razavi 給把 V<sub>in</sub> 放在 M<sub>2</sub> 閘極的 ChatGPT 0 分。",
+    "jj": "common-gate NMOS 加 PMOS current-source load。V<sub>in</sub> 加在 M<sub>2</sub> 的 source，M<sub>2</sub> gate 由 V<sub>b1</sub> 偏壓；M<sub>1</sub> 由 V<sub>b2</sub> 偏壓，是接 V<sub>DD</sub> 的 PMOS current-source load。輸入在 source，所以不是 common-source stage：source 輸入上升使 v<sub>gs2</sub> 下降、NMOS 電流減少、輸出上升，為非反相。A<sub>v</sub> = [1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>]r<sub>o1</sub>/(r<sub>o1</sub> + r<sub>o2</sub>) ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>)。輸入電阻低，但有 current-source load 時不只是 1/g<sub>m2</sub>：R<sub>in</sub> = (r<sub>o1</sub> + r<sub>o2</sub>)/[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ (1/g<sub>m2</sub>)(1 + r<sub>o1</sub>/r<sub>o2</sub>)，輸出電阻相近時約 2/g<sub>m2</sub>。Razavi 給把 V<sub>in</sub> 放在 M<sub>2</sub> gate 的 ChatGPT 0 分。",
     "en": "A common-gate NMOS with a PMOS current-source load. V<sub>in</sub> drives the source of M<sub>2</sub>, whose gate is biased by V<sub>b1</sub>; M<sub>1</sub>, biased by V<sub>b2</sub>, is the PMOS current-source load from V<sub>DD</sub>. With the input at the source this is not a common-source stage: a rising source input lowers v<sub>gs2</sub>, reduces the NMOS current and raises the output, so the gain is non-inverting. A<sub>v</sub> = [1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>]r<sub>o1</sub>/(r<sub>o1</sub> + r<sub>o2</sub>) ≈ g<sub>m2</sub>(r<sub>o1</sub> ‖ r<sub>o2</sub>). The input resistance is low but not simply 1/g<sub>m2</sub> with this load: R<sub>in</sub> = (r<sub>o1</sub> + r<sub>o2</sub>)/[1 + (g<sub>m2</sub> + g<sub>mb2</sub>)r<sub>o2</sub>] ≈ (1/g<sub>m2</sub>)(1 + r<sub>o1</sub>/r<sub>o2</sub>), roughly 2/g<sub>m2</sub> for comparable output resistances. Razavi gives 0 to ChatGPT, which puts V<sub>in</sub> at M<sub>2</sub>'s gate."
    }
   },
@@ -1971,6 +2078,7 @@
    "image": "razavi-part1-fig18.png",
    "prompt": {
     "zh": "圖中電路共有幾個極點（pole）？",
+    "jj": "圖中電路共有幾個 pole？",
     "en": "How many poles does the circuit shown in the figure have?"
    },
    "options": [
@@ -2006,6 +2114,7 @@
    "answer": "2",
    "explanation": {
     "zh": "兩個。M<sub>1</sub> 是經 R<sub>S</sub> 驅動的 NMOS 共源級，M<sub>2</sub> 是源極與閘極都交流接地的 PMOS 電流源負載。只有兩個帶電容的節點：M<sub>1</sub> 閘極（C<sub>GS</sub> 到地），以及輸出（C<sub>DB</sub>、C<sub>DB2</sub> 到交流地；M<sub>2</sub> 閘極交流接地，所以 C<sub>GD2</sub> 也接到交流地）。C<sub>GD</sub> 跨接兩節點，但與 C<sub>GS</sub>、C<sub>DB</sub> 經由地形成迴路，不會多一個極點，只帶來 Miller 耦合與一個零點。沒有疊接元件，輸出端也沒有 C<sub>GS2</sub>。Razavi 對 ChatGPT 給 3/4：極點數對了，但把 C<sub>GS2</sub> 放到輸出節點。",
+    "jj": "兩個。M<sub>1</sub> 是經 R<sub>S</sub> 驅動的 NMOS common-source stage，M<sub>2</sub> 是 source 與 gate 都交流接地的 PMOS current-source load。只有兩個帶電容的節點：M<sub>1</sub> gate（C<sub>GS</sub> 到地），以及輸出（C<sub>DB</sub>、C<sub>DB2</sub> 到交流地；M<sub>2</sub> gate 交流接地，所以 C<sub>GD2</sub> 也接到交流地）。C<sub>GD</sub> 跨接兩節點，但與 C<sub>GS</sub>、C<sub>DB</sub> 經由地形成迴路，不會多一個 pole，只帶來 Miller coupling 與一個 zero。沒有 cascode 元件，輸出端也沒有 C<sub>GS2</sub>。Razavi 對 ChatGPT 給 3/4：pole 數對了，但把 C<sub>GS2</sub> 放到輸出節點。",
     "en": "Two. M<sub>1</sub> is an NMOS common-source stage driven through R<sub>S</sub>, and M<sub>2</sub> a PMOS current-source load whose source and gate are both at AC ground. Only two nodes carry capacitance: the gate of M<sub>1</sub> (C<sub>GS</sub> to ground) and the output (C<sub>DB</sub> and C<sub>DB2</sub> to AC ground, and C<sub>GD2</sub> too, since M<sub>2</sub>'s gate is at AC ground). C<sub>GD</sub> bridges the two nodes but forms a loop with C<sub>GS</sub> and C<sub>DB</sub> through ground, so it adds Miller coupling and a zero, not a third pole. There is no cascode device and no C<sub>GS2</sub> at the output. Razavi gives ChatGPT 3/4: right pole count, but it put C<sub>GS2</sub> at the output node."
    }
   },
@@ -2052,6 +2161,7 @@
    "answer": "a",
    "explanation": {
     "zh": "兩個。M<sub>1</sub> 是經 R<sub>S</sub> 驅動的 NMOS 共源級，M<sub>2</sub> 是源極與閘極都交流接地的 PMOS 電流源負載。只有兩個帶電容的節點：M<sub>1</sub> 閘極（C<sub>GS</sub> 到地），以及輸出（C<sub>DB</sub>、C<sub>DB2</sub> 到交流地；M<sub>2</sub> 閘極交流接地，所以 C<sub>GD2</sub> 也接到交流地）。C<sub>GD</sub> 跨接兩節點，但與 C<sub>GS</sub>、C<sub>DB</sub> 經由地形成迴路，不會多一個極點，只帶來 Miller 耦合與一個零點。沒有疊接元件，輸出端也沒有 C<sub>GS2</sub>。Razavi 對 ChatGPT 給 3/4：極點數對了，但把 C<sub>GS2</sub> 放到輸出節點。",
+    "jj": "兩個。M<sub>1</sub> 是經 R<sub>S</sub> 驅動的 NMOS common-source stage，M<sub>2</sub> 是 source 與 gate 都交流接地的 PMOS current-source load。只有兩個帶電容的節點：M<sub>1</sub> gate（C<sub>GS</sub> 到地），以及輸出（C<sub>DB</sub>、C<sub>DB2</sub> 到交流地；M<sub>2</sub> gate 交流接地，所以 C<sub>GD2</sub> 也接到交流地）。C<sub>GD</sub> 跨接兩節點，但與 C<sub>GS</sub>、C<sub>DB</sub> 經由地形成迴路，不會多一個 pole，只帶來 Miller coupling 與一個 zero。沒有 cascode 元件，輸出端也沒有 C<sub>GS2</sub>。Razavi 對 ChatGPT 給 3/4：pole 數對了，但把 C<sub>GS2</sub> 放到輸出節點。",
     "en": "Two. M<sub>1</sub> is an NMOS common-source stage driven through R<sub>S</sub>, and M<sub>2</sub> a PMOS current-source load whose source and gate are both at AC ground. Only two nodes carry capacitance: the gate of M<sub>1</sub> (C<sub>GS</sub> to ground) and the output (C<sub>DB</sub> and C<sub>DB2</sub> to AC ground, and C<sub>GD2</sub> too, since M<sub>2</sub>'s gate is at AC ground). C<sub>GD</sub> bridges the two nodes but forms a loop with C<sub>GS</sub> and C<sub>DB</sub> through ground, so it adds Miller coupling and a zero, not a third pole. There is no cascode device and no C<sub>GS2</sub> at the output. Razavi gives ChatGPT 3/4: right pole count, but it put C<sub>GS2</sub> at the output node."
    }
   },
@@ -2070,6 +2180,7 @@
      "id": "sd",
      "text": {
       "zh": "兩顆相同時，輸出電阻約 g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>，與疊接相同",
+      "jj": "兩顆相同時，輸出電阻約 g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>，與 cascode 相同",
       "en": "For identical devices the output resistance is about g<sub>m2</sub>r<sub>o2</sub>r<sub>o1</sub>, as in a cascode"
      }
     },
@@ -2077,6 +2188,7 @@
      "id": "sc",
      "text": {
       "zh": "M<sub>2</sub> 的源極電壓為 V<sub>in</sub> − V<sub>TH</sub>，所以 M<sub>1</sub> 剛好在飽和邊緣",
+      "jj": "M<sub>2</sub> 的 source 電壓為 V<sub>in</sub> − V<sub>TH</sub>，所以 M<sub>1</sub> 剛好在 saturation 邊緣",
       "en": "M<sub>2</sub>'s source sits at V<sub>in</sub> − V<sub>TH</sub>, so M<sub>1</sub> is right at the edge of saturation"
      }
     },
@@ -2091,6 +2203,7 @@
      "id": "se",
      "text": {
       "zh": "這是增益提升（gain-boosting）級，M<sub>1</sub> 提高 M<sub>2</sub> 的有效 g<sub>m</sub>",
+      "jj": "這是 gain-boosting stage，M<sub>1</sub> 提高 M<sub>2</sub> 的有效 g<sub>m</sub>",
       "en": "It is a gain-boosting stage in which M<sub>1</sub> raises the effective g<sub>m</sub> of M<sub>2</sub>"
      }
     },
@@ -2098,6 +2211,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>1</sub> 在三極管區，M<sub>2</sub> 在飽和區",
+      "jj": "M<sub>1</sub> 在 triode 區，M<sub>2</sub> 在 saturation 區",
       "en": "M<sub>1</sub> is in triode and M<sub>2</sub> in saturation"
      }
     }
@@ -2108,6 +2222,7 @@
    ],
    "explanation": {
     "zh": "兩顆串聯的 NMOS 閘極接在一起、同由 V<sub>in</sub> 驅動，頂端接電阻負載。M<sub>2</sub> 源極在 V<sub>in</sub> − V<sub>GS2</sub>，低於 V<sub>in</sub> − V<sub>TH</sub>，所以下方 M<sub>1</sub> 在三極管區、M<sub>2</sub> 在飽和區。兩顆相同時等效於一顆通道長度加倍的電晶體，FinFET 製程需要長通道時常用。寬度相同時 L<sub>eff</sub> ≈ L<sub>1</sub> + L<sub>2</sub>；一般情況 (W/L)<sub>eff</sub> = 1/(L<sub>1</sub>/W<sub>1</sub> + L<sub>2</sub>/W<sub>2</sub>)。M<sub>1</sub> 以電阻 r<sub>on1</sub> 的形式在 M<sub>2</sub> 下方，輸出電阻 r<sub>o2</sub> + r<sub>on1</sub>(1 + g<sub>m2</sub>r<sub>o2</sub>)，相同元件時約 2r<sub>o2</sub>，也就是兩倍長度單顆元件的 r<sub>o</sub>，而非疊接的 g<sub>m</sub>r<sub>o</sub> 倍。Razavi 給 ChatGPT 的兩個答案（gain-boosting 疊接、M<sub>2</sub> 為二極體接法）都是 0 分。",
+    "jj": "兩顆串聯的 NMOS gate 接在一起、同由 V<sub>in</sub> 驅動，頂端接電阻負載。M<sub>2</sub> source 在 V<sub>in</sub> − V<sub>GS2</sub>，低於 V<sub>in</sub> − V<sub>TH</sub>，所以下方 M<sub>1</sub> 在 triode 區、M<sub>2</sub> 在 saturation 區。兩顆相同時等效於一顆通道長度加倍的電晶體，FinFET 製程需要長通道時常用。寬度相同時 L<sub>eff</sub> ≈ L<sub>1</sub> + L<sub>2</sub>；一般情況 (W/L)<sub>eff</sub> = 1/(L<sub>1</sub>/W<sub>1</sub> + L<sub>2</sub>/W<sub>2</sub>)。M<sub>1</sub> 以電阻 r<sub>on1</sub> 的形式在 M<sub>2</sub> 下方，輸出電阻 r<sub>o2</sub> + r<sub>on1</sub>(1 + g<sub>m2</sub>r<sub>o2</sub>)，相同元件時約 2r<sub>o2</sub>，也就是兩倍長度單顆元件的 r<sub>o</sub>，而非 cascode 的 g<sub>m</sub>r<sub>o</sub> 倍。Razavi 給 ChatGPT 的兩個答案（gain-boosting cascode、M<sub>2</sub> 為 diode-connected）都是 0 分。",
     "en": "Two series NMOS devices with their gates tied together and driven by V<sub>in</sub>, with a resistive load on top. M<sub>2</sub>'s source sits at V<sub>in</sub> − V<sub>GS2</sub>, below V<sub>in</sub> − V<sub>TH</sub>, so the lower M<sub>1</sub> is in triode while M<sub>2</sub> is saturated. For identical devices this equals one transistor with twice the channel length, a topology used in FinFET technologies when a longer channel is needed. For equal widths L<sub>eff</sub> ≈ L<sub>1</sub> + L<sub>2</sub>; in general (W/L)<sub>eff</sub> = 1/(L<sub>1</sub>/W<sub>1</sub> + L<sub>2</sub>/W<sub>2</sub>). With M<sub>1</sub> acting as a resistance r<sub>on1</sub> below M<sub>2</sub>, the output resistance is r<sub>o2</sub> + r<sub>on1</sub>(1 + g<sub>m2</sub>r<sub>o2</sub>), about 2r<sub>o2</sub> for identical devices: the r<sub>o</sub> of a single device of twice the length, not a cascode's g<sub>m</sub>r<sub>o</sub> multiplication. Razavi gives 0 to both of ChatGPT's answers (a gain-boosting cascode; M<sub>2</sub> diode-connected)."
    }
   },
@@ -2126,6 +2241,7 @@
      "id": "sd",
      "text": {
       "zh": "這是帶 NMOS 疊接的共源放大器",
+      "jj": "這是帶 NMOS cascode 的 common-source 放大器",
       "en": "It is a common-source amplifier with an NMOS cascode"
      }
     },
@@ -2133,6 +2249,7 @@
      "id": "sa",
      "text": {
       "zh": "可看成源極隨耦器 M<sub>1</sub> 驅動共閘級 M<sub>2</sub>（或一端交流接地的差動對）",
+      "jj": "可看成 source follower M<sub>1</sub> 驅動 common-gate stage M<sub>2</sub>（或一端交流接地的 differential pair）",
       "en": "It can be viewed as a source follower M<sub>1</sub> driving a common-gate stage M<sub>2</sub> (or a differential pair with one input at AC ground)"
      }
     },
@@ -2140,6 +2257,7 @@
      "id": "sc",
      "text": {
       "zh": "M<sub>1</sub> 的汲極接 V<sub>DD</sub>，所以 M<sub>1</sub> 不傳遞訊號，只提供偏壓",
+      "jj": "M<sub>1</sub> 的 drain 接 V<sub>DD</sub>，所以 M<sub>1</sub> 不傳遞訊號，只提供偏壓",
       "en": "M<sub>1</sub>'s drain is at V<sub>DD</sub>, so M<sub>1</sub> carries no signal and only sets the bias"
      }
     },
@@ -2147,6 +2265,7 @@
      "id": "sb",
      "text": {
       "zh": "共源點是虛接地，所以 v<sub>out</sub>/v<sub>in</sub> ≈ g<sub>m2</sub>R<sub>D</sub>",
+      "jj": "common-source 節點是虛接地，所以 v<sub>out</sub>/v<sub>in</sub> ≈ g<sub>m2</sub>R<sub>D</sub>",
       "en": "The shared source is a virtual ground, so v<sub>out</sub>/v<sub>in</sub> ≈ g<sub>m2</sub>R<sub>D</sub>"
      }
     },
@@ -2163,6 +2282,7 @@
    ],
    "explanation": {
     "zh": "源極耦合對，M<sub>2</sub> 閘極固定在 V<sub>b</sub>。M<sub>1</sub>（閘極 V<sub>in</sub>、汲極 V<sub>DD</sub>）與 M<sub>2</sub>（汲極經 R<sub>D</sub> 為 V<sub>out</sub>）共用源極，由 I<sub>1</sub> 偏壓，I<sub>D1</sub> + I<sub>D2</sub> = I<sub>1</sub>。Razavi 把它看成源極隨耦器 M<sub>1</sub> 驅動共閘級 M<sub>2</sub>；也可看成一端交流接地、單端輸出的差動對。它不是帶 NMOS 疊接的共源級。忽略 r<sub>o</sub> 與基體效應，共源點的小訊號電壓為 g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>m2</sub>)·v<sub>in</sub>（匹配時約 v<sub>in</sub>/2），增益為非反相：A<sub>v</sub> = g<sub>m1</sub>g<sub>m2</sub>R<sub>D</sub>/(g<sub>m1</sub> + g<sub>m2</sub>)，匹配時約 g<sub>m</sub>R<sub>D</sub>/2。Razavi 給 ChatGPT「帶 NMOS 疊接的共源放大器」0 分。",
+    "jj": "source-coupled pair，M<sub>2</sub> gate 固定在 V<sub>b</sub>。M<sub>1</sub>（gate V<sub>in</sub>、drain V<sub>DD</sub>）與 M<sub>2</sub>（drain 經 R<sub>D</sub> 為 V<sub>out</sub>）共用 source，由 I<sub>1</sub> 偏壓，I<sub>D1</sub> + I<sub>D2</sub> = I<sub>1</sub>。Razavi 把它看成 source follower M<sub>1</sub> 驅動 common-gate stage M<sub>2</sub>；也可看成一端交流接地、單端輸出的 differential pair。它不是帶 NMOS cascode 的 common-source stage。忽略 r<sub>o</sub> 與 body effect，common-source 節點的 small-signal 電壓為 g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>m2</sub>)·v<sub>in</sub>（匹配時約 v<sub>in</sub>/2），增益為非反相：A<sub>v</sub> = g<sub>m1</sub>g<sub>m2</sub>R<sub>D</sub>/(g<sub>m1</sub> + g<sub>m2</sub>)，匹配時約 g<sub>m</sub>R<sub>D</sub>/2。Razavi 給 ChatGPT「帶 NMOS cascode 的 common-source 放大器」0 分。",
     "en": "A source-coupled pair with M<sub>2</sub>'s gate held at V<sub>b</sub>. M<sub>1</sub> (gate at V<sub>in</sub>, drain at V<sub>DD</sub>) and M<sub>2</sub> (drain at V<sub>out</sub> through R<sub>D</sub>) share a source node biased by I<sub>1</sub>, so I<sub>D1</sub> + I<sub>D2</sub> = I<sub>1</sub>. Razavi views it as a source follower M<sub>1</sub> driving a common-gate stage M<sub>2</sub>; it is equally a differential pair with one input at AC ground and a single-ended output. It is not a common-source amplifier with an NMOS cascode. Neglecting r<sub>o</sub> and body effect, the shared source moves by g<sub>m1</sub>/(g<sub>m1</sub> + g<sub>m2</sub>)·v<sub>in</sub> (about v<sub>in</sub>/2 for matched devices), and the gain is non-inverting: A<sub>v</sub> = g<sub>m1</sub>g<sub>m2</sub>R<sub>D</sub>/(g<sub>m1</sub> + g<sub>m2</sub>), about g<sub>m</sub>R<sub>D</sub>/2 when matched. Razavi gives 0 to ChatGPT's \"common-source amplifier with an NMOS cascode\"."
    }
   },
@@ -2181,6 +2301,7 @@
      "id": "a",
      "text": {
       "zh": "低頻 1/g<sub>m1</sub>，高頻 R<sub>S</sub>（C<sub>GS1</sub> 把閘極與源極短路）",
+      "jj": "低頻 1/g<sub>m1</sub>，高頻 R<sub>S</sub>（C<sub>GS1</sub> 把 gate 與 source 短路）",
       "en": "1/g<sub>m1</sub> at low frequency, R<sub>S</sub> at high frequency (C<sub>GS1</sub> shorts gate and source)"
      }
     },
@@ -2209,6 +2330,7 @@
    "answer": "a",
    "explanation": {
     "zh": "M<sub>1</sub> 是源極隨耦器：閘極經 R<sub>S</sub> 由 V<sub>in</sub> 驅動、汲極接 V<sub>DD</sub>、源極為輸出；M<sub>2</sub> 由 V<sub>b</sub> 偏壓，是接地的電流源。求輸出阻抗時 V<sub>in</sub> 交流接地。從 M<sub>1</sub> 源極看進去（忽略 r<sub>o</sub>、基體效應與其他電容），Z<sub>out</sub> = (1 + sR<sub>S</sub>C<sub>GS1</sub>)/(g<sub>m1</sub> + sC<sub>GS1</sub>)。極低頻時 C<sub>GS1</sub> 開路，Z<sub>out</sub> ≈ 1/g<sub>m1</sub>；極高頻時 C<sub>GS1</sub> 把閘極與源極短路，Z<sub>out</sub> ≈ R<sub>S</sub>。若 R<sub>S</sub> > 1/g<sub>m1</sub>，零點 1/(R<sub>S</sub>C<sub>GS1</sub>) 在極點 g<sub>m1</sub>/C<sub>GS1</sub> 之前，阻抗隨頻率上升，在這段頻率等效為 1/g<sub>m1</sub> 串聯約 C<sub>GS1</sub>(R<sub>S</sub> − 1/g<sub>m1</sub>)/g<sub>m1</sub> 的電感；若 R<sub>S</sub> < 1/g<sub>m1</sub>，阻抗隨頻率下降，呈電容性。Razavi 對把電路看成疊接的 ChatGPT 給 2/4。",
+    "jj": "M<sub>1</sub> 是 source follower：gate 經 R<sub>S</sub> 由 V<sub>in</sub> 驅動、drain 接 V<sub>DD</sub>、source 為輸出；M<sub>2</sub> 由 V<sub>b</sub> 偏壓，是接地的 current source。求輸出阻抗時 V<sub>in</sub> 交流接地。從 M<sub>1</sub> source 看進去（忽略 r<sub>o</sub>、body effect 與其他電容），Z<sub>out</sub> = (1 + sR<sub>S</sub>C<sub>GS1</sub>)/(g<sub>m1</sub> + sC<sub>GS1</sub>)。極低頻時 C<sub>GS1</sub> 開路，Z<sub>out</sub> ≈ 1/g<sub>m1</sub>；極高頻時 C<sub>GS1</sub> 把 gate 與 source 短路，Z<sub>out</sub> ≈ R<sub>S</sub>。若 R<sub>S</sub> > 1/g<sub>m1</sub>，zero 1/(R<sub>S</sub>C<sub>GS1</sub>) 在 pole g<sub>m1</sub>/C<sub>GS1</sub> 之前，阻抗隨頻率上升，在這段頻率等效為 1/g<sub>m1</sub> 串聯約 C<sub>GS1</sub>(R<sub>S</sub> − 1/g<sub>m1</sub>)/g<sub>m1</sub> 的電感；若 R<sub>S</sub> < 1/g<sub>m1</sub>，阻抗隨頻率下降，呈電容性。Razavi 對把電路看成 cascode 的 ChatGPT 給 2/4。",
     "en": "M<sub>1</sub> is a source follower: its gate is driven from V<sub>in</sub> through R<sub>S</sub>, its drain is at V<sub>DD</sub> and its source is the output; M<sub>2</sub>, biased by V<sub>b</sub>, is a current source to ground. For the output impedance V<sub>in</sub> is at AC ground. Looking into the source of M<sub>1</sub> (neglecting r<sub>o</sub>, body effect and other capacitances), Z<sub>out</sub> = (1 + sR<sub>S</sub>C<sub>GS1</sub>)/(g<sub>m1</sub> + sC<sub>GS1</sub>). At very low frequency C<sub>GS1</sub> is open and Z<sub>out</sub> ≈ 1/g<sub>m1</sub>; at very high frequency C<sub>GS1</sub> shorts gate to source and Z<sub>out</sub> ≈ R<sub>S</sub>. If R<sub>S</sub> > 1/g<sub>m1</sub>, the zero at 1/(R<sub>S</sub>C<sub>GS1</sub>) comes before the pole at g<sub>m1</sub>/C<sub>GS1</sub> and the impedance rises with frequency, behaving over that range as 1/g<sub>m1</sub> in series with an inductance of about C<sub>GS1</sub>(R<sub>S</sub> − 1/g<sub>m1</sub>)/g<sub>m1</sub>. If R<sub>S</sub> < 1/g<sub>m1</sub> it falls with frequency and is capacitive. Razavi gives 2/4 to ChatGPT, which reads the circuit as a cascode."
    }
   },
@@ -2255,6 +2377,7 @@
    "answer": "a",
    "explanation": {
     "zh": "M<sub>1</sub> 是源極隨耦器：閘極經 R<sub>S</sub> 由 V<sub>in</sub> 驅動、汲極接 V<sub>DD</sub>、源極為輸出；M<sub>2</sub> 由 V<sub>b</sub> 偏壓，是接地的電流源。求輸出阻抗時 V<sub>in</sub> 交流接地。從 M<sub>1</sub> 源極看進去（忽略 r<sub>o</sub>、基體效應與其他電容），Z<sub>out</sub> = (1 + sR<sub>S</sub>C<sub>GS1</sub>)/(g<sub>m1</sub> + sC<sub>GS1</sub>)。極低頻時 C<sub>GS1</sub> 開路，Z<sub>out</sub> ≈ 1/g<sub>m1</sub>；極高頻時 C<sub>GS1</sub> 把閘極與源極短路，Z<sub>out</sub> ≈ R<sub>S</sub>。若 R<sub>S</sub> > 1/g<sub>m1</sub>，零點 1/(R<sub>S</sub>C<sub>GS1</sub>) 在極點 g<sub>m1</sub>/C<sub>GS1</sub> 之前，阻抗隨頻率上升，在這段頻率等效為 1/g<sub>m1</sub> 串聯約 C<sub>GS1</sub>(R<sub>S</sub> − 1/g<sub>m1</sub>)/g<sub>m1</sub> 的電感；若 R<sub>S</sub> < 1/g<sub>m1</sub>，阻抗隨頻率下降，呈電容性。Razavi 對把電路看成疊接的 ChatGPT 給 2/4。",
+    "jj": "M<sub>1</sub> 是 source follower：gate 經 R<sub>S</sub> 由 V<sub>in</sub> 驅動、drain 接 V<sub>DD</sub>、source 為輸出；M<sub>2</sub> 由 V<sub>b</sub> 偏壓，是接地的 current source。求輸出阻抗時 V<sub>in</sub> 交流接地。從 M<sub>1</sub> source 看進去（忽略 r<sub>o</sub>、body effect 與其他電容），Z<sub>out</sub> = (1 + sR<sub>S</sub>C<sub>GS1</sub>)/(g<sub>m1</sub> + sC<sub>GS1</sub>)。極低頻時 C<sub>GS1</sub> 開路，Z<sub>out</sub> ≈ 1/g<sub>m1</sub>；極高頻時 C<sub>GS1</sub> 把 gate 與 source 短路，Z<sub>out</sub> ≈ R<sub>S</sub>。若 R<sub>S</sub> > 1/g<sub>m1</sub>，zero 1/(R<sub>S</sub>C<sub>GS1</sub>) 在 pole g<sub>m1</sub>/C<sub>GS1</sub> 之前，阻抗隨頻率上升，在這段頻率等效為 1/g<sub>m1</sub> 串聯約 C<sub>GS1</sub>(R<sub>S</sub> − 1/g<sub>m1</sub>)/g<sub>m1</sub> 的電感；若 R<sub>S</sub> < 1/g<sub>m1</sub>，阻抗隨頻率下降，呈電容性。Razavi 對把電路看成 cascode 的 ChatGPT 給 2/4。",
     "en": "M<sub>1</sub> is a source follower: its gate is driven from V<sub>in</sub> through R<sub>S</sub>, its drain is at V<sub>DD</sub> and its source is the output; M<sub>2</sub>, biased by V<sub>b</sub>, is a current source to ground. For the output impedance V<sub>in</sub> is at AC ground. Looking into the source of M<sub>1</sub> (neglecting r<sub>o</sub>, body effect and other capacitances), Z<sub>out</sub> = (1 + sR<sub>S</sub>C<sub>GS1</sub>)/(g<sub>m1</sub> + sC<sub>GS1</sub>). At very low frequency C<sub>GS1</sub> is open and Z<sub>out</sub> ≈ 1/g<sub>m1</sub>; at very high frequency C<sub>GS1</sub> shorts gate to source and Z<sub>out</sub> ≈ R<sub>S</sub>. If R<sub>S</sub> > 1/g<sub>m1</sub>, the zero at 1/(R<sub>S</sub>C<sub>GS1</sub>) comes before the pole at g<sub>m1</sub>/C<sub>GS1</sub> and the impedance rises with frequency, behaving over that range as 1/g<sub>m1</sub> in series with an inductance of about C<sub>GS1</sub>(R<sub>S</sub> − 1/g<sub>m1</sub>)/g<sub>m1</sub>. If R<sub>S</sub> < 1/g<sub>m1</sub> it falls with frequency and is capacitive. Razavi gives 2/4 to ChatGPT, which reads the circuit as a cascode."
    }
   },
@@ -2280,6 +2403,7 @@
      "id": "se",
      "text": {
       "zh": "迴路增益大於 1 時，R<sub>in</sub> ≈ 1/g<sub>m2</sub>，是低輸入阻抗的電流輸入級",
+      "jj": "loop gain 大於 1 時，R<sub>in</sub> ≈ 1/g<sub>m2</sub>，是低輸入阻抗的電流輸入級",
       "en": "With loop gain above one, R<sub>in</sub> ≈ 1/g<sub>m2</sub>, a low-impedance current input"
      }
     },
@@ -2287,6 +2411,7 @@
      "id": "sc",
      "text": {
       "zh": "迴路增益大於 1 時，X 點的輸入電阻為負，電路會閂鎖",
+      "jj": "loop gain 大於 1 時，X 點的輸入電阻為負，電路會 latch",
       "en": "With loop gain above one, the input resistance at X is negative and the circuit latches"
      }
     },
@@ -2301,6 +2426,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>2</sub> 的閘極接到 V<sub>out</sub>，所以 M<sub>2</sub> 不是二極體接法",
+      "jj": "M<sub>2</sub> 的 gate 接到 V<sub>out</sub>，所以 M<sub>2</sub> 不是 diode-connected",
       "en": "M<sub>2</sub>'s gate is tied to V<sub>out</sub>, so M<sub>2</sub> is not diode-connected"
      }
     }
@@ -2312,6 +2438,7 @@
    ],
    "explanation": {
     "zh": "電流輸入、帶正回授的電路。輸入電流注入 X，X 驅動 M<sub>1</sub> 閘極；M<sub>1</sub> 是負載 R<sub>D1</sub> 的共源級，X 上升使 V<sub>out</sub> 下降。M<sub>2</sub> 的閘極接 V<sub>out</sub> 而不是接自己在 X 的汲極，所以不是二極體接法，而是受 V<sub>out</sub> 控制、從 X 抽電流的共源元件。X 上升 → V<sub>out</sub> 下降 → M<sub>2</sub> 抽得更少 → X 再上升：正回授。兩顆都飽和時迴路增益 T = g<sub>m1</sub>(R<sub>D1</sub> ‖ r<sub>o1</sub>)g<sub>m2</sub>r<sub>o2</sub>，X 點 R<sub>in</sub> = r<sub>o2</sub>/(1 − T)。通常 T > 1，R<sub>in</sub> 為負，約 −1/[g<sub>m1</sub>g<sub>m2</sub>(R<sub>D1</sub> ‖ r<sub>o1</sub>)]。以電流源驅動時，負電導使偏壓點不穩定（有右半平面極點），電路閂鎖到兩種狀態之一。Razavi 對把 M<sub>2</sub> 當成二極體接法的 ChatGPT 給 1/4。",
+    "jj": "電流輸入、帶正回授的電路。輸入電流注入 X，X 驅動 M<sub>1</sub> gate；M<sub>1</sub> 是負載 R<sub>D1</sub> 的 common-source stage，X 上升使 V<sub>out</sub> 下降。M<sub>2</sub> 的 gate 接 V<sub>out</sub> 而不是接自己在 X 的 drain，所以不是 diode-connected，而是受 V<sub>out</sub> 控制、從 X 抽電流的 common-source 元件。X 上升 → V<sub>out</sub> 下降 → M<sub>2</sub> 抽得更少 → X 再上升：正回授。兩顆都在 saturation 區時 loop gain T = g<sub>m1</sub>(R<sub>D1</sub> ‖ r<sub>o1</sub>)g<sub>m2</sub>r<sub>o2</sub>，X 點 R<sub>in</sub> = r<sub>o2</sub>/(1 − T)。通常 T > 1，R<sub>in</sub> 為負，約 −1/[g<sub>m1</sub>g<sub>m2</sub>(R<sub>D1</sub> ‖ r<sub>o1</sub>)]。以 current source 驅動時，負電導使偏壓點不穩定（有右半平面 pole），電路 latch 到兩種狀態之一。Razavi 對把 M<sub>2</sub> 當成 diode-connected 的 ChatGPT 給 1/4。",
     "en": "A current-input circuit with positive feedback. The input current enters X, which drives the gate of M<sub>1</sub>, a common-source device with load R<sub>D1</sub>: X up means V<sub>out</sub> down. M<sub>2</sub>'s gate is tied to V<sub>out</sub>, not to its drain at X, so M<sub>2</sub> is not diode-connected; it is a common-source device sinking current from X under control of V<sub>out</sub>. X up → V<sub>out</sub> down → M<sub>2</sub> sinks less → X up further: positive feedback. With both devices saturated the loop gain is T = g<sub>m1</sub>(R<sub>D1</sub> ‖ r<sub>o1</sub>)g<sub>m2</sub>r<sub>o2</sub> and R<sub>in</sub> at X is r<sub>o2</sub>/(1 − T). Usually T > 1, so R<sub>in</sub> is negative, about −1/[g<sub>m1</sub>g<sub>m2</sub>(R<sub>D1</sub> ‖ r<sub>o1</sub>)]. Driven by a current source, a negative conductance makes the bias point unstable (a right-half-plane pole), and the circuit latches into one of two states. Razavi gives 1/4 to ChatGPT, which treats M<sub>2</sub> as diode-connected."
    }
   },
@@ -2323,6 +2450,7 @@
    "image": "razavi-part1-fig23.png",
    "prompt": {
     "zh": "這個電路（組態）叫什麼名稱？（中英文皆可）",
+    "jj": "這個電路（topology）叫什麼名稱？（中英文皆可）",
     "en": "What is the name of this circuit (configuration)? (English or Chinese)"
    },
    "accept": [
@@ -2374,6 +2502,7 @@
    },
    "explanation": {
     "zh": "兩級、電阻回授的轉阻放大器。M<sub>1</sub> 是共閘 NMOS 輸入管：閘極固定在 V<sub>b</sub>，輸入電流 I<sub>in</sub> 進入它的源極，汲極 X 接 R<sub>D1</sub>。X 驅動 M<sub>2</sub> 的閘極，M<sub>2</sub> 是負載 R<sub>D2</sub> 的共源第二級，汲極為 V<sub>out</sub>。R<sub>F</sub> 把 V<sub>out</sub> 接回輸入（源極）節點，送回電流 i<sub>RF</sub>。正的 I<sub>in</sub> 抬高輸入節點，M<sub>1</sub> 電流減少，X 上升，M<sub>2</sub> 導通更多，V<sub>out</sub> 下降，R<sub>F</sub> 從輸入節點抽更多電流，抵消原本的變化：負（並聯–並聯）回授。迴路增益大時轉阻 v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>F</sub>，輸入電阻低。Razavi 對把 M<sub>1</sub> 閘極接到 X、把 M<sub>2</sub> 當成閘極固定在 V<sub>b</sub> 的 ChatGPT 給 2/4。",
+    "jj": "兩級、電阻回授的 transimpedance amplifier。M<sub>1</sub> 是 common-gate NMOS 輸入管：gate 固定在 V<sub>b</sub>，輸入電流 I<sub>in</sub> 進入它的 source，drain X 接 R<sub>D1</sub>。X 驅動 M<sub>2</sub> 的 gate，M<sub>2</sub> 是負載 R<sub>D2</sub> 的 common-source 第二級，drain 為 V<sub>out</sub>。R<sub>F</sub> 把 V<sub>out</sub> 接回輸入（source）節點，送回電流 i<sub>RF</sub>。正的 I<sub>in</sub> 抬高輸入節點，M<sub>1</sub> 電流減少，X 上升，M<sub>2</sub> 導通更多，V<sub>out</sub> 下降，R<sub>F</sub> 從輸入節點抽更多電流，抵消原本的變化：負（並聯–並聯）回授。loop gain 大時 transimpedance v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>F</sub>，輸入電阻低。Razavi 對把 M<sub>1</sub> gate 接到 X、把 M<sub>2</sub> 當成 gate 固定在 V<sub>b</sub> 的 ChatGPT 給 2/4。",
     "en": "A two-stage transimpedance amplifier with resistive feedback. M<sub>1</sub> is a common-gate NMOS input: its gate is fixed at V<sub>b</sub>, the input current I<sub>in</sub> enters its source, and its drain X is loaded by R<sub>D1</sub>. X drives the gate of M<sub>2</sub>, a common-source second stage with load R<sub>D2</sub> whose drain is V<sub>out</sub>. R<sub>F</sub> connects V<sub>out</sub> back to the input (source) node, returning a current i<sub>RF</sub>. A positive I<sub>in</sub> raises the input node, which reduces M<sub>1</sub>'s current; X rises, M<sub>2</sub> conducts more and V<sub>out</sub> falls, so R<sub>F</sub> draws more current from the input node and opposes the change: negative (shunt-shunt) feedback. For high loop gain the transimpedance approaches v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>F</sub>, and the input resistance is low. Razavi gives 2/4 to ChatGPT, which puts M<sub>1</sub>'s gate at X and calls M<sub>2</sub> a common-source stage with its gate fixed at V<sub>b</sub>."
    }
   },
@@ -2392,6 +2521,7 @@
      "id": "sb",
      "text": {
       "zh": "M<sub>2</sub> 是共源級，閘極由 X 驅動",
+      "jj": "M<sub>2</sub> 是 common-source stage，gate 由 X 驅動",
       "en": "M<sub>2</sub> is a common-source stage whose gate is driven by X"
      }
     },
@@ -2413,6 +2543,7 @@
      "id": "se",
      "text": {
       "zh": "M<sub>1</sub> 的汲極 X 也接到 M<sub>1</sub> 的閘極",
+      "jj": "M<sub>1</sub> 的 drain X 也接到 M<sub>1</sub> 的 gate",
       "en": "M<sub>1</sub>'s drain X is also tied to M<sub>1</sub>'s gate"
      }
     },
@@ -2420,6 +2551,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>1</sub> 是共閘輸入管：閘極接 V<sub>b</sub>，I<sub>in</sub> 進入源極",
+      "jj": "M<sub>1</sub> 是 common-gate 輸入管：gate 接 V<sub>b</sub>，I<sub>in</sub> 進入 source",
       "en": "M<sub>1</sub> is the common-gate input: gate at V<sub>b</sub>, I<sub>in</sub> into its source"
      }
     },
@@ -2427,6 +2559,7 @@
      "id": "sf",
      "text": {
       "zh": "迴路增益很大時，v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>D2</sub>",
+      "jj": "loop gain 很大時，v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>D2</sub>",
       "en": "For large loop gain, v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>D2</sub>"
      }
     }
@@ -2438,6 +2571,7 @@
    ],
    "explanation": {
     "zh": "兩級、電阻回授的轉阻放大器。M<sub>1</sub> 是共閘 NMOS 輸入管：閘極固定在 V<sub>b</sub>，輸入電流 I<sub>in</sub> 進入它的源極，汲極 X 接 R<sub>D1</sub>。X 驅動 M<sub>2</sub> 的閘極，M<sub>2</sub> 是負載 R<sub>D2</sub> 的共源第二級，汲極為 V<sub>out</sub>。R<sub>F</sub> 把 V<sub>out</sub> 接回輸入（源極）節點，送回電流 i<sub>RF</sub>。正的 I<sub>in</sub> 抬高輸入節點，M<sub>1</sub> 電流減少，X 上升，M<sub>2</sub> 導通更多，V<sub>out</sub> 下降，R<sub>F</sub> 從輸入節點抽更多電流，抵消原本的變化：負（並聯–並聯）回授。迴路增益大時轉阻 v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>F</sub>，輸入電阻低。Razavi 對把 M<sub>1</sub> 閘極接到 X、把 M<sub>2</sub> 當成閘極固定在 V<sub>b</sub> 的 ChatGPT 給 2/4。",
+    "jj": "兩級、電阻回授的 transimpedance amplifier。M<sub>1</sub> 是 common-gate NMOS 輸入管：gate 固定在 V<sub>b</sub>，輸入電流 I<sub>in</sub> 進入它的 source，drain X 接 R<sub>D1</sub>。X 驅動 M<sub>2</sub> 的 gate，M<sub>2</sub> 是負載 R<sub>D2</sub> 的 common-source 第二級，drain 為 V<sub>out</sub>。R<sub>F</sub> 把 V<sub>out</sub> 接回輸入（source）節點，送回電流 i<sub>RF</sub>。正的 I<sub>in</sub> 抬高輸入節點，M<sub>1</sub> 電流減少，X 上升，M<sub>2</sub> 導通更多，V<sub>out</sub> 下降，R<sub>F</sub> 從輸入節點抽更多電流，抵消原本的變化：負（並聯–並聯）回授。loop gain 大時 transimpedance v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>F</sub>，輸入電阻低。Razavi 對把 M<sub>1</sub> gate 接到 X、把 M<sub>2</sub> 當成 gate 固定在 V<sub>b</sub> 的 ChatGPT 給 2/4。",
     "en": "A two-stage transimpedance amplifier with resistive feedback. M<sub>1</sub> is a common-gate NMOS input: its gate is fixed at V<sub>b</sub>, the input current I<sub>in</sub> enters its source, and its drain X is loaded by R<sub>D1</sub>. X drives the gate of M<sub>2</sub>, a common-source second stage with load R<sub>D2</sub> whose drain is V<sub>out</sub>. R<sub>F</sub> connects V<sub>out</sub> back to the input (source) node, returning a current i<sub>RF</sub>. A positive I<sub>in</sub> raises the input node, which reduces M<sub>1</sub>'s current; X rises, M<sub>2</sub> conducts more and V<sub>out</sub> falls, so R<sub>F</sub> draws more current from the input node and opposes the change: negative (shunt-shunt) feedback. For high loop gain the transimpedance approaches v<sub>out</sub>/i<sub>in</sub> ≈ −R<sub>F</sub>, and the input resistance is low. Razavi gives 2/4 to ChatGPT, which puts M<sub>1</sub>'s gate at X and calls M<sub>2</sub> a common-source stage with its gate fixed at V<sub>b</sub>."
    }
   },
@@ -2463,6 +2597,7 @@
      "id": "sd",
      "text": {
       "zh": "M<sub>2</sub> 的閘極接輸入節點，與 M<sub>1</sub> 構成電流鏡",
+      "jj": "M<sub>2</sub> 的 gate 接輸入節點，與 M<sub>1</sub> 構成 current mirror",
       "en": "M<sub>2</sub>'s gate is at the input node, forming a current mirror with M<sub>1</sub>"
      }
     },
@@ -2477,6 +2612,7 @@
      "id": "sa",
      "text": {
       "zh": "M<sub>1</sub> 是 NMOS 共閘輸入管；M<sub>2</sub> 是 PMOS，閘極由 V<sub>out</sub> 驅動，汲極接回輸入節點",
+      "jj": "M<sub>1</sub> 是 NMOS common-gate 輸入管；M<sub>2</sub> 是 PMOS，gate 由 V<sub>out</sub> 驅動，drain 接回輸入節點",
       "en": "M<sub>1</sub> is an NMOS common-gate input; M<sub>2</sub> is a PMOS driven by V<sub>out</sub> with its drain fed back to the input node"
      }
     },
@@ -2484,6 +2620,7 @@
      "id": "se",
      "text": {
       "zh": "M<sub>1</sub> 汲極看到高阻抗，所以 v<sub>out</sub>/i<sub>in</sub> ≈ r<sub>o1</sub>",
+      "jj": "M<sub>1</sub> drain 看到高阻抗，所以 v<sub>out</sub>/i<sub>in</sub> ≈ r<sub>o1</sub>",
       "en": "M<sub>1</sub>'s drain sees a high impedance, so v<sub>out</sub>/i<sub>in</sub> ≈ r<sub>o1</sub>"
      }
     }
@@ -2494,6 +2631,7 @@
    ],
    "explanation": {
     "zh": "電流輸入回授電路，由共閘 NMOS 輸入管與 PMOS 回授管構成。M<sub>1</sub> 為 NMOS，由 V<sub>b</sub> 偏壓，源極接輸入／加總節點，汲極接 V<sub>out</sub>。M<sub>2</sub> 為上方接 V<sub>DD</sub> 的 PMOS，閘極由 V<sub>out</sub> 驅動，汲極接回輸入節點。主要訊號路徑 I<sub>in</sub> → 輸入節點 → M<sub>1</sub> → V<sub>out</sub>；V<sub>out</sub> 的變化驅動 M<sub>2</sub>，其汲極電流送回輸入節點，迴路為 輸入節點 → M<sub>1</sub> → V<sub>out</sub> → M<sub>2</sub> → 輸入節點。可看成電流緩衝器或並聯–並聯轉阻級。輸入電阻極低，約 1/(g<sub>m1</sub>g<sub>m2</sub>r<sub>o1</sub>)；閉迴路轉阻與輸出電阻約為 1/g<sub>m2</sub>。Razavi 給 ChatGPT 0 分：它把 M<sub>2</sub> 當成閘極接輸入的 NMOS，漏掉了回授迴路。",
+    "jj": "電流輸入回授電路，由 common-gate NMOS 輸入管與 PMOS 回授管構成。M<sub>1</sub> 為 NMOS，由 V<sub>b</sub> 偏壓，source 接輸入／加總節點，drain 接 V<sub>out</sub>。M<sub>2</sub> 為上方接 V<sub>DD</sub> 的 PMOS，gate 由 V<sub>out</sub> 驅動，drain 接回輸入節點。主要訊號路徑 I<sub>in</sub> → 輸入節點 → M<sub>1</sub> → V<sub>out</sub>；V<sub>out</sub> 的變化驅動 M<sub>2</sub>，其 drain 電流送回輸入節點，迴路為 輸入節點 → M<sub>1</sub> → V<sub>out</sub> → M<sub>2</sub> → 輸入節點。可看成電流緩衝器或並聯–並聯 transimpedance 級。輸入電阻極低，約 1/(g<sub>m1</sub>g<sub>m2</sub>r<sub>o1</sub>)；closed-loop transimpedance 與輸出電阻約為 1/g<sub>m2</sub>。Razavi 給 ChatGPT 0 分：它把 M<sub>2</sub> 當成 gate 接輸入的 NMOS，漏掉了回授迴路。",
     "en": "A current-input feedback circuit with a common-gate NMOS input and a PMOS feedback device. M<sub>1</sub> is an NMOS biased by V<sub>b</sub>, with its source at the input/summing node and its drain at V<sub>out</sub>. M<sub>2</sub> is the upper PMOS from V<sub>DD</sub>, with its gate driven by V<sub>out</sub> and its drain at the input node. The signal path is I<sub>in</sub> → input node → M<sub>1</sub> → V<sub>out</sub>; the V<sub>out</sub> change drives M<sub>2</sub>, whose drain current returns to the input node, closing the loop input node → M<sub>1</sub> → V<sub>out</sub> → M<sub>2</sub> → input node. It can be viewed as a current buffer or a shunt-shunt transimpedance stage. The input resistance is very low, about 1/(g<sub>m1</sub>g<sub>m2</sub>r<sub>o1</sub>), and the closed-loop transimpedance and output resistance are about 1/g<sub>m2</sub>. Razavi gives 0 to ChatGPT, which reads M<sub>2</sub> as an NMOS driven by the input and misses the feedback loop."
    }
   },
@@ -2533,6 +2671,7 @@
    ],
    "explanation": {
     "zh": "三個反相器頭尾相接成環（奇數個反轉），是三級環形振盪器（ring oscillator）。",
+    "jj": "三個 inverter 頭尾相接成環（奇數個反轉），是三級 ring oscillator。",
     "en": "Three inverters connected head to tail in a loop (an odd number of inversions): a three-stage ring oscillator."
    }
   },
@@ -2558,6 +2697,7 @@
      "id": "yes-dominant",
      "text": {
       "zh": "會：大電容形成主極點，使相位交越頻率處的迴路增益掉到 1 以下",
+      "jj": "會：大電容形成主極點，使相位交越頻率處的 loop gain 掉到 1 以下",
       "en": "Yes: the large capacitors form a dominant pole that pulls the loop gain below unity at the phase-crossover frequency"
      }
     },
@@ -2565,6 +2705,7 @@
      "id": "no-same-freq",
      "text": {
       "zh": "不會：每個節點仍做軌對軌擺動，所以持續振盪；擺幅固定，因此頻率也維持不變",
+      "jj": "不會：每個節點仍做 rail-to-rail 擺動，所以持續振盪；swing 固定，因此頻率也維持不變",
       "en": "No: every node still swings rail to rail, so it keeps oscillating, and with a fixed swing the frequency stays the same"
      }
     },
@@ -2572,6 +2713,7 @@
      "id": "yes-gain",
      "text": {
       "zh": "會：維持振盪所需的每級增益隨 C<sub>L</sub> 增大，終究超過反相器能提供的增益",
+      "jj": "會：維持振盪所需的每級增益隨 C<sub>L</sub> 增大，終究超過 inverter 能提供的增益",
       "en": "Yes: the per-stage gain needed to sustain oscillation grows with C<sub>L</sub> and eventually exceeds what an inverter can provide"
      }
     }
@@ -2579,6 +2721,7 @@
    "answer": "no-slower",
    "explanation": {
     "zh": "三顆電容同時加大只會使每級延遲變長、頻率約按 1/C<sub>L</sub> 下降。小訊號看，每級為 −A<sub>0</sub>/(1+s/ω<sub>0</sub>)，ω<sub>0</sub> ∝ 1/C<sub>L</sub>；振盪時每級提供 60° 相移（ω = √3·ω<sub>0</sub>），所需每級增益為 2，與 C<sub>L</sub> 無關。只在單一節點加大電容才會形成主極點而停振。",
+    "jj": "三顆電容同時加大只會使每級延遲變長、頻率約按 1/C<sub>L</sub> 下降。small-signal 看，每級為 −A<sub>0</sub>/(1+s/ω<sub>0</sub>)，ω<sub>0</sub> ∝ 1/C<sub>L</sub>；振盪時每級提供 60° 相移（ω = √3·ω<sub>0</sub>），所需每級增益為 2，與 C<sub>L</sub> 無關。只在單一節點加大電容才會形成主極點而停振。",
     "en": "Scaling all three capacitors only lengthens each stage delay, so the frequency falls roughly as 1/C<sub>L</sub>. In small-signal terms each stage is −A<sub>0</sub>/(1+s/ω<sub>0</sub>) with ω<sub>0</sub> ∝ 1/C<sub>L</sub>; the loop oscillates when each stage gives 60° (ω = √3·ω<sub>0</sub>), which needs a gain of 2 per stage regardless of C<sub>L</sub>. Only loading a single node creates a dominant pole and can stop the oscillation."
    }
   },
@@ -2632,6 +2775,7 @@
    "answer": "down6",
    "explanation": {
     "zh": "C<sub>L</sub> 加倍使振盪頻率 f<sub>0</sub> 約減半。此環形振盪器由白雜訊造成的相位雜訊正比於 (f<sub>0</sub>/Δf)<sup>2</sup>，其餘因子（元件雜訊電流、偏壓電流、電源電壓）與 C<sub>L</sub> 大致無關，因此在固定 Δf 下降低約 4 倍，即約 6 dB。（若改看固定的相對偏移 Δf/f<sub>0</sub> 則不變。）",
+    "jj": "C<sub>L</sub> 加倍使振盪頻率 f<sub>0</sub> 約減半。此 ring oscillator 由白雜訊造成的相位雜訊正比於 (f<sub>0</sub>/Δf)<sup>2</sup>，其餘因子（元件雜訊電流、偏壓電流、電源電壓）與 C<sub>L</sub> 大致無關，因此在固定 Δf 下降低約 4 倍，即約 6 dB。（若改看固定的相對偏移 Δf/f<sub>0</sub> 則不變。）",
     "en": "Doubling C<sub>L</sub> roughly halves f<sub>0</sub>. The white-noise phase noise of this ring scales as (f<sub>0</sub>/Δf)<sup>2</sup> times factors (device noise currents, bias current, supply) that hardly depend on C<sub>L</sub>, so at a fixed Δf it falls by about 4×, i.e. about 6 dB. (At a fixed relative offset Δf/f<sub>0</sub> it is unchanged.)"
    }
   },
@@ -2664,6 +2808,7 @@
      "id": "yes-dominant",
      "text": {
       "zh": "會：單一大電容形成主極點，使相位交越頻率處的迴路增益掉到 1 以下",
+      "jj": "會：單一大電容形成主極點，使相位交越頻率處的 loop gain 掉到 1 以下",
       "en": "Yes: the one large capacitor creates a dominant pole, so the loop gain drops below unity at the phase-crossover frequency"
      }
     },
@@ -2678,6 +2823,7 @@
    "answer": "yes-dominant",
    "explanation": {
     "zh": "只在單一節點加大電容會造成不對稱：該節點形成低頻主極點，迴路增益滾降過多；C<sub>L</sub> 夠大時，在相位達 180° 的頻率處迴路增益已小於 1，振盪停止。（時域上也可理解為：被重載的節點太慢，其他節點準靜態地跟隨，有限增益的迴路便停在直流工作點。）",
+    "jj": "只在單一節點加大電容會造成不對稱：該節點形成低頻主極點，loop gain 滾降過多；C<sub>L</sub> 夠大時，在相位達 180° 的頻率處 loop gain 已小於 1，振盪停止。（時域上也可理解為：被重載的節點太慢，其他節點以 quasi-static 的方式跟隨，有限增益的迴路便停在直流工作點。）",
     "en": "Loading only one node is asymmetric: it creates a low-frequency dominant pole and excessive gain roll-off around the loop. For large enough C<sub>L</sub> the loop gain at the phase-crossover frequency drops below unity and oscillation stops. (In the time domain: the loaded node is so slow that the other nodes follow quasi-statically and the finite-gain loop settles at a dc point.)"
    }
   },
@@ -2696,6 +2842,7 @@
      "id": "same",
      "text": {
       "zh": "不變：電流與電容同比例加倍，頻率、擺幅與雜訊訊號比都維持不變",
+      "jj": "不變：電流與電容同比例加倍，頻率、swing 與雜訊訊號比都維持不變",
       "en": "Unchanged: currents and capacitances double together, so the frequency, the swing and the noise-to-signal ratio stay the same"
      }
     },
@@ -2703,6 +2850,7 @@
      "id": "up3",
      "text": {
       "zh": "增加約 3 dB：較寬元件的雜訊電流功率加倍，電壓擺幅卻沒有變",
+      "jj": "增加約 3 dB：較寬元件的雜訊電流功率加倍，電壓 swing 卻沒有變",
       "en": "Rises by about 3 dB: the noise current power of the wider devices doubles while the voltage swing stays the same"
      }
     },
@@ -2742,6 +2890,7 @@
    "image": "razavi-part2-fig08.png",
    "prompt": {
     "zh": "求從圖中環形振盪器的電源節點看入的小訊號電阻 R<sub>X</sub>。（f<sub>0</sub>：振盪頻率；C<sub>L</sub>：每個內部節點的等效負載電容；g<sub>mn</sub>、g<sub>mp</sub>：每個反相器 NMOS、PMOS 的轉導。）",
+    "jj": "求從圖中 ring oscillator 的電源節點看入的 small-signal 電阻 R<sub>X</sub>。（f<sub>0</sub>：振盪頻率；C<sub>L</sub>：每個內部節點的等效負載電容；g<sub>mn</sub>、g<sub>mp</sub>：每個 inverter NMOS、PMOS 的 transconductance。）",
     "en": "Determine the small-signal resistance R<sub>X</sub> seen looking into the supply node of the ring oscillator in the figure. (f<sub>0</sub>: oscillation frequency; C<sub>L</sub>: effective load capacitance at each internal node; g<sub>mn</sub>, g<sub>mp</sub>: transconductances of each inverter's NMOS and PMOS.)"
    },
    "options": [
@@ -2749,6 +2898,7 @@
      "id": "switched-cap",
      "text": {
       "zh": "R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>)：每個週期每個節點各抽取約 C<sub>L</sub>V<sub>DD</sub>，相當於三個並聯的切換電容電阻",
+      "jj": "R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>)：每個週期每個節點各抽取約 C<sub>L</sub>V<sub>DD</sub>，相當於三個並聯的 switched-capacitor 電阻",
       "en": "R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>): each node draws about C<sub>L</sub>V<sub>DD</sub> per period, like three switched-capacitor resistors in parallel"
      }
     },
@@ -2756,6 +2906,7 @@
      "id": "infinite",
      "text": {
       "zh": "R<sub>X</sub> → ∞：每個反相器的兩顆電晶體總有一顆截止，電源到地沒有直流路徑",
+      "jj": "R<sub>X</sub> → ∞：每個 inverter 的兩顆電晶體總有一顆截止，電源到地沒有直流路徑",
       "en": "R<sub>X</sub> → ∞: in every inverter one of the two transistors is always off, so the supply has no dc path to ground"
      }
     },
@@ -2763,6 +2914,7 @@
      "id": "static-gm",
      "text": {
       "zh": "R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>)：每個反相器等效為兩顆二極體接法元件串聯，三個反相器彼此並聯",
+      "jj": "R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>)：每個 inverter 等效為兩顆 diode-connected 元件串聯，三個 inverter 彼此並聯",
       "en": "R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>): each inverter acts as two diode-connected devices in series, and the three inverters are in parallel"
      }
     },
@@ -2770,6 +2922,7 @@
      "id": "switched-cap-series",
      "text": {
       "zh": "R<sub>X</sub> ≈ 3/(f<sub>0</sub>C<sub>L</sub>)：每個節點相當於一個 1/(f<sub>0</sub>C<sub>L</sub>) 的切換電容電阻，三者沿著環彼此串聯",
+      "jj": "R<sub>X</sub> ≈ 3/(f<sub>0</sub>C<sub>L</sub>)：每個節點相當於一個 1/(f<sub>0</sub>C<sub>L</sub>) 的 switched-capacitor 電阻，三者沿著環彼此串聯",
       "en": "R<sub>X</sub> ≈ 3/(f<sub>0</sub>C<sub>L</sub>): each node behaves as a 1/(f<sub>0</sub>C<sub>L</sub>) switched-capacitor resistor, and the three are in series around the ring"
      }
     }
@@ -2777,6 +2930,7 @@
    "answer": "switched-cap",
    "explanation": {
     "zh": "振盪中的環，其電源電流由負載電容的充放電決定，而非靜態的二極體接法電阻。每週期三個節點各抽約 C<sub>L</sub>V<sub>DD</sub> 的電荷：P = 3f<sub>0</sub>C<sub>L</sub>V<sub>DD</sub><sup>2</sup> = V<sub>DD</sub>I<sub>DD</sub>，故（視 f<sub>0</sub> 固定）dI<sub>DD</sub>/dV<sub>DD</sub> = 3f<sub>0</sub>C<sub>L</sub>，R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>)。（若再考慮 f<sub>0</sub> 隨 V<sub>DD</sub> 上升，可修正為約 1/(6f<sub>0</sub>C<sub>L</sub>)。）只分析靜態工作點得到的 g<sub>m</sub> 型答案忽略了振盪，Razavi 給 1 分。",
+    "jj": "振盪中的環，其電源電流由負載電容的充放電決定，而非 static 的 diode-connected 電阻。每週期三個節點各抽約 C<sub>L</sub>V<sub>DD</sub> 的電荷：P = 3f<sub>0</sub>C<sub>L</sub>V<sub>DD</sub><sup>2</sup> = V<sub>DD</sub>I<sub>DD</sub>，故（視 f<sub>0</sub> 固定）dI<sub>DD</sub>/dV<sub>DD</sub> = 3f<sub>0</sub>C<sub>L</sub>，R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>)。（若再考慮 f<sub>0</sub> 隨 V<sub>DD</sub> 上升，可修正為約 1/(6f<sub>0</sub>C<sub>L</sub>)。）只分析 static 工作點得到的 g<sub>m</sub> 型答案忽略了振盪，Razavi 給 1 分。",
     "en": "In an oscillating ring the supply current is set by charging and discharging the load capacitances, not by static diode-connected resistances. Each period the three nodes each draw about C<sub>L</sub>V<sub>DD</sub>: P = 3f<sub>0</sub>C<sub>L</sub>V<sub>DD</sub><sup>2</sup> = V<sub>DD</sub>I<sub>DD</sub>, so with f<sub>0</sub> fixed, dI<sub>DD</sub>/dV<sub>DD</sub> = 3f<sub>0</sub>C<sub>L</sub> and R<sub>X</sub> ≈ 1/(3f<sub>0</sub>C<sub>L</sub>). (Including the rise of f<sub>0</sub> with V<sub>DD</sub> refines it to about 1/(6f<sub>0</sub>C<sub>L</sub>).) The static g<sub>m</sub>-based answer ignores the oscillation; Razavi scores it 1."
    }
   },
@@ -2788,6 +2942,7 @@
    "image": "razavi-part2-fig08.png",
    "prompt": {
     "zh": "有人把圖中環形振盪器電源節點看入的小訊號電阻算成 R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>)，理由是每個反相器相當於兩顆二極體接法元件串聯。若電路正在振盪，這個答案會改變嗎？（f<sub>0</sub>：振盪頻率；C<sub>L</sub>：每個節點的負載電容；T<sub>D</sub>：每級延遲；R<sub>eq</sub>：MOS 導通電阻。）",
+    "jj": "有人把圖中 ring oscillator 電源節點看入的 small-signal 電阻算成 R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>)，理由是每個 inverter 相當於兩顆 diode-connected 元件串聯。若電路正在振盪，這個答案會改變嗎？（f<sub>0</sub>：振盪頻率；C<sub>L</sub>：每個節點的負載電容；T<sub>D</sub>：每級延遲；R<sub>eq</sub>：MOS 導通電阻。）",
     "en": "For the ring oscillator in the figure, somebody computes the small-signal resistance seen looking into the supply node as R<sub>X</sub> ≈ (1/3)(1/g<sub>mn</sub> + 1/g<sub>mp</sub>), because each inverter behaves as two diode-connected devices in series. If the circuit oscillates, does this answer change? (f<sub>0</sub>: oscillation frequency; C<sub>L</sub>: load capacitance per node; T<sub>D</sub>: delay per stage; R<sub>eq</sub>: MOS on-resistance.)"
    },
    "options": [
@@ -2795,6 +2950,7 @@
      "id": "no-static",
      "text": {
       "zh": "不會：以整個週期平均，每個反相器仍偏在跳變點附近，小訊號結果照樣成立",
+      "jj": "不會：以整個週期平均，每個 inverter 仍偏在跳變點附近，small-signal 結果照樣成立",
       "en": "No: averaged over a period, each inverter still sits near its trip point, so the small-signal result still holds"
      }
     },
@@ -2809,6 +2965,7 @@
      "id": "yes-much-higher-off",
      "text": {
       "zh": "會，R<sub>X</sub> 會大很多：每個反相器從 V<sub>DD</sub> 到地的路徑在大部分時間都是截止的",
+      "jj": "會，R<sub>X</sub> 會大很多：每個 inverter 從 V<sub>DD</sub> 到地的路徑在大部分時間都是截止的",
       "en": "Yes, R<sub>X</sub> becomes much higher: each inverter's path from V<sub>DD</sub> to ground is off for most of the period"
      }
     },
@@ -2816,6 +2973,7 @@
      "id": "yes-much-higher-cap",
      "text": {
       "zh": "會，R<sub>X</sub> 變成 1/(3f<sub>0</sub>C<sub>L</sub>)，因為 f<sub>0</sub>C<sub>L</sub> 很小，是靜態值的許多倍",
+      "jj": "會，R<sub>X</sub> 變成 1/(3f<sub>0</sub>C<sub>L</sub>)，因為 f<sub>0</sub>C<sub>L</sub> 很小，是 static 值的許多倍",
       "en": "Yes, R<sub>X</sub> becomes 1/(3f<sub>0</sub>C<sub>L</sub>), many times the static value because the product f<sub>0</sub>C<sub>L</sub> is small"
      }
     }
@@ -2868,6 +3026,7 @@
    ],
    "explanation": {
     "zh": "時脈控制的輸入對 M1/M2 加尾電晶體 M7、交叉耦合反相器 M3–M6 與重置開關 S1–S4：StrongARM 比較器（StrongARM latch）。",
+    "jj": "時脈控制的 input pair M1/M2 加 tail 電晶體 M7、cross-coupled inverter M3–M6 與重置開關 S1–S4：StrongARM comparator（StrongARM latch）。",
     "en": "A clocked input pair M1/M2 with tail device M7, cross-coupled inverters M3–M6 and reset switches S1–S4: the StrongARM comparator (StrongARM latch)."
    }
   },
@@ -2886,6 +3045,7 @@
      "id": "same",
      "text": {
       "zh": "不變：初始增益只取決於 P、Q 的電容比，與尾電流無關",
+      "jj": "不變：初始增益只取決於 P、Q 的電容比，與 tail current 無關",
       "en": "Unchanged: the initial gain depends only on the capacitance ratio at P and Q, not on the tail current"
      }
     },
@@ -2907,6 +3067,7 @@
      "id": "up-gm",
      "text": {
       "zh": "上升：尾電流變大使輸入對的 g<sub>m1,2</sub> 增加，而增益與 g<sub>m1,2</sub> 成正比",
+      "jj": "上升：tail current 變大使 input pair 的 g<sub>m1,2</sub> 增加，而增益與 g<sub>m1,2</sub> 成正比",
       "en": "Increases: the larger tail current raises the input pair's g<sub>m1,2</sub>, and the gain is proportional to g<sub>m1,2</sub>"
      }
     }
@@ -2914,6 +3075,7 @@
    "answer": "down",
    "explanation": {
     "zh": "初始電壓增益是 P、Q 在放大（積分）階段、交叉耦合元件導通開始再生之前所累積的增益，約為 A<sub>v</sub> ≈ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>。M7 變寬使 I<sub>CM</sub> 增加，但 g<sub>m1,2</sub> 只與 √I<sub>CM</sub> 成正比，所以增益下降。",
+    "jj": "初始電壓增益是 P、Q 在放大（積分）階段、cross-coupled 元件導通開始 regeneration 之前所累積的增益，約為 A<sub>v</sub> ≈ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>。M7 變寬使 I<sub>CM</sub> 增加，但 g<sub>m1,2</sub> 只與 √I<sub>CM</sub> 成正比，所以增益下降。",
     "en": "The initial voltage gain is what the input pair builds across P and Q in the amplification (integration) phase, before the cross-coupled devices turn on and regeneration starts: A<sub>v</sub> ≈ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>. A wider M7 raises I<sub>CM</sub>, but g<sub>m1,2</sub> grows only as √I<sub>CM</sub>, so the gain drops."
    }
   },
@@ -2939,6 +3101,7 @@
      "id": "down-load",
      "text": {
       "zh": "下降：額外電容降低了輸入對在 P、Q 看到的負載阻抗",
+      "jj": "下降：額外電容降低了 input pair 在 P、Q 看到的負載阻抗",
       "en": "Decreases: the extra capacitance lowers the load impedance that the input pair sees at P and Q"
      }
     },
@@ -2946,6 +3109,7 @@
      "id": "up",
      "text": {
       "zh": "上升：電容越大，再生開始前的積分時間越長，累積的差動電壓越多",
+      "jj": "上升：電容越大，regeneration 開始前的積分時間越長，累積的差動電壓越多",
       "en": "Increases: a larger capacitance means a longer integration time before regeneration starts, so more differential voltage accumulates"
      }
     },
@@ -2960,6 +3124,7 @@
    "answer": "same",
    "explanation": {
     "zh": "放大階段中尾電流對 P、Q 放電，共模電壓下降約 V<sub>THN</sub> 時 M3/M4 導通開始再生。電容 C<sub>P</sub> 變大，這段時間約按 2C<sub>P</sub>V<sub>THN</sub>/I<sub>CM</sub> 延長；差動電壓以 g<sub>m1,2</sub>ΔV<sub>in</sub>t/C<sub>P</sub> 成長，C<sub>P</sub> 相消，增益 ∝ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>，與電容無關。電容只讓比較器變慢。",
+    "jj": "放大階段中 tail current 對 P、Q 放電，common-mode 電壓下降約 V<sub>THN</sub> 時 M3/M4 導通開始 regeneration。電容 C<sub>P</sub> 變大，這段時間約按 2C<sub>P</sub>V<sub>THN</sub>/I<sub>CM</sub> 延長；差動電壓以 g<sub>m1,2</sub>ΔV<sub>in</sub>t/C<sub>P</sub> 成長，C<sub>P</sub> 相消，增益 ∝ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>，與電容無關。電容只讓 comparator 變慢。",
     "en": "During amplification the tail current discharges P and Q; regeneration starts once their common mode has dropped by about V<sub>THN</sub> and M3/M4 turn on. A larger C<sub>P</sub> stretches this phase to about 2C<sub>P</sub>V<sub>THN</sub>/I<sub>CM</sub>, while the differential voltage grows as g<sub>m1,2</sub>ΔV<sub>in</sub>t/C<sub>P</sub>. C<sub>P</sub> cancels: the gain ∝ g<sub>m1,2</sub>V<sub>THN</sub>/I<sub>CM</sub>, independent of the capacitance. It only slows the comparator."
    }
   },
@@ -2978,6 +3143,7 @@
      "id": "improve-initially",
      "text": {
       "zh": "改善到某個最佳寬度為止：再生變強，而它們增加的電容起初不是主要電容",
+      "jj": "改善到某個最佳寬度為止：regeneration 變強，而它們增加的電容起初不是主要電容",
       "en": "Improves up to an optimum width: regeneration gets stronger, and the capacitance they add is not dominant at first"
      }
     },
@@ -2985,6 +3151,7 @@
      "id": "improve-always",
      "text": {
       "zh": "改善，而且越寬越好：更強的再生永遠勝過它們增加的電容",
+      "jj": "改善，而且越寬越好：更強的 regeneration 永遠勝過它們增加的電容",
       "en": "Improves, and the wider the better: stronger regeneration always outweighs the capacitance they add"
      }
     },
@@ -2992,6 +3159,7 @@
      "id": "no-effect",
      "text": {
       "zh": "幾乎不變：再生速度由 M7 的尾電流決定，與 M5、M6 無關",
+      "jj": "幾乎不變：regeneration 速度由 M7 的 tail current 決定，與 M5、M6 無關",
       "en": "Hardly changes: the regeneration speed is set by the tail current of M7, not by M5 and M6"
      }
     },
@@ -2999,6 +3167,7 @@
      "id": "degrade-cap",
      "text": {
       "zh": "變差：較寬的 M5、M6 在 X、Y 增加寄生電容，節點變慢使再生更晚開始",
+      "jj": "變差：較寬的 M5、M6 在 X、Y 增加寄生電容，節點變慢使 regeneration 更晚開始",
       "en": "Degrades: wider M5 and M6 add parasitic capacitance at X and Y, and the slower nodes delay the start of regeneration"
      }
     }
@@ -3006,6 +3175,7 @@
    "answer": "improve-initially",
    "explanation": {
     "zh": "M5、M6 是交叉耦合的 PMOS 再生元件。變寬使其轉導與上拉/再生能力增加，再生更快；它們增加的寄生電容起初不是 X、Y 的主要電容，所以速度先改善。當這些寄生電容成為節點電容的重要部分後，效益遞減，甚至變差：存在最佳寬度。",
+    "jj": "M5、M6 是 cross-coupled 的 PMOS regeneration 元件。變寬使其 transconductance 與上拉/regeneration 能力增加，regeneration 更快；它們增加的寄生電容起初不是 X、Y 的主要電容，所以速度先改善。當這些寄生電容成為節點電容的重要部分後，效益遞減，甚至變差：存在最佳寬度。",
     "en": "M5 and M6 are the cross-coupled PMOS regenerative devices. Widening them raises their transconductance and pull-up strength, so regeneration is faster; their added capacitance is not at first the dominant capacitance at X and Y, so speed improves. Once it becomes a significant part of the node capacitance, the benefit fades and can reverse: there is an optimum width."
    }
   },
@@ -3057,6 +3227,7 @@
    ],
    "explanation": {
     "zh": "兩個 C<sup>2</sup>MOS（時脈 CMOS）閂鎖器以相反時脈相位串接，再經 Inv3 反相回授：除二電路（C<sup>2</sup>MOS divide-by-two），每個節點以時脈頻率的一半翻轉。",
+    "jj": "兩個 C<sup>2</sup>MOS（時脈 CMOS）latch 以相反時脈相位串接，再經 Inv3 反相回授：C<sup>2</sup>MOS divide-by-two 電路，每個節點以時脈頻率的一半翻轉。",
     "en": "Two C<sup>2</sup>MOS (clocked CMOS) latches on opposite clock phases in cascade, with Inv3 feeding the inverted output back: a C<sup>2</sup>MOS divide-by-two; every node toggles at half the clock frequency."
    }
   },
@@ -3082,6 +3253,7 @@
      "id": "improve-initially",
      "text": {
       "zh": "改善到某個最佳寬度為止：導通電阻下降，而它們加在 X、Y 的汲極電容起初很小",
+      "jj": "改善到某個最佳寬度為止：導通電阻下降，而它們加在 X、Y 的 drain 電容起初很小",
       "en": "Improves up to an optimum width: their on-resistance falls, and the drain capacitance they add at X and Y is small at first"
      }
     },
@@ -3089,6 +3261,7 @@
      "id": "improve-always",
      "text": {
       "zh": "改善，而且越寬越好：串聯電阻越小，閂鎖器對 X、Y 充放電永遠越快",
+      "jj": "改善，而且越寬越好：串聯電阻越小，latch 對 X、Y 充放電永遠越快",
       "en": "Improves, and the wider the better: lower series resistance always lets the latches charge X and Y faster"
      }
     },
@@ -3103,6 +3276,7 @@
    "answer": "improve-initially",
    "explanation": {
     "zh": "每個閂鎖器中，時脈電晶體與資料電晶體串聯於電源與輸出（X 或 Y）之間。加寬時脈電晶體降低其導通電阻，也就降低對 X、Y 充放電的總電阻；其汲極電容起初相對於節點上其他電容很小，所以延遲下降。超過某個寬度後，增加的電容變得顯著，改善趨緩或反轉：存在最佳寬度。Razavi 指出即使資料元件是瓶頸，速度一開始仍會改善（Gemini 答「變差」得 2 分）。",
+    "jj": "每個 latch 中，時脈電晶體與資料電晶體串聯於電源與輸出（X 或 Y）之間。加寬時脈電晶體降低其導通電阻，也就降低對 X、Y 充放電的總電阻；其 drain 電容起初相對於節點上其他電容很小，所以延遲下降。超過某個寬度後，增加的電容變得顯著，改善趨緩或反轉：存在最佳寬度。Razavi 指出即使資料元件是瓶頸，速度一開始仍會改善（Gemini 答「變差」得 2 分）。",
     "en": "In each latch a clocked transistor is in series with a data transistor between each supply and the output (X or Y). Widening the clocked transistors lowers their on-resistance and hence the total resistance that charges X and Y; their drain capacitance is at first small compared with the rest at those nodes, so the delay falls. Past some width the added capacitance matters and the gain levels off or reverses: there is an optimum. Razavi notes that even if the data devices are the bottleneck, speed still improves initially (Gemini's \"degrades\" got 2)."
    }
   },
@@ -3121,6 +3295,7 @@
      "id": "yes-exact",
      "text": {
       "zh": "可以，而且精確：兩個閂鎖器在相反的時脈邊緣切換、相隔半個輸入週期，因此 X 與 Y 正好相差 90°",
+      "jj": "可以，而且精確：兩個 latch 在相反的時脈邊緣切換、相隔半個輸入週期，因此 X 與 Y 正好相差 90°",
       "en": "Yes, exactly: the latches switch on opposite clock edges, half an input period apart, so X and Y are exactly 90° apart"
      }
     },
@@ -3128,6 +3303,7 @@
      "id": "no-divider",
      "text": {
       "zh": "不能：除二電路只產生一個相位及其反相，要得到正交訊號必須另加多相濾波器",
+      "jj": "不能：divide-by-two 電路只產生一個相位及其反相，要得到正交訊號必須另加多相濾波器",
       "en": "No: a divide-by-two only produces one output phase and its complement; quadrature needs a separate polyphase filter"
      }
     },
@@ -3135,6 +3311,7 @@
      "id": "nominal-not-exact",
      "text": {
       "zh": "名義上可以，但不精確：兩個閂鎖器相隔半個輸入週期切換，但 Inv3 的延遲與不對稱負載會使相位偏斜",
+      "jj": "名義上可以，但不精確：兩個 latch 相隔半個輸入週期切換，但 Inv3 的延遲與不對稱負載會使相位偏斜",
       "en": "Nominally yes, but not accurately: the latches switch half an input period apart, but Inv3's delay and unequal loads skew the phases"
      }
     },
@@ -3142,6 +3319,7 @@
      "id": "no-180",
      "text": {
       "zh": "不能：X 與 Y 來自互補的閂鎖器，相差 180° 而不是 90°",
+      "jj": "不能：X 與 Y 來自互補的 latch，相差 180° 而不是 90°",
       "en": "No: X and Y come from complementary latches, so they are 180° apart rather than 90°"
      }
     }
@@ -3149,6 +3327,7 @@
    "answer": "nominal-not-exact",
    "explanation": {
     "zh": "這是 C<sup>2</sup>MOS 除二電路：左閂鎖器以 Z 為輸入產生 X，右閂鎖器以 X 為輸入、在相反相位產生 Y，Inv3 把 Y 反相成 Z。兩閂鎖器相隔半個輸入週期切換，在輸出頻率上就是 90°，所以名義上 X、Y（以及 Z）為正交。但 (1) Inv3 的延遲使 Z 偏斜；(2) 兩個閂鎖器的負載難以相等（X 驅動第二閂鎖器的資料電晶體，Y 驅動 Inv3，其閘汲電容有 Miller 放大），延遲不等，使 X、Y 也不是精確 90°。Razavi 對只答「可以」的答案給 2 分。",
+    "jj": "這是 C<sup>2</sup>MOS divide-by-two 電路：左 latch 以 Z 為輸入產生 X，右 latch 以 X 為輸入、在相反相位產生 Y，Inv3 把 Y 反相成 Z。兩個 latch 相隔半個輸入週期切換，在輸出頻率上就是 90°，所以名義上 X、Y（以及 Z）為正交。但 (1) Inv3 的延遲使 Z 偏斜；(2) 兩個 latch 的負載難以相等（X 驅動第二個 latch 的資料電晶體，Y 驅動 Inv3，其 gate-drain 電容有 Miller 放大），延遲不等，使 X、Y 也不是精確 90°。Razavi 對只答「可以」的答案給 2 分。",
     "en": "This is a C<sup>2</sup>MOS divide-by-two: the left latch takes Z and produces X, the right latch takes X on the opposite phase and produces Y, and Inv3 inverts Y into Z. The latches switch half an input period apart, which is 90° at the output, so X and Y (and Z) are nominally in quadrature. But (1) the delay of Inv3 skews Z, and (2) the two latches see unequal loads (X drives the second latch's data devices, Y drives Inv3, whose gate-drain capacitances see Miller multiplication), so their delays differ and even X and Y are not exactly 90° apart. Razavi scores a plain \"yes\" 2."
    }
   },
@@ -3167,6 +3346,7 @@
      "id": "degrade-load",
      "text": {
       "zh": "變差：加寬的時脈電晶體的電容直接加在閂鎖器的輸出節點上",
+      "jj": "變差：加寬的時脈電晶體的電容直接加在 latch 的輸出節點上",
       "en": "Degrades: the capacitance of the wider clocked transistors loads the latch outputs directly"
      }
     },
@@ -3174,6 +3354,7 @@
      "id": "degrade-charge-sharing",
      "text": {
       "zh": "變差：內部節點與輸出之間的電荷分享會造成災難性的結果，這個拓撲不宜使用",
+      "jj": "變差：內部節點與輸出之間的 charge sharing 會造成災難性的結果，這個 topology 不宜使用",
       "en": "Degrades: charge sharing between the internal nodes and the outputs is catastrophic, so this topology should be avoided"
      }
     },
@@ -3181,6 +3362,7 @@
      "id": "improve-unlimited",
      "text": {
       "zh": "改善，而且沒有限制：時脈電晶體在電源與地兩端，不會發生電荷分享",
+      "jj": "改善，而且沒有限制：時脈電晶體在電源與地兩端，不會發生 charge sharing",
       "en": "Improves without limit: with the clocked devices at the rails, no charge sharing can occur"
      }
     },
@@ -3195,6 +3377,7 @@
    "answer": "improve-considerably",
    "explanation": {
     "zh": "此拓撲中時脈電晶體在每個閂鎖器的電源與地兩端、資料電晶體之外。加寬時脈電晶體降低與資料路徑串聯的電阻，而其電容加在時脈與資料電晶體之間的內部節點上，幾乎不干擾資料路徑，所以速度明顯改善。內部節點與輸出之間確實有電荷分享、使擺幅變差，但在一定範圍內可接受。Razavi 對「變差、電荷分享造成災難」的答案給 1 分。",
+    "jj": "此 topology 中時脈電晶體在每個 latch 的電源與地兩端、資料電晶體之外。加寬時脈電晶體降低與資料路徑串聯的電阻，而其電容加在時脈與資料電晶體之間的內部節點上，幾乎不干擾資料路徑，所以速度明顯改善。內部節點與輸出之間確實有 charge sharing、使 swing 變差，但在一定範圍內可接受。Razavi 對「變差、charge sharing 造成災難」的答案給 1 分。",
     "en": "Here the clocked transistors sit at the supply and ground ends of each latch, outside the data transistors. Widening them lowers the resistance in series with the data path, while their capacitance appears on the internal nodes between clocked and data devices, barely touching the data path: the speed improves considerably. Charge sharing between those nodes and the outputs does degrade the swing, but acceptably up to a point. Razavi scores \"degrades, charge sharing is catastrophic\" 1."
    }
   },
@@ -3227,20 +3410,23 @@
      "id": "both-on",
      "text": {
       "en": "The CK and CK̄ switches conduct at the same time, so data passes through both latches in one clock phase",
-      "zh": "CK 與 CK̄ 開關同時導通，資料在同一個時脈相位內穿過兩個閂鎖器"
+      "zh": "CK 與 CK̄ 開關同時導通，資料在同一個時脈相位內穿過兩個閂鎖器",
+      "jj": "CK 與 CK̄ 開關同時導通，資料在同一個時脈相位內穿過兩個 latch"
      }
     },
     {
      "id": "hold-charge",
      "text": {
       "en": "While its switch is off, each latch holds its state only as charge on a node capacitance",
-      "zh": "開關關閉時，每個閂鎖器只靠節點電容上的電荷保持狀態"
+      "zh": "開關關閉時，每個閂鎖器只靠節點電容上的電荷保持狀態",
+      "jj": "開關關閉時，每個 latch 只靠節點電容上的電荷保持狀態"
      }
     },
     {
      "id": "alternate",
      "text": {
       "zh": "CK 與 CK̄ 開關輪流導通，兩個閂鎖器交替取樣與保持",
+      "jj": "CK 與 CK̄ 開關輪流導通，兩個 latch 交替取樣與保持",
       "en": "The CK and CK̄ switches conduct alternately, so the two latches take turns sampling and holding"
      }
     },
@@ -3259,6 +3445,7 @@
    ],
    "explanation": {
     "zh": "這是以動態閂鎖器構成的除二電路（動態主從式除頻器）：CK 與 CK̄ 開關輪流導通，兩個閂鎖器交替取樣與保持，保持期間狀態只存在節點電容上。輸出每個時脈週期只改變一次狀態，每兩個時脈週期完成一個週期，頻率為時脈的一半。時脈停止時迴路被開關切斷，不會自行振盪。",
+    "jj": "這是以 dynamic latch 構成的 divide-by-two 電路（dynamic master-slave divider）：CK 與 CK̄ 開關輪流導通，兩個 latch 交替取樣與保持，保持期間狀態只存在節點電容上。輸出每個時脈週期只改變一次狀態，每兩個時脈週期完成一個週期，頻率為時脈的一半。時脈停止時迴路被開關切斷，不會自行振盪。",
     "en": "It is a divide-by-two built from dynamic latches (a dynamic master-slave divider): the CK and CK̄ switches conduct alternately, so the two latches take turns sampling and holding, and while holding the state exists only as charge on a node capacitance. The output changes state once per clock period and completes one cycle every two clock periods, so its frequency is half the clock frequency. With the clock stopped the switches break the loop, so it does not oscillate by itself."
    }
   },
@@ -3270,6 +3457,7 @@
    "image": "razavi-part2-fig12.png",
    "prompt": {
     "zh": "圖中的紅色反相器如何影響效能？",
+    "jj": "圖中的紅色 inverter 如何影響效能？",
     "en": "How does the red inverter in the figure affect the performance?"
    },
    "options": [
@@ -3277,6 +3465,7 @@
      "id": "ff-speed-minfreq-up",
      "text": {
       "zh": "繞過 CK 開關與 Inv1 的前饋路徑：提升除頻器的速度，但會提高最低可用時脈頻率",
+      "jj": "繞過 CK 開關與 Inv1 的 feedforward 路徑：提升 divider 的速度，但會提高最低可用時脈頻率",
       "en": "A feedforward path around the CK switch and Inv1: it speeds up the divider, but it raises the minimum usable clock frequency"
      }
     },
@@ -3284,6 +3473,7 @@
      "id": "ring-broken",
      "text": {
       "zh": "它與下一級形成自由振盪的三反相器環，因此除頻器在任何時脈頻率下都無法工作",
+      "jj": "它與下一級形成自由振盪的三個 inverter 構成的環，因此 divider 在任何時脈頻率下都無法工作",
       "en": "It closes a free-running three-inverter ring with the next stage, so the divider fails at any clock rate"
      }
     },
@@ -3291,6 +3481,7 @@
      "id": "ff-speed-minfreq-down",
      "text": {
       "zh": "繞過 CK 開關與 Inv1 的前饋路徑：提升除頻器的速度，同時也降低最低可用時脈頻率",
+      "jj": "繞過 CK 開關與 Inv1 的 feedforward 路徑：提升 divider 的速度，同時也降低最低可用時脈頻率",
       "en": "A feedforward path around the CK switch and Inv1: it speeds up the divider, and it also lowers the minimum usable clock frequency"
      }
     },
@@ -3298,6 +3489,7 @@
      "id": "keeper",
      "text": {
       "zh": "保持器（keeper）：與 Inv1 交叉耦合成靜態閂鎖器，消除漏電造成的最低時脈頻率限制",
+      "jj": "keeper：與 Inv1 cross-coupled，形成 static latch，消除漏電造成的最低時脈頻率限制",
       "en": "A keeper: it cross-couples with Inv1 into a static latch, which removes the minimum clock frequency set by leakage"
      }
     }
@@ -3305,6 +3497,7 @@
    "answer": "ff-speed-minfreq-up",
    "explanation": {
     "zh": "紅色反相器的輸入取自 CK 開關之前的節點、輸出接 Inv1 的輸出，所以它繞過 CK 開關與 Inv1，是一條前饋路徑，預先驅動 Inv1 的輸出，提升速度。但它沒有時脈控制：CK̄ 開關導通時，紅色反相器、CK̄ 開關與其後兩個反相器構成三次反相的迴路（可自行翻轉的環），而且它會與 Inv1 保持的值互相拉扯。高時脈頻率下半週期太短，影響不大；低時脈頻率時它壓過主路徑、破壞除頻，因此最低可用時脈頻率上升（而非降低）。",
+    "jj": "紅色 inverter 的輸入取自 CK 開關之前的節點、輸出接 Inv1 的輸出，所以它繞過 CK 開關與 Inv1，是一條 feedforward 路徑，預先驅動 Inv1 的輸出，提升速度。但它沒有時脈控制：CK̄ 開關導通時，紅色 inverter、CK̄ 開關與其後兩個 inverter 構成三次反相的迴路（可自行翻轉的環），而且它會與 Inv1 保持的值互相拉扯。高時脈頻率下半週期太短，影響不大；低時脈頻率時它壓過主路徑、破壞除頻，因此最低可用時脈頻率上升（而非降低）。",
     "en": "The red inverter takes its input from the node before the CK switch and drives Inv1's output, so it bypasses the CK switch and Inv1: a feedforward path that pre-drives Inv1's output and speeds up the divider. But it is unclocked: while the CK̄ switch is on, it, the CK̄ switch and the two following inverters form a loop of three inversions (a ring that can toggle by itself), and it fights the value Inv1 holds. At high clock rates the half-period is too short for this to matter; at low clock rates the branch overpowers the main path and corrupts the division, so the minimum usable clock frequency rises, not falls."
    }
   },
@@ -3316,6 +3509,7 @@
    "image": "razavi-part2-fig12.png",
    "prompt": {
     "zh": "針對圖中電路，有人回答：「紅色反相器是保持器（keeper），與 Inv1 形成交叉耦合閂鎖器，消除了因漏電造成的最低時脈頻率要求。」你同意嗎？紅色反相器實際的作用是什麼？",
+    "jj": "針對圖中電路，有人回答：「紅色 inverter 是 keeper，與 Inv1 形成 cross-coupled latch，消除了因漏電造成的最低時脈頻率要求。」你同意嗎？紅色 inverter 實際的作用是什麼？",
     "en": "In the figure, somebody answers: \"The red inverter acts as a keeper, forming a cross-coupled latch with Inv1. This removes the minimum clock frequency requirement due to leakage.\" Do you agree with this answer? What is the actual role of the red inverter?"
    },
    "options": [
@@ -3323,6 +3517,7 @@
      "id": "agree",
      "text": {
       "zh": "同意：紅色反相器與 Inv1 形成靜態閂鎖器，保持的資料不會因漏電流失，因此不再有最低時脈頻率",
+      "jj": "同意：紅色 inverter 與 Inv1 形成 static latch，保持的資料不會因漏電流失，因此不再有最低時脈頻率",
       "en": "Agree: the red inverter and Inv1 form a static latch, so the held data cannot leak away and no minimum clock frequency remains"
      }
     },
@@ -3330,6 +3525,7 @@
      "id": "disagree-ff",
      "text": {
       "zh": "不同意：它的輸入沒有接到 Inv1 的輸出，所以不是保持器；它是前饋分支，會提高最低時脈頻率",
+      "jj": "不同意：它的輸入沒有接到 Inv1 的輸出，所以不是 keeper；它是 feedforward 分支，會提高最低時脈頻率",
       "en": "Disagree: its input is not tied to Inv1's output, so it is no keeper; it is a feedforward branch that raises the minimum clock frequency"
      }
     },
@@ -3337,6 +3533,7 @@
      "id": "partly",
      "text": {
       "zh": "部分同意：它確實是保持器，但開關仍有漏電，所以只能降低、無法消除最低時脈頻率限制",
+      "jj": "部分同意：它確實是 keeper，但開關仍有漏電，所以只能降低、無法消除最低時脈頻率限制",
       "en": "Partly agree: it does act as a keeper, but leakage through the switch remains, so it only lowers the minimum clock frequency"
      }
     },
@@ -3344,6 +3541,7 @@
      "id": "disagree-broken",
      "text": {
       "zh": "不同意：它沒有接成保持器迴路，所以圖一定畫錯了，此電路照圖無法工作",
+      "jj": "不同意：它沒有接成 keeper 迴路，所以圖一定畫錯了，此電路照圖無法工作",
       "en": "Disagree: it is not wired as a keeper loop, so the drawing must be wrong and the circuit cannot work as shown"
      }
     }
@@ -3351,6 +3549,7 @@
    "answer": "disagree-ff",
    "explanation": {
     "zh": "紅色反相器的輸入取自 CK 開關之前，並未接到 Inv1 的輸出，因此與 Inv1 不構成交叉耦合，不應視為保持器。它是前饋分支：從較早的節點驅動較晚的節點，繞過部分閂鎖路徑，可改善高速操作；但它沒有時脈控制，低時脈頻率時會壓過預期的動態閂鎖行為，使最低可用時脈頻率上升。",
+    "jj": "紅色 inverter 的輸入取自 CK 開關之前，並未接到 Inv1 的輸出，因此與 Inv1 不構成 cross-coupled 結構，不應視為 keeper。它是 feedforward 分支：從較早的節點驅動較晚的節點，繞過部分 latch 路徑，可改善高速操作；但它沒有時脈控制，低時脈頻率時會壓過預期的 dynamic latch 行為，使最低可用時脈頻率上升。",
     "en": "The red inverter's input comes from before the CK switch, not from Inv1's output, so it is not cross-coupled with Inv1 and is not a keeper. It is a feedforward branch: it drives a later node from an earlier signal, bypassing part of the latch path, which helps at high speed; but being unclocked, at low clock rates it overpowers the intended dynamic-latch behavior and raises the minimum usable clock rate."
    }
   },
@@ -3397,6 +3596,7 @@
    "answer": "raise-gm-and-rf",
    "explanation": {
     "zh": "這是電阻回授（並聯回授）反相器 LNA。若假設 R<sub>in</sub> ≈ 1/g<sub>m</sub>，匹配會把 g<sub>m</sub> 鎖在 1/R<sub>S</sub>，NF 最佳只能趨近 1 + γ，這是 Razavi 給 1 分的答案。考慮有限的 r<sub>o</sub>：R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>)，可選 R<sub>F</sub> = R<sub>S</sub>(1 + g<sub>m</sub>r<sub>o</sub>) − r<sub>o</sub> 維持 50 Ω，同時讓 g<sub>m</sub> 超過 1/R<sub>S</sub>；雜訊因子隨 g<sub>m</sub> 增大而降到 1 + γ 以下，g<sub>m</sub>r<sub>o</sub> 大時趨近 1 + γ/(g<sub>m</sub>R<sub>S</sub>)，代價是功耗與輸入電容。刻意降低 r<sub>o</sub> 並沒有幫助。",
+    "jj": "這是電阻回授（並聯回授）inverter LNA。若假設 R<sub>in</sub> ≈ 1/g<sub>m</sub>，匹配會把 g<sub>m</sub> 鎖在 1/R<sub>S</sub>，NF 最佳只能趨近 1 + γ，這是 Razavi 給 1 分的答案。考慮有限的 r<sub>o</sub>：R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>)，可選 R<sub>F</sub> = R<sub>S</sub>(1 + g<sub>m</sub>r<sub>o</sub>) − r<sub>o</sub> 維持 50 Ω，同時讓 g<sub>m</sub> 超過 1/R<sub>S</sub>；雜訊因子隨 g<sub>m</sub> 增大而降到 1 + γ 以下，g<sub>m</sub>r<sub>o</sub> 大時趨近 1 + γ/(g<sub>m</sub>R<sub>S</sub>)，代價是功耗與輸入電容。刻意降低 r<sub>o</sub> 並沒有幫助。",
     "en": "This is a resistive-feedback (shunt-feedback) inverter LNA. Assuming R<sub>in</sub> ≈ 1/g<sub>m</sub> pins g<sub>m</sub> at 1/R<sub>S</sub> and the NF can at best approach 1 + γ: the answer Razavi scores 1. With finite r<sub>o</sub>, R<sub>in</sub> = (R<sub>F</sub> + r<sub>o</sub>)/(1 + g<sub>m</sub>r<sub>o</sub>), so choosing R<sub>F</sub> = R<sub>S</sub>(1 + g<sub>m</sub>r<sub>o</sub>) − r<sub>o</sub> holds 50 Ω while g<sub>m</sub> exceeds 1/R<sub>S</sub>; the noise factor falls below 1 + γ as g<sub>m</sub> grows, toward 1 + γ/(g<sub>m</sub>R<sub>S</sub>) for large g<sub>m</sub>r<sub>o</sub>, at the cost of power and input capacitance. Lowering r<sub>o</sub> on purpose does not help."
    }
   },
@@ -3431,6 +3631,7 @@
    ],
    "explanation": {
     "zh": "電流輸入 I<sub>in</sub>（並聯 C<sub>in</sub>，如光二極體）、兩級放大器並以 R<sub>F</sub> 從輸出回授到輸入：轉阻放大器（TIA），把輸入電流轉為輸出電壓。",
+    "jj": "電流輸入 I<sub>in</sub>（並聯 C<sub>in</sub>，如 photodiode）、兩級放大器並以 R<sub>F</sub> 從輸出回授到輸入：transimpedance amplifier（TIA），把輸入電流轉為輸出電壓。",
     "en": "A current input I<sub>in</sub> with C<sub>in</sub> (as from a photodiode), a two-stage amplifier and R<sub>F</sub> from the output back to the input: a transimpedance amplifier (TIA), converting input current to output voltage."
    }
   },
@@ -3442,6 +3643,7 @@
    "image": "razavi-part2-fig14.png",
    "prompt": {
     "zh": "求圖中電路的輸入阻抗 R<sub>in</sub>。（A<sub>0</sub>：由 P 到 V<sub>out</sub>、未接 R<sub>F</sub> 負載時的電壓增益大小；忽略通道長度調變。）",
+    "jj": "求圖中電路的輸入阻抗 R<sub>in</sub>。（A<sub>0</sub>：由 P 到 V<sub>out</sub>、未接 R<sub>F</sub> 負載時的電壓增益大小；忽略 channel-length modulation。）",
     "en": "Compute the input impedance R<sub>in</sub> of the circuit in the figure. (A<sub>0</sub>: magnitude of the voltage gain from P to V<sub>out</sub> without R<sub>F</sub> loading; neglect channel-length modulation.)"
    },
    "options": [
@@ -3477,6 +3679,7 @@
    "answer": "exact",
    "explanation": {
     "zh": "把 TIA 看成：輸入節點驅動未負載增益為 −A<sub>0</sub>、輸出電阻為 R<sub>D2</sub> 的放大器，R<sub>F</sub> 接在輸入與輸出之間。對 R<sub>F</sub> 套用 Miller 定理（考慮輸出端的 R<sub>D2</sub>）得 R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>)。M1 的增益為 g<sub>m1</sub>R<sub>D1</sub>；M2/M3 差動對只有一側輸出到 R<sub>D2</sub>，增益為 ½g<sub>m2,3</sub>R<sub>D2</sub>，故 A<sub>0</sub> = ½g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>。只寫 R<sub>F</sub>/(1 + A<sub>v</sub>) 並用 R<sub>D2</sub> ∥ R<sub>F</sub> 的負載增益，漏掉了回授路徑輸出端的電阻。",
+    "jj": "把 TIA 看成：輸入節點驅動未負載增益為 −A<sub>0</sub>、輸出電阻為 R<sub>D2</sub> 的放大器，R<sub>F</sub> 接在輸入與輸出之間。對 R<sub>F</sub> 套用 Miller theorem（考慮輸出端的 R<sub>D2</sub>）得 R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>)。M1 的增益為 g<sub>m1</sub>R<sub>D1</sub>；M2/M3 differential pair 只有一側輸出到 R<sub>D2</sub>，增益為 ½g<sub>m2,3</sub>R<sub>D2</sub>，故 A<sub>0</sub> = ½g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>。只寫 R<sub>F</sub>/(1 + A<sub>v</sub>) 並用 R<sub>D2</sub> ∥ R<sub>F</sub> 的負載增益，漏掉了回授路徑輸出端的電阻。",
     "en": "Model the TIA as an input node driving an amplifier of unloaded gain −A<sub>0</sub> and output resistance R<sub>D2</sub>, with R<sub>F</sub> from input to output. Miller's theorem on R<sub>F</sub>, including R<sub>D2</sub> at the output side, gives R<sub>in</sub> = (R<sub>F</sub> + R<sub>D2</sub>)/(1 + A<sub>0</sub>). M1 gives g<sub>m1</sub>R<sub>D1</sub>; the M2/M3 pair delivers only one side to R<sub>D2</sub>, ½g<sub>m2,3</sub>R<sub>D2</sub>, so A<sub>0</sub> = ½g<sub>m1</sub>g<sub>m2,3</sub>R<sub>D1</sub>R<sub>D2</sub>. Writing R<sub>F</sub>/(1 + A<sub>v</sub>) with a loaded gain using R<sub>D2</sub> ∥ R<sub>F</sub> misses the resistance at the output side of the feedback path."
    }
   },
@@ -3495,6 +3698,7 @@
      "id": "pushing",
      "text": {
       "zh": "經由電源推移：先求 K<sub>push</sub> = ∂f<sub>osc</sub>/∂V<sub>out</sub>，再得 L(Δf) ≈ K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)",
+      "jj": "經由 supply pushing：先求 K<sub>push</sub> = ∂f<sub>osc</sub>/∂V<sub>out</sub>，再得 L(Δf) ≈ K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)",
       "en": "Via supply pushing: find K<sub>push</sub> = ∂f<sub>osc</sub>/∂V<sub>out</sub>, then L(Δf) ≈ K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)"
      }
     },
@@ -3502,6 +3706,7 @@
      "id": "tail-rejects",
      "text": {
       "zh": "尾電流源 I<sub>VCO</sub> 把槽路與 LDO 隔開，只有 V<sub>cont</sub> 上的雜訊會變成相位雜訊",
+      "jj": "tail current source I<sub>VCO</sub> 把 tank 與 LDO 隔開，只有 V<sub>cont</sub> 上的雜訊會變成相位雜訊",
       "en": "The tail current source I<sub>VCO</sub> isolates the tank from the LDO, so only noise on V<sub>cont</sub> becomes phase noise"
      }
     },
@@ -3509,6 +3714,7 @@
      "id": "amplitude",
      "text": {
       "zh": "LDO 雜訊只調變振幅，而交叉耦合對的限幅會把這個 AM 去除",
+      "jj": "LDO 雜訊只調變振幅，而 cross-coupled pair 的限幅會把這個 AM 去除",
       "en": "LDO noise only modulates the amplitude, and the limiting of the cross-coupled pair strips that AM away"
      }
     },
@@ -3516,6 +3722,7 @@
      "id": "additive",
      "text": {
       "zh": "把 S<sub>th</sub> 當成疊加在輸出擺幅上的加性雜訊：L(Δf) ≈ S<sub>th</sub>/V<sub>amp</sub><sup>2</sup>，與頻偏無關",
+      "jj": "把 S<sub>th</sub> 當成疊加在輸出 swing 上的加性雜訊：L(Δf) ≈ S<sub>th</sub>/V<sub>amp</sub><sup>2</sup>，與頻偏無關",
       "en": "Treat S<sub>th</sub> as additive noise on the output swing: L(Δf) ≈ S<sub>th</sub>/V<sub>amp</sub><sup>2</sup>, flat with offset"
      }
     }
@@ -3523,6 +3730,7 @@
    "answer": "pushing",
    "explanation": {
     "zh": "LDO 的輸出雜訊經由電源推移增益調變 VCO 頻率。先（通常以模擬）求 K<sub>push</sub> = df<sub>osc</sub>/dV<sub>out</sub>，把 S<sub>th</sub> 轉為頻率雜訊，再做 FM→PM 轉換，得到 1/Δf<sup>2</sup> 的相位雜訊：L(Δf) ≈ 10 log[K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)]。此電路中電源擾動直接出現在變容器上，所以 K<sub>push</sub> 與 K<sub>VCO</sub> 密切相關；降低 K<sub>VCO</sub> 也能降低這項轉換。",
+    "jj": "LDO 的輸出雜訊經由 supply pushing 增益調變 VCO 頻率。先（通常以模擬）求 K<sub>push</sub> = df<sub>osc</sub>/dV<sub>out</sub>，把 S<sub>th</sub> 轉為頻率雜訊，再做 FM→PM 轉換，得到 1/Δf<sup>2</sup> 的相位雜訊：L(Δf) ≈ 10 log[K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)]。此電路中電源擾動直接出現在 varactor 上，所以 K<sub>push</sub> 與 K<sub>VCO</sub> 密切相關；降低 K<sub>VCO</sub> 也能降低這項轉換。",
     "en": "The LDO noise modulates the VCO frequency through supply pushing. Find K<sub>push</sub> = df<sub>osc</sub>/dV<sub>out</sub> (usually by simulation), convert S<sub>th</sub> into frequency noise, then FM-to-PM gives a 1/Δf<sup>2</sup> phase noise: L(Δf) ≈ 10 log[K<sub>push</sub><sup>2</sup>S<sub>th</sub>/(2Δf<sup>2</sup>)]. Here the supply perturbation appears directly on the varactors, so K<sub>push</sub> is closely related to K<sub>VCO</sub>; a lower K<sub>VCO</sub> also reduces this conversion."
    }
   },
@@ -3534,6 +3742,7 @@
    "image": "razavi-part2-fig16.png",
    "prompt": {
     "zh": "如圖，在尾節點加上 C<sub>T</sub>。相位雜訊會如何變化？",
+    "jj": "如圖，在 tail 節點加上 C<sub>T</sub>。相位雜訊會如何變化？",
     "en": "We add C<sub>T</sub> to the tail node, as in the figure. What happens to the phase noise?"
    },
    "options": [
@@ -3541,6 +3750,7 @@
      "id": "degrades-q",
      "text": {
       "zh": "單調變差：C<sub>T</sub> 經由 M1、M2 加載槽路，C<sub>T</sub> 越大，槽路 Q 值越低、雜訊越高",
+      "jj": "單調變差：C<sub>T</sub> 經由 M1、M2 加載 tank，C<sub>T</sub> 越大，tank Q 值越低、雜訊越高",
       "en": "Degrades monotonically: C<sub>T</sub> loads the tank through M1 and M2, and the larger it is, the lower the tank's Q and the higher the noise"
      }
     },
@@ -3548,6 +3758,7 @@
      "id": "nonmonotonic",
      "text": {
       "zh": "非單調：在某個 C<sub>T</sub> 範圍內電路以類 C 類方式切換、相位雜訊下降，但閃爍雜訊上轉換與進入三極管區會形成限制",
+      "jj": "非單調：在某個 C<sub>T</sub> 範圍內電路以 class-C 方式切換、相位雜訊下降，但閃爍雜訊 upconversion 與進入 triode 區會形成限制",
       "en": "Non-monotonic: over a range of C<sub>T</sub> the pair switches class-C-like and the phase noise drops, but flicker upconversion and triode entry set limits"
      }
     },
@@ -3555,6 +3766,7 @@
      "id": "filters",
      "text": {
       "zh": "大致會降低：C<sub>T</sub> 把尾電流在 2ω<sub>0</sub> 的雜訊旁路到地，並抑制尾節點漣波，讓 M1、M2 不進入三極管區",
+      "jj": "大致會降低：C<sub>T</sub> 把 tail current 在 2ω<sub>0</sub> 的雜訊旁路到地，並抑制 tail 節點漣波，讓 M1、M2 不進入 triode 區",
       "en": "Generally lowers it: C<sub>T</sub> shunts the tail current's noise at 2ω<sub>0</sub> to ground and smooths the tail-node ripple, keeping M1 and M2 out of triode"
      }
     },
@@ -3569,6 +3781,7 @@
    "answer": "nonmonotonic",
    "explanation": {
     "zh": "加 C<sub>T</sub> 對相位雜訊的影響是非單調的。C<sub>T</sub> 小到中等時，尾節點波形改變，若元件不符合理想平方律，M1、M2 的閃爍雜訊可能上轉換成相位雜訊；在某個範圍內，交叉耦合對進入類 C 類切換，峰值槽路電流大於 I<sub>SS</sub>，可降低相位雜訊，但大電流也可能使 M1/M2 進入三極管區；C<sub>T</sub> 過大則可能出現低頻不穩定。Razavi 對「C<sub>T</sub> 濾除尾雜訊、大致降低相位雜訊」的單調結論給 1 分。",
+    "jj": "加 C<sub>T</sub> 對相位雜訊的影響是非單調的。C<sub>T</sub> 小到中等時，tail 節點波形改變，若元件不符合理想平方律，M1、M2 的閃爍雜訊可能經 upconversion 變成相位雜訊；在某個範圍內，cross-coupled pair 進入 class-C 切換，峰值 tank 電流大於 I<sub>SS</sub>，可降低相位雜訊，但大電流也可能使 M1/M2 進入 triode 區；C<sub>T</sub> 過大則可能出現低頻不穩定。Razavi 對「C<sub>T</sub> 濾除 tail 雜訊、大致降低相位雜訊」的單調結論給 1 分。",
     "en": "Adding C<sub>T</sub> has a non-monotonic effect. For small or moderate C<sub>T</sub> the tail waveform changes and the flicker noise of M1 and M2 can be upconverted unless the devices are ideally square-law; over a certain range the pair enters class-C-like switching with peak tank currents larger than I<sub>SS</sub>, which can lower phase noise, though the large currents can push M1/M2 into triode; too large a C<sub>T</sub> can cause low-frequency instability. Razavi scores the monotonic \"C<sub>T</sub> filters tail noise and lowers phase noise\" answer 1."
    }
   },
@@ -3611,6 +3824,7 @@
    ],
    "explanation": {
     "zh": "兩個交叉耦合 LC 振盪器，由 I<sub>1</sub> 偏壓的耦合對互相注入（其中一路交叉反相）：正交振盪器（QVCO，耦合振盪器），兩者輸出相差 90°。",
+    "jj": "兩個 cross-coupled LC oscillator，由 I<sub>1</sub> 偏壓的 coupling pair 互相注入（其中一路交叉反相）：quadrature oscillator（QVCO，coupled oscillator），兩者輸出相差 90°。",
     "en": "Two cross-coupled LC oscillators injecting into each other through coupling pairs biased by I<sub>1</sub> (one path crossed): a quadrature oscillator (QVCO, coupled oscillators) whose two outputs are 90° apart."
    }
   },
@@ -3622,6 +3836,7 @@
    "image": "razavi-part2-fig17.png",
    "prompt": {
     "zh": "估計圖中電路的振盪頻率。（L：槽路電感；C<sub>node</sub>：每個節點的電容；Q：槽路品質因數；R<sub>p</sub>：槽路等效並聯電阻；g<sub>m1</sub>、g<sub>mc</sub>：交叉耦合對與耦合對的轉導。）",
+    "jj": "估計圖中電路的振盪頻率。（L：tank 電感；C<sub>node</sub>：每個節點的電容；Q：tank 品質因數；R<sub>p</sub>：tank 等效並聯電阻；g<sub>m1</sub>、g<sub>mc</sub>：cross-coupled pair 與 coupling pair 的 transconductance。）",
     "en": "Estimate the oscillation frequency of the circuit in the figure. (L: tank inductance; C<sub>node</sub>: capacitance at each node; Q: tank quality factor; R<sub>p</sub>: tank equivalent parallel resistance; g<sub>m1</sub>, g<sub>mc</sub>: transconductances of the cross-coupled and coupling pairs.)"
    },
    "options": [
@@ -3629,6 +3844,7 @@
      "id": "omega0",
      "text": {
       "zh": "ω<sub>osc</sub> = 1/√(LC<sub>node</sub>)：耦合對不改變振盪頻率",
+      "jj": "ω<sub>osc</sub> = 1/√(LC<sub>node</sub>)：coupling pair 不改變振盪頻率",
       "en": "ω<sub>osc</sub> = 1/√(LC<sub>node</sub>): the coupling pair does not shift the frequency"
      }
     },
@@ -3657,6 +3873,7 @@
    "answer": "alpha-over-2q",
    "explanation": {
     "zh": "從槽路諧振 ω<sub>0</sub> = 1/√(LC<sub>node</sub>) 出發，耦合使振盪頻率偏離諧振點 Δω = αω<sub>0</sub>/(2Q)。大訊號、幾乎完全切換時 α ≈ I<sub>1</sub>/I<sub>SS</sub>；小訊號估計 α ≈ g<sub>mc</sub>/g<sub>m1</sub>，即 Δω ≈ (g<sub>mc</sub>/g<sub>m1</sub>)/(2C<sub>node</sub>R<sub>p</sub>)。電路可停在 ω<sub>0</sub> 之上或之下兩個正交模態之一。只寫 g<sub>mc</sub>/(2C<sub>node</sub>) 等於假設 g<sub>m1</sub>R<sub>p</sub> = 1（剛好在起振邊緣），Razavi 給 1 分。",
+    "jj": "從 tank 諧振 ω<sub>0</sub> = 1/√(LC<sub>node</sub>) 出發，耦合使振盪頻率偏離諧振點 Δω = αω<sub>0</sub>/(2Q)。large-signal、幾乎完全切換時 α ≈ I<sub>1</sub>/I<sub>SS</sub>；small-signal 估計 α ≈ g<sub>mc</sub>/g<sub>m1</sub>，即 Δω ≈ (g<sub>mc</sub>/g<sub>m1</sub>)/(2C<sub>node</sub>R<sub>p</sub>)。電路可停在 ω<sub>0</sub> 之上或之下兩個正交模態之一。只寫 g<sub>mc</sub>/(2C<sub>node</sub>) 等於假設 g<sub>m1</sub>R<sub>p</sub> = 1（剛好在起振邊緣），Razavi 給 1 分。",
     "en": "Start from the tank resonance ω<sub>0</sub> = 1/√(LC<sub>node</sub>); the coupling shifts the frequency by Δω = αω<sub>0</sub>/(2Q). With nearly complete switching α ≈ I<sub>1</sub>/I<sub>SS</sub>; in small-signal terms α ≈ g<sub>mc</sub>/g<sub>m1</sub>, i.e. Δω ≈ (g<sub>mc</sub>/g<sub>m1</sub>)/(2C<sub>node</sub>R<sub>p</sub>). The circuit can settle in either quadrature mode, above or below ω<sub>0</sub>. Writing only g<sub>mc</sub>/(2C<sub>node</sub>) assumes g<sub>m1</sub>R<sub>p</sub> = 1 (the edge of oscillation); Razavi scores that 1."
    }
   }
