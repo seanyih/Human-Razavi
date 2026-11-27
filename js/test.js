@@ -164,8 +164,7 @@
             <button class="btn" type="button" data-go="full" ${N ? '' : 'disabled'}>${t('start.go')} <span class="arr">→</span></button>
           </div>
         </div>
-      </div>
-      <p class="rules">${t('start.rules', { wage: S.cfg.hourlyWageTWD, rate: S.cfg.twdPerUSD })}</p>`;
+      </div>`;
     $('#vStart').querySelectorAll('[data-step]').forEach(b => b.onclick = () => {
       S.perLevel = Math.min(qm.perLevelMax, Math.max(qm.perLevelMin, S.perLevel + +b.dataset.step));
       renderStart();
