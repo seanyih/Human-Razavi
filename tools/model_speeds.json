@@ -1,0 +1,518 @@
+{
+ "snapshot": "2026-11-27",
+ "defaultLatencySec": 2.0,
+ "medianMeasuredTps": 90.0,
+ "models": {
+  "claude_fable_5": {
+   "tps": 113.1,
+   "latency": 8.49,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Claude Fable 5.2 (Max, Default Fallback)"
+  },
+  "claude_fable_51": {
+   "tps": 113.1,
+   "latency": 8.49,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Claude Fable 5.2 (Max, Default Fallback)"
+  },
+  "claude_fable_52": {
+   "tps": 113.1,
+   "latency": 8.49,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Claude Fable 5.2 (Max, Default Fallback), 2026-11-27"
+  },
+  "claude_haiku_45": {
+   "tps": 94.9,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/claude-4-5-haiku-reasoning-vs-claude-4-5-sonnet-thinking",
+   "note": "Haiku 4.5, AA range 92-97"
+  },
+  "claude_haiku_55": {
+   "tps": 258.2,
+   "latency": 6.92,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Claude Haiku 5.5 (Max), 2026-11-27"
+  },
+  "claude_opus_45": {
+   "tps": 53.3,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/claude-opus-4-5-thinking-vs-claude-4-5-haiku-reasoning",
+   "note": "Opus 4.5 (Reasoning)"
+  },
+  "claude_opus_48": {
+   "tps": 117.2,
+   "latency": 5.53,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Claude Opus 5.5 (Max, Default Fallback)"
+  },
+  "claude_opus_5": {
+   "tps": 117.2,
+   "latency": 5.53,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Claude Opus 5.5 (Max, Default Fallback)"
+  },
+  "claude_opus_55": {
+   "tps": 117.2,
+   "latency": 5.53,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Claude Opus 5.5 (Max, Default Fallback), 2026-11-27"
+  },
+  "claude_sonnet_45": {
+   "tps": 42.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/claude-4-5-haiku-reasoning-vs-claude-4-5-sonnet-thinking",
+   "note": "Sonnet 4.5 (Reasoning)"
+  },
+  "claude_sonnet_46": {
+   "tps": 42.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: Claude Sonnet 4.5"
+  },
+  "deepseek_v41_flash": {
+   "tps": 90.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://lyceum.technology/magazine/llm-inference-tokens-per-second-comparison-2026/",
+   "note": "DeepSeek V4.1 Flash, 87-95"
+  },
+  "deepseek_v41_flash_1017": {
+   "tps": 178.6,
+   "latency": 1.09,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA DeepSeek V4.1 Flash 1017 (Max), 2026-11-27"
+  },
+  "gemini_25_flash_lite": {
+   "tps": 288.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gemini-3-flash-vs-gemini-2-5-flash-lite",
+   "note": "Gemini 2.5 Flash-Lite (Non-reasoning)"
+  },
+  "gemini_25_pro": {
+   "tps": 109.8,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gemini-3-1-flash-lite-preview-vs-gemini-2-5-pro",
+   "note": "Gemini 2.5 Pro"
+  },
+  "gemini_31": {
+   "tps": 110.2,
+   "latency": 10.0,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Gemini 3.1 Pro Preview, 2026-11-27"
+  },
+  "gemini_35_flash": {
+   "tps": 160.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://modelgrep.com/best/fastest/google",
+   "note": "Gemini 3.5 Flash (modelgrep)"
+  },
+  "gemini_36_flash": {
+   "tps": 117.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://modelgrep.com/best/fastest/google",
+   "note": "Gemini 3.6 Flash (modelgrep)"
+  },
+  "gemini_37_flash": {
+   "tps": 117.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: Gemini 3.6 Flash"
+  },
+  "gemini_38_flash": {
+   "tps": 117.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: Gemini 3.6 Flash"
+  },
+  "gemini_3_flash": {
+   "tps": 200.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gemini-3-flash-vs-gemini-2-5-flash-lite",
+   "note": "Gemini 3 Flash"
+  },
+  "gemini_4_argon": {
+   "tps": 78.6,
+   "latency": 9.38,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Gemini 4 Argon (High), 2026-11-27"
+  },
+  "gemini_4_carbon": {
+   "tps": 51.4,
+   "latency": 10.0,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Gemini 4 Carbon (High), 2026-11-27"
+  },
+  "gemma_4_31b_it": {
+   "tps": 35.8,
+   "latency": 0.98,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Gemma 4 31B (Reasoning), 2026-11-27"
+  },
+  "glm_5_3_flash_260828_max": {
+   "tps": 52.7,
+   "latency": 3.17,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA GLM-5.3-Flash (Max), 2026-11-27"
+  },
+  "gpt_4o": {
+   "tps": 124.9,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: GPT-4o (Nov '24)"
+  },
+  "gpt_4o_2024_05_13": {
+   "tps": 124.9,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: GPT-4o (Nov '24)"
+  },
+  "gpt_4o_2024_11_20": {
+   "tps": 124.9,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gpt-5-2-vs-gpt-4o",
+   "note": "GPT-4o (Nov '24)"
+  },
+  "gpt_4o_mini": {
+   "tps": 90.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: median of measured models"
+  },
+  "gpt_5": {
+   "tps": 77.3,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: GPT-5.2"
+  },
+  "gpt_51": {
+   "tps": 77.3,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: GPT-5.2"
+  },
+  "gpt_52": {
+   "tps": 77.3,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gpt-5-2-vs-gpt-4o",
+   "note": "GPT-5.2 (Xhigh), mean of 83.2 and 71.4 on two AA pages"
+  },
+  "gpt_53": {
+   "tps": 90.0,
+   "latency": 10.0,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA GPT-5.3 Codex (Xhigh), 2026-11-27"
+  },
+  "gpt_54_mini": {
+   "tps": 90.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: median of measured models"
+  },
+  "gpt_54_thinking_high": {
+   "tps": 73.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gpt-5-5-medium-vs-gpt-5-4",
+   "note": "GPT-5.4 (Xhigh), 5-day rolling"
+  },
+  "gpt_55": {
+   "tps": 72.3,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/models/comparisons/gpt-5-5-high-vs-gpt-5-2",
+   "note": "GPT-5.5 (High)"
+  },
+  "gpt_56": {
+   "tps": 59.9,
+   "latency": 2.02,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA GPT-6.2 Sol (Max)"
+  },
+  "gpt_56_luna": {
+   "tps": 129.1,
+   "latency": 1.31,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA GPT-6 Luna (Max)"
+  },
+  "gpt_56_terra": {
+   "tps": 63.2,
+   "latency": 2.54,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA GPT-6.1 Terra (Max)"
+  },
+  "gpt_6_1_sol": {
+   "tps": 59.9,
+   "latency": 2.02,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA GPT-6.2 Sol (Max)"
+  },
+  "gpt_6_astra": {
+   "tps": 42.5,
+   "latency": 3.04,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA GPT-6.2 Astra (Max)"
+  },
+  "gpt_6_luna": {
+   "tps": 129.1,
+   "latency": 1.31,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA GPT-6 Luna (Max), 2026-11-27"
+  },
+  "gpt_6_sol": {
+   "tps": 59.9,
+   "latency": 2.02,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA GPT-6.2 Sol (Max)"
+  },
+  "grok_45": {
+   "tps": 77.9,
+   "latency": 10.0,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Grok 4.7 (High)"
+  },
+  "grok_46": {
+   "tps": 77.3,
+   "latency": 10.0,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Grok 4.7 (Xhigh)"
+  },
+  "grok_4_7": {
+   "tps": 77.3,
+   "latency": 10.0,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Grok 4.7 (Xhigh), 2026-11-27"
+  },
+  "hy4": {
+   "tps": 98.1,
+   "latency": 2.9,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Tencent Hy4, 2026-11-27"
+  },
+  "inkling": {
+   "tps": 102.2,
+   "latency": 1.73,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Inkling (Xhigh), 2026-11-27"
+  },
+  "inkling_small": {
+   "tps": 103.6,
+   "latency": 1.98,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Inkling 2 Small"
+  },
+  "kimi_31_pro": {
+   "tps": 36.9,
+   "latency": 3.22,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Kimi K3.1 Pro, 2026-11-27"
+  },
+  "kimi_k27": {
+   "tps": 52.9,
+   "latency": 6.4,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Kimi K2.7 Code, 2026-11-27"
+  },
+  "kimi_k3": {
+   "tps": 64.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://lyceum.technology/magazine/llm-inference-tokens-per-second-comparison-2026/",
+   "note": "Kimi K3 median 57-66"
+  },
+  "llama_4_maverick": {
+   "tps": 66.9,
+   "latency": 1.14,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Llama 4 Maverick, 2026-11-27"
+  },
+  "mimo_2_6_pro": {
+   "tps": 43.1,
+   "latency": 4.32,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA MiMo-V2.6-Pro, 2026-11-27"
+  },
+  "minimax_m3": {
+   "tps": 113.6,
+   "latency": 1.66,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA MiniMax-M3, 2026-11-27"
+  },
+  "minimax_m31_flash": {
+   "tps": 132.7,
+   "latency": 1.53,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA MiniMax-M3.1-Flash, 2026-11-27"
+  },
+  "mistral_large_2512": {
+   "tps": 87.5,
+   "latency": 2.69,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: Mistral Large 4"
+  },
+  "mistral_large_4_0": {
+   "tps": 87.5,
+   "latency": 2.69,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Mistral Large 4 (High), 2026-11-27"
+  },
+  "mistral_medium_35": {
+   "tps": 138.1,
+   "latency": 8.5,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Mistral Medium 3.5, 2026-11-27"
+  },
+  "muse_spark_12": {
+   "tps": 200.0,
+   "latency": null,
+   "basis": "web",
+   "source": "https://www.benchleader.com/leaderboards/speed",
+   "note": "Muse Spark 1.2 (BenchLeader, via AA)"
+  },
+  "muse_spark_13": {
+   "tps": 200.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: Muse Spark 1.2"
+  },
+  "muse_wonder_full_10": {
+   "tps": 84.7,
+   "latency": 10.0,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Muse Wonder (Max), 2026-11-27"
+  },
+  "nemotron_35_super_vl": {
+   "tps": 348.1,
+   "latency": 0.89,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Nemotron 3.5 Super VL, 2026-11-27"
+  },
+  "nova_pro": {
+   "tps": 113.9,
+   "latency": 1.53,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Nova 2.0 Pro Preview (Non-reasoning)"
+  },
+  "o3": {
+   "tps": 121.9,
+   "latency": 5.72,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA o3, 2026-11-27"
+  },
+  "qwen25_vl_72b_instruct": {
+   "tps": 90.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: median of measured models"
+  },
+  "qwen3_vl_235b_a22b_instruct": {
+   "tps": 90.0,
+   "latency": null,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: median of measured models"
+  },
+  "qwen_35_9b": {
+   "tps": 75.1,
+   "latency": 2.81,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Qwen3.5 9B (Reasoning), 2026-11-27"
+  },
+  "qwen_37_flash": {
+   "tps": 84.0,
+   "latency": 2.52,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Qwen3.8-Flash-Next"
+  },
+  "qwen_37_plus": {
+   "tps": 56.3,
+   "latency": 2.58,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Qwen3.7 Plus, 2026-11-27"
+  },
+  "qwen_38_27b": {
+   "tps": 58.7,
+   "latency": 4.79,
+   "basis": "measured",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "AA Qwen3.8 27B (Xhigh), 2026-11-27"
+  },
+  "qwen_38_max": {
+   "tps": 112.1,
+   "latency": 6.87,
+   "basis": "proxy",
+   "source": null,
+   "note": "proxy: AA Qwen4 Max"
+  },
+  "step_37_flash": {
+   "tps": 403.9,
+   "latency": null,
+   "basis": "web",
+   "source": "https://artificialanalysis.ai/leaderboards/models",
+   "note": "Step 3.7 Flash (earlier AA snapshot)"
+  }
+ }
+}
